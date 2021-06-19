@@ -1,0 +1,51 @@
+name: sap_work
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  flutter_multi_formatter: ^2.1.3
+  freezed_annotation: ^0.14.2
+  shared_preferences: ^2.0.5
+  connectivity_plus: ^1.0.3
+  cupertino_icons: ^1.0.2
+  hydrated_bloc: ^7.0.1
+  flutter_bloc: ^7.0.0
+  flutter_svg: ^0.22.0
+  equatable: ^2.0.0
+  provider: ^5.0.0
+  formz: ^0.4.0
+  intl: ^0.17.0
+  http: ^0.13.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  json_serializable: ^4.1.3
+  build_runner: ^2.0.4
+  freezed: ^0.14.2
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/svg_icons/
+
+  fonts:
+    - family: NexaLight
+      fonts:
+        - asset: assets/fonts/Nexa-Light.ttf
+    - family: NexaBold
+      fonts:
+        - asset: assets/fonts/Nexa-Bold.ttf
