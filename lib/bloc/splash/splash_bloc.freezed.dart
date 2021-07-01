@@ -263,12 +263,12 @@ class _$SplashStateTearOff {
     return const SelectedRoleSplashState();
   }
 
-  HunterSplashState hunter() {
-    return const HunterSplashState();
+  UserSplashState user() {
+    return const UserSplashState();
   }
 
-  EmployerSplashState employer() {
-    return const EmployerSplashState();
+  CompanySplashState company() {
+    return const CompanySplashState();
   }
 }
 
@@ -282,8 +282,8 @@ mixin _$SplashState {
     required TResult Function() initial,
     required TResult Function() splash,
     required TResult Function() selectedRole,
-    required TResult Function() hunter,
-    required TResult Function() employer,
+    required TResult Function() user,
+    required TResult Function() company,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -291,8 +291,8 @@ mixin _$SplashState {
     TResult Function()? initial,
     TResult Function()? splash,
     TResult Function()? selectedRole,
-    TResult Function()? hunter,
-    TResult Function()? employer,
+    TResult Function()? user,
+    TResult Function()? company,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -301,8 +301,8 @@ mixin _$SplashState {
     required TResult Function(IntialSplashState value) initial,
     required TResult Function(SplashScreenState value) splash,
     required TResult Function(SelectedRoleSplashState value) selectedRole,
-    required TResult Function(HunterSplashState value) hunter,
-    required TResult Function(EmployerSplashState value) employer,
+    required TResult Function(UserSplashState value) user,
+    required TResult Function(CompanySplashState value) company,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -310,8 +310,8 @@ mixin _$SplashState {
     TResult Function(IntialSplashState value)? initial,
     TResult Function(SplashScreenState value)? splash,
     TResult Function(SelectedRoleSplashState value)? selectedRole,
-    TResult Function(HunterSplashState value)? hunter,
-    TResult Function(EmployerSplashState value)? employer,
+    TResult Function(UserSplashState value)? user,
+    TResult Function(CompanySplashState value)? company,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -376,8 +376,8 @@ class _$IntialSplashState implements IntialSplashState {
     required TResult Function() initial,
     required TResult Function() splash,
     required TResult Function() selectedRole,
-    required TResult Function() hunter,
-    required TResult Function() employer,
+    required TResult Function() user,
+    required TResult Function() company,
   }) {
     return initial();
   }
@@ -388,8 +388,8 @@ class _$IntialSplashState implements IntialSplashState {
     TResult Function()? initial,
     TResult Function()? splash,
     TResult Function()? selectedRole,
-    TResult Function()? hunter,
-    TResult Function()? employer,
+    TResult Function()? user,
+    TResult Function()? company,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -404,8 +404,8 @@ class _$IntialSplashState implements IntialSplashState {
     required TResult Function(IntialSplashState value) initial,
     required TResult Function(SplashScreenState value) splash,
     required TResult Function(SelectedRoleSplashState value) selectedRole,
-    required TResult Function(HunterSplashState value) hunter,
-    required TResult Function(EmployerSplashState value) employer,
+    required TResult Function(UserSplashState value) user,
+    required TResult Function(CompanySplashState value) company,
   }) {
     return initial(this);
   }
@@ -416,8 +416,8 @@ class _$IntialSplashState implements IntialSplashState {
     TResult Function(IntialSplashState value)? initial,
     TResult Function(SplashScreenState value)? splash,
     TResult Function(SelectedRoleSplashState value)? selectedRole,
-    TResult Function(HunterSplashState value)? hunter,
-    TResult Function(EmployerSplashState value)? employer,
+    TResult Function(UserSplashState value)? user,
+    TResult Function(CompanySplashState value)? company,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -474,8 +474,8 @@ class _$SplashScreenState implements SplashScreenState {
     required TResult Function() initial,
     required TResult Function() splash,
     required TResult Function() selectedRole,
-    required TResult Function() hunter,
-    required TResult Function() employer,
+    required TResult Function() user,
+    required TResult Function() company,
   }) {
     return splash();
   }
@@ -486,8 +486,8 @@ class _$SplashScreenState implements SplashScreenState {
     TResult Function()? initial,
     TResult Function()? splash,
     TResult Function()? selectedRole,
-    TResult Function()? hunter,
-    TResult Function()? employer,
+    TResult Function()? user,
+    TResult Function()? company,
     required TResult orElse(),
   }) {
     if (splash != null) {
@@ -502,8 +502,8 @@ class _$SplashScreenState implements SplashScreenState {
     required TResult Function(IntialSplashState value) initial,
     required TResult Function(SplashScreenState value) splash,
     required TResult Function(SelectedRoleSplashState value) selectedRole,
-    required TResult Function(HunterSplashState value) hunter,
-    required TResult Function(EmployerSplashState value) employer,
+    required TResult Function(UserSplashState value) user,
+    required TResult Function(CompanySplashState value) company,
   }) {
     return splash(this);
   }
@@ -514,8 +514,8 @@ class _$SplashScreenState implements SplashScreenState {
     TResult Function(IntialSplashState value)? initial,
     TResult Function(SplashScreenState value)? splash,
     TResult Function(SelectedRoleSplashState value)? selectedRole,
-    TResult Function(HunterSplashState value)? hunter,
-    TResult Function(EmployerSplashState value)? employer,
+    TResult Function(UserSplashState value)? user,
+    TResult Function(CompanySplashState value)? company,
     required TResult orElse(),
   }) {
     if (splash != null) {
@@ -572,8 +572,8 @@ class _$SelectedRoleSplashState implements SelectedRoleSplashState {
     required TResult Function() initial,
     required TResult Function() splash,
     required TResult Function() selectedRole,
-    required TResult Function() hunter,
-    required TResult Function() employer,
+    required TResult Function() user,
+    required TResult Function() company,
   }) {
     return selectedRole();
   }
@@ -584,8 +584,8 @@ class _$SelectedRoleSplashState implements SelectedRoleSplashState {
     TResult Function()? initial,
     TResult Function()? splash,
     TResult Function()? selectedRole,
-    TResult Function()? hunter,
-    TResult Function()? employer,
+    TResult Function()? user,
+    TResult Function()? company,
     required TResult orElse(),
   }) {
     if (selectedRole != null) {
@@ -600,8 +600,8 @@ class _$SelectedRoleSplashState implements SelectedRoleSplashState {
     required TResult Function(IntialSplashState value) initial,
     required TResult Function(SplashScreenState value) splash,
     required TResult Function(SelectedRoleSplashState value) selectedRole,
-    required TResult Function(HunterSplashState value) hunter,
-    required TResult Function(EmployerSplashState value) employer,
+    required TResult Function(UserSplashState value) user,
+    required TResult Function(CompanySplashState value) company,
   }) {
     return selectedRole(this);
   }
@@ -612,8 +612,8 @@ class _$SelectedRoleSplashState implements SelectedRoleSplashState {
     TResult Function(IntialSplashState value)? initial,
     TResult Function(SplashScreenState value)? splash,
     TResult Function(SelectedRoleSplashState value)? selectedRole,
-    TResult Function(HunterSplashState value)? hunter,
-    TResult Function(EmployerSplashState value)? employer,
+    TResult Function(UserSplashState value)? user,
+    TResult Function(CompanySplashState value)? company,
     required TResult orElse(),
   }) {
     if (selectedRole != null) {
@@ -628,37 +628,37 @@ abstract class SelectedRoleSplashState implements SplashState {
 }
 
 /// @nodoc
-abstract class $HunterSplashStateCopyWith<$Res> {
-  factory $HunterSplashStateCopyWith(
-          HunterSplashState value, $Res Function(HunterSplashState) then) =
-      _$HunterSplashStateCopyWithImpl<$Res>;
+abstract class $UserSplashStateCopyWith<$Res> {
+  factory $UserSplashStateCopyWith(
+          UserSplashState value, $Res Function(UserSplashState) then) =
+      _$UserSplashStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$HunterSplashStateCopyWithImpl<$Res>
+class _$UserSplashStateCopyWithImpl<$Res>
     extends _$SplashStateCopyWithImpl<$Res>
-    implements $HunterSplashStateCopyWith<$Res> {
-  _$HunterSplashStateCopyWithImpl(
-      HunterSplashState _value, $Res Function(HunterSplashState) _then)
-      : super(_value, (v) => _then(v as HunterSplashState));
+    implements $UserSplashStateCopyWith<$Res> {
+  _$UserSplashStateCopyWithImpl(
+      UserSplashState _value, $Res Function(UserSplashState) _then)
+      : super(_value, (v) => _then(v as UserSplashState));
 
   @override
-  HunterSplashState get _value => super._value as HunterSplashState;
+  UserSplashState get _value => super._value as UserSplashState;
 }
 
 /// @nodoc
 
-class _$HunterSplashState implements HunterSplashState {
-  const _$HunterSplashState();
+class _$UserSplashState implements UserSplashState {
+  const _$UserSplashState();
 
   @override
   String toString() {
-    return 'SplashState.hunter()';
+    return 'SplashState.user()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is HunterSplashState);
+    return identical(this, other) || (other is UserSplashState);
   }
 
   @override
@@ -670,10 +670,10 @@ class _$HunterSplashState implements HunterSplashState {
     required TResult Function() initial,
     required TResult Function() splash,
     required TResult Function() selectedRole,
-    required TResult Function() hunter,
-    required TResult Function() employer,
+    required TResult Function() user,
+    required TResult Function() company,
   }) {
-    return hunter();
+    return user();
   }
 
   @override
@@ -682,12 +682,12 @@ class _$HunterSplashState implements HunterSplashState {
     TResult Function()? initial,
     TResult Function()? splash,
     TResult Function()? selectedRole,
-    TResult Function()? hunter,
-    TResult Function()? employer,
+    TResult Function()? user,
+    TResult Function()? company,
     required TResult orElse(),
   }) {
-    if (hunter != null) {
-      return hunter();
+    if (user != null) {
+      return user();
     }
     return orElse();
   }
@@ -698,10 +698,10 @@ class _$HunterSplashState implements HunterSplashState {
     required TResult Function(IntialSplashState value) initial,
     required TResult Function(SplashScreenState value) splash,
     required TResult Function(SelectedRoleSplashState value) selectedRole,
-    required TResult Function(HunterSplashState value) hunter,
-    required TResult Function(EmployerSplashState value) employer,
+    required TResult Function(UserSplashState value) user,
+    required TResult Function(CompanySplashState value) company,
   }) {
-    return hunter(this);
+    return user(this);
   }
 
   @override
@@ -710,53 +710,53 @@ class _$HunterSplashState implements HunterSplashState {
     TResult Function(IntialSplashState value)? initial,
     TResult Function(SplashScreenState value)? splash,
     TResult Function(SelectedRoleSplashState value)? selectedRole,
-    TResult Function(HunterSplashState value)? hunter,
-    TResult Function(EmployerSplashState value)? employer,
+    TResult Function(UserSplashState value)? user,
+    TResult Function(CompanySplashState value)? company,
     required TResult orElse(),
   }) {
-    if (hunter != null) {
-      return hunter(this);
+    if (user != null) {
+      return user(this);
     }
     return orElse();
   }
 }
 
-abstract class HunterSplashState implements SplashState {
-  const factory HunterSplashState() = _$HunterSplashState;
+abstract class UserSplashState implements SplashState {
+  const factory UserSplashState() = _$UserSplashState;
 }
 
 /// @nodoc
-abstract class $EmployerSplashStateCopyWith<$Res> {
-  factory $EmployerSplashStateCopyWith(
-          EmployerSplashState value, $Res Function(EmployerSplashState) then) =
-      _$EmployerSplashStateCopyWithImpl<$Res>;
+abstract class $CompanySplashStateCopyWith<$Res> {
+  factory $CompanySplashStateCopyWith(
+          CompanySplashState value, $Res Function(CompanySplashState) then) =
+      _$CompanySplashStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EmployerSplashStateCopyWithImpl<$Res>
+class _$CompanySplashStateCopyWithImpl<$Res>
     extends _$SplashStateCopyWithImpl<$Res>
-    implements $EmployerSplashStateCopyWith<$Res> {
-  _$EmployerSplashStateCopyWithImpl(
-      EmployerSplashState _value, $Res Function(EmployerSplashState) _then)
-      : super(_value, (v) => _then(v as EmployerSplashState));
+    implements $CompanySplashStateCopyWith<$Res> {
+  _$CompanySplashStateCopyWithImpl(
+      CompanySplashState _value, $Res Function(CompanySplashState) _then)
+      : super(_value, (v) => _then(v as CompanySplashState));
 
   @override
-  EmployerSplashState get _value => super._value as EmployerSplashState;
+  CompanySplashState get _value => super._value as CompanySplashState;
 }
 
 /// @nodoc
 
-class _$EmployerSplashState implements EmployerSplashState {
-  const _$EmployerSplashState();
+class _$CompanySplashState implements CompanySplashState {
+  const _$CompanySplashState();
 
   @override
   String toString() {
-    return 'SplashState.employer()';
+    return 'SplashState.company()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is EmployerSplashState);
+    return identical(this, other) || (other is CompanySplashState);
   }
 
   @override
@@ -768,10 +768,10 @@ class _$EmployerSplashState implements EmployerSplashState {
     required TResult Function() initial,
     required TResult Function() splash,
     required TResult Function() selectedRole,
-    required TResult Function() hunter,
-    required TResult Function() employer,
+    required TResult Function() user,
+    required TResult Function() company,
   }) {
-    return employer();
+    return company();
   }
 
   @override
@@ -780,12 +780,12 @@ class _$EmployerSplashState implements EmployerSplashState {
     TResult Function()? initial,
     TResult Function()? splash,
     TResult Function()? selectedRole,
-    TResult Function()? hunter,
-    TResult Function()? employer,
+    TResult Function()? user,
+    TResult Function()? company,
     required TResult orElse(),
   }) {
-    if (employer != null) {
-      return employer();
+    if (company != null) {
+      return company();
     }
     return orElse();
   }
@@ -796,10 +796,10 @@ class _$EmployerSplashState implements EmployerSplashState {
     required TResult Function(IntialSplashState value) initial,
     required TResult Function(SplashScreenState value) splash,
     required TResult Function(SelectedRoleSplashState value) selectedRole,
-    required TResult Function(HunterSplashState value) hunter,
-    required TResult Function(EmployerSplashState value) employer,
+    required TResult Function(UserSplashState value) user,
+    required TResult Function(CompanySplashState value) company,
   }) {
-    return employer(this);
+    return company(this);
   }
 
   @override
@@ -808,17 +808,17 @@ class _$EmployerSplashState implements EmployerSplashState {
     TResult Function(IntialSplashState value)? initial,
     TResult Function(SplashScreenState value)? splash,
     TResult Function(SelectedRoleSplashState value)? selectedRole,
-    TResult Function(HunterSplashState value)? hunter,
-    TResult Function(EmployerSplashState value)? employer,
+    TResult Function(UserSplashState value)? user,
+    TResult Function(CompanySplashState value)? company,
     required TResult orElse(),
   }) {
-    if (employer != null) {
-      return employer(this);
+    if (company != null) {
+      return company(this);
     }
     return orElse();
   }
 }
 
-abstract class EmployerSplashState implements SplashState {
-  const factory EmployerSplashState() = _$EmployerSplashState;
+abstract class CompanySplashState implements SplashState {
+  const factory CompanySplashState() = _$CompanySplashState;
 }

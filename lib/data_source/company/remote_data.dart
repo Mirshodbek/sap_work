@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:sap_work/data_source/common_urls.dart';
 import 'package:sap_work/models/category/category.dart';
 import 'package:sap_work/models/profile_company/profile.dart';
 import 'package:http/http.dart' as http;
@@ -29,16 +30,18 @@ abstract class CompanyRemoteDataBase {
   Future<Vacancy> getVacancyCompany(int id);
 
   Future<List<Category>> getCategories();
+
+  Future<VacancyCompany> activateOrDeactivateVacancy(String id);
 }
 
 class CompanyRemoteData implements CompanyRemoteDataBase {
-  static const String _baseApi = 'http://194.58.98.181:16498';
   static const String _profile = '/api/profile';
   static const String _vacancies = '/api/vacancies';
   static const String _categories = '/api/categories';
   static const String _createVacancy = '/api/vacancy/create';
   static const String _vacancy = '/api/vacancy?vacancy=';
   static const String _updateAvatar = '/api/updateAvatar';
+  static const String _activateOrDeactivate = '/api/vacancy/';
 
   final http.Client client;
 
@@ -86,8 +89,14 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
           "type": type,
           "abilities": abilities
         }));
-    print(result.statusCode);
     return result;
+  }
+
+  @override
+  Future<VacancyCompany> activateOrDeactivateVacancy(String id) async {
+    final result =
+        await _callPostApi(_activateOrDeactivate + id, json.encode({}));
+    return VacancyCompany.fromJson(json.decode(result.body));
   }
 
   @override
@@ -107,7 +116,7 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
 
   Future<String> updateAvatar(int id, String filename) async {
     final prefs = await SharedPreferences.getInstance();
-    final uri = Uri.parse(_baseApi + _updateAvatar);
+    final uri = Uri.parse(BASE_API + _updateAvatar);
     var request = http.MultipartRequest('POST', uri);
     request.headers.addAll({
       "Accept": "application/json",
@@ -120,7 +129,7 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
 
   Future<http.Response> _callPostApi(String endPoint, String params) async {
     final prefs = await SharedPreferences.getInstance();
-    final uri = Uri.parse(_baseApi + endPoint);
+    final uri = Uri.parse(BASE_API + endPoint);
     final response = await http
         .post(uri,
             headers: {

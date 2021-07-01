@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'employer_sign_up_bloc.dart';
+part of 'company_sign_up_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,23 +13,23 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$EmployerSignUpEventTearOff {
-  const _$EmployerSignUpEventTearOff();
+class _$CompanySignUpEventTearOff {
+  const _$CompanySignUpEventTearOff();
 
-  _InitialEmployerSignUpEvent initial() {
-    return const _InitialEmployerSignUpEvent();
+  _InitialCompanySignUpEvent initial() {
+    return const _InitialCompanySignUpEvent();
   }
 
-  _PageOneEmployerSignUpEvent pageOne(
+  _PageOneCompanySignUpEvent pageOne(
       {required Texts name, required Phone phone, required Texts inn}) {
-    return _PageOneEmployerSignUpEvent(
+    return _PageOneCompanySignUpEvent(
       name: name,
       phone: phone,
       inn: inn,
     );
   }
 
-  _PageTwoEmployerSignUpEvent pageTwo(
+  _PageTwoCompanySignUpEvent pageTwo(
       {required Texts name,
       required Phone phone,
       required Texts inn,
@@ -37,7 +37,7 @@ class _$EmployerSignUpEventTearOff {
       required Texts address,
       required Texts bin,
       required Texts bik}) {
-    return _PageTwoEmployerSignUpEvent(
+    return _PageTwoCompanySignUpEvent(
       name: name,
       phone: phone,
       inn: inn,
@@ -50,10 +50,10 @@ class _$EmployerSignUpEventTearOff {
 }
 
 /// @nodoc
-const $EmployerSignUpEvent = _$EmployerSignUpEventTearOff();
+const $CompanySignUpEvent = _$CompanySignUpEventTearOff();
 
 /// @nodoc
-mixin _$EmployerSignUpEvent {
+mixin _$CompanySignUpEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -75,72 +75,71 @@ mixin _$EmployerSignUpEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEmployerSignUpEvent value) initial,
-    required TResult Function(_PageOneEmployerSignUpEvent value) pageOne,
-    required TResult Function(_PageTwoEmployerSignUpEvent value) pageTwo,
+    required TResult Function(_InitialCompanySignUpEvent value) initial,
+    required TResult Function(_PageOneCompanySignUpEvent value) pageOne,
+    required TResult Function(_PageTwoCompanySignUpEvent value) pageTwo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEmployerSignUpEvent value)? initial,
-    TResult Function(_PageOneEmployerSignUpEvent value)? pageOne,
-    TResult Function(_PageTwoEmployerSignUpEvent value)? pageTwo,
+    TResult Function(_InitialCompanySignUpEvent value)? initial,
+    TResult Function(_PageOneCompanySignUpEvent value)? pageOne,
+    TResult Function(_PageTwoCompanySignUpEvent value)? pageTwo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EmployerSignUpEventCopyWith<$Res> {
-  factory $EmployerSignUpEventCopyWith(
-          EmployerSignUpEvent value, $Res Function(EmployerSignUpEvent) then) =
-      _$EmployerSignUpEventCopyWithImpl<$Res>;
+abstract class $CompanySignUpEventCopyWith<$Res> {
+  factory $CompanySignUpEventCopyWith(
+          CompanySignUpEvent value, $Res Function(CompanySignUpEvent) then) =
+      _$CompanySignUpEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EmployerSignUpEventCopyWithImpl<$Res>
-    implements $EmployerSignUpEventCopyWith<$Res> {
-  _$EmployerSignUpEventCopyWithImpl(this._value, this._then);
+class _$CompanySignUpEventCopyWithImpl<$Res>
+    implements $CompanySignUpEventCopyWith<$Res> {
+  _$CompanySignUpEventCopyWithImpl(this._value, this._then);
 
-  final EmployerSignUpEvent _value;
+  final CompanySignUpEvent _value;
   // ignore: unused_field
-  final $Res Function(EmployerSignUpEvent) _then;
+  final $Res Function(CompanySignUpEvent) _then;
 }
 
 /// @nodoc
-abstract class _$InitialEmployerSignUpEventCopyWith<$Res> {
-  factory _$InitialEmployerSignUpEventCopyWith(
-          _InitialEmployerSignUpEvent value,
-          $Res Function(_InitialEmployerSignUpEvent) then) =
-      __$InitialEmployerSignUpEventCopyWithImpl<$Res>;
+abstract class _$InitialCompanySignUpEventCopyWith<$Res> {
+  factory _$InitialCompanySignUpEventCopyWith(_InitialCompanySignUpEvent value,
+          $Res Function(_InitialCompanySignUpEvent) then) =
+      __$InitialCompanySignUpEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialEmployerSignUpEventCopyWithImpl<$Res>
-    extends _$EmployerSignUpEventCopyWithImpl<$Res>
-    implements _$InitialEmployerSignUpEventCopyWith<$Res> {
-  __$InitialEmployerSignUpEventCopyWithImpl(_InitialEmployerSignUpEvent _value,
-      $Res Function(_InitialEmployerSignUpEvent) _then)
-      : super(_value, (v) => _then(v as _InitialEmployerSignUpEvent));
+class __$InitialCompanySignUpEventCopyWithImpl<$Res>
+    extends _$CompanySignUpEventCopyWithImpl<$Res>
+    implements _$InitialCompanySignUpEventCopyWith<$Res> {
+  __$InitialCompanySignUpEventCopyWithImpl(_InitialCompanySignUpEvent _value,
+      $Res Function(_InitialCompanySignUpEvent) _then)
+      : super(_value, (v) => _then(v as _InitialCompanySignUpEvent));
 
   @override
-  _InitialEmployerSignUpEvent get _value =>
-      super._value as _InitialEmployerSignUpEvent;
+  _InitialCompanySignUpEvent get _value =>
+      super._value as _InitialCompanySignUpEvent;
 }
 
 /// @nodoc
 
-class _$_InitialEmployerSignUpEvent implements _InitialEmployerSignUpEvent {
-  const _$_InitialEmployerSignUpEvent();
+class _$_InitialCompanySignUpEvent implements _InitialCompanySignUpEvent {
+  const _$_InitialCompanySignUpEvent();
 
   @override
   String toString() {
-    return 'EmployerSignUpEvent.initial()';
+    return 'CompanySignUpEvent.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _InitialEmployerSignUpEvent);
+    return identical(this, other) || (other is _InitialCompanySignUpEvent);
   }
 
   @override
@@ -177,9 +176,9 @@ class _$_InitialEmployerSignUpEvent implements _InitialEmployerSignUpEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEmployerSignUpEvent value) initial,
-    required TResult Function(_PageOneEmployerSignUpEvent value) pageOne,
-    required TResult Function(_PageTwoEmployerSignUpEvent value) pageTwo,
+    required TResult Function(_InitialCompanySignUpEvent value) initial,
+    required TResult Function(_PageOneCompanySignUpEvent value) pageOne,
+    required TResult Function(_PageTwoCompanySignUpEvent value) pageTwo,
   }) {
     return initial(this);
   }
@@ -187,9 +186,9 @@ class _$_InitialEmployerSignUpEvent implements _InitialEmployerSignUpEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEmployerSignUpEvent value)? initial,
-    TResult Function(_PageOneEmployerSignUpEvent value)? pageOne,
-    TResult Function(_PageTwoEmployerSignUpEvent value)? pageTwo,
+    TResult Function(_InitialCompanySignUpEvent value)? initial,
+    TResult Function(_PageOneCompanySignUpEvent value)? pageOne,
+    TResult Function(_PageTwoCompanySignUpEvent value)? pageTwo,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -199,30 +198,29 @@ class _$_InitialEmployerSignUpEvent implements _InitialEmployerSignUpEvent {
   }
 }
 
-abstract class _InitialEmployerSignUpEvent implements EmployerSignUpEvent {
-  const factory _InitialEmployerSignUpEvent() = _$_InitialEmployerSignUpEvent;
+abstract class _InitialCompanySignUpEvent implements CompanySignUpEvent {
+  const factory _InitialCompanySignUpEvent() = _$_InitialCompanySignUpEvent;
 }
 
 /// @nodoc
-abstract class _$PageOneEmployerSignUpEventCopyWith<$Res> {
-  factory _$PageOneEmployerSignUpEventCopyWith(
-          _PageOneEmployerSignUpEvent value,
-          $Res Function(_PageOneEmployerSignUpEvent) then) =
-      __$PageOneEmployerSignUpEventCopyWithImpl<$Res>;
+abstract class _$PageOneCompanySignUpEventCopyWith<$Res> {
+  factory _$PageOneCompanySignUpEventCopyWith(_PageOneCompanySignUpEvent value,
+          $Res Function(_PageOneCompanySignUpEvent) then) =
+      __$PageOneCompanySignUpEventCopyWithImpl<$Res>;
   $Res call({Texts name, Phone phone, Texts inn});
 }
 
 /// @nodoc
-class __$PageOneEmployerSignUpEventCopyWithImpl<$Res>
-    extends _$EmployerSignUpEventCopyWithImpl<$Res>
-    implements _$PageOneEmployerSignUpEventCopyWith<$Res> {
-  __$PageOneEmployerSignUpEventCopyWithImpl(_PageOneEmployerSignUpEvent _value,
-      $Res Function(_PageOneEmployerSignUpEvent) _then)
-      : super(_value, (v) => _then(v as _PageOneEmployerSignUpEvent));
+class __$PageOneCompanySignUpEventCopyWithImpl<$Res>
+    extends _$CompanySignUpEventCopyWithImpl<$Res>
+    implements _$PageOneCompanySignUpEventCopyWith<$Res> {
+  __$PageOneCompanySignUpEventCopyWithImpl(_PageOneCompanySignUpEvent _value,
+      $Res Function(_PageOneCompanySignUpEvent) _then)
+      : super(_value, (v) => _then(v as _PageOneCompanySignUpEvent));
 
   @override
-  _PageOneEmployerSignUpEvent get _value =>
-      super._value as _PageOneEmployerSignUpEvent;
+  _PageOneCompanySignUpEvent get _value =>
+      super._value as _PageOneCompanySignUpEvent;
 
   @override
   $Res call({
@@ -230,7 +228,7 @@ class __$PageOneEmployerSignUpEventCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? inn = freezed,
   }) {
-    return _then(_PageOneEmployerSignUpEvent(
+    return _then(_PageOneCompanySignUpEvent(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -249,8 +247,8 @@ class __$PageOneEmployerSignUpEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PageOneEmployerSignUpEvent implements _PageOneEmployerSignUpEvent {
-  const _$_PageOneEmployerSignUpEvent(
+class _$_PageOneCompanySignUpEvent implements _PageOneCompanySignUpEvent {
+  const _$_PageOneCompanySignUpEvent(
       {required this.name, required this.phone, required this.inn});
 
   @override
@@ -262,13 +260,13 @@ class _$_PageOneEmployerSignUpEvent implements _PageOneEmployerSignUpEvent {
 
   @override
   String toString() {
-    return 'EmployerSignUpEvent.pageOne(name: $name, phone: $phone, inn: $inn)';
+    return 'CompanySignUpEvent.pageOne(name: $name, phone: $phone, inn: $inn)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PageOneEmployerSignUpEvent &&
+        (other is _PageOneCompanySignUpEvent &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.phone, phone) ||
@@ -286,9 +284,10 @@ class _$_PageOneEmployerSignUpEvent implements _PageOneEmployerSignUpEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$PageOneEmployerSignUpEventCopyWith<_PageOneEmployerSignUpEvent>
-      get copyWith => __$PageOneEmployerSignUpEventCopyWithImpl<
-          _PageOneEmployerSignUpEvent>(this, _$identity);
+  _$PageOneCompanySignUpEventCopyWith<_PageOneCompanySignUpEvent>
+      get copyWith =>
+          __$PageOneCompanySignUpEventCopyWithImpl<_PageOneCompanySignUpEvent>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -321,9 +320,9 @@ class _$_PageOneEmployerSignUpEvent implements _PageOneEmployerSignUpEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEmployerSignUpEvent value) initial,
-    required TResult Function(_PageOneEmployerSignUpEvent value) pageOne,
-    required TResult Function(_PageTwoEmployerSignUpEvent value) pageTwo,
+    required TResult Function(_InitialCompanySignUpEvent value) initial,
+    required TResult Function(_PageOneCompanySignUpEvent value) pageOne,
+    required TResult Function(_PageTwoCompanySignUpEvent value) pageTwo,
   }) {
     return pageOne(this);
   }
@@ -331,9 +330,9 @@ class _$_PageOneEmployerSignUpEvent implements _PageOneEmployerSignUpEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEmployerSignUpEvent value)? initial,
-    TResult Function(_PageOneEmployerSignUpEvent value)? pageOne,
-    TResult Function(_PageTwoEmployerSignUpEvent value)? pageTwo,
+    TResult Function(_InitialCompanySignUpEvent value)? initial,
+    TResult Function(_PageOneCompanySignUpEvent value)? pageOne,
+    TResult Function(_PageTwoCompanySignUpEvent value)? pageTwo,
     required TResult orElse(),
   }) {
     if (pageOne != null) {
@@ -343,26 +342,25 @@ class _$_PageOneEmployerSignUpEvent implements _PageOneEmployerSignUpEvent {
   }
 }
 
-abstract class _PageOneEmployerSignUpEvent implements EmployerSignUpEvent {
-  const factory _PageOneEmployerSignUpEvent(
+abstract class _PageOneCompanySignUpEvent implements CompanySignUpEvent {
+  const factory _PageOneCompanySignUpEvent(
       {required Texts name,
       required Phone phone,
-      required Texts inn}) = _$_PageOneEmployerSignUpEvent;
+      required Texts inn}) = _$_PageOneCompanySignUpEvent;
 
   Texts get name => throw _privateConstructorUsedError;
   Phone get phone => throw _privateConstructorUsedError;
   Texts get inn => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$PageOneEmployerSignUpEventCopyWith<_PageOneEmployerSignUpEvent>
+  _$PageOneCompanySignUpEventCopyWith<_PageOneCompanySignUpEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$PageTwoEmployerSignUpEventCopyWith<$Res> {
-  factory _$PageTwoEmployerSignUpEventCopyWith(
-          _PageTwoEmployerSignUpEvent value,
-          $Res Function(_PageTwoEmployerSignUpEvent) then) =
-      __$PageTwoEmployerSignUpEventCopyWithImpl<$Res>;
+abstract class _$PageTwoCompanySignUpEventCopyWith<$Res> {
+  factory _$PageTwoCompanySignUpEventCopyWith(_PageTwoCompanySignUpEvent value,
+          $Res Function(_PageTwoCompanySignUpEvent) then) =
+      __$PageTwoCompanySignUpEventCopyWithImpl<$Res>;
   $Res call(
       {Texts name,
       Phone phone,
@@ -374,16 +372,16 @@ abstract class _$PageTwoEmployerSignUpEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PageTwoEmployerSignUpEventCopyWithImpl<$Res>
-    extends _$EmployerSignUpEventCopyWithImpl<$Res>
-    implements _$PageTwoEmployerSignUpEventCopyWith<$Res> {
-  __$PageTwoEmployerSignUpEventCopyWithImpl(_PageTwoEmployerSignUpEvent _value,
-      $Res Function(_PageTwoEmployerSignUpEvent) _then)
-      : super(_value, (v) => _then(v as _PageTwoEmployerSignUpEvent));
+class __$PageTwoCompanySignUpEventCopyWithImpl<$Res>
+    extends _$CompanySignUpEventCopyWithImpl<$Res>
+    implements _$PageTwoCompanySignUpEventCopyWith<$Res> {
+  __$PageTwoCompanySignUpEventCopyWithImpl(_PageTwoCompanySignUpEvent _value,
+      $Res Function(_PageTwoCompanySignUpEvent) _then)
+      : super(_value, (v) => _then(v as _PageTwoCompanySignUpEvent));
 
   @override
-  _PageTwoEmployerSignUpEvent get _value =>
-      super._value as _PageTwoEmployerSignUpEvent;
+  _PageTwoCompanySignUpEvent get _value =>
+      super._value as _PageTwoCompanySignUpEvent;
 
   @override
   $Res call({
@@ -395,7 +393,7 @@ class __$PageTwoEmployerSignUpEventCopyWithImpl<$Res>
     Object? bin = freezed,
     Object? bik = freezed,
   }) {
-    return _then(_PageTwoEmployerSignUpEvent(
+    return _then(_PageTwoCompanySignUpEvent(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -430,8 +428,8 @@ class __$PageTwoEmployerSignUpEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PageTwoEmployerSignUpEvent implements _PageTwoEmployerSignUpEvent {
-  const _$_PageTwoEmployerSignUpEvent(
+class _$_PageTwoCompanySignUpEvent implements _PageTwoCompanySignUpEvent {
+  const _$_PageTwoCompanySignUpEvent(
       {required this.name,
       required this.phone,
       required this.inn,
@@ -457,13 +455,13 @@ class _$_PageTwoEmployerSignUpEvent implements _PageTwoEmployerSignUpEvent {
 
   @override
   String toString() {
-    return 'EmployerSignUpEvent.pageTwo(name: $name, phone: $phone, inn: $inn, nameCompany: $nameCompany, address: $address, bin: $bin, bik: $bik)';
+    return 'CompanySignUpEvent.pageTwo(name: $name, phone: $phone, inn: $inn, nameCompany: $nameCompany, address: $address, bin: $bin, bik: $bik)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _PageTwoEmployerSignUpEvent &&
+        (other is _PageTwoCompanySignUpEvent &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.phone, phone) ||
@@ -495,9 +493,10 @@ class _$_PageTwoEmployerSignUpEvent implements _PageTwoEmployerSignUpEvent {
 
   @JsonKey(ignore: true)
   @override
-  _$PageTwoEmployerSignUpEventCopyWith<_PageTwoEmployerSignUpEvent>
-      get copyWith => __$PageTwoEmployerSignUpEventCopyWithImpl<
-          _PageTwoEmployerSignUpEvent>(this, _$identity);
+  _$PageTwoCompanySignUpEventCopyWith<_PageTwoCompanySignUpEvent>
+      get copyWith =>
+          __$PageTwoCompanySignUpEventCopyWithImpl<_PageTwoCompanySignUpEvent>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -530,9 +529,9 @@ class _$_PageTwoEmployerSignUpEvent implements _PageTwoEmployerSignUpEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEmployerSignUpEvent value) initial,
-    required TResult Function(_PageOneEmployerSignUpEvent value) pageOne,
-    required TResult Function(_PageTwoEmployerSignUpEvent value) pageTwo,
+    required TResult Function(_InitialCompanySignUpEvent value) initial,
+    required TResult Function(_PageOneCompanySignUpEvent value) pageOne,
+    required TResult Function(_PageTwoCompanySignUpEvent value) pageTwo,
   }) {
     return pageTwo(this);
   }
@@ -540,9 +539,9 @@ class _$_PageTwoEmployerSignUpEvent implements _PageTwoEmployerSignUpEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEmployerSignUpEvent value)? initial,
-    TResult Function(_PageOneEmployerSignUpEvent value)? pageOne,
-    TResult Function(_PageTwoEmployerSignUpEvent value)? pageTwo,
+    TResult Function(_InitialCompanySignUpEvent value)? initial,
+    TResult Function(_PageOneCompanySignUpEvent value)? pageOne,
+    TResult Function(_PageTwoCompanySignUpEvent value)? pageTwo,
     required TResult orElse(),
   }) {
     if (pageTwo != null) {
@@ -552,15 +551,15 @@ class _$_PageTwoEmployerSignUpEvent implements _PageTwoEmployerSignUpEvent {
   }
 }
 
-abstract class _PageTwoEmployerSignUpEvent implements EmployerSignUpEvent {
-  const factory _PageTwoEmployerSignUpEvent(
+abstract class _PageTwoCompanySignUpEvent implements CompanySignUpEvent {
+  const factory _PageTwoCompanySignUpEvent(
       {required Texts name,
       required Phone phone,
       required Texts inn,
       required Texts nameCompany,
       required Texts address,
       required Texts bin,
-      required Texts bik}) = _$_PageTwoEmployerSignUpEvent;
+      required Texts bik}) = _$_PageTwoCompanySignUpEvent;
 
   Texts get name => throw _privateConstructorUsedError;
   Phone get phone => throw _privateConstructorUsedError;
@@ -570,19 +569,19 @@ abstract class _PageTwoEmployerSignUpEvent implements EmployerSignUpEvent {
   Texts get bin => throw _privateConstructorUsedError;
   Texts get bik => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$PageTwoEmployerSignUpEventCopyWith<_PageTwoEmployerSignUpEvent>
+  _$PageTwoCompanySignUpEventCopyWith<_PageTwoCompanySignUpEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$EmployerSignUpStateTearOff {
-  const _$EmployerSignUpStateTearOff();
+class _$CompanySignUpStateTearOff {
+  const _$CompanySignUpStateTearOff();
 
-  _InitialEmployerSignUpState initial() {
-    return const _InitialEmployerSignUpState();
+  _InitialCompanySignUpState initial() {
+    return const _InitialCompanySignUpState();
   }
 
-  EmployerStateEmployerSignUpState employerState(
+  CompanyStateCompanySignUpState companyState(
       {required Texts name,
       required Phone phone,
       required Texts inn,
@@ -592,7 +591,7 @@ class _$EmployerSignUpStateTearOff {
       required Texts bik,
       required FormzStatus statusA,
       required FormzStatus statusB}) {
-    return EmployerStateEmployerSignUpState(
+    return CompanyStateCompanySignUpState(
       name: name,
       phone: phone,
       inn: inn,
@@ -605,16 +604,16 @@ class _$EmployerSignUpStateTearOff {
     );
   }
 
-  _SuccessSignUpEmployerSignUpState successSignUp() {
-    return const _SuccessSignUpEmployerSignUpState();
+  _SuccessSignUpCompanySignUpState successSignUp() {
+    return const _SuccessSignUpCompanySignUpState();
   }
 }
 
 /// @nodoc
-const $EmployerSignUpState = _$EmployerSignUpStateTearOff();
+const $CompanySignUpState = _$CompanySignUpStateTearOff();
 
 /// @nodoc
-mixin _$EmployerSignUpState {
+mixin _$CompanySignUpState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -628,7 +627,7 @@ mixin _$EmployerSignUpState {
             Texts bik,
             FormzStatus statusA,
             FormzStatus statusB)
-        employerState,
+        companyState,
     required TResult Function() successSignUp,
   }) =>
       throw _privateConstructorUsedError;
@@ -645,81 +644,80 @@ mixin _$EmployerSignUpState {
             Texts bik,
             FormzStatus statusA,
             FormzStatus statusB)?
-        employerState,
+        companyState,
     TResult Function()? successSignUp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEmployerSignUpState value) initial,
-    required TResult Function(EmployerStateEmployerSignUpState value)
-        employerState,
-    required TResult Function(_SuccessSignUpEmployerSignUpState value)
+    required TResult Function(_InitialCompanySignUpState value) initial,
+    required TResult Function(CompanyStateCompanySignUpState value)
+        companyState,
+    required TResult Function(_SuccessSignUpCompanySignUpState value)
         successSignUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEmployerSignUpState value)? initial,
-    TResult Function(EmployerStateEmployerSignUpState value)? employerState,
-    TResult Function(_SuccessSignUpEmployerSignUpState value)? successSignUp,
+    TResult Function(_InitialCompanySignUpState value)? initial,
+    TResult Function(CompanyStateCompanySignUpState value)? companyState,
+    TResult Function(_SuccessSignUpCompanySignUpState value)? successSignUp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EmployerSignUpStateCopyWith<$Res> {
-  factory $EmployerSignUpStateCopyWith(
-          EmployerSignUpState value, $Res Function(EmployerSignUpState) then) =
-      _$EmployerSignUpStateCopyWithImpl<$Res>;
+abstract class $CompanySignUpStateCopyWith<$Res> {
+  factory $CompanySignUpStateCopyWith(
+          CompanySignUpState value, $Res Function(CompanySignUpState) then) =
+      _$CompanySignUpStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EmployerSignUpStateCopyWithImpl<$Res>
-    implements $EmployerSignUpStateCopyWith<$Res> {
-  _$EmployerSignUpStateCopyWithImpl(this._value, this._then);
+class _$CompanySignUpStateCopyWithImpl<$Res>
+    implements $CompanySignUpStateCopyWith<$Res> {
+  _$CompanySignUpStateCopyWithImpl(this._value, this._then);
 
-  final EmployerSignUpState _value;
+  final CompanySignUpState _value;
   // ignore: unused_field
-  final $Res Function(EmployerSignUpState) _then;
+  final $Res Function(CompanySignUpState) _then;
 }
 
 /// @nodoc
-abstract class _$InitialEmployerSignUpStateCopyWith<$Res> {
-  factory _$InitialEmployerSignUpStateCopyWith(
-          _InitialEmployerSignUpState value,
-          $Res Function(_InitialEmployerSignUpState) then) =
-      __$InitialEmployerSignUpStateCopyWithImpl<$Res>;
+abstract class _$InitialCompanySignUpStateCopyWith<$Res> {
+  factory _$InitialCompanySignUpStateCopyWith(_InitialCompanySignUpState value,
+          $Res Function(_InitialCompanySignUpState) then) =
+      __$InitialCompanySignUpStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialEmployerSignUpStateCopyWithImpl<$Res>
-    extends _$EmployerSignUpStateCopyWithImpl<$Res>
-    implements _$InitialEmployerSignUpStateCopyWith<$Res> {
-  __$InitialEmployerSignUpStateCopyWithImpl(_InitialEmployerSignUpState _value,
-      $Res Function(_InitialEmployerSignUpState) _then)
-      : super(_value, (v) => _then(v as _InitialEmployerSignUpState));
+class __$InitialCompanySignUpStateCopyWithImpl<$Res>
+    extends _$CompanySignUpStateCopyWithImpl<$Res>
+    implements _$InitialCompanySignUpStateCopyWith<$Res> {
+  __$InitialCompanySignUpStateCopyWithImpl(_InitialCompanySignUpState _value,
+      $Res Function(_InitialCompanySignUpState) _then)
+      : super(_value, (v) => _then(v as _InitialCompanySignUpState));
 
   @override
-  _InitialEmployerSignUpState get _value =>
-      super._value as _InitialEmployerSignUpState;
+  _InitialCompanySignUpState get _value =>
+      super._value as _InitialCompanySignUpState;
 }
 
 /// @nodoc
 
-class _$_InitialEmployerSignUpState implements _InitialEmployerSignUpState {
-  const _$_InitialEmployerSignUpState();
+class _$_InitialCompanySignUpState implements _InitialCompanySignUpState {
+  const _$_InitialCompanySignUpState();
 
   @override
   String toString() {
-    return 'EmployerSignUpState.initial()';
+    return 'CompanySignUpState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _InitialEmployerSignUpState);
+    return identical(this, other) || (other is _InitialCompanySignUpState);
   }
 
   @override
@@ -739,7 +737,7 @@ class _$_InitialEmployerSignUpState implements _InitialEmployerSignUpState {
             Texts bik,
             FormzStatus statusA,
             FormzStatus statusB)
-        employerState,
+        companyState,
     required TResult Function() successSignUp,
   }) {
     return initial();
@@ -759,7 +757,7 @@ class _$_InitialEmployerSignUpState implements _InitialEmployerSignUpState {
             Texts bik,
             FormzStatus statusA,
             FormzStatus statusB)?
-        employerState,
+        companyState,
     TResult Function()? successSignUp,
     required TResult orElse(),
   }) {
@@ -772,10 +770,10 @@ class _$_InitialEmployerSignUpState implements _InitialEmployerSignUpState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEmployerSignUpState value) initial,
-    required TResult Function(EmployerStateEmployerSignUpState value)
-        employerState,
-    required TResult Function(_SuccessSignUpEmployerSignUpState value)
+    required TResult Function(_InitialCompanySignUpState value) initial,
+    required TResult Function(CompanyStateCompanySignUpState value)
+        companyState,
+    required TResult Function(_SuccessSignUpCompanySignUpState value)
         successSignUp,
   }) {
     return initial(this);
@@ -784,9 +782,9 @@ class _$_InitialEmployerSignUpState implements _InitialEmployerSignUpState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEmployerSignUpState value)? initial,
-    TResult Function(EmployerStateEmployerSignUpState value)? employerState,
-    TResult Function(_SuccessSignUpEmployerSignUpState value)? successSignUp,
+    TResult Function(_InitialCompanySignUpState value)? initial,
+    TResult Function(CompanyStateCompanySignUpState value)? companyState,
+    TResult Function(_SuccessSignUpCompanySignUpState value)? successSignUp,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -796,16 +794,16 @@ class _$_InitialEmployerSignUpState implements _InitialEmployerSignUpState {
   }
 }
 
-abstract class _InitialEmployerSignUpState implements EmployerSignUpState {
-  const factory _InitialEmployerSignUpState() = _$_InitialEmployerSignUpState;
+abstract class _InitialCompanySignUpState implements CompanySignUpState {
+  const factory _InitialCompanySignUpState() = _$_InitialCompanySignUpState;
 }
 
 /// @nodoc
-abstract class $EmployerStateEmployerSignUpStateCopyWith<$Res> {
-  factory $EmployerStateEmployerSignUpStateCopyWith(
-          EmployerStateEmployerSignUpState value,
-          $Res Function(EmployerStateEmployerSignUpState) then) =
-      _$EmployerStateEmployerSignUpStateCopyWithImpl<$Res>;
+abstract class $CompanyStateCompanySignUpStateCopyWith<$Res> {
+  factory $CompanyStateCompanySignUpStateCopyWith(
+          CompanyStateCompanySignUpState value,
+          $Res Function(CompanyStateCompanySignUpState) then) =
+      _$CompanyStateCompanySignUpStateCopyWithImpl<$Res>;
   $Res call(
       {Texts name,
       Phone phone,
@@ -819,17 +817,17 @@ abstract class $EmployerStateEmployerSignUpStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EmployerStateEmployerSignUpStateCopyWithImpl<$Res>
-    extends _$EmployerSignUpStateCopyWithImpl<$Res>
-    implements $EmployerStateEmployerSignUpStateCopyWith<$Res> {
-  _$EmployerStateEmployerSignUpStateCopyWithImpl(
-      EmployerStateEmployerSignUpState _value,
-      $Res Function(EmployerStateEmployerSignUpState) _then)
-      : super(_value, (v) => _then(v as EmployerStateEmployerSignUpState));
+class _$CompanyStateCompanySignUpStateCopyWithImpl<$Res>
+    extends _$CompanySignUpStateCopyWithImpl<$Res>
+    implements $CompanyStateCompanySignUpStateCopyWith<$Res> {
+  _$CompanyStateCompanySignUpStateCopyWithImpl(
+      CompanyStateCompanySignUpState _value,
+      $Res Function(CompanyStateCompanySignUpState) _then)
+      : super(_value, (v) => _then(v as CompanyStateCompanySignUpState));
 
   @override
-  EmployerStateEmployerSignUpState get _value =>
-      super._value as EmployerStateEmployerSignUpState;
+  CompanyStateCompanySignUpState get _value =>
+      super._value as CompanyStateCompanySignUpState;
 
   @override
   $Res call({
@@ -843,7 +841,7 @@ class _$EmployerStateEmployerSignUpStateCopyWithImpl<$Res>
     Object? statusA = freezed,
     Object? statusB = freezed,
   }) {
-    return _then(EmployerStateEmployerSignUpState(
+    return _then(CompanyStateCompanySignUpState(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -886,9 +884,9 @@ class _$EmployerStateEmployerSignUpStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EmployerStateEmployerSignUpState
-    implements EmployerStateEmployerSignUpState {
-  const _$EmployerStateEmployerSignUpState(
+class _$CompanyStateCompanySignUpState
+    implements CompanyStateCompanySignUpState {
+  const _$CompanyStateCompanySignUpState(
       {required this.name,
       required this.phone,
       required this.inn,
@@ -920,13 +918,13 @@ class _$EmployerStateEmployerSignUpState
 
   @override
   String toString() {
-    return 'EmployerSignUpState.employerState(name: $name, phone: $phone, inn: $inn, nameCompany: $nameCompany, address: $address, bin: $bin, bik: $bik, statusA: $statusA, statusB: $statusB)';
+    return 'CompanySignUpState.companyState(name: $name, phone: $phone, inn: $inn, nameCompany: $nameCompany, address: $address, bin: $bin, bik: $bik, statusA: $statusA, statusB: $statusB)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is EmployerStateEmployerSignUpState &&
+        (other is CompanyStateCompanySignUpState &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.phone, phone) ||
@@ -965,9 +963,9 @@ class _$EmployerStateEmployerSignUpState
 
   @JsonKey(ignore: true)
   @override
-  $EmployerStateEmployerSignUpStateCopyWith<EmployerStateEmployerSignUpState>
-      get copyWith => _$EmployerStateEmployerSignUpStateCopyWithImpl<
-          EmployerStateEmployerSignUpState>(this, _$identity);
+  $CompanyStateCompanySignUpStateCopyWith<CompanyStateCompanySignUpState>
+      get copyWith => _$CompanyStateCompanySignUpStateCopyWithImpl<
+          CompanyStateCompanySignUpState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -983,10 +981,10 @@ class _$EmployerStateEmployerSignUpState
             Texts bik,
             FormzStatus statusA,
             FormzStatus statusB)
-        employerState,
+        companyState,
     required TResult Function() successSignUp,
   }) {
-    return employerState(
+    return companyState(
         name, phone, inn, nameCompany, address, bin, bik, statusA, statusB);
   }
 
@@ -1004,12 +1002,12 @@ class _$EmployerStateEmployerSignUpState
             Texts bik,
             FormzStatus statusA,
             FormzStatus statusB)?
-        employerState,
+        companyState,
     TResult Function()? successSignUp,
     required TResult orElse(),
   }) {
-    if (employerState != null) {
-      return employerState(
+    if (companyState != null) {
+      return companyState(
           name, phone, inn, nameCompany, address, bin, bik, statusA, statusB);
     }
     return orElse();
@@ -1018,32 +1016,32 @@ class _$EmployerStateEmployerSignUpState
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEmployerSignUpState value) initial,
-    required TResult Function(EmployerStateEmployerSignUpState value)
-        employerState,
-    required TResult Function(_SuccessSignUpEmployerSignUpState value)
+    required TResult Function(_InitialCompanySignUpState value) initial,
+    required TResult Function(CompanyStateCompanySignUpState value)
+        companyState,
+    required TResult Function(_SuccessSignUpCompanySignUpState value)
         successSignUp,
   }) {
-    return employerState(this);
+    return companyState(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEmployerSignUpState value)? initial,
-    TResult Function(EmployerStateEmployerSignUpState value)? employerState,
-    TResult Function(_SuccessSignUpEmployerSignUpState value)? successSignUp,
+    TResult Function(_InitialCompanySignUpState value)? initial,
+    TResult Function(CompanyStateCompanySignUpState value)? companyState,
+    TResult Function(_SuccessSignUpCompanySignUpState value)? successSignUp,
     required TResult orElse(),
   }) {
-    if (employerState != null) {
-      return employerState(this);
+    if (companyState != null) {
+      return companyState(this);
     }
     return orElse();
   }
 }
 
-abstract class EmployerStateEmployerSignUpState implements EmployerSignUpState {
-  const factory EmployerStateEmployerSignUpState(
+abstract class CompanyStateCompanySignUpState implements CompanySignUpState {
+  const factory CompanyStateCompanySignUpState(
       {required Texts name,
       required Phone phone,
       required Texts inn,
@@ -1052,7 +1050,7 @@ abstract class EmployerStateEmployerSignUpState implements EmployerSignUpState {
       required Texts bin,
       required Texts bik,
       required FormzStatus statusA,
-      required FormzStatus statusB}) = _$EmployerStateEmployerSignUpState;
+      required FormzStatus statusB}) = _$CompanyStateCompanySignUpState;
 
   Texts get name => throw _privateConstructorUsedError;
   Phone get phone => throw _privateConstructorUsedError;
@@ -1064,47 +1062,47 @@ abstract class EmployerStateEmployerSignUpState implements EmployerSignUpState {
   FormzStatus get statusA => throw _privateConstructorUsedError;
   FormzStatus get statusB => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EmployerStateEmployerSignUpStateCopyWith<EmployerStateEmployerSignUpState>
+  $CompanyStateCompanySignUpStateCopyWith<CompanyStateCompanySignUpState>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$SuccessSignUpEmployerSignUpStateCopyWith<$Res> {
-  factory _$SuccessSignUpEmployerSignUpStateCopyWith(
-          _SuccessSignUpEmployerSignUpState value,
-          $Res Function(_SuccessSignUpEmployerSignUpState) then) =
-      __$SuccessSignUpEmployerSignUpStateCopyWithImpl<$Res>;
+abstract class _$SuccessSignUpCompanySignUpStateCopyWith<$Res> {
+  factory _$SuccessSignUpCompanySignUpStateCopyWith(
+          _SuccessSignUpCompanySignUpState value,
+          $Res Function(_SuccessSignUpCompanySignUpState) then) =
+      __$SuccessSignUpCompanySignUpStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$SuccessSignUpEmployerSignUpStateCopyWithImpl<$Res>
-    extends _$EmployerSignUpStateCopyWithImpl<$Res>
-    implements _$SuccessSignUpEmployerSignUpStateCopyWith<$Res> {
-  __$SuccessSignUpEmployerSignUpStateCopyWithImpl(
-      _SuccessSignUpEmployerSignUpState _value,
-      $Res Function(_SuccessSignUpEmployerSignUpState) _then)
-      : super(_value, (v) => _then(v as _SuccessSignUpEmployerSignUpState));
+class __$SuccessSignUpCompanySignUpStateCopyWithImpl<$Res>
+    extends _$CompanySignUpStateCopyWithImpl<$Res>
+    implements _$SuccessSignUpCompanySignUpStateCopyWith<$Res> {
+  __$SuccessSignUpCompanySignUpStateCopyWithImpl(
+      _SuccessSignUpCompanySignUpState _value,
+      $Res Function(_SuccessSignUpCompanySignUpState) _then)
+      : super(_value, (v) => _then(v as _SuccessSignUpCompanySignUpState));
 
   @override
-  _SuccessSignUpEmployerSignUpState get _value =>
-      super._value as _SuccessSignUpEmployerSignUpState;
+  _SuccessSignUpCompanySignUpState get _value =>
+      super._value as _SuccessSignUpCompanySignUpState;
 }
 
 /// @nodoc
 
-class _$_SuccessSignUpEmployerSignUpState
-    implements _SuccessSignUpEmployerSignUpState {
-  const _$_SuccessSignUpEmployerSignUpState();
+class _$_SuccessSignUpCompanySignUpState
+    implements _SuccessSignUpCompanySignUpState {
+  const _$_SuccessSignUpCompanySignUpState();
 
   @override
   String toString() {
-    return 'EmployerSignUpState.successSignUp()';
+    return 'CompanySignUpState.successSignUp()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SuccessSignUpEmployerSignUpState);
+        (other is _SuccessSignUpCompanySignUpState);
   }
 
   @override
@@ -1124,7 +1122,7 @@ class _$_SuccessSignUpEmployerSignUpState
             Texts bik,
             FormzStatus statusA,
             FormzStatus statusB)
-        employerState,
+        companyState,
     required TResult Function() successSignUp,
   }) {
     return successSignUp();
@@ -1144,7 +1142,7 @@ class _$_SuccessSignUpEmployerSignUpState
             Texts bik,
             FormzStatus statusA,
             FormzStatus statusB)?
-        employerState,
+        companyState,
     TResult Function()? successSignUp,
     required TResult orElse(),
   }) {
@@ -1157,10 +1155,10 @@ class _$_SuccessSignUpEmployerSignUpState
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialEmployerSignUpState value) initial,
-    required TResult Function(EmployerStateEmployerSignUpState value)
-        employerState,
-    required TResult Function(_SuccessSignUpEmployerSignUpState value)
+    required TResult Function(_InitialCompanySignUpState value) initial,
+    required TResult Function(CompanyStateCompanySignUpState value)
+        companyState,
+    required TResult Function(_SuccessSignUpCompanySignUpState value)
         successSignUp,
   }) {
     return successSignUp(this);
@@ -1169,9 +1167,9 @@ class _$_SuccessSignUpEmployerSignUpState
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialEmployerSignUpState value)? initial,
-    TResult Function(EmployerStateEmployerSignUpState value)? employerState,
-    TResult Function(_SuccessSignUpEmployerSignUpState value)? successSignUp,
+    TResult Function(_InitialCompanySignUpState value)? initial,
+    TResult Function(CompanyStateCompanySignUpState value)? companyState,
+    TResult Function(_SuccessSignUpCompanySignUpState value)? successSignUp,
     required TResult orElse(),
   }) {
     if (successSignUp != null) {
@@ -1181,8 +1179,7 @@ class _$_SuccessSignUpEmployerSignUpState
   }
 }
 
-abstract class _SuccessSignUpEmployerSignUpState
-    implements EmployerSignUpState {
-  const factory _SuccessSignUpEmployerSignUpState() =
-      _$_SuccessSignUpEmployerSignUpState;
+abstract class _SuccessSignUpCompanySignUpState implements CompanySignUpState {
+  const factory _SuccessSignUpCompanySignUpState() =
+      _$_SuccessSignUpCompanySignUpState;
 }

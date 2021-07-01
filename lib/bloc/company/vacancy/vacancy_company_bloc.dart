@@ -1,8 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sap_work/models/vacancy/vacancy.dart';
-import 'package:sap_work/repository/company/usercases/profile/usercases.dart';
-import 'package:sap_work/repository/usercases.dart';
+import 'package:sap_work/bloc/company/vacancy/vacancy.dart';
 
 part 'vacancy_company_bloc.freezed.dart';
 
@@ -23,14 +21,23 @@ class VacancyCompanyBloc
   Stream<VacancyCompanyState> _getVacancyEvent(
       _GetVacancyCompanyEvent event) async* {
     yield const VacancyCompanyState.loading();
-    final localVacancy =
-        await getLocalVacancy.localData.getVacancyNameCompany();
-    final vacancyCompany = await getVacancy(Params(id: localVacancy.id));
-    yield* vacancyCompany.fold((failure) async* {
-      yield const VacancyCompanyState.noVacancy();
-    }, (data) async* {
-      yield VacancyCompanyState.loaded(vacancy: data);
-    });
+    final localVacancy = await getLocalVacancy(Params());
+   yield* localVacancy.fold((failure) async*{
+     final vacancyCompany = await getVacancy(Params());
+     yield* vacancyCompany.fold((failure) async* {
+       yield const VacancyCompanyState.noVacancy();
+     }, (data) async* {
+       yield VacancyCompanyState.loaded(vacancy: data);
+     });
+   }, (vacancy) async*{
+     final vacancyCompany = await getVacancy(Params(id: vacancy.id));
+     yield* vacancyCompany.fold((failure) async* {
+       yield const VacancyCompanyState.noVacancy();
+     }, (data) async* {
+       yield VacancyCompanyState.loaded(vacancy: data);
+     });
+   });
+
   }
 }
 

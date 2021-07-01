@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sap_work/models/vacancy/vacancy.dart';
-import 'package:sap_work/screens/widgets/widget.dart';
-import 'package:sap_work/theme/theme.dart';
+import 'widget.dart';
 
 class VacancyBodyWidget extends StatelessWidget {
   final Vacancy vacancy;

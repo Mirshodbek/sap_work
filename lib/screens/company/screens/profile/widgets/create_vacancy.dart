@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
-import 'package:sap_work/bloc/company/core/core_profile_bloc.dart';
-import 'package:sap_work/bloc/company/vacancies/vacancies_company_bloc.dart';
-import 'package:sap_work/bloc/company/vacancy/vacancy_company_bloc.dart';
-import 'package:sap_work/bloc/company/variable_vacancy/variable_vacancy_cubit.dart';
-import 'package:sap_work/models/category/category.dart';
-import 'package:sap_work/screens/authorization/authorization.dart';
+import 'widget.dart';
 
 class CreateVacancyWidget extends StatelessWidget {
   final List<Category> categories;

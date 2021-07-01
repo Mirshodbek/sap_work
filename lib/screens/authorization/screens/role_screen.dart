@@ -27,7 +27,7 @@ class RoleScreen extends StatelessWidget {
                 Expanded(
                   child: SelectButton(
                     onPressed: () =>
-                        Navigator.pushNamed(context, HunterSignInScreen.id),
+                        Navigator.pushNamed(context, UserSignInScreen.id),
                     left: true,
                     background: Colors.transparent,
                     title: "Соискатель",
@@ -36,7 +36,7 @@ class RoleScreen extends StatelessWidget {
                 Expanded(
                   child: SelectButton(
                     onPressed: () =>
-                        Navigator.pushNamed(context, EmployerSignInScreen.id),
+                        Navigator.pushNamed(context, CompanySignInScreen.id),
                     left: false,
                     background: Colors.transparent,
                     title: "Работодатель",

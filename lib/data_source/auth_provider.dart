@@ -3,28 +3,28 @@ import 'package:http/http.dart' as http;
 
 class AuthProvider {
   static const String _baseApi = 'http://194.58.98.181:16498';
-  static const String _hunterRegister = '/api/register/user';
-  static const String _hunterLogin = '/api/login/user';
-  static const String _hunterSend = '/api/send/user';
-  static const String _employerRegister = '/api/register/company';
-  static const String _employerLogin = '/api/login/company';
-  static const String _employerSend = '/api/send/company';
+  static const String _userRegister = '/api/register/user';
+  static const String _userLogin = '/api/login/user';
+  static const String _userSend = '/api/send/user';
+  static const String _companyRegister = '/api/register/company';
+  static const String _companyLogin = '/api/login/company';
+  static const String _companySend = '/api/send/company';
 
   final http.Client _httpClient;
 
   AuthProvider({http.Client? httpClient})
       : _httpClient = httpClient ?? http.Client();
 
-  Future<http.Response> signUpHunter(String phone, String name) async {
+  Future<http.Response> signUpUser(String phone, String name) async {
     final result = await _callPostApi(
-      _hunterRegister,
+      _userRegister,
       {"Accept": "application/json"},
       {"phone": phone, "name": name},
     );
     return result;
   }
 
-  Future<http.Response> signUpEmployer(
+  Future<http.Response> signUpCompany(
     String phone,
     String name,
     String bin,
@@ -33,7 +33,7 @@ class AuthProvider {
     String address,
   ) async {
     final result = await _callPostApi(
-      _employerRegister,
+      _companyRegister,
       {"Accept": "application/json"},
       {
         "phone": phone,
@@ -47,36 +47,36 @@ class AuthProvider {
     return result;
   }
 
-  Future<http.Response> signInPhoneHunter(String phone) async {
+  Future<http.Response> signInPhoneUser(String phone) async {
     final result = await _callPostApi(
-      _hunterSend,
+      _userSend,
       {"Accept": "application/json"},
       {"phone": phone},
     );
     return result;
   }
 
-  Future<http.Response> signInHunter(String phone, String code) async {
+  Future<http.Response> signInUser(String phone, String code) async {
     final result = await _callPostApi(
-      _hunterLogin,
+      _userLogin,
       {"Accept": "application/json"},
       {"phone": phone, "code": code},
     );
     return result;
   }
 
-  Future<http.Response> signInPhoneEmployer(String phone) async {
+  Future<http.Response> signInPhoneCompany(String phone) async {
     final result = await _callPostApi(
-      _employerSend,
+      _companySend,
       {"Accept": "application/json"},
       {"phone": phone},
     );
     return result;
   }
 
-  Future<http.Response> signInEmployer(String phone, String code) async {
+  Future<http.Response> signInCompany(String phone, String code) async {
     final result = await _callPostApi(
-      _employerLogin,
+      _companyLogin,
       {"Accept": "application/json"},
       {"phone": phone, "code": code},
     );

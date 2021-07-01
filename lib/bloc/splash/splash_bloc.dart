@@ -26,14 +26,15 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     if (splash == 0) {
       yield const SplashState.selectedRole();
     } else if (splash == 1) {
-      // yield const SplashState.hunter();
+      // yield const SplashState.user();
       yield const SplashState.splash();
       // EsfDIpSegoRQQHlfcwByArH7z3xSuc6IMTUcqo7Hu4KirmIF8jEWC73u9eoC
     } else if (splash == 2) {
-      yield const SplashState.employer();
+      yield const SplashState.company();
       // yield const SplashState.splash();
       // Kya0p3P4w9f6L61C52ABPubkbSX9Yv2Cyl53I7tNWmKueT5zYZVE4ZUXjQdU
       // hOT5qJMTaxfEvEvCVXtaWgDXWiiW55QxuwlTpTS9y9UruR2QErR87AbVasKh
+      // ljsFtecYNlR9qIBmc04dckkD7i0LtGjmvkwHWevjT8rfQQD4REfI5868aISE
     } else {
       yield const SplashState.splash();
     }
@@ -62,7 +63,7 @@ abstract class SplashState with _$SplashState {
 
   const factory SplashState.selectedRole() = SelectedRoleSplashState;
 
-  const factory SplashState.hunter() = HunterSplashState;
+  const factory SplashState.user() = UserSplashState;
 
-  const factory SplashState.employer() = EmployerSplashState;
+  const factory SplashState.company() = CompanySplashState;
 }

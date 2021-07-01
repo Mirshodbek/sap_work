@@ -1,9 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sap_work/models/profile_company/profile.dart';
-import 'package:sap_work/repository/company/usercases/profile/usercases.dart';
-import 'package:sap_work/repository/exceptions_failures.dart';
-import 'package:sap_work/repository/usercases.dart';
+import 'package:sap_work/bloc/company/profile/profile.dart';
 
 part 'profile_company_bloc.freezed.dart';
 

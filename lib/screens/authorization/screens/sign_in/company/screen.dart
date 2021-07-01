@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import '../../../authorization.dart';
+import 'package:sap_work/screens/authorization/authorization.dart';
 
-class HunterSignInScreen extends StatelessWidget {
-  static const String id = '/searcher_sign_in';
+class CompanySignInScreen extends StatelessWidget {
+  static const String id = '/employer_sign_in';
 
-  HunterSignInScreen({Key? key}) : super(key: key);
+  CompanySignInScreen({Key? key}) : super(key: key);
 
   static Widget create() {
-    return BlocProvider<HunterSignInBloc>(
-      create: (_) =>
-          HunterSignInBloc(AuthProvider())..add(HunterSignInEvent.initial()),
-      child: HunterSignInScreen(),
+    return BlocProvider<CompanySignInBloc>(
+      create: (_) => CompanySignInBloc(AuthProvider())
+        ..add(CompanySignInEvent.initial()),
+      child: CompanySignInScreen(),
     );
   }
 
@@ -39,13 +39,9 @@ class HunterSignInScreen extends StatelessWidget {
             ),
             TextField(
               inputFormatters: [Utils.mask],
-              onChanged: (value) {
-                context
-                    .read<HunterSignInBloc>()
-                    .add(HunterSignInEvent.telephoneChanged(
-                      phone: Phone.dirty(Utils.getTelephone(value)),
-                    ));
-              },
+              onChanged: (value) => context.read<CompanySignInBloc>().add(
+                  CompanySignInEvent.telephoneChanged(
+                      phone: Phone.dirty(Utils.getTelephone(value)))),
               keyboardType: TextInputType.phone,
               style: AppTextTheme.smallTextWhite,
               decoration: TextFieldDecoration.decoration("Телефон").copyWith(
@@ -59,12 +55,12 @@ class HunterSignInScreen extends StatelessWidget {
                 ),
               ),
             ),
-            BlocConsumer<HunterSignInBloc, HunterSignInState>(
+            BlocConsumer<CompanySignInBloc, CompanySignInState>(
               listener: (context, state) {
-                if (state == HunterSignInState.successSignIn()) {
+                if (state == CompanySignInState.successSignIn()) {
                   Navigator.pushNamedAndRemoveUntil(context, NavigationBar.id,
                       (Route<dynamic> route) => false,
-                      arguments: {"role": "searcher"});
+                      arguments: {"role": "employer"});
                 }
               },
               builder: (context, state) {
@@ -100,8 +96,8 @@ class HunterSignInScreen extends StatelessWidget {
                         TextButton(
                           onPressed: _state.statusA.isSubmissionInProgress
                               ? null
-                              : () => context.read<HunterSignInBloc>().add(
-                                  HunterSignInEvent.telephoneSubmitted(
+                              : () => context.read<CompanySignInBloc>().add(
+                              CompanySignInEvent.telephoneSubmitted(
                                       phone: Phone.dirty(_state.phone.value))),
                           child: _state.statusA.isSubmissionInProgress
                               ? CircularProgressIndicator(
@@ -130,7 +126,7 @@ class HunterSignInScreen extends StatelessWidget {
 }
 
 class _CodeState extends StatefulWidget {
-  final CodeHunterSignInState _state;
+  final CodeCompanySignInState _state;
 
   const _CodeState(this._state, {Key? key}) : super(key: key);
 
@@ -158,6 +154,7 @@ class __CodeStateState extends State<_CodeState> {
         TextField(
           controller: _code,
           obscureText: true,
+          onChanged: (value) {},
           decoration: TextFieldDecoration.decoration("Код из смс"),
           style: AppTextTheme.smallTextWhite,
           keyboardType: TextInputType.number,
@@ -190,8 +187,8 @@ class __CodeStateState extends State<_CodeState> {
                       ),
                 onPressed: widget._state.statusB.isSubmissionInProgress
                     ? () => null
-                    : () => context.read<HunterSignInBloc>().add(
-                        HunterSignInEvent.codeSubmitted(
+                    : () => context.read<CompanySignInBloc>().add(
+                    CompanySignInEvent.codeSubmitted(
                             code: Texts.dirty(_code!.text))),
               ),
             ),

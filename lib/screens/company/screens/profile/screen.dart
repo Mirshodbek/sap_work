@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:formz/formz.dart';
-import 'package:sap_work/bloc/company/core/core_profile_bloc.dart';
-import 'package:sap_work/bloc/company/vacancies/vacancies_company_bloc.dart';
-import 'package:sap_work/bloc/company/vacancy/vacancy_company_bloc.dart';
 import 'package:sap_work/bloc/navigation/navigation_cubit.dart';
-import 'package:sap_work/resources/resource.dart';
 import 'package:sap_work/screens/hunter/screens/settings/screen.dart';
-import 'package:sap_work/screens/company/screens/profile/widgets/widget.dart';
-import 'package:sap_work/screens/widgets/widget.dart';
-import 'package:sap_work/theme/theme.dart';
+import 'widgets/widget.dart';
+
 
 class ProfileScreenCompany extends StatelessWidget {
   const ProfileScreenCompany({Key? key}) : super(key: key);

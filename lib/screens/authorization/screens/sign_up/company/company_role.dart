@@ -3,22 +3,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import '../../../authorization.dart';
 
-class EmployerRole extends StatefulWidget {
-  EmployerRole({Key? key}) : super(key: key);
+class CompanyRole extends StatefulWidget {
+  CompanyRole({Key? key}) : super(key: key);
 
   static Widget create() {
-    return BlocProvider<EmployerSignUpBloc>(
-      create: (_) => EmployerSignUpBloc(AuthProvider())
-        ..add(EmployerSignUpEvent.initial()),
-      child: EmployerRole(),
+    return BlocProvider<CompanySignUpBloc>(
+      create: (_) => CompanySignUpBloc(AuthProvider())
+        ..add(CompanySignUpEvent.initial()),
+      child: CompanyRole(),
     );
   }
 
   @override
-  _EmployerRoleState createState() => _EmployerRoleState();
+  _CompanyRoleState createState() => _CompanyRoleState();
 }
 
-class _EmployerRoleState extends State<EmployerRole> {
+class _CompanyRoleState extends State<CompanyRole> {
   PageController? _pageController = PageController();
   TextEditingController? _name = TextEditingController();
   TextEditingController? _phone = TextEditingController();
@@ -47,16 +47,16 @@ class _EmployerRoleState extends State<EmployerRole> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<EmployerSignUpBloc, EmployerSignUpState>(
+    return BlocConsumer<CompanySignUpBloc, CompanySignUpState>(
       listener: (context, state) {
-        if (state == EmployerSignUpState.successSignUp()) {
+        if (state == CompanySignUpState.successSignUp()) {
           Navigator.pushReplacementNamed(
             context,
-            EmployerSignInScreen.id,
+            CompanySignInScreen.id,
           );
         }
         state.maybeMap(
-          employerState: (_state) {
+          companyState: (_state) {
             if (_state.statusA.isValidated) {
               _pageController!.nextPage(
                   duration: Duration(milliseconds: 200), curve: Curves.linear);
@@ -72,7 +72,7 @@ class _EmployerRoleState extends State<EmployerRole> {
       builder: (context, state) {
         return state.map(
           initial: (_) => Container(),
-          employerState: (_state) {
+         companyState: (_state) {
             return SizedBox(
               height: MediaQuery.of(context).size.height / 1.5,
               child: PageView(
@@ -91,7 +91,7 @@ class _EmployerRoleState extends State<EmployerRole> {
     );
   }
 
-  Widget _partOne(EmployerStateEmployerSignUpState _state) => Column(
+  Widget _partOne(CompanyStateCompanySignUpState _state) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset(AppImages.part_one),
@@ -168,14 +168,14 @@ class _EmployerRoleState extends State<EmployerRole> {
       );
 
   void nextButton() {
-    context.read<EmployerSignUpBloc>().add(EmployerSignUpEvent.pageOne(
+    context.read<CompanySignUpBloc>().add(CompanySignUpEvent.pageOne(
           name: Texts.dirty(_name!.text),
           phone: Phone.dirty(Utils.getTelephone(_phone!.text)),
           inn: Texts.dirty(_inn!.text),
         ));
   }
 
-  Widget _partTwo(EmployerStateEmployerSignUpState _state) => Column(
+  Widget _partTwo(CompanyStateCompanySignUpState _state) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Image.asset(AppImages.part_two),
@@ -251,8 +251,8 @@ class _EmployerRoleState extends State<EmployerRole> {
               onPressed: () => _state.statusB.isSubmissionInProgress
                   ? null
                   : context
-                      .read<EmployerSignUpBloc>()
-                      .add(EmployerSignUpEvent.pageTwo(
+                      .read<CompanySignUpBloc>()
+                      .add(CompanySignUpEvent.pageTwo(
                         name: _state.name,
                         phone: _state.phone,
                         inn: _state.inn,

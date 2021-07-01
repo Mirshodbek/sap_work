@@ -1,12 +1,7 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sap_work/models/vacancy_company/vacancy.dart';
-import 'package:sap_work/repository/company/usercases/profile/usercases.dart';
-import 'package:sap_work/repository/exceptions_failures.dart';
-import 'package:sap_work/repository/usercases.dart';
-import 'package:sap_work/screens/hunter/hunter.dart';
-export 'package:sap_work/extensions/list_extension.dart';
+import 'package:sap_work/bloc/company/vacancies/vacancies.dart';
 
 part 'vacancies_company_bloc.freezed.dart';
 

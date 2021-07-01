@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:sap_work/models/user/resume/resume_attributes.dart';
+import 'package:sap_work/models/resume/resume_attributes.dart';
 
 part 'resume.g.dart';
 
@@ -30,18 +30,26 @@ class Resume extends Equatable {
   Resume(this.id, this.user_id, this.name, this.body, this.abilities,
       this.updated_at, this.created_at, this.active, this.grade, this.stage);
 
-  Resume copyWith({String? name}) {
-    return Resume(id, user_id, name ?? this.name, body, abilities, updated_at,
-        created_at, active, grade, stage);
-  }
-
   factory Resume.fromJson(Map<String, dynamic> json) => _$ResumeFromJson(json);
 
-  static Map<String, dynamic> toJson(Resume resume) => _$ResumeToJson(resume);
+  Map<String, dynamic> toJson() => _$ResumeToJson(this);
+
+  static Map<String, dynamic> toMap(Resume instance) => <String, dynamic>{
+        'id': instance.id,
+        'user_id': instance.user_id,
+        'body': instance.body,
+        'name': instance.name,
+        'abilities': instance.abilities,
+        'updated_at': instance.updated_at,
+        'created_at': instance.created_at,
+        'active': instance.active,
+        'grade': instance.grade,
+        'stage': instance.stage,
+      };
 
   static String encode(List<Resume> resumes) => json.encode(
         resumes
-            .map<Map<String, dynamic>>((resume) => Resume.toJson(resume))
+            .map<Map<String, dynamic>>((resume) => Resume.toMap(resume))
             .toList(),
       );
 

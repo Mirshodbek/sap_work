@@ -1,12 +1,6 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sap_work/bloc/company/core/core_profile_bloc.dart';
-import 'package:sap_work/bloc/company/vacancy/vacancy_company_bloc.dart';
-import 'package:sap_work/repository/usercases.dart';
-import 'package:sap_work/screens/hunter/hunter.dart';
-
 import 'widget.dart';
 
 class VacancyWidget extends StatelessWidget {

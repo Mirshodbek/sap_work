@@ -1,7 +1,7 @@
 import 'package:sap_work/models/user/feedback/feedback.dart';
 import 'package:sap_work/models/user/message/message.dart';
 import 'package:sap_work/models/user/profile/profile.dart';
-import 'package:sap_work/models/user/resume/resume.dart';
+import 'package:sap_work/models/resume/resume.dart';
 import 'package:sap_work/models/vacancy/vacancy.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
 import 'package:http/http.dart' as http;

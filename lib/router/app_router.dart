@@ -17,13 +17,13 @@ class AppRouter {
         return MaterialPageRoute<String>(
           builder: (_) => RoleScreen(),
         );
-      case HunterSignInScreen.id:
+      case UserSignInScreen.id:
         return MaterialPageRoute<String>(
-          builder: (_) => HunterSignInScreen.create(),
+          builder: (_) => UserSignInScreen.create(),
         );
-      case EmployerSignInScreen.id:
+      case CompanySignInScreen.id:
         return MaterialPageRoute<String>(
-          builder: (_) => EmployerSignInScreen.create(),
+          builder: (_) => CompanySignInScreen.create(),
         );
       case SignUpScreen.id:
         return MaterialPageRoute<String>(

@@ -2,10 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sap_work/bloc/company/profile/profile_company_bloc.dart';
-import 'package:sap_work/resources/resource.dart';
-import 'package:sap_work/screens/widgets/widget.dart';
-import 'package:sap_work/theme/theme.dart';
+import 'widget.dart';
 
 class ProfileNameWidget extends StatelessWidget {
   const ProfileNameWidget({Key? key}) : super(key: key);
@@ -42,7 +39,7 @@ class ProfileAvatarWidget extends StatelessWidget {
         builder: (context, state) {
       return state.map(
           empty: (_) => const SizedBox.shrink(),
-          loading: (_) => ShimmerWidget.circular(height: 95, width: 95),
+          loading: (_) => ShimmerWidget.circular(height: 75, width: 75),
           loaded: (_state) {
             return SizedBox(
               height: 88,
@@ -50,7 +47,7 @@ class ProfileAvatarWidget extends StatelessWidget {
                 CircleAvatar(
                     radius: 40,
                     backgroundImage:
-                        NetworkImage(_state.profile.profile.avatar)),
+                        NetworkImage(BASE_API+_state.profile.profile.avatar)),
                 Positioned(
                   bottom: 0,
                   right: 15,

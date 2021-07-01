@@ -1,3 +1,4 @@
+import 'package:sap_work/models/resume/resume.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
 import 'package:http/http.dart' as http;
 

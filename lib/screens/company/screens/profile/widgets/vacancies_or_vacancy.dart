@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sap_work/bloc/company/core/core_profile_bloc.dart';
-import 'package:sap_work/bloc/company/profile_button/profile_btn_cubit.dart';
-import 'package:sap_work/bloc/company/vacancies/vacancies_company_bloc.dart';
-import 'package:sap_work/screens/company/screens/profile/widgets/vacancy.dart';
-import 'package:sap_work/screens/hunter/hunter.dart';
 import 'widget.dart';
 
 class VacanciesOrVacancyWidget extends StatelessWidget {

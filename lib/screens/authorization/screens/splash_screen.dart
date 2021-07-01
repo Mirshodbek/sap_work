@@ -22,11 +22,11 @@ class SplashScreen extends StatelessWidget {
         if (state == SplashState.selectedRole()) {
           Navigator.pushReplacementNamed(context, RoleScreen.id);
         }
-        if (state == SplashState.hunter()) {
+        if (state == SplashState.user()) {
           Navigator.pushReplacementNamed(context, NavigationBar.id,
               arguments: {"role": "searcher"});
         }
-        if (state == SplashState.employer()) {
+        if (state == SplashState.company()) {
           Navigator.pushReplacementNamed(context, NavigationBar.id,
               arguments: {"role": "employer"});
         }

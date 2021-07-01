@@ -6,19 +6,19 @@ import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
 
-part 'employer_sign_up_bloc.freezed.dart';
+part 'company_sign_up_bloc.freezed.dart';
 
-class EmployerSignUpBloc
-    extends Bloc<EmployerSignUpEvent, EmployerSignUpState> {
+class CompanySignUpBloc
+    extends Bloc<CompanySignUpEvent, CompanySignUpState> {
   final AuthProvider _provider;
 
-  EmployerSignUpBloc(this._provider)
-      : super(const EmployerSignUpState.initial());
+  CompanySignUpBloc(this._provider)
+      : super(const CompanySignUpState.initial());
   FormzStatus status = FormzStatus.pure;
 
   @override
-  Stream<EmployerSignUpState> mapEventToState(
-    EmployerSignUpEvent event,
+  Stream<CompanySignUpState> mapEventToState(
+    CompanySignUpEvent event,
   ) async* {
     yield* event.map(
       initial: _initialEvent,
@@ -27,9 +27,9 @@ class EmployerSignUpBloc
     );
   }
 
-  Stream<EmployerSignUpState> _initialEvent(
-      _InitialEmployerSignUpEvent event) async* {
-    yield const EmployerSignUpState.employerState(
+  Stream<CompanySignUpState> _initialEvent(
+      _InitialCompanySignUpEvent event) async* {
+    yield const CompanySignUpState.companyState(
       name: Texts.pure(),
       phone: Phone.pure(),
       inn: Texts.pure(),
@@ -42,9 +42,9 @@ class EmployerSignUpBloc
     );
   }
 
-  Stream<EmployerSignUpState> _pageOneEvent(
-      _PageOneEmployerSignUpEvent event) async* {
-    yield EmployerSignUpState.employerState(
+  Stream<CompanySignUpState> _pageOneEvent(
+      _PageOneCompanySignUpEvent event) async* {
+    yield CompanySignUpState.companyState(
       name: event.name,
       phone: event.phone,
       inn: event.inn,
@@ -57,8 +57,8 @@ class EmployerSignUpBloc
     );
   }
 
-  Stream<EmployerSignUpState> _pageTwoEvent(
-      _PageTwoEmployerSignUpEvent event) async* {
+  Stream<CompanySignUpState> _pageTwoEvent(
+      _PageTwoCompanySignUpEvent event) async* {
     final isValidated = Formz.validate([
       event.name,
       event.phone,
@@ -73,27 +73,27 @@ class EmployerSignUpBloc
       try {
         yield state.maybeMap(
           orElse: () => state,
-          employerState: (_state) =>
+          companyState: (_state) =>
               _state.copyWith(statusB: FormzStatus.submissionInProgress),
         );
         await Future.delayed(Duration(seconds: 2));
-        await _provider.signUpEmployer(
+        await _provider.signUpCompany(
             event.phone.value,
             event.name.value,
             event.bin.value,
             event.bik.value,
             event.inn.value,
             event.address.value);
-        yield const EmployerSignUpState.successSignUp();
+        yield const CompanySignUpState.successSignUp();
       } catch (_) {
         yield state.maybeMap(
           orElse: () => state,
-          employerState: (_state) =>
+          companyState: (_state) =>
               _state.copyWith(statusB: FormzStatus.submissionFailure),
         );
       }
     } else {
-      yield EmployerSignUpState.employerState(
+      yield CompanySignUpState.companyState(
         name: event.name,
         phone: event.phone,
         inn: event.inn,
@@ -109,16 +109,16 @@ class EmployerSignUpBloc
 }
 
 @freezed
-abstract class EmployerSignUpEvent with _$EmployerSignUpEvent {
-  const factory EmployerSignUpEvent.initial() = _InitialEmployerSignUpEvent;
+abstract class CompanySignUpEvent with _$CompanySignUpEvent {
+  const factory CompanySignUpEvent.initial() = _InitialCompanySignUpEvent;
 
-  const factory EmployerSignUpEvent.pageOne({
+  const factory CompanySignUpEvent.pageOne({
     required final Texts name,
     required final Phone phone,
     required final Texts inn,
-  }) = _PageOneEmployerSignUpEvent;
+  }) = _PageOneCompanySignUpEvent;
 
-  const factory EmployerSignUpEvent.pageTwo({
+  const factory CompanySignUpEvent.pageTwo({
     required final Texts name,
     required final Phone phone,
     required final Texts inn,
@@ -126,14 +126,14 @@ abstract class EmployerSignUpEvent with _$EmployerSignUpEvent {
     required final Texts address,
     required final Texts bin,
     required final Texts bik,
-  }) = _PageTwoEmployerSignUpEvent;
+  }) = _PageTwoCompanySignUpEvent;
 }
 
 @freezed
-abstract class EmployerSignUpState with _$EmployerSignUpState {
-  const factory EmployerSignUpState.initial() = _InitialEmployerSignUpState;
+abstract class CompanySignUpState with _$CompanySignUpState {
+  const factory CompanySignUpState.initial() = _InitialCompanySignUpState;
 
-  const factory EmployerSignUpState.employerState({
+  const factory CompanySignUpState.companyState({
     required final Texts name,
     required final Phone phone,
     required final Texts inn,
@@ -143,8 +143,8 @@ abstract class EmployerSignUpState with _$EmployerSignUpState {
     required final Texts bik,
     required final FormzStatus statusA,
     required final FormzStatus statusB,
-  }) = EmployerStateEmployerSignUpState;
+  }) = CompanyStateCompanySignUpState;
 
-  const factory EmployerSignUpState.successSignUp() =
-      _SuccessSignUpEmployerSignUpState;
+  const factory CompanySignUpState.successSignUp() =
+      _SuccessSignUpCompanySignUpState;
 }

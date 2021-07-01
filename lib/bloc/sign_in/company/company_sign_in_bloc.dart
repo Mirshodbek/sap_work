@@ -9,19 +9,19 @@ import 'package:http/http.dart' as http;
 import 'package:sap_work/screens/authorization/authorization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-part 'employer_sign_in_bloc.freezed.dart';
+part 'company_sign_in_bloc.freezed.dart';
 
-class EmployerSignInBloc
-    extends Bloc<EmployerSignInEvent, EmployerSignInState> {
+class CompanySignInBloc
+    extends Bloc<CompanySignInEvent, CompanySignInState> {
   final AuthProvider _provider;
 
-  EmployerSignInBloc(this._provider)
-      : super(const EmployerSignInState.initial());
+  CompanySignInBloc(this._provider)
+      : super(const CompanySignInState.initial());
   String _phone = '';
 
   @override
-  Stream<EmployerSignInState> mapEventToState(
-    EmployerSignInEvent event,
+  Stream<CompanySignInState> mapEventToState(
+    CompanySignInEvent event,
   ) async* {
     yield* event.map(
       initial: _initialState,
@@ -31,87 +31,87 @@ class EmployerSignInBloc
     );
   }
 
-  Stream<EmployerSignInState> _initialState(
-      InitialEmployerSignInEvent event) async* {
-    yield EmployerSignInState.telephoneState(
+  Stream<CompanySignInState> _initialState(
+      InitialCompanySignInEvent event) async* {
+    yield CompanySignInState.telephoneState(
       phone: Phone.pure(),
       statusA: FormzStatus.pure,
     );
   }
 
-  Stream<EmployerSignInState> _telephoneChanged(
-      TelephoneChangedEmployerSignInEvent event) async* {
+  Stream<CompanySignInState> _telephoneChanged(
+      TelephoneChangedCompanySignInEvent event) async* {
     if (event.phone.invalid) {
-      yield const EmployerSignInState.telephoneState(
+      yield const CompanySignInState.telephoneState(
         phone: Phone.pure(),
         statusA: FormzStatus.pure,
       );
     } else {
-      yield EmployerSignInState.telephoneState(
+      yield CompanySignInState.telephoneState(
         phone: event.phone,
         statusA: Formz.validate([event.phone]),
       );
     }
   }
 
-  Stream<EmployerSignInState> _telephoneSubmitted(
-      TelephoneSubmittedEmployerSignInEvent event) async* {
+  Stream<CompanySignInState> _telephoneSubmitted(
+      TelephoneSubmittedCompanySignInEvent event) async* {
     _phone = event.phone.value;
     if (event.phone.valid) {
       try {
-        yield EmployerSignInState.telephoneState(
+        yield CompanySignInState.telephoneState(
           phone: event.phone,
           statusA: FormzStatus.submissionInProgress,
         );
         await Future.delayed(Duration(seconds: 2));
-        await _provider.signInPhoneEmployer(event.phone.value);
-        yield const EmployerSignInState.codeState(
+        await _provider.signInPhoneCompany(event.phone.value);
+        yield const CompanySignInState.codeState(
           code: Texts.pure(),
           statusB: FormzStatus.pure,
         );
       } on TimeoutException {} catch (_) {
-        yield EmployerSignInState.telephoneState(
+        yield CompanySignInState.telephoneState(
           phone: event.phone,
           statusA: FormzStatus.submissionFailure,
         );
       }
     } else {
-      yield EmployerSignInState.telephoneState(
+      yield CompanySignInState.telephoneState(
         phone: event.phone,
         statusA: Formz.validate([event.phone]),
       );
     }
   }
 
-  Stream<EmployerSignInState> _codeSubmitted(
-      CodeSubmittedEmployerSignInEvent event) async* {
+  Stream<CompanySignInState> _codeSubmitted(
+      CodeSubmittedCompanySignInEvent event) async* {
     if (event.code.valid) {
       try {
-        yield EmployerSignInState.codeState(
+        yield CompanySignInState.codeState(
           code: event.code,
           statusB: FormzStatus.submissionInProgress,
         );
         final result = await _signIn(event.code.value);
         if (result.statusCode == 200 || result.statusCode == 201) {
-          yield const EmployerSignInState.successSignIn();
-          yield EmployerSignInState.codeState(
+          yield const CompanySignInState.successSignIn();
+          yield CompanySignInState.codeState(
             code: event.code,
             statusB: FormzStatus.submissionSuccess,
           );
         } else {
-          yield EmployerSignInState.codeState(
+          yield CompanySignInState.codeState(
             code: event.code,
             statusB: FormzStatus.submissionFailure,
           );
         }
       } on TimeoutException {} on SocketException {} on HttpException {} on FormatException {} catch (_) {
-        yield EmployerSignInState.codeState(
+        yield CompanySignInState.codeState(
           code: event.code,
           statusB: FormzStatus.submissionFailure,
         );
       }
     } else {
-      yield EmployerSignInState.codeState(
+      yield CompanySignInState.codeState(
         code: event.code,
         statusB: Formz.validate([event.code]),
       );
@@ -119,7 +119,7 @@ class EmployerSignInBloc
   }
 
   Future<http.Response> _signIn(String code) async {
-    final result = await _provider.signInEmployer(_phone, code);
+    final result = await _provider.signInCompany(_phone, code);
     final token = jsonDecode(result.body)["token"];
     print(token);
     if (token != null) {
@@ -132,33 +132,33 @@ class EmployerSignInBloc
 }
 
 @freezed
-abstract class EmployerSignInEvent with _$EmployerSignInEvent {
-  const factory EmployerSignInEvent.initial() = InitialEmployerSignInEvent;
+abstract class CompanySignInEvent with _$CompanySignInEvent {
+  const factory CompanySignInEvent.initial() = InitialCompanySignInEvent;
 
-  const factory EmployerSignInEvent.telephoneChanged(
-      {required final Phone phone}) = TelephoneChangedEmployerSignInEvent;
+  const factory CompanySignInEvent.telephoneChanged(
+      {required final Phone phone}) = TelephoneChangedCompanySignInEvent;
 
-  const factory EmployerSignInEvent.telephoneSubmitted(
-      {required final Phone phone}) = TelephoneSubmittedEmployerSignInEvent;
+  const factory CompanySignInEvent.telephoneSubmitted(
+      {required final Phone phone}) = TelephoneSubmittedCompanySignInEvent;
 
-  const factory EmployerSignInEvent.codeSubmitted({required final Texts code}) =
-      CodeSubmittedEmployerSignInEvent;
+  const factory CompanySignInEvent.codeSubmitted({required final Texts code}) =
+      CodeSubmittedCompanySignInEvent;
 }
 
 @freezed
-abstract class EmployerSignInState with _$EmployerSignInState {
-  const factory EmployerSignInState.initial() = InitialEmployerSignInState;
+abstract class CompanySignInState with _$CompanySignInState {
+  const factory CompanySignInState.initial() = InitialCompanySignInState;
 
-  const factory EmployerSignInState.telephoneState({
+  const factory CompanySignInState.telephoneState({
     required final Phone phone,
     required final FormzStatus statusA,
-  }) = TelephoneEmployerSignInState;
+  }) = TelephoneCompanySignInState;
 
-  const factory EmployerSignInState.codeState({
+  const factory CompanySignInState.codeState({
     required final Texts code,
     required final FormzStatus statusB,
-  }) = CodeEmployerSignInState;
+  }) = CodeCompanySignInState;
 
-  const factory EmployerSignInState.successSignIn() =
-      SuccessEmployerSignInState;
+  const factory CompanySignInState.successSignIn() =
+      SuccessCompanySignInState;
 }

@@ -4,22 +4,22 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
 
-class HunterRole extends StatefulWidget {
-  HunterRole({Key? key}) : super(key: key);
+class UserRole extends StatefulWidget {
+  UserRole({Key? key}) : super(key: key);
 
   static Widget create() {
-    return BlocProvider<HunterSignUpBloc>(
+    return BlocProvider<UserSignUpBloc>(
       create: (_) =>
-          HunterSignUpBloc(AuthProvider())..add(HunterSignUpEvent.initial()),
-      child: HunterRole(),
+          UserSignUpBloc(AuthProvider())..add(UserSignUpEvent.initial()),
+      child: UserRole(),
     );
   }
 
   @override
-  _HunterRoleState createState() => _HunterRoleState();
+  _UserRoleState createState() => _UserRoleState();
 }
 
-class _HunterRoleState extends State<HunterRole> {
+class _UserRoleState extends State<UserRole> {
   TextEditingController? _name = TextEditingController();
   TextEditingController? _phone = TextEditingController();
 
@@ -32,19 +32,19 @@ class _HunterRoleState extends State<HunterRole> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<HunterSignUpBloc, HunterSignUpState>(
+    return BlocConsumer<UserSignUpBloc, UserSignUpState>(
       listener: (context, state) {
-        if (state == HunterSignUpState.successSignUp()) {
+        if (state == UserSignUpState.successSignUp()) {
           Navigator.pushReplacementNamed(
             context,
-            HunterSignInScreen.id,
+            UserSignInScreen.id,
           );
         }
       },
       builder: (context, state) {
         return state.maybeMap(
             orElse: () => Container(),
-            hunterState: (_state) {
+            userState: (_state) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -110,8 +110,8 @@ class _HunterRoleState extends State<HunterRole> {
                       dropdownColor: AppColor.red,
                       value: _state.prof.pure ? null : _state.prof.value,
                       onChanged: (String? value) => context
-                          .read<HunterSignUpBloc>()
-                          .add(HunterSignUpEvent.professionEvent(
+                          .read<UserSignUpBloc>()
+                          .add(UserSignUpEvent.professionEvent(
                               prof: Texts.dirty(value!))),
                       items: Lists.listProfessions.map((item) {
                         return DropdownMenuItem(
@@ -143,8 +143,8 @@ class _HunterRoleState extends State<HunterRole> {
                             ),
                       onPressed: () => _state.status.isSubmissionInProgress
                           ? null
-                          : context.read<HunterSignUpBloc>().add(
-                              HunterSignUpEvent.hunterEvent(
+                          : context.read<UserSignUpBloc>().add(
+                              UserSignUpEvent.userEvent(
                                   name: Texts.dirty(_name!.text),
                                   phone: Phone.dirty(
                                       Utils.getTelephone(_phone!.text)),

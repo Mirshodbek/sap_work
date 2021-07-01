@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sap_work/bloc/company/core/core_profile_bloc.dart';
-import 'package:sap_work/bloc/company/profile_button/profile_btn_cubit.dart';
-import 'package:sap_work/bloc/company/vacancies/vacancies_company_bloc.dart';
-import 'package:sap_work/bloc/company/vacancy/vacancy_company_bloc.dart';
-import 'package:sap_work/screens/widgets/widget.dart';
-import 'package:sap_work/theme/theme.dart';
+import 'widget.dart';
+
 
 class LoadingListVacanciesWidget extends StatelessWidget {
   const LoadingListVacanciesWidget({Key? key}) : super(key: key);

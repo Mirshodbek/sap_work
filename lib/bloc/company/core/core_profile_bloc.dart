@@ -3,12 +3,7 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sap_work/data_source/company/remote_data.dart';
-import 'package:sap_work/models/category/category.dart';
-import 'package:sap_work/models/vacancy_company/vacancy.dart';
-import 'package:sap_work/repository/company/usercases/profile/usercases.dart';
-import 'package:sap_work/repository/usercases.dart';
-import 'package:sap_work/utils/validator.dart';
+import 'core.dart';
 
 part 'core_profile_bloc.freezed.dart';
 
