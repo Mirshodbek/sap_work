@@ -1,11 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sap_work/bloc/hunter/profile/profile_bloc.dart';
-import 'package:sap_work/models/vacancy/vacancy.dart';
-import 'package:sap_work/router/app_router.dart';
-
+import 'package:intl/intl.dart';
 import '../../../hunter.dart';
 
 class AnnounceCategories extends StatelessWidget {
@@ -59,7 +55,7 @@ class AnnounceCategories extends StatelessWidget {
           Row(
             children: [
               Text(
-                "${vacancy.salary}₸",
+                "${vacancy.minsalary}₸-${vacancy.maxsalary}",
                 style: AppTextTheme.smallTextMediumBlack,
               ),
               const SizedBox(
@@ -89,6 +85,15 @@ class AnnounceCategories extends StatelessWidget {
             "Занятость: ${vacancy.type}",
             style: AppTextTheme.smallTextMediumBlack,
           ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          Text(
+            "Опубликовано ${DateFormat('dd.MM.yyyy в kk:mm').format(DateTime.parse(vacancy.updated_at))}",
+            style: AppTextTheme.smallTextMediumBlack.copyWith(
+              color: AppColor.grey,
+            ),
+          )
         ],
       ),
     );
@@ -96,9 +101,11 @@ class AnnounceCategories extends StatelessWidget {
 }
 
 class RespondWidget extends StatelessWidget {
-  final FavoriteVacancy announce;
+  final LoadedVacanciesState _state;
+  final FavoriteVacancy vacancies;
 
-  const RespondWidget(this.announce);
+  const RespondWidget(this._state, this.vacancies, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -115,26 +122,30 @@ class RespondWidget extends StatelessWidget {
           const SizedBox(
             height: 20.0,
           ),
-          _button(
-            Row(
+          TextButton(
+            onPressed: () => onPressed(context),
+            child: Row(
               children: [
                 Text(
-                  "CV Customer Support Officer",
+                  _state.resume.name,
                   style: AppTextTheme.smallTextWhite,
                 ),
                 const SizedBox(
                   width: 10.0,
                 ),
-                SvgPicture.asset(AppIcons.input),
+                SvgPicture.asset(
+                  AppIcons.arrows,
+                  color: AppColor.white,
+                ),
               ],
             ),
-            () {},
           ),
           const SizedBox(
             height: 20.0,
           ),
-          _button(
-            Row(
+          TextButton(
+            onPressed: () => onPressed(context),
+            child: Row(
               children: [
                 Text(
                   "Добавить резюме",
@@ -146,63 +157,49 @@ class RespondWidget extends StatelessWidget {
                 SvgPicture.asset(AppIcons.plus_white),
               ],
             ),
-            () {},
+          ),
+          const SizedBox(
+            height: 20.0,
+          ),
+          TextButton(
+            onPressed: () {},
+            child: Row(
+              children: [
+                Text(
+                  "Прикрепить PDF",
+                  style: AppTextTheme.smallTextWhite,
+                ),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                SvgPicture.asset(
+                  AppIcons.pdf,
+                  color: AppColor.white,
+                ),
+              ],
+            ),
           ),
           const SizedBox(
             height: 20.0,
           ),
           WhiteButtonWidget(
             child: Text(
-              // announce.isResponse ? "Отменить отклик" :
-              "Отправить резюме",
+              vacancies.isFeedback ? "Резюме отправлено" : "Отправить резюме",
               style: AppTextTheme.smallTextWhite,
             ),
-            onPressed: () => _showDialog(context),
+            onPressed: () => vacancies.isFeedback
+                ? null
+                : context.read<VacanciesBloc>().add(
+                    VacanciesEvent.sendFeedback(id: vacancies.vacancy.id)),
           ),
         ],
       ),
     );
   }
 
-  void _showDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) => SimpleDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        contentPadding: EdgeInsets.zero,
-        title: Text(
-          "Ваше резюме отправлено",
-          textAlign: TextAlign.center,
-          style: AppTextTheme.mediumTextBlack,
-        ),
-        children: [
-          const SizedBox(
-            height: 10.0,
-          ),
-          Text(
-            "Вы можете отслеживать статус отклика и приглашений на собеседование",
-            style: AppTextTheme.smallTextMediumBlack,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(
-            height: 40.0,
-          ),
-          SvgPicture.asset(
-            AppIcons.success,
-            alignment: Alignment.centerRight,
-          ),
-        ],
-      ),
-    );
+  void onPressed(BuildContext context) {
+    context.read<NavigationCubit>().onChanged(BottomNavItem.profile);
+    Navigator.pushNamed(context, NavigationBar.id,
+        arguments: {"role": "searcher"});
   }
-
-  Widget _button(Widget child, VoidCallback onPressed) => TextButton(
-        onPressed: onPressed,
-        style: ButtonStyle(
-          alignment: Alignment.centerLeft,
-        ),
-        child: child,
-      );
 }

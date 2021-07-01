@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sap_work/bloc/hunter/filter/filter_bloc.dart';
-
 import '../../../hunter.dart';
 
 class EmploymentTypeWidget extends StatelessWidget {
@@ -34,7 +32,7 @@ class EmploymentTypeWidget extends StatelessWidget {
         ),
         isExpanded: true,
         onChanged: onChanged,
-        items: Lists.typeList.map((type) {
+        items: Lists.scheduleList.map((type) {
           return DropdownMenuItem<String>(
             value: type,
             child: Text(type),
@@ -46,7 +44,7 @@ class EmploymentTypeWidget extends StatelessWidget {
 }
 
 class ExpansionWidget extends StatelessWidget {
-  final List<SkillState> checkBoxState;
+  final List<StageList> checkBoxState;
 
   const ExpansionWidget(this.checkBoxState);
 

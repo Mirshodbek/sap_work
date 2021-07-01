@@ -20,20 +20,36 @@ class _$VacanciesEventTearOff {
     return const _InitialVacanciesEvent();
   }
 
+  _RefreshVacanciesEvent refresh() {
+    return const _RefreshVacanciesEvent();
+  }
+
+  _SearchVacanciesEvent search({required String search}) {
+    return _SearchVacanciesEvent(
+      search: search,
+    );
+  }
+
   _SelectedViewVacanciesEvent selectedView({required bool isExtension}) {
     return _SelectedViewVacanciesEvent(
       isExtension: isExtension,
     );
   }
 
-  _SearchVacanciesEvent searchVacancies({required String search}) {
-    return _SearchVacanciesEvent(
-      search: search,
+  _ToggleVacanciesEvent toggle({required int id}) {
+    return _ToggleVacanciesEvent(
+      id: id,
     );
   }
 
-  _ToggleVacanciesEvent toggleVacancies({required int id}) {
-    return _ToggleVacanciesEvent(
+  _OnTapVacanciesEvent onTap({required int id}) {
+    return _OnTapVacanciesEvent(
+      id: id,
+    );
+  }
+
+  _SendFeedbackVacanciesEvent sendFeedback({required int id}) {
+    return _SendFeedbackVacanciesEvent(
       id: id,
     );
   }
@@ -47,34 +63,46 @@ mixin _$VacanciesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(String search) search,
     required TResult Function(bool isExtension) selectedView,
-    required TResult Function(String search) searchVacancies,
-    required TResult Function(int id) toggleVacancies,
+    required TResult Function(int id) toggle,
+    required TResult Function(int id) onTap,
+    required TResult Function(int id) sendFeedback,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(String search)? search,
     TResult Function(bool isExtension)? selectedView,
-    TResult Function(String search)? searchVacancies,
-    TResult Function(int id)? toggleVacancies,
+    TResult Function(int id)? toggle,
+    TResult Function(int id)? onTap,
+    TResult Function(int id)? sendFeedback,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialVacanciesEvent value) initial,
+    required TResult Function(_RefreshVacanciesEvent value) refresh,
+    required TResult Function(_SearchVacanciesEvent value) search,
     required TResult Function(_SelectedViewVacanciesEvent value) selectedView,
-    required TResult Function(_SearchVacanciesEvent value) searchVacancies,
-    required TResult Function(_ToggleVacanciesEvent value) toggleVacancies,
+    required TResult Function(_ToggleVacanciesEvent value) toggle,
+    required TResult Function(_OnTapVacanciesEvent value) onTap,
+    required TResult Function(_SendFeedbackVacanciesEvent value) sendFeedback,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialVacanciesEvent value)? initial,
+    TResult Function(_RefreshVacanciesEvent value)? refresh,
+    TResult Function(_SearchVacanciesEvent value)? search,
     TResult Function(_SelectedViewVacanciesEvent value)? selectedView,
-    TResult Function(_SearchVacanciesEvent value)? searchVacancies,
-    TResult Function(_ToggleVacanciesEvent value)? toggleVacancies,
+    TResult Function(_ToggleVacanciesEvent value)? toggle,
+    TResult Function(_OnTapVacanciesEvent value)? onTap,
+    TResult Function(_SendFeedbackVacanciesEvent value)? sendFeedback,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,9 +166,12 @@ class _$_InitialVacanciesEvent implements _InitialVacanciesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(String search) search,
     required TResult Function(bool isExtension) selectedView,
-    required TResult Function(String search) searchVacancies,
-    required TResult Function(int id) toggleVacancies,
+    required TResult Function(int id) toggle,
+    required TResult Function(int id) onTap,
+    required TResult Function(int id) sendFeedback,
   }) {
     return initial();
   }
@@ -149,9 +180,12 @@ class _$_InitialVacanciesEvent implements _InitialVacanciesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(String search)? search,
     TResult Function(bool isExtension)? selectedView,
-    TResult Function(String search)? searchVacancies,
-    TResult Function(int id)? toggleVacancies,
+    TResult Function(int id)? toggle,
+    TResult Function(int id)? onTap,
+    TResult Function(int id)? sendFeedback,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -164,9 +198,12 @@ class _$_InitialVacanciesEvent implements _InitialVacanciesEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialVacanciesEvent value) initial,
+    required TResult Function(_RefreshVacanciesEvent value) refresh,
+    required TResult Function(_SearchVacanciesEvent value) search,
     required TResult Function(_SelectedViewVacanciesEvent value) selectedView,
-    required TResult Function(_SearchVacanciesEvent value) searchVacancies,
-    required TResult Function(_ToggleVacanciesEvent value) toggleVacancies,
+    required TResult Function(_ToggleVacanciesEvent value) toggle,
+    required TResult Function(_OnTapVacanciesEvent value) onTap,
+    required TResult Function(_SendFeedbackVacanciesEvent value) sendFeedback,
   }) {
     return initial(this);
   }
@@ -175,9 +212,12 @@ class _$_InitialVacanciesEvent implements _InitialVacanciesEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialVacanciesEvent value)? initial,
+    TResult Function(_RefreshVacanciesEvent value)? refresh,
+    TResult Function(_SearchVacanciesEvent value)? search,
     TResult Function(_SelectedViewVacanciesEvent value)? selectedView,
-    TResult Function(_SearchVacanciesEvent value)? searchVacancies,
-    TResult Function(_ToggleVacanciesEvent value)? toggleVacancies,
+    TResult Function(_ToggleVacanciesEvent value)? toggle,
+    TResult Function(_OnTapVacanciesEvent value)? onTap,
+    TResult Function(_SendFeedbackVacanciesEvent value)? sendFeedback,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -189,6 +229,250 @@ class _$_InitialVacanciesEvent implements _InitialVacanciesEvent {
 
 abstract class _InitialVacanciesEvent implements VacanciesEvent {
   const factory _InitialVacanciesEvent() = _$_InitialVacanciesEvent;
+}
+
+/// @nodoc
+abstract class _$RefreshVacanciesEventCopyWith<$Res> {
+  factory _$RefreshVacanciesEventCopyWith(_RefreshVacanciesEvent value,
+          $Res Function(_RefreshVacanciesEvent) then) =
+      __$RefreshVacanciesEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$RefreshVacanciesEventCopyWithImpl<$Res>
+    extends _$VacanciesEventCopyWithImpl<$Res>
+    implements _$RefreshVacanciesEventCopyWith<$Res> {
+  __$RefreshVacanciesEventCopyWithImpl(_RefreshVacanciesEvent _value,
+      $Res Function(_RefreshVacanciesEvent) _then)
+      : super(_value, (v) => _then(v as _RefreshVacanciesEvent));
+
+  @override
+  _RefreshVacanciesEvent get _value => super._value as _RefreshVacanciesEvent;
+}
+
+/// @nodoc
+
+class _$_RefreshVacanciesEvent implements _RefreshVacanciesEvent {
+  const _$_RefreshVacanciesEvent();
+
+  @override
+  String toString() {
+    return 'VacanciesEvent.refresh()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _RefreshVacanciesEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(String search) search,
+    required TResult Function(bool isExtension) selectedView,
+    required TResult Function(int id) toggle,
+    required TResult Function(int id) onTap,
+    required TResult Function(int id) sendFeedback,
+  }) {
+    return refresh();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(String search)? search,
+    TResult Function(bool isExtension)? selectedView,
+    TResult Function(int id)? toggle,
+    TResult Function(int id)? onTap,
+    TResult Function(int id)? sendFeedback,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialVacanciesEvent value) initial,
+    required TResult Function(_RefreshVacanciesEvent value) refresh,
+    required TResult Function(_SearchVacanciesEvent value) search,
+    required TResult Function(_SelectedViewVacanciesEvent value) selectedView,
+    required TResult Function(_ToggleVacanciesEvent value) toggle,
+    required TResult Function(_OnTapVacanciesEvent value) onTap,
+    required TResult Function(_SendFeedbackVacanciesEvent value) sendFeedback,
+  }) {
+    return refresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialVacanciesEvent value)? initial,
+    TResult Function(_RefreshVacanciesEvent value)? refresh,
+    TResult Function(_SearchVacanciesEvent value)? search,
+    TResult Function(_SelectedViewVacanciesEvent value)? selectedView,
+    TResult Function(_ToggleVacanciesEvent value)? toggle,
+    TResult Function(_OnTapVacanciesEvent value)? onTap,
+    TResult Function(_SendFeedbackVacanciesEvent value)? sendFeedback,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshVacanciesEvent implements VacanciesEvent {
+  const factory _RefreshVacanciesEvent() = _$_RefreshVacanciesEvent;
+}
+
+/// @nodoc
+abstract class _$SearchVacanciesEventCopyWith<$Res> {
+  factory _$SearchVacanciesEventCopyWith(_SearchVacanciesEvent value,
+          $Res Function(_SearchVacanciesEvent) then) =
+      __$SearchVacanciesEventCopyWithImpl<$Res>;
+  $Res call({String search});
+}
+
+/// @nodoc
+class __$SearchVacanciesEventCopyWithImpl<$Res>
+    extends _$VacanciesEventCopyWithImpl<$Res>
+    implements _$SearchVacanciesEventCopyWith<$Res> {
+  __$SearchVacanciesEventCopyWithImpl(
+      _SearchVacanciesEvent _value, $Res Function(_SearchVacanciesEvent) _then)
+      : super(_value, (v) => _then(v as _SearchVacanciesEvent));
+
+  @override
+  _SearchVacanciesEvent get _value => super._value as _SearchVacanciesEvent;
+
+  @override
+  $Res call({
+    Object? search = freezed,
+  }) {
+    return _then(_SearchVacanciesEvent(
+      search: search == freezed
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SearchVacanciesEvent implements _SearchVacanciesEvent {
+  const _$_SearchVacanciesEvent({required this.search});
+
+  @override
+  final String search;
+
+  @override
+  String toString() {
+    return 'VacanciesEvent.search(search: $search)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SearchVacanciesEvent &&
+            (identical(other.search, search) ||
+                const DeepCollectionEquality().equals(other.search, search)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(search);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SearchVacanciesEventCopyWith<_SearchVacanciesEvent> get copyWith =>
+      __$SearchVacanciesEventCopyWithImpl<_SearchVacanciesEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(String search) search,
+    required TResult Function(bool isExtension) selectedView,
+    required TResult Function(int id) toggle,
+    required TResult Function(int id) onTap,
+    required TResult Function(int id) sendFeedback,
+  }) {
+    return search(this.search);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(String search)? search,
+    TResult Function(bool isExtension)? selectedView,
+    TResult Function(int id)? toggle,
+    TResult Function(int id)? onTap,
+    TResult Function(int id)? sendFeedback,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this.search);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialVacanciesEvent value) initial,
+    required TResult Function(_RefreshVacanciesEvent value) refresh,
+    required TResult Function(_SearchVacanciesEvent value) search,
+    required TResult Function(_SelectedViewVacanciesEvent value) selectedView,
+    required TResult Function(_ToggleVacanciesEvent value) toggle,
+    required TResult Function(_OnTapVacanciesEvent value) onTap,
+    required TResult Function(_SendFeedbackVacanciesEvent value) sendFeedback,
+  }) {
+    return search(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialVacanciesEvent value)? initial,
+    TResult Function(_RefreshVacanciesEvent value)? refresh,
+    TResult Function(_SearchVacanciesEvent value)? search,
+    TResult Function(_SelectedViewVacanciesEvent value)? selectedView,
+    TResult Function(_ToggleVacanciesEvent value)? toggle,
+    TResult Function(_OnTapVacanciesEvent value)? onTap,
+    TResult Function(_SendFeedbackVacanciesEvent value)? sendFeedback,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchVacanciesEvent implements VacanciesEvent {
+  const factory _SearchVacanciesEvent({required String search}) =
+      _$_SearchVacanciesEvent;
+
+  String get search => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$SearchVacanciesEventCopyWith<_SearchVacanciesEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -261,9 +545,12 @@ class _$_SelectedViewVacanciesEvent implements _SelectedViewVacanciesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(String search) search,
     required TResult Function(bool isExtension) selectedView,
-    required TResult Function(String search) searchVacancies,
-    required TResult Function(int id) toggleVacancies,
+    required TResult Function(int id) toggle,
+    required TResult Function(int id) onTap,
+    required TResult Function(int id) sendFeedback,
   }) {
     return selectedView(isExtension);
   }
@@ -272,9 +559,12 @@ class _$_SelectedViewVacanciesEvent implements _SelectedViewVacanciesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(String search)? search,
     TResult Function(bool isExtension)? selectedView,
-    TResult Function(String search)? searchVacancies,
-    TResult Function(int id)? toggleVacancies,
+    TResult Function(int id)? toggle,
+    TResult Function(int id)? onTap,
+    TResult Function(int id)? sendFeedback,
     required TResult orElse(),
   }) {
     if (selectedView != null) {
@@ -287,9 +577,12 @@ class _$_SelectedViewVacanciesEvent implements _SelectedViewVacanciesEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialVacanciesEvent value) initial,
+    required TResult Function(_RefreshVacanciesEvent value) refresh,
+    required TResult Function(_SearchVacanciesEvent value) search,
     required TResult Function(_SelectedViewVacanciesEvent value) selectedView,
-    required TResult Function(_SearchVacanciesEvent value) searchVacancies,
-    required TResult Function(_ToggleVacanciesEvent value) toggleVacancies,
+    required TResult Function(_ToggleVacanciesEvent value) toggle,
+    required TResult Function(_OnTapVacanciesEvent value) onTap,
+    required TResult Function(_SendFeedbackVacanciesEvent value) sendFeedback,
   }) {
     return selectedView(this);
   }
@@ -298,9 +591,12 @@ class _$_SelectedViewVacanciesEvent implements _SelectedViewVacanciesEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialVacanciesEvent value)? initial,
+    TResult Function(_RefreshVacanciesEvent value)? refresh,
+    TResult Function(_SearchVacanciesEvent value)? search,
     TResult Function(_SelectedViewVacanciesEvent value)? selectedView,
-    TResult Function(_SearchVacanciesEvent value)? searchVacancies,
-    TResult Function(_ToggleVacanciesEvent value)? toggleVacancies,
+    TResult Function(_ToggleVacanciesEvent value)? toggle,
+    TResult Function(_OnTapVacanciesEvent value)? onTap,
+    TResult Function(_SendFeedbackVacanciesEvent value)? sendFeedback,
     required TResult orElse(),
   }) {
     if (selectedView != null) {
@@ -318,132 +614,6 @@ abstract class _SelectedViewVacanciesEvent implements VacanciesEvent {
   @JsonKey(ignore: true)
   _$SelectedViewVacanciesEventCopyWith<_SelectedViewVacanciesEvent>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$SearchVacanciesEventCopyWith<$Res> {
-  factory _$SearchVacanciesEventCopyWith(_SearchVacanciesEvent value,
-          $Res Function(_SearchVacanciesEvent) then) =
-      __$SearchVacanciesEventCopyWithImpl<$Res>;
-  $Res call({String search});
-}
-
-/// @nodoc
-class __$SearchVacanciesEventCopyWithImpl<$Res>
-    extends _$VacanciesEventCopyWithImpl<$Res>
-    implements _$SearchVacanciesEventCopyWith<$Res> {
-  __$SearchVacanciesEventCopyWithImpl(
-      _SearchVacanciesEvent _value, $Res Function(_SearchVacanciesEvent) _then)
-      : super(_value, (v) => _then(v as _SearchVacanciesEvent));
-
-  @override
-  _SearchVacanciesEvent get _value => super._value as _SearchVacanciesEvent;
-
-  @override
-  $Res call({
-    Object? search = freezed,
-  }) {
-    return _then(_SearchVacanciesEvent(
-      search: search == freezed
-          ? _value.search
-          : search // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_SearchVacanciesEvent implements _SearchVacanciesEvent {
-  const _$_SearchVacanciesEvent({required this.search});
-
-  @override
-  final String search;
-
-  @override
-  String toString() {
-    return 'VacanciesEvent.searchVacancies(search: $search)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _SearchVacanciesEvent &&
-            (identical(other.search, search) ||
-                const DeepCollectionEquality().equals(other.search, search)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(search);
-
-  @JsonKey(ignore: true)
-  @override
-  _$SearchVacanciesEventCopyWith<_SearchVacanciesEvent> get copyWith =>
-      __$SearchVacanciesEventCopyWithImpl<_SearchVacanciesEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(bool isExtension) selectedView,
-    required TResult Function(String search) searchVacancies,
-    required TResult Function(int id) toggleVacancies,
-  }) {
-    return searchVacancies(search);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(bool isExtension)? selectedView,
-    TResult Function(String search)? searchVacancies,
-    TResult Function(int id)? toggleVacancies,
-    required TResult orElse(),
-  }) {
-    if (searchVacancies != null) {
-      return searchVacancies(search);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_InitialVacanciesEvent value) initial,
-    required TResult Function(_SelectedViewVacanciesEvent value) selectedView,
-    required TResult Function(_SearchVacanciesEvent value) searchVacancies,
-    required TResult Function(_ToggleVacanciesEvent value) toggleVacancies,
-  }) {
-    return searchVacancies(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialVacanciesEvent value)? initial,
-    TResult Function(_SelectedViewVacanciesEvent value)? selectedView,
-    TResult Function(_SearchVacanciesEvent value)? searchVacancies,
-    TResult Function(_ToggleVacanciesEvent value)? toggleVacancies,
-    required TResult orElse(),
-  }) {
-    if (searchVacancies != null) {
-      return searchVacancies(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SearchVacanciesEvent implements VacanciesEvent {
-  const factory _SearchVacanciesEvent({required String search}) =
-      _$_SearchVacanciesEvent;
-
-  String get search => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$SearchVacanciesEventCopyWith<_SearchVacanciesEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -488,7 +658,7 @@ class _$_ToggleVacanciesEvent implements _ToggleVacanciesEvent {
 
   @override
   String toString() {
-    return 'VacanciesEvent.toggleVacancies(id: $id)';
+    return 'VacanciesEvent.toggle(id: $id)';
   }
 
   @override
@@ -513,24 +683,30 @@ class _$_ToggleVacanciesEvent implements _ToggleVacanciesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(String search) search,
     required TResult Function(bool isExtension) selectedView,
-    required TResult Function(String search) searchVacancies,
-    required TResult Function(int id) toggleVacancies,
+    required TResult Function(int id) toggle,
+    required TResult Function(int id) onTap,
+    required TResult Function(int id) sendFeedback,
   }) {
-    return toggleVacancies(id);
+    return toggle(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(String search)? search,
     TResult Function(bool isExtension)? selectedView,
-    TResult Function(String search)? searchVacancies,
-    TResult Function(int id)? toggleVacancies,
+    TResult Function(int id)? toggle,
+    TResult Function(int id)? onTap,
+    TResult Function(int id)? sendFeedback,
     required TResult orElse(),
   }) {
-    if (toggleVacancies != null) {
-      return toggleVacancies(id);
+    if (toggle != null) {
+      return toggle(id);
     }
     return orElse();
   }
@@ -539,24 +715,30 @@ class _$_ToggleVacanciesEvent implements _ToggleVacanciesEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialVacanciesEvent value) initial,
+    required TResult Function(_RefreshVacanciesEvent value) refresh,
+    required TResult Function(_SearchVacanciesEvent value) search,
     required TResult Function(_SelectedViewVacanciesEvent value) selectedView,
-    required TResult Function(_SearchVacanciesEvent value) searchVacancies,
-    required TResult Function(_ToggleVacanciesEvent value) toggleVacancies,
+    required TResult Function(_ToggleVacanciesEvent value) toggle,
+    required TResult Function(_OnTapVacanciesEvent value) onTap,
+    required TResult Function(_SendFeedbackVacanciesEvent value) sendFeedback,
   }) {
-    return toggleVacancies(this);
+    return toggle(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialVacanciesEvent value)? initial,
+    TResult Function(_RefreshVacanciesEvent value)? refresh,
+    TResult Function(_SearchVacanciesEvent value)? search,
     TResult Function(_SelectedViewVacanciesEvent value)? selectedView,
-    TResult Function(_SearchVacanciesEvent value)? searchVacancies,
-    TResult Function(_ToggleVacanciesEvent value)? toggleVacancies,
+    TResult Function(_ToggleVacanciesEvent value)? toggle,
+    TResult Function(_OnTapVacanciesEvent value)? onTap,
+    TResult Function(_SendFeedbackVacanciesEvent value)? sendFeedback,
     required TResult orElse(),
   }) {
-    if (toggleVacancies != null) {
-      return toggleVacancies(this);
+    if (toggle != null) {
+      return toggle(this);
     }
     return orElse();
   }
@@ -573,6 +755,284 @@ abstract class _ToggleVacanciesEvent implements VacanciesEvent {
 }
 
 /// @nodoc
+abstract class _$OnTapVacanciesEventCopyWith<$Res> {
+  factory _$OnTapVacanciesEventCopyWith(_OnTapVacanciesEvent value,
+          $Res Function(_OnTapVacanciesEvent) then) =
+      __$OnTapVacanciesEventCopyWithImpl<$Res>;
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$OnTapVacanciesEventCopyWithImpl<$Res>
+    extends _$VacanciesEventCopyWithImpl<$Res>
+    implements _$OnTapVacanciesEventCopyWith<$Res> {
+  __$OnTapVacanciesEventCopyWithImpl(
+      _OnTapVacanciesEvent _value, $Res Function(_OnTapVacanciesEvent) _then)
+      : super(_value, (v) => _then(v as _OnTapVacanciesEvent));
+
+  @override
+  _OnTapVacanciesEvent get _value => super._value as _OnTapVacanciesEvent;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_OnTapVacanciesEvent(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnTapVacanciesEvent implements _OnTapVacanciesEvent {
+  const _$_OnTapVacanciesEvent({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'VacanciesEvent.onTap(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _OnTapVacanciesEvent &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnTapVacanciesEventCopyWith<_OnTapVacanciesEvent> get copyWith =>
+      __$OnTapVacanciesEventCopyWithImpl<_OnTapVacanciesEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(String search) search,
+    required TResult Function(bool isExtension) selectedView,
+    required TResult Function(int id) toggle,
+    required TResult Function(int id) onTap,
+    required TResult Function(int id) sendFeedback,
+  }) {
+    return onTap(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(String search)? search,
+    TResult Function(bool isExtension)? selectedView,
+    TResult Function(int id)? toggle,
+    TResult Function(int id)? onTap,
+    TResult Function(int id)? sendFeedback,
+    required TResult orElse(),
+  }) {
+    if (onTap != null) {
+      return onTap(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialVacanciesEvent value) initial,
+    required TResult Function(_RefreshVacanciesEvent value) refresh,
+    required TResult Function(_SearchVacanciesEvent value) search,
+    required TResult Function(_SelectedViewVacanciesEvent value) selectedView,
+    required TResult Function(_ToggleVacanciesEvent value) toggle,
+    required TResult Function(_OnTapVacanciesEvent value) onTap,
+    required TResult Function(_SendFeedbackVacanciesEvent value) sendFeedback,
+  }) {
+    return onTap(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialVacanciesEvent value)? initial,
+    TResult Function(_RefreshVacanciesEvent value)? refresh,
+    TResult Function(_SearchVacanciesEvent value)? search,
+    TResult Function(_SelectedViewVacanciesEvent value)? selectedView,
+    TResult Function(_ToggleVacanciesEvent value)? toggle,
+    TResult Function(_OnTapVacanciesEvent value)? onTap,
+    TResult Function(_SendFeedbackVacanciesEvent value)? sendFeedback,
+    required TResult orElse(),
+  }) {
+    if (onTap != null) {
+      return onTap(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnTapVacanciesEvent implements VacanciesEvent {
+  const factory _OnTapVacanciesEvent({required int id}) =
+      _$_OnTapVacanciesEvent;
+
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnTapVacanciesEventCopyWith<_OnTapVacanciesEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$SendFeedbackVacanciesEventCopyWith<$Res> {
+  factory _$SendFeedbackVacanciesEventCopyWith(
+          _SendFeedbackVacanciesEvent value,
+          $Res Function(_SendFeedbackVacanciesEvent) then) =
+      __$SendFeedbackVacanciesEventCopyWithImpl<$Res>;
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$SendFeedbackVacanciesEventCopyWithImpl<$Res>
+    extends _$VacanciesEventCopyWithImpl<$Res>
+    implements _$SendFeedbackVacanciesEventCopyWith<$Res> {
+  __$SendFeedbackVacanciesEventCopyWithImpl(_SendFeedbackVacanciesEvent _value,
+      $Res Function(_SendFeedbackVacanciesEvent) _then)
+      : super(_value, (v) => _then(v as _SendFeedbackVacanciesEvent));
+
+  @override
+  _SendFeedbackVacanciesEvent get _value =>
+      super._value as _SendFeedbackVacanciesEvent;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_SendFeedbackVacanciesEvent(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SendFeedbackVacanciesEvent implements _SendFeedbackVacanciesEvent {
+  const _$_SendFeedbackVacanciesEvent({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'VacanciesEvent.sendFeedback(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SendFeedbackVacanciesEvent &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SendFeedbackVacanciesEventCopyWith<_SendFeedbackVacanciesEvent>
+      get copyWith => __$SendFeedbackVacanciesEventCopyWithImpl<
+          _SendFeedbackVacanciesEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(String search) search,
+    required TResult Function(bool isExtension) selectedView,
+    required TResult Function(int id) toggle,
+    required TResult Function(int id) onTap,
+    required TResult Function(int id) sendFeedback,
+  }) {
+    return sendFeedback(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(String search)? search,
+    TResult Function(bool isExtension)? selectedView,
+    TResult Function(int id)? toggle,
+    TResult Function(int id)? onTap,
+    TResult Function(int id)? sendFeedback,
+    required TResult orElse(),
+  }) {
+    if (sendFeedback != null) {
+      return sendFeedback(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialVacanciesEvent value) initial,
+    required TResult Function(_RefreshVacanciesEvent value) refresh,
+    required TResult Function(_SearchVacanciesEvent value) search,
+    required TResult Function(_SelectedViewVacanciesEvent value) selectedView,
+    required TResult Function(_ToggleVacanciesEvent value) toggle,
+    required TResult Function(_OnTapVacanciesEvent value) onTap,
+    required TResult Function(_SendFeedbackVacanciesEvent value) sendFeedback,
+  }) {
+    return sendFeedback(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialVacanciesEvent value)? initial,
+    TResult Function(_RefreshVacanciesEvent value)? refresh,
+    TResult Function(_SearchVacanciesEvent value)? search,
+    TResult Function(_SelectedViewVacanciesEvent value)? selectedView,
+    TResult Function(_ToggleVacanciesEvent value)? toggle,
+    TResult Function(_OnTapVacanciesEvent value)? onTap,
+    TResult Function(_SendFeedbackVacanciesEvent value)? sendFeedback,
+    required TResult orElse(),
+  }) {
+    if (sendFeedback != null) {
+      return sendFeedback(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendFeedbackVacanciesEvent implements VacanciesEvent {
+  const factory _SendFeedbackVacanciesEvent({required int id}) =
+      _$_SendFeedbackVacanciesEvent;
+
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$SendFeedbackVacanciesEventCopyWith<_SendFeedbackVacanciesEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$VacanciesStateTearOff {
   const _$VacanciesStateTearOff();
 
@@ -580,11 +1040,26 @@ class _$VacanciesStateTearOff {
     return const InitialVacanciesState();
   }
 
+  ScreensVacanciesState screens({int? id}) {
+    return ScreensVacanciesState(
+      id: id,
+    );
+  }
+
+  SuccessFeedbackVacanciesState successFeedback() {
+    return const SuccessFeedbackVacanciesState();
+  }
+
   LoadedVacanciesState loadedState(
-      {required bool isExtension, required List<FavoriteVacancy> vacancies}) {
+      {required bool isExtension,
+      required List<FavoriteVacancy> vacancies,
+      required List<FavoriteVacancy> favoriteVacancies,
+      required Resume resume}) {
     return LoadedVacanciesState(
       isExtension: isExtension,
       vacancies: vacancies,
+      favoriteVacancies: favoriteVacancies,
+      resume: resume,
     );
   }
 }
@@ -597,14 +1072,20 @@ mixin _$VacanciesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isExtension, List<FavoriteVacancy> vacancies)
+    required TResult Function(int? id) screens,
+    required TResult Function() successFeedback,
+    required TResult Function(bool isExtension, List<FavoriteVacancy> vacancies,
+            List<FavoriteVacancy> favoriteVacancies, Resume resume)
         loadedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isExtension, List<FavoriteVacancy> vacancies)?
+    TResult Function(int? id)? screens,
+    TResult Function()? successFeedback,
+    TResult Function(bool isExtension, List<FavoriteVacancy> vacancies,
+            List<FavoriteVacancy> favoriteVacancies, Resume resume)?
         loadedState,
     required TResult orElse(),
   }) =>
@@ -612,12 +1093,17 @@ mixin _$VacanciesState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialVacanciesState value) initial,
+    required TResult Function(ScreensVacanciesState value) screens,
+    required TResult Function(SuccessFeedbackVacanciesState value)
+        successFeedback,
     required TResult Function(LoadedVacanciesState value) loadedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialVacanciesState value)? initial,
+    TResult Function(ScreensVacanciesState value)? screens,
+    TResult Function(SuccessFeedbackVacanciesState value)? successFeedback,
     TResult Function(LoadedVacanciesState value)? loadedState,
     required TResult orElse(),
   }) =>
@@ -682,7 +1168,10 @@ class _$InitialVacanciesState implements InitialVacanciesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isExtension, List<FavoriteVacancy> vacancies)
+    required TResult Function(int? id) screens,
+    required TResult Function() successFeedback,
+    required TResult Function(bool isExtension, List<FavoriteVacancy> vacancies,
+            List<FavoriteVacancy> favoriteVacancies, Resume resume)
         loadedState,
   }) {
     return initial();
@@ -692,7 +1181,10 @@ class _$InitialVacanciesState implements InitialVacanciesState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isExtension, List<FavoriteVacancy> vacancies)?
+    TResult Function(int? id)? screens,
+    TResult Function()? successFeedback,
+    TResult Function(bool isExtension, List<FavoriteVacancy> vacancies,
+            List<FavoriteVacancy> favoriteVacancies, Resume resume)?
         loadedState,
     required TResult orElse(),
   }) {
@@ -706,6 +1198,9 @@ class _$InitialVacanciesState implements InitialVacanciesState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialVacanciesState value) initial,
+    required TResult Function(ScreensVacanciesState value) screens,
+    required TResult Function(SuccessFeedbackVacanciesState value)
+        successFeedback,
     required TResult Function(LoadedVacanciesState value) loadedState,
   }) {
     return initial(this);
@@ -715,6 +1210,8 @@ class _$InitialVacanciesState implements InitialVacanciesState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialVacanciesState value)? initial,
+    TResult Function(ScreensVacanciesState value)? screens,
+    TResult Function(SuccessFeedbackVacanciesState value)? successFeedback,
     TResult Function(LoadedVacanciesState value)? loadedState,
     required TResult orElse(),
   }) {
@@ -730,11 +1227,248 @@ abstract class InitialVacanciesState implements VacanciesState {
 }
 
 /// @nodoc
+abstract class $ScreensVacanciesStateCopyWith<$Res> {
+  factory $ScreensVacanciesStateCopyWith(ScreensVacanciesState value,
+          $Res Function(ScreensVacanciesState) then) =
+      _$ScreensVacanciesStateCopyWithImpl<$Res>;
+  $Res call({int? id});
+}
+
+/// @nodoc
+class _$ScreensVacanciesStateCopyWithImpl<$Res>
+    extends _$VacanciesStateCopyWithImpl<$Res>
+    implements $ScreensVacanciesStateCopyWith<$Res> {
+  _$ScreensVacanciesStateCopyWithImpl(
+      ScreensVacanciesState _value, $Res Function(ScreensVacanciesState) _then)
+      : super(_value, (v) => _then(v as ScreensVacanciesState));
+
+  @override
+  ScreensVacanciesState get _value => super._value as ScreensVacanciesState;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(ScreensVacanciesState(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ScreensVacanciesState implements ScreensVacanciesState {
+  const _$ScreensVacanciesState({this.id});
+
+  @override
+  final int? id;
+
+  @override
+  String toString() {
+    return 'VacanciesState.screens(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ScreensVacanciesState &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  $ScreensVacanciesStateCopyWith<ScreensVacanciesState> get copyWith =>
+      _$ScreensVacanciesStateCopyWithImpl<ScreensVacanciesState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int? id) screens,
+    required TResult Function() successFeedback,
+    required TResult Function(bool isExtension, List<FavoriteVacancy> vacancies,
+            List<FavoriteVacancy> favoriteVacancies, Resume resume)
+        loadedState,
+  }) {
+    return screens(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int? id)? screens,
+    TResult Function()? successFeedback,
+    TResult Function(bool isExtension, List<FavoriteVacancy> vacancies,
+            List<FavoriteVacancy> favoriteVacancies, Resume resume)?
+        loadedState,
+    required TResult orElse(),
+  }) {
+    if (screens != null) {
+      return screens(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialVacanciesState value) initial,
+    required TResult Function(ScreensVacanciesState value) screens,
+    required TResult Function(SuccessFeedbackVacanciesState value)
+        successFeedback,
+    required TResult Function(LoadedVacanciesState value) loadedState,
+  }) {
+    return screens(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialVacanciesState value)? initial,
+    TResult Function(ScreensVacanciesState value)? screens,
+    TResult Function(SuccessFeedbackVacanciesState value)? successFeedback,
+    TResult Function(LoadedVacanciesState value)? loadedState,
+    required TResult orElse(),
+  }) {
+    if (screens != null) {
+      return screens(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ScreensVacanciesState implements VacanciesState {
+  const factory ScreensVacanciesState({int? id}) = _$ScreensVacanciesState;
+
+  int? get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ScreensVacanciesStateCopyWith<ScreensVacanciesState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SuccessFeedbackVacanciesStateCopyWith<$Res> {
+  factory $SuccessFeedbackVacanciesStateCopyWith(
+          SuccessFeedbackVacanciesState value,
+          $Res Function(SuccessFeedbackVacanciesState) then) =
+      _$SuccessFeedbackVacanciesStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$SuccessFeedbackVacanciesStateCopyWithImpl<$Res>
+    extends _$VacanciesStateCopyWithImpl<$Res>
+    implements $SuccessFeedbackVacanciesStateCopyWith<$Res> {
+  _$SuccessFeedbackVacanciesStateCopyWithImpl(
+      SuccessFeedbackVacanciesState _value,
+      $Res Function(SuccessFeedbackVacanciesState) _then)
+      : super(_value, (v) => _then(v as SuccessFeedbackVacanciesState));
+
+  @override
+  SuccessFeedbackVacanciesState get _value =>
+      super._value as SuccessFeedbackVacanciesState;
+}
+
+/// @nodoc
+
+class _$SuccessFeedbackVacanciesState implements SuccessFeedbackVacanciesState {
+  const _$SuccessFeedbackVacanciesState();
+
+  @override
+  String toString() {
+    return 'VacanciesState.successFeedback()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is SuccessFeedbackVacanciesState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int? id) screens,
+    required TResult Function() successFeedback,
+    required TResult Function(bool isExtension, List<FavoriteVacancy> vacancies,
+            List<FavoriteVacancy> favoriteVacancies, Resume resume)
+        loadedState,
+  }) {
+    return successFeedback();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int? id)? screens,
+    TResult Function()? successFeedback,
+    TResult Function(bool isExtension, List<FavoriteVacancy> vacancies,
+            List<FavoriteVacancy> favoriteVacancies, Resume resume)?
+        loadedState,
+    required TResult orElse(),
+  }) {
+    if (successFeedback != null) {
+      return successFeedback();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialVacanciesState value) initial,
+    required TResult Function(ScreensVacanciesState value) screens,
+    required TResult Function(SuccessFeedbackVacanciesState value)
+        successFeedback,
+    required TResult Function(LoadedVacanciesState value) loadedState,
+  }) {
+    return successFeedback(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialVacanciesState value)? initial,
+    TResult Function(ScreensVacanciesState value)? screens,
+    TResult Function(SuccessFeedbackVacanciesState value)? successFeedback,
+    TResult Function(LoadedVacanciesState value)? loadedState,
+    required TResult orElse(),
+  }) {
+    if (successFeedback != null) {
+      return successFeedback(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SuccessFeedbackVacanciesState implements VacanciesState {
+  const factory SuccessFeedbackVacanciesState() =
+      _$SuccessFeedbackVacanciesState;
+}
+
+/// @nodoc
 abstract class $LoadedVacanciesStateCopyWith<$Res> {
   factory $LoadedVacanciesStateCopyWith(LoadedVacanciesState value,
           $Res Function(LoadedVacanciesState) then) =
       _$LoadedVacanciesStateCopyWithImpl<$Res>;
-  $Res call({bool isExtension, List<FavoriteVacancy> vacancies});
+  $Res call(
+      {bool isExtension,
+      List<FavoriteVacancy> vacancies,
+      List<FavoriteVacancy> favoriteVacancies,
+      Resume resume});
 }
 
 /// @nodoc
@@ -752,6 +1486,8 @@ class _$LoadedVacanciesStateCopyWithImpl<$Res>
   $Res call({
     Object? isExtension = freezed,
     Object? vacancies = freezed,
+    Object? favoriteVacancies = freezed,
+    Object? resume = freezed,
   }) {
     return _then(LoadedVacanciesState(
       isExtension: isExtension == freezed
@@ -762,6 +1498,14 @@ class _$LoadedVacanciesStateCopyWithImpl<$Res>
           ? _value.vacancies
           : vacancies // ignore: cast_nullable_to_non_nullable
               as List<FavoriteVacancy>,
+      favoriteVacancies: favoriteVacancies == freezed
+          ? _value.favoriteVacancies
+          : favoriteVacancies // ignore: cast_nullable_to_non_nullable
+              as List<FavoriteVacancy>,
+      resume: resume == freezed
+          ? _value.resume
+          : resume // ignore: cast_nullable_to_non_nullable
+              as Resume,
     ));
   }
 }
@@ -770,16 +1514,23 @@ class _$LoadedVacanciesStateCopyWithImpl<$Res>
 
 class _$LoadedVacanciesState implements LoadedVacanciesState {
   const _$LoadedVacanciesState(
-      {required this.isExtension, required this.vacancies});
+      {required this.isExtension,
+      required this.vacancies,
+      required this.favoriteVacancies,
+      required this.resume});
 
   @override
   final bool isExtension;
   @override
   final List<FavoriteVacancy> vacancies;
+  @override
+  final List<FavoriteVacancy> favoriteVacancies;
+  @override
+  final Resume resume;
 
   @override
   String toString() {
-    return 'VacanciesState.loadedState(isExtension: $isExtension, vacancies: $vacancies)';
+    return 'VacanciesState.loadedState(isExtension: $isExtension, vacancies: $vacancies, favoriteVacancies: $favoriteVacancies, resume: $resume)';
   }
 
   @override
@@ -791,14 +1542,21 @@ class _$LoadedVacanciesState implements LoadedVacanciesState {
                     .equals(other.isExtension, isExtension)) &&
             (identical(other.vacancies, vacancies) ||
                 const DeepCollectionEquality()
-                    .equals(other.vacancies, vacancies)));
+                    .equals(other.vacancies, vacancies)) &&
+            (identical(other.favoriteVacancies, favoriteVacancies) ||
+                const DeepCollectionEquality()
+                    .equals(other.favoriteVacancies, favoriteVacancies)) &&
+            (identical(other.resume, resume) ||
+                const DeepCollectionEquality().equals(other.resume, resume)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(isExtension) ^
-      const DeepCollectionEquality().hash(vacancies);
+      const DeepCollectionEquality().hash(vacancies) ^
+      const DeepCollectionEquality().hash(favoriteVacancies) ^
+      const DeepCollectionEquality().hash(resume);
 
   @JsonKey(ignore: true)
   @override
@@ -810,22 +1568,28 @@ class _$LoadedVacanciesState implements LoadedVacanciesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool isExtension, List<FavoriteVacancy> vacancies)
+    required TResult Function(int? id) screens,
+    required TResult Function() successFeedback,
+    required TResult Function(bool isExtension, List<FavoriteVacancy> vacancies,
+            List<FavoriteVacancy> favoriteVacancies, Resume resume)
         loadedState,
   }) {
-    return loadedState(isExtension, vacancies);
+    return loadedState(isExtension, vacancies, favoriteVacancies, resume);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool isExtension, List<FavoriteVacancy> vacancies)?
+    TResult Function(int? id)? screens,
+    TResult Function()? successFeedback,
+    TResult Function(bool isExtension, List<FavoriteVacancy> vacancies,
+            List<FavoriteVacancy> favoriteVacancies, Resume resume)?
         loadedState,
     required TResult orElse(),
   }) {
     if (loadedState != null) {
-      return loadedState(isExtension, vacancies);
+      return loadedState(isExtension, vacancies, favoriteVacancies, resume);
     }
     return orElse();
   }
@@ -834,6 +1598,9 @@ class _$LoadedVacanciesState implements LoadedVacanciesState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialVacanciesState value) initial,
+    required TResult Function(ScreensVacanciesState value) screens,
+    required TResult Function(SuccessFeedbackVacanciesState value)
+        successFeedback,
     required TResult Function(LoadedVacanciesState value) loadedState,
   }) {
     return loadedState(this);
@@ -843,6 +1610,8 @@ class _$LoadedVacanciesState implements LoadedVacanciesState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialVacanciesState value)? initial,
+    TResult Function(ScreensVacanciesState value)? screens,
+    TResult Function(SuccessFeedbackVacanciesState value)? successFeedback,
     TResult Function(LoadedVacanciesState value)? loadedState,
     required TResult orElse(),
   }) {
@@ -856,10 +1625,15 @@ class _$LoadedVacanciesState implements LoadedVacanciesState {
 abstract class LoadedVacanciesState implements VacanciesState {
   const factory LoadedVacanciesState(
       {required bool isExtension,
-      required List<FavoriteVacancy> vacancies}) = _$LoadedVacanciesState;
+      required List<FavoriteVacancy> vacancies,
+      required List<FavoriteVacancy> favoriteVacancies,
+      required Resume resume}) = _$LoadedVacanciesState;
 
   bool get isExtension => throw _privateConstructorUsedError;
   List<FavoriteVacancy> get vacancies => throw _privateConstructorUsedError;
+  List<FavoriteVacancy> get favoriteVacancies =>
+      throw _privateConstructorUsedError;
+  Resume get resume => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedVacanciesStateCopyWith<LoadedVacanciesState> get copyWith =>
       throw _privateConstructorUsedError;

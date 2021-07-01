@@ -32,6 +32,7 @@ class AppIcons {
   static const pdf = "assets/svg_icons/pdf.svg";
   static const arrows = "assets/svg_icons/arrows.svg";
   static const view = "assets/svg_icons/view.svg";
+  static const no_visible = "assets/svg_icons/no_visible.svg";
   static const upload_file = "assets/svg_icons/upload_file.svg";
   static const empty_circle = "assets/svg_icons/empty_circle.svg";
   static const selected_circle = "assets/svg_icons/selected_circle.svg";
@@ -41,4 +42,5 @@ class AppIcons {
   static const trash = "assets/svg_icons/trash.svg";
   static const edit = "assets/svg_icons/edit.svg";
   static const indicator = "assets/svg_icons/indicator.svg";
+  static const photo = "assets/svg_icons/photo.svg";
 }

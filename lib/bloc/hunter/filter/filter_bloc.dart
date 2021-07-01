@@ -4,7 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sap_work/models/skill_state.dart';
+import 'package:sap_work/models/stage.dart';
+import 'package:sap_work/repository/hunter/hunter_repository.dart';
 import 'package:sap_work/resources/lists.dart';
 import 'package:sap_work/extensions/list_extension.dart';
 import 'package:sap_work/extensions/string_extension.dart';
@@ -12,8 +13,10 @@ import 'package:sap_work/extensions/string_extension.dart';
 part 'filter_bloc.freezed.dart';
 
 class FilterBloc extends Bloc<FilterEvent, FilterState> {
-  FilterBloc() : super(const FilterState.initial());
-  List<SkillState> _checkBoxes = [];
+  final HunterRepositoryBase _repository;
+
+  FilterBloc(this._repository) : super(const FilterState.initial());
+  List<StageList> _checkBoxes = [];
   List<String> _countries = [];
   List<String> _professions = [];
   String _country = 'Город';
@@ -30,6 +33,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       onTap: _onTapEvent,
       search: _searchEvent,
       onTapType: _onTapTypeEvent,
+      save: _saveEvent,
     );
   }
 
@@ -94,6 +98,23 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     );
   }
 
+  Stream<FilterState> _saveEvent(_SaveFilterEvent event) async* {
+    try {
+      await _repository.getVacancies(
+        city: "Краснодар",
+        type: _employmentType!,
+      );
+      yield const FilterState.savedState();
+      yield FilterState.filter(
+        checkBoxes: _checkBoxes,
+        countries: _countries,
+        professions: _professions,
+        country: _country,
+        profession: _profession,
+        employmentType: _employmentType,
+      );
+    } catch (_) {}
+  }
 }
 
 @freezed
@@ -117,14 +138,17 @@ abstract class FilterEvent with _$FilterEvent {
     required final String search,
   }) = _SearchFilterEvent;
 
+  const factory FilterEvent.save() = _SaveFilterEvent;
 }
 
 @freezed
 abstract class FilterState with _$FilterState {
   const factory FilterState.initial() = InitialFilterState;
 
+  const factory FilterState.savedState() = SavedStateFilterState;
+
   const factory FilterState.filter({
-    required final List<SkillState> checkBoxes,
+    required final List<StageList> checkBoxes,
     required final List<String> countries,
     required final List<String> professions,
     required final String country,

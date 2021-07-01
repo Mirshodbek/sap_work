@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:sap_work/bloc/sign_in/employer_role/employer_sign_in_bloc.dart';
-import 'package:sap_work/data_provider/auth_provider.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
 
 class EmployerSignInScreen extends StatelessWidget {
@@ -46,8 +44,16 @@ class EmployerSignInScreen extends StatelessWidget {
                       phone: Phone.dirty(Utils.getTelephone(value)))),
               keyboardType: TextInputType.phone,
               style: AppTextTheme.smallTextWhite,
-              decoration: TextFieldDecoration.decoration("Телефон")
-                  .copyWith(prefixText: "+7 "),
+              decoration: TextFieldDecoration.decoration("Телефон").copyWith(
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 9.0),
+                  child: Text(
+                    "+7 ",
+                    textAlign: TextAlign.center,
+                    style: AppTextTheme.smallTextWhite,
+                  ),
+                ),
+              ),
             ),
             BlocConsumer<EmployerSignInBloc, EmployerSignInState>(
               listener: (context, state) {
@@ -92,8 +98,7 @@ class EmployerSignInScreen extends StatelessWidget {
                               ? null
                               : () => context.read<EmployerSignInBloc>().add(
                                   EmployerSignInEvent.telephoneSubmitted(
-                                      phone: Phone.dirty(
-                                          _state.phone.value))),
+                                      phone: Phone.dirty(_state.phone.value))),
                           child: _state.statusA.isSubmissionInProgress
                               ? CircularProgressIndicator(
                                   valueColor: AlwaysStoppedAnimation<Color>(
@@ -122,7 +127,8 @@ class EmployerSignInScreen extends StatelessWidget {
 
 class _CodeState extends StatefulWidget {
   final CodeEmployerSignInState _state;
-  const _CodeState(this._state,{Key? key}) : super(key: key);
+
+  const _CodeState(this._state, {Key? key}) : super(key: key);
 
   @override
   __CodeStateState createState() => __CodeStateState();
@@ -133,7 +139,7 @@ class __CodeStateState extends State<_CodeState> {
 
   @override
   void dispose() {
-   _code!.dispose();
+    _code!.dispose();
     super.dispose();
   }
 
@@ -149,8 +155,7 @@ class __CodeStateState extends State<_CodeState> {
           controller: _code,
           obscureText: true,
           onChanged: (value) {},
-          decoration:
-          TextFieldDecoration.decoration("Код из смс"),
+          decoration: TextFieldDecoration.decoration("Код из смс"),
           style: AppTextTheme.smallTextWhite,
           keyboardType: TextInputType.number,
         ),
@@ -173,20 +178,18 @@ class __CodeStateState extends State<_CodeState> {
               child: WhiteButtonWidget(
                 child: widget._state.statusB.isSubmissionInProgress
                     ? CircularProgressIndicator(
-                  valueColor:
-                  AlwaysStoppedAnimation<Color>(
-                      AppColor.white),
-                )
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(AppColor.white),
+                      )
                     : Text(
-                  "Войти",
-                  style: AppTextTheme.smallTextWhite,
-                ),
+                        "Войти",
+                        style: AppTextTheme.smallTextWhite,
+                      ),
                 onPressed: widget._state.statusB.isSubmissionInProgress
                     ? () => null
-                    : () => context
-                    .read<EmployerSignInBloc>()
-                    .add(EmployerSignInEvent.codeSubmitted(
-                    code: Texts.dirty(_code!.text))),
+                    : () => context.read<EmployerSignInBloc>().add(
+                        EmployerSignInEvent.codeSubmitted(
+                            code: Texts.dirty(_code!.text))),
               ),
             ),
           ],
@@ -195,4 +198,3 @@ class __CodeStateState extends State<_CodeState> {
     );
   }
 }
-

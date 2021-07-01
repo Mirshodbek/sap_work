@@ -4,8 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sap_work/data_provider/auth_provider.dart';
-import 'package:sap_work/utils/validator.dart';
+import 'package:sap_work/screens/authorization/authorization.dart';
 
 part 'hunter_sign_up_bloc.freezed.dart';
 
@@ -54,8 +53,9 @@ class HunterSignUpBloc extends Bloc<HunterSignUpEvent, HunterSignUpState> {
               _state.copyWith(status: FormzStatus.submissionInProgress),
         );
         await Future.delayed(Duration(seconds: 2));
-       final result = await _provider.signUpHunter(event.phone.value, event.name.value);
-       print(result.statusCode);
+        final result =
+            await _provider.signUpHunter(event.phone.value, event.name.value);
+        print(result.statusCode);
         yield const HunterSignUpState.successSignUp();
       } catch (_) {
         yield state.maybeMap(

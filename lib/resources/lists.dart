@@ -1,4 +1,5 @@
-import 'package:sap_work/screens/employer/employer.dart';
+import 'package:sap_work/models/stage.dart';
+import 'package:sap_work/models/user/block/block.dart';
 
 class Lists {
   static final List<String> listProfessions = <String>[
@@ -20,59 +21,62 @@ class Lists {
     "Ростов-на-Дону",
   ];
 
-  static final List<String> typeList = <String>[
-    "Гибкий график",
-    "Вахтовый метод",
-    "Полный день",
-    "Удаленная работа",
-    "Сменный график",
+  static final List<String> scheduleList = <String>[
+    "Полная зантость",
+    "Частичная занятость",
+    "Проектная работа",
+    "Волонтерство",
+    "Стажировка",
   ];
 
-  static final List<SkillState> skillList = <SkillState>[
-    SkillState(title: "Любой"),
-    SkillState(title: "Без опыта"),
-    SkillState(title: "0-1 год"),
-    SkillState(title: "1-3 года"),
-    SkillState(title: "3-5 лет"),
-    SkillState(title: "Более 5 лет"),
+  static final List<StageList> skillList = <StageList>[
+    StageList(title: "Любой"),
+    StageList(title: "Без опыта"),
+    StageList(title: "0-1 год"),
+    StageList(title: "1-3 года"),
+    StageList(title: "3-5 лет"),
+    StageList(title: "Более 5 лет"),
+  ];
+
+  static final List<String> typeList = <String>[
+    "Полный день",
+    "Сменный график",
+    "Гибкий график",
+    "Удаленная работа",
+    "Вахтовый метод",
   ];
 
   static final List<String> linkList = <String>[
     "Telegram",
     "Сайт",
   ];
-
-  static final List<String> announceTitleList = <String>[
-    "Добавить вакансию",
-  ];
-  static final List<String> employmentTypes = <String>[
-    "Полный день",
-    "Частичная занятость",
-    "Удаленная работа",
-  ];
-
-  static final List<String> blocksResumeList = <String>[
-    "Опыт работы",
-    "Образование",
-    "Профессия",
-    "Дипломы и сертификаты",
-    "Свободный блок",
-    "Языки",
-    "Ключевые навыки",
-    "Видео-визитка",
-    "Рекомендательные письма",
-  ];
-
-  static final List<Pay> payList = <Pay>[
-    Pay(
-      "Мини",
-      "Тариф действует при покупке от 1 до 4 дней ",
-      1000,
-    ),
-    Pay(
-      "Мега",
-      "Тариф действует при покупке от 1 до 30 дней ",
-      8000,
-    ),
+  static final List<Block> blocksResumeList = <Block>[
+    Block(
+        "Опыт работы",
+        "Должность",
+        "Компания",
+        "с __.___ по __.___",
+        "Опишите ваш опыт работы в компании, какие задачи решали, какие результаты достугнуты.",
+        0,
+        100,
+        101,
+        102,
+        103),
+    Block("Образование", "с...по...", "position", "university", "hintText", 1,
+        104, 105, 106, 107),
+    Block("Профессия", "Профессия", "hintText", "hintText", "hintText", 2, 108,
+        109, 110, 111),
+    Block("Дипломы и сертификаты", "Дипломы и сертификаты", "hintText",
+        "hintText", "hintText", 3, 112, 113, 114, 115),
+    Block("Свободный блок", "Свободный блок", "hintText", "hintText",
+        "hintText", 4, 116, 117, 118, 119),
+    Block("Языки", "Языки", "hintText", "hintText", "hintText", 5, 120, 121,
+        122, 123),
+    Block("Ключевые навыки", "Ключевые навыки", "hintText", "hintText",
+        "hintText", 6, 124, 125, 126, 127),
+    Block("Видео-визитка", "Видео-визитка", "hintText", "hintText", "hintText",
+        7, 128, 129, 130, 131),
+    Block("Рекомендательные письма", "Рекомендательные письма", "hintText",
+        "hintText", "hintText", 8, 132, 133, 134, 135)
   ];
 }

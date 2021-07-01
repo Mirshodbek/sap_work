@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sap_work/bloc/hunter/filter/filter_bloc.dart';
-import 'package:sap_work/screens/widgets/red_button.dart';
-
 import '../../hunter.dart';
 
 class FilterScreen extends StatelessWidget {
@@ -48,7 +45,13 @@ class FilterScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: BlocBuilder<FilterBloc, FilterState>(
+      body: BlocConsumer<FilterBloc, FilterState>(
+        listener: (context,state){
+          if(state is SavedStateFilterState){
+            context.read<VacanciesBloc>().add(const VacanciesEvent.refresh());
+            Navigator.of(context).pop();
+          }
+        },
         builder: (context, state) {
           return state.maybeMap(
               orElse: () => Container(),
@@ -100,7 +103,7 @@ class FilterScreen extends StatelessWidget {
                       ),
                       RedButtonWidget(
                         "Сохранить фильтры",
-                        () {},
+                        () =>context.read<FilterBloc>().add(const FilterEvent.save()),
                         true,
                       ),
                     ],

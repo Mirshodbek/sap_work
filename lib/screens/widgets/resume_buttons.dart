@@ -6,40 +6,52 @@ class ResumeButtonsWidget extends StatelessWidget {
   final VoidCallback pdf;
   final VoidCallback share;
   final VoidCallback visible;
-  final VoidCallback add;
+  final int active;
+  final String titlePdf;
+  final String titleVisible;
 
   const ResumeButtonsWidget(
       {required this.pdf,
       required this.share,
       required this.visible,
-      required this.add,
+      required this.active,
+      required this.titlePdf,
+        required this.titleVisible,
       Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextButton.icon(
-                icon: SvgPicture.asset(AppIcons.share),
-                label: Text(
-                  "Поделиться",
-                  style: AppTextTheme.smallSizeText,
+              Expanded(
+                child: TextButton.icon(
+                  icon: SvgPicture.asset(AppIcons.share),
+                  label: Text(
+                    "Поделиться",
+                    style: AppTextTheme.smallSizeText,
+                  ),
+                  onPressed: share,
                 ),
-                onPressed: share,
               ),
-              TextButton.icon(
-                icon: SvgPicture.asset(AppIcons.pdf),
-                label: Text(
-                  "Резюме PDF",
-                  style: AppTextTheme.smallSizeText,
+              Expanded(
+                child: TextButton.icon(
+                  icon: SvgPicture.asset(AppIcons.pdf),
+                  label: Flexible(
+                    child: Text(
+                      titlePdf,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextTheme.smallSizeText,
+                    ),
+                  ),
+                  onPressed: pdf,
                 ),
-                onPressed: pdf,
               ),
             ],
           ),
@@ -47,39 +59,26 @@ class ResumeButtonsWidget extends StatelessWidget {
         const SizedBox(
           height: 5.0,
         ),
-        Row(
-          children: [
-            Expanded(
-              child: TextButton.icon(
-                style: ButtonStyle(
-                  side: MaterialStateProperty.all(const BorderSide()),
-                  shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
-                  alignment: Alignment.centerLeft,
-                  padding: MaterialStateProperty.all(
-                    const EdgeInsets.symmetric(horizontal: 22.0,vertical: 12.0),
-                  ),
-                ),
-                onPressed: visible,
-                icon: SvgPicture.asset(AppIcons.view),
-                label: Text(
-                  "Видимость резюме",
-                  style: AppTextTheme.smallSizeText,
-                ),
-              ),
+        TextButton.icon(
+          style: ButtonStyle(
+            side: MaterialStateProperty.all(const BorderSide()),
+            shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
+            alignment: Alignment.centerLeft,
+            padding: MaterialStateProperty.all(
+              const EdgeInsets.symmetric(
+                  horizontal: 22.0, vertical: 15.0),
             ),
-            TextButton(
-              style: ButtonStyle(
-                side: MaterialStateProperty.all(const BorderSide()),
-                shape: MaterialStateProperty.all(
-                    RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
-                padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical: 15.0)),
-                backgroundColor: MaterialStateProperty.all(AppColor.red),
-              ),
-              onPressed: add,
-              child: SvgPicture.asset(AppIcons.plus_white),
-            ),
-          ],
+          ),
+          onPressed: visible,
+          icon: SvgPicture.asset(
+            active == 1 ? AppIcons.view : AppIcons.no_visible,
+            color: Colors.black,
+          ),
+          label: Text(
+           titleVisible,
+            style: AppTextTheme.smallSizeText,
+          ),
         ),
       ],
     );

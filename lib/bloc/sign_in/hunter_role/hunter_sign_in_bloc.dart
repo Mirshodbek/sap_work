@@ -5,9 +5,8 @@ import 'dart:io';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
-import 'package:sap_work/data_provider/auth_provider.dart';
-import 'package:sap_work/utils/validator.dart';
+import 'package:http/http.dart' as http;
+import 'package:sap_work/screens/authorization/authorization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'hunter_sign_in_bloc.freezed.dart';
@@ -91,13 +90,18 @@ class HunterSignInBloc extends Bloc<HunterSignInEvent, HunterSignInState> {
           statusB: FormzStatus.submissionInProgress,
         );
         final result = await _signIn(event.code.value);
-        if (result.statusCode == 400)
+        if (result.statusCode == 200 || result.statusCode == 201) {
+          yield const HunterSignInState.successSignIn();
+          yield HunterSignInState.codeState(
+            code: event.code,
+            statusB: FormzStatus.submissionSuccess,
+          );
+        } else {
           yield HunterSignInState.codeState(
             code: event.code,
             statusB: FormzStatus.submissionFailure,
           );
-        else
-          yield const HunterSignInState.successSignIn();
+        }
       } on TimeoutException {} on SocketException {} on HttpException {} on FormatException {} catch (_) {
         yield HunterSignInState.codeState(
           code: event.code,
@@ -112,9 +116,8 @@ class HunterSignInBloc extends Bloc<HunterSignInEvent, HunterSignInState> {
     }
   }
 
-  Future<Response> _signIn(String code) async {
+  Future<http.Response> _signIn(String code) async {
     final result = await _provider.signInHunter(_phone, code);
-    print(result.statusCode);
     final token = jsonDecode(result.body)["token"];
     print(token);
     if (token != null) {

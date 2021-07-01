@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sap_work/bloc/splash/splash_bloc.dart';
-
 import '../authorization.dart';
 
 class SplashScreen extends StatelessWidget {

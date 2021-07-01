@@ -1,8 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sap_work/resources/icons.dart';
-import 'package:sap_work/theme/text_theme.dart';
+import 'package:sap_work/screens/hunter/hunter.dart';
 
 class BackWardWidget extends StatelessWidget {
   final VoidCallback onPressed;

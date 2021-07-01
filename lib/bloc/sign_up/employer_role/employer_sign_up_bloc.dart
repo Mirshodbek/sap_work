@@ -4,8 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sap_work/data_provider/auth_provider.dart';
-import 'package:sap_work/utils/validator.dart';
+import 'package:sap_work/screens/authorization/authorization.dart';
 
 part 'employer_sign_up_bloc.freezed.dart';
 

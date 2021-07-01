@@ -41,7 +41,25 @@ class Utils {
     return value;
   }
 
+  static String getMoney(String value) {
+    if (value.length > 4) {
+      if (value.length > 8) {
+        return value.substring(0, 3) +
+            value.substring(4, 7) +
+            value.substring(8, value.length);
+      }
+      return value.substring(0, 3) + value.substring(4);
+    }
+    if (value.length > 6) {
+      return value.substring(0, 3) + value.substring(4, 7);
+    }
+    return value;
+  }
+
   static final mask = MaskedInputFormatter(
     "(000) 000-00-00",
+  );
+  static final money = MaskedInputFormatter(
+    "000 000 000",
   );
 }

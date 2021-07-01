@@ -1,56 +1,50 @@
-import 'package:flutter/cupertino.dart';
-import 'package:sap_work/bloc/hunter/filter/filter_bloc.dart';
-import 'package:sap_work/bloc/hunter/vacancies/vacancies_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
-import 'package:sap_work/screens/employer/employer.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
-import 'package:sap_work/screens/hunter/screens/blocks_resume/screen.dart';
 
 class AppRouter {
-  final VacanciesBloc _vacanciesBloc;
+  final FilterBloc _filterBloc;
 
-  AppRouter(this._vacanciesBloc);
-
-  final _filterBloc = FilterBloc();
+  AppRouter(this._filterBloc);
 
   Route? onGeneratedRouter(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case SplashScreen.id:
-        return CupertinoPageRoute<String>(
+        return MaterialPageRoute<String>(
           builder: (_) => SplashScreen.create(),
         );
       case RoleScreen.id:
-        return CupertinoPageRoute<String>(
+        return MaterialPageRoute<String>(
           builder: (_) => RoleScreen(),
         );
-      case SearcherSignInScreen.id:
-        return CupertinoPageRoute<String>(
-          builder: (_) => SearcherSignInScreen.create(),
+      case HunterSignInScreen.id:
+        return MaterialPageRoute<String>(
+          builder: (_) => HunterSignInScreen.create(),
         );
       case EmployerSignInScreen.id:
-        return CupertinoPageRoute<String>(
+        return MaterialPageRoute<String>(
           builder: (_) => EmployerSignInScreen.create(),
         );
       case SignUpScreen.id:
-        return CupertinoPageRoute<String>(
+        return MaterialPageRoute<String>(
           builder: (_) => SignUpScreen.create(),
         );
       case NavigationBar.id:
-        return CupertinoPageRoute<String>(
+        return MaterialPageRoute<String>(
           settings: routeSettings,
-          builder: (_) => NavigationBar.create(_vacanciesBloc),
+          builder: (_) => NavigationBar(),
         );
       case FavoritesScreen.id:
-        return CupertinoPageRoute<String>(
+        return MaterialPageRoute<String>(
           settings: routeSettings,
-          builder: (_) => FavoritesScreen.create(_vacanciesBloc),
+          builder: (_) => FavoritesScreen(),
         );
       case FilterScreen.id:
-        return CupertinoPageRoute<String>(
+        return MaterialPageRoute<String>(
           builder: (_) => FilterScreen.create(_filterBloc),
         );
       case ExtraFilterScreen.idCountry:
-        return CupertinoPageRoute<String>(
+        return MaterialPageRoute<String>(
           builder: (_) => ExtraFilterScreen.create(
             _filterBloc,
             "Выберите город",
@@ -58,7 +52,7 @@ class AppRouter {
           ),
         );
       case ExtraFilterScreen.idProfession:
-        return CupertinoPageRoute<String>(
+        return MaterialPageRoute<String>(
           builder: (_) => ExtraFilterScreen.create(
             _filterBloc,
             "Выберите профессия",
@@ -66,34 +60,19 @@ class AppRouter {
           ),
         );
       case VacancyScreen.id:
-        return CupertinoPageRoute<String>(
+        return MaterialPageRoute<String>(
           settings: routeSettings,
-          builder: (_) => VacancyScreen.create(_vacanciesBloc),
+          builder: (_) => VacancyScreen(),
         );
-      case ChatScreenS.id:
-        return CupertinoPageRoute<String>(
+      case MessagesScreen.id:
+        return MaterialPageRoute<String>(
           settings: routeSettings,
-          builder: (_) => ChatScreenS(),
+          builder: (_) => MessagesScreen(),
         );
-      case BlocksResumeScreen.id:
-        return CupertinoPageRoute<String>(
+      case SettingsScreen.id:
+        return MaterialPageRoute<String>(
           settings: routeSettings,
-          builder: (_) => BlocksResumeScreen.create(),
-        );
-      case SettingsScreenS.id:
-        return CupertinoPageRoute<String>(
-          settings: routeSettings,
-          builder: (_) => SettingsScreenS(),
-        );
-      case PayScreen.id:
-        return CupertinoPageRoute<String>(
-          settings: routeSettings,
-          builder: (_) => PayScreen(),
-        );
-      case InviteScreen.id:
-        return CupertinoPageRoute<String>(
-          settings: routeSettings,
-          builder: (_) => InviteScreen(),
+          builder: (_) => SettingsScreen(),
         );
       default:
         return null;

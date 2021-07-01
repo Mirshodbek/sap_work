@@ -1,56 +1,41 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sap_work/bloc/company/core/core_profile_bloc.dart';
+import 'package:sap_work/bloc/company/profile/profile_company_bloc.dart';
+import 'package:sap_work/bloc/company/vacancies/vacancies_company_bloc.dart';
+import 'package:sap_work/bloc/company/vacancy/vacancy_company_bloc.dart';
+import 'package:sap_work/bloc/hunter/notifications/notifications_bloc.dart';
 import 'package:sap_work/bloc/hunter/profile/profile_bloc.dart';
 import 'package:sap_work/bloc/hunter/vacancies/vacancies_bloc.dart';
-import 'package:sap_work/bloc/hunter/notifications/notifications_bloc.dart';
 import 'package:sap_work/bloc/internet/internet_cubit.dart';
-
-import 'employer/employer.dart';
-import 'hunter/hunter.dart';
+import 'package:sap_work/bloc/navigation/navigation_cubit.dart';
+import 'package:sap_work/injection_container.dart';
+import 'package:sap_work/repository/hunter/hunter_repository.dart';
+import 'company/screens/feedback/screen.dart';
+import 'company/screens/profile/screen.dart';
+import 'company/screens/resume/screen.dart';
+import 'hunter/screens/notifications/screen.dart';
+import 'hunter/screens/profile/screen.dart';
+import 'hunter/screens/vacancies/screen.dart';
 
 class NavigationBar extends StatelessWidget {
   static const String id = '/navigation_bar';
 
   const NavigationBar({Key? key}) : super(key: key);
 
-  static Widget create(VacanciesBloc _bloc) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<NavigationCubit>(
-          create: (_) => NavigationCubit(),
-        ),
-        BlocProvider.value(
-          value: _bloc..add(VacanciesEvent.initial()),
-        ),
-        BlocProvider<NotificationsBloc>(
-          create: (context) =>
-              NotificationsBloc(context.read<HunterRepositoryBase>())
-                ..add(NotificationsEvent.initial()),
-        ),
-        BlocProvider<ProfileBloc>(
-          create: (context) => ProfileBloc(context.read<HunterRepositoryBase>(),
-              context.read<InternetCubit>()),
-        ),
-      ],
-      child: NavigationBar(),
-    );
-  }
-
-  Map<BottomNavItem, WidgetBuilder> get widgetBuildersSearcher {
+  Map<BottomNavItem, WidgetBuilder> get widgetBuildersHunter {
     return {
       BottomNavItem.announces: (context) => VacanciesScreen(),
-      BottomNavItem.messages: (context) => NotificationsScreen.create(context),
-      BottomNavItem.profile: (context) => ProfileScreen.create(context),
+      BottomNavItem.messages: (context) => NotificationsScreen(),
+      BottomNavItem.profile: (context) => ProfileScreen(),
     };
   }
 
   Map<BottomNavItem, WidgetBuilder> get widgetBuildersEmployer {
     return {
-      BottomNavItem.announces: (context) => AnnounceScreenE.create(context),
-      BottomNavItem.messages: (context) =>
-          MessagesEmployerScreen.create(context),
-      BottomNavItem.profile: (context) => ProfileEmployerScreen.create(context),
+      BottomNavItem.announces: (context) => ResumeScreenCompany.create(),
+      BottomNavItem.messages: (context) => FeedbackScreenCompany.create(),
+      BottomNavItem.profile: (context) => ProfileScreenCompany.create(),
     };
   }
 
@@ -60,8 +45,73 @@ class NavigationBar extends StatelessWidget {
     final role = arguments["role"];
     return BlocBuilder<NavigationCubit, BottomNavItem>(
       builder: (context, state) => role == "searcher"
-          ? widgetBuildersSearcher[state]!(context)
-          : widgetBuildersEmployer[state]!(context),
+          ? _widgetBuildersHunter(context, state)
+          : _widgetBuildersEmployer(context, state),
+    );
+  }
+
+  Widget _widgetBuildersEmployer(
+      BuildContext context, BottomNavItem itemState) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ProfileCompanyBloc>(
+            create: (_) => ProfileCompanyBloc(sl())
+              ..add(const ProfileCompanyEvent.getProfileData())),
+        BlocProvider<VacanciesCompanyBloc>(
+            create: (_) => VacanciesCompanyBloc(sl(), sl())
+              ..add(const VacanciesCompanyEvent.getVacancies())),
+        BlocProvider<VacancyCompanyBloc>(
+            create: (_) => VacancyCompanyBloc(sl(),sl())
+              ..add(const VacancyCompanyEvent.getVacancy())),
+        BlocProvider<CoreProfileBloc>(
+          create: (context) => CoreProfileBloc(sl(), sl(), sl())
+            ..add(const CoreProfileEvent.initial()),
+        ),
+      ],
+      child: widgetBuildersEmployer[itemState]!(context),
+    );
+  }
+
+  Widget _widgetBuildersHunter(BuildContext context, BottomNavItem itemState) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<VacanciesBloc>(
+            create: (_) => VacanciesBloc(
+                  context.read<HunterRepositoryBase>(),
+                )..add(const VacanciesEvent.refresh())),
+        BlocProvider<NotificationsBloc>(
+            create: (context) =>
+                NotificationsBloc(context.read<HunterRepositoryBase>())
+                  ..add(const NotificationsEvent.refresh())),
+        BlocProvider<ProfileBloc>(
+            create: (context) =>
+                ProfileBloc(context.read<HunterRepositoryBase>())
+                  ..add(const ProfileEvent.refresh())),
+      ],
+      child: BlocListener<InternetCubit, InternetState>(
+        listener: (context, state) {
+          if (state is ConnectedInternetState &&
+              state.connectionType == ConnectionType.Wifi) {
+            context.read<VacanciesBloc>().add(const VacanciesEvent.refresh());
+            context
+                .read<NotificationsBloc>()
+                .add(const NotificationsEvent.refresh());
+            context.read<ProfileBloc>().add(const ProfileEvent.refresh());
+          } else if (state is ConnectedInternetState &&
+              state.connectionType == ConnectionType.Mobile) {
+            context.read<VacanciesBloc>().add(const VacanciesEvent.refresh());
+            context
+                .read<NotificationsBloc>()
+                .add(const NotificationsEvent.refresh());
+            context.read<ProfileBloc>().add(const ProfileEvent.refresh());
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                behavior: SnackBarBehavior.floating,
+                content: Text("Нет доступ к интернету")));
+          }
+        },
+        child: widgetBuildersHunter[itemState]!(context),
+      ),
     );
   }
 }

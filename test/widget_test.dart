@@ -8,8 +8,8 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sap_work/bloc/hunter/vacancies/vacancies_bloc.dart';
-import 'package:sap_work/data_provider/rest_provider.dart';
+import 'package:sap_work/bloc/hunter/filter/filter_bloc.dart';
+import 'package:sap_work/bloc/internet/internet_cubit.dart';
 
 import 'package:sap_work/main.dart';
 import 'package:sap_work/router/app_router.dart';
@@ -17,9 +17,11 @@ import 'package:sap_work/screens/hunter/hunter.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    final _internetCubit = InternetCubit(connectivity: Connectivity());
+    final _hunterRepository = HunterRepository();
     // Build our app and trigger a frame.
     await tester.pumpWidget(MyApp(
-      appRouter: AppRouter(VacanciesBloc(HunterRepository())),
+      appRouter: AppRouter(FilterBloc(_hunterRepository)),
       connectivity: Connectivity(),
     ));
 

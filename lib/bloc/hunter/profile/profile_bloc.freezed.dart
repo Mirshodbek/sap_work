@@ -16,33 +16,103 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ProfileEventTearOff {
   const _$ProfileEventTearOff();
 
-  _IntialProfileEvent initial() {
-    return const _IntialProfileEvent();
+  _InitialProfileEvent initial() {
+    return const _InitialProfileEvent();
   }
 
   _RefreshProfileEvent refresh() {
     return const _RefreshProfileEvent();
   }
 
-  _SelectResumesProfileEvent selectResumes() {
-    return const _SelectResumesProfileEvent();
+  _OnClickProfileEvent onClick({required int page, required bool isMoved}) {
+    return _OnClickProfileEvent(
+      page: page,
+      isMoved: isMoved,
+    );
   }
 
-  _ToggleResumeProfileEvent toggleResume({required int id}) {
+  _ToggleBlocksProfileEvent toggleBlocks(
+      {required int id, required String title, required bool isSelectBlocks}) {
+    return _ToggleBlocksProfileEvent(
+      id: id,
+      title: title,
+      isSelectBlocks: isSelectBlocks,
+    );
+  }
+
+  _ToggleResumeProfileEvent toggleResume(
+      {required String title, required int id, required bool isPublished}) {
     return _ToggleResumeProfileEvent(
+      title: title,
+      id: id,
+      isPublished: isPublished,
+    );
+  }
+
+  _ResumeDataEvent resumeData(
+      {required String firstField,
+      required String secondField,
+      required String thirdField,
+      required String fourthField,
+      required String title}) {
+    return _ResumeDataEvent(
+      firstField: firstField,
+      secondField: secondField,
+      thirdField: thirdField,
+      fourthField: fourthField,
+      title: title,
+    );
+  }
+
+  _CreateResumeEvent createResume(
+      {required String name,
+      required List<Map<String, dynamic>> stages,
+      required List<Map<String, dynamic>> grades,
+      required String emails,
+      required String phones}) {
+    return _CreateResumeEvent(
+      name: name,
+      stages: stages,
+      grades: grades,
+      emails: emails,
+      phones: phones,
+    );
+  }
+
+  _ResumeButtonsProfileEvent resumeButtons({required int number}) {
+    return _ResumeButtonsProfileEvent(
+      number: number,
+    );
+  }
+
+  _AddFileToResumeProfileEvent addFileToResume(
+      {required String title, required String filename}) {
+    return _AddFileToResumeProfileEvent(
+      title: title,
+      filename: filename,
+    );
+  }
+
+  _AddResumeNameProfileEvent addResumeName(
+      {required String name, required int id}) {
+    return _AddResumeNameProfileEvent(
+      name: name,
       id: id,
     );
   }
 
-  _AddResumeButtonProfileEvent addResumeButton({required bool isAdd}) {
-    return _AddResumeButtonProfileEvent(
-      isAdd: isAdd,
+  _EditResumeNameProfileEvent editResumeName(
+      {required String name, required bool isPublished, required int id}) {
+    return _EditResumeNameProfileEvent(
+      name: name,
+      isPublished: isPublished,
+      id: id,
     );
   }
 
-  _AddResumeNameProfileEvent addResumeName({required String name}) {
-    return _AddResumeNameProfileEvent(
-      name: name,
+  _DeActivatedResumeProfileEvent deActivatedResume({required int active}) {
+    return _DeActivatedResumeProfileEvent(
+      active: active,
     );
   }
 }
@@ -56,42 +126,78 @@ mixin _$ProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() refresh,
-    required TResult Function() selectResumes,
-    required TResult Function(int id) toggleResume,
-    required TResult Function(bool isAdd) addResumeButton,
-    required TResult Function(String name) addResumeName,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? refresh,
-    TResult Function()? selectResumes,
-    TResult Function(int id)? toggleResume,
-    TResult Function(bool isAdd)? addResumeButton,
-    TResult Function(String name)? addResumeName,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_IntialProfileEvent value) initial,
+    required TResult Function(_InitialProfileEvent value) initial,
     required TResult Function(_RefreshProfileEvent value) refresh,
-    required TResult Function(_SelectResumesProfileEvent value) selectResumes,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
     required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
-    required TResult Function(_AddResumeButtonProfileEvent value)
-        addResumeButton,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
     required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_IntialProfileEvent value)? initial,
+    TResult Function(_InitialProfileEvent value)? initial,
     TResult Function(_RefreshProfileEvent value)? refresh,
-    TResult Function(_SelectResumesProfileEvent value)? selectResumes,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
     TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
-    TResult Function(_AddResumeButtonProfileEvent value)? addResumeButton,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
     TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,28 +220,28 @@ class _$ProfileEventCopyWithImpl<$Res> implements $ProfileEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$IntialProfileEventCopyWith<$Res> {
-  factory _$IntialProfileEventCopyWith(
-          _IntialProfileEvent value, $Res Function(_IntialProfileEvent) then) =
-      __$IntialProfileEventCopyWithImpl<$Res>;
+abstract class _$InitialProfileEventCopyWith<$Res> {
+  factory _$InitialProfileEventCopyWith(_InitialProfileEvent value,
+          $Res Function(_InitialProfileEvent) then) =
+      __$InitialProfileEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$IntialProfileEventCopyWithImpl<$Res>
+class __$InitialProfileEventCopyWithImpl<$Res>
     extends _$ProfileEventCopyWithImpl<$Res>
-    implements _$IntialProfileEventCopyWith<$Res> {
-  __$IntialProfileEventCopyWithImpl(
-      _IntialProfileEvent _value, $Res Function(_IntialProfileEvent) _then)
-      : super(_value, (v) => _then(v as _IntialProfileEvent));
+    implements _$InitialProfileEventCopyWith<$Res> {
+  __$InitialProfileEventCopyWithImpl(
+      _InitialProfileEvent _value, $Res Function(_InitialProfileEvent) _then)
+      : super(_value, (v) => _then(v as _InitialProfileEvent));
 
   @override
-  _IntialProfileEvent get _value => super._value as _IntialProfileEvent;
+  _InitialProfileEvent get _value => super._value as _InitialProfileEvent;
 }
 
 /// @nodoc
 
-class _$_IntialProfileEvent implements _IntialProfileEvent {
-  const _$_IntialProfileEvent();
+class _$_InitialProfileEvent implements _InitialProfileEvent {
+  const _$_InitialProfileEvent();
 
   @override
   String toString() {
@@ -144,7 +250,7 @@ class _$_IntialProfileEvent implements _IntialProfileEvent {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _IntialProfileEvent);
+    return identical(this, other) || (other is _InitialProfileEvent);
   }
 
   @override
@@ -155,10 +261,23 @@ class _$_IntialProfileEvent implements _IntialProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() refresh,
-    required TResult Function() selectResumes,
-    required TResult Function(int id) toggleResume,
-    required TResult Function(bool isAdd) addResumeButton,
-    required TResult Function(String name) addResumeName,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
   }) {
     return initial();
   }
@@ -168,10 +287,20 @@ class _$_IntialProfileEvent implements _IntialProfileEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? refresh,
-    TResult Function()? selectResumes,
-    TResult Function(int id)? toggleResume,
-    TResult Function(bool isAdd)? addResumeButton,
-    TResult Function(String name)? addResumeName,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -183,13 +312,20 @@ class _$_IntialProfileEvent implements _IntialProfileEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_IntialProfileEvent value) initial,
+    required TResult Function(_InitialProfileEvent value) initial,
     required TResult Function(_RefreshProfileEvent value) refresh,
-    required TResult Function(_SelectResumesProfileEvent value) selectResumes,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
     required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
-    required TResult Function(_AddResumeButtonProfileEvent value)
-        addResumeButton,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
     required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
   }) {
     return initial(this);
   }
@@ -197,12 +333,18 @@ class _$_IntialProfileEvent implements _IntialProfileEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_IntialProfileEvent value)? initial,
+    TResult Function(_InitialProfileEvent value)? initial,
     TResult Function(_RefreshProfileEvent value)? refresh,
-    TResult Function(_SelectResumesProfileEvent value)? selectResumes,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
     TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
-    TResult Function(_AddResumeButtonProfileEvent value)? addResumeButton,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
     TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -212,8 +354,8 @@ class _$_IntialProfileEvent implements _IntialProfileEvent {
   }
 }
 
-abstract class _IntialProfileEvent implements ProfileEvent {
-  const factory _IntialProfileEvent() = _$_IntialProfileEvent;
+abstract class _InitialProfileEvent implements ProfileEvent {
+  const factory _InitialProfileEvent() = _$_InitialProfileEvent;
 }
 
 /// @nodoc
@@ -258,10 +400,23 @@ class _$_RefreshProfileEvent implements _RefreshProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() refresh,
-    required TResult Function() selectResumes,
-    required TResult Function(int id) toggleResume,
-    required TResult Function(bool isAdd) addResumeButton,
-    required TResult Function(String name) addResumeName,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
   }) {
     return refresh();
   }
@@ -271,10 +426,20 @@ class _$_RefreshProfileEvent implements _RefreshProfileEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? refresh,
-    TResult Function()? selectResumes,
-    TResult Function(int id)? toggleResume,
-    TResult Function(bool isAdd)? addResumeButton,
-    TResult Function(String name)? addResumeName,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -286,13 +451,20 @@ class _$_RefreshProfileEvent implements _RefreshProfileEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_IntialProfileEvent value) initial,
+    required TResult Function(_InitialProfileEvent value) initial,
     required TResult Function(_RefreshProfileEvent value) refresh,
-    required TResult Function(_SelectResumesProfileEvent value) selectResumes,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
     required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
-    required TResult Function(_AddResumeButtonProfileEvent value)
-        addResumeButton,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
     required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
   }) {
     return refresh(this);
   }
@@ -300,12 +472,18 @@ class _$_RefreshProfileEvent implements _RefreshProfileEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_IntialProfileEvent value)? initial,
+    TResult Function(_InitialProfileEvent value)? initial,
     TResult Function(_RefreshProfileEvent value)? refresh,
-    TResult Function(_SelectResumesProfileEvent value)? selectResumes,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
     TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
-    TResult Function(_AddResumeButtonProfileEvent value)? addResumeButton,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
     TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
     required TResult orElse(),
   }) {
     if (refresh != null) {
@@ -320,54 +498,103 @@ abstract class _RefreshProfileEvent implements ProfileEvent {
 }
 
 /// @nodoc
-abstract class _$SelectResumesProfileEventCopyWith<$Res> {
-  factory _$SelectResumesProfileEventCopyWith(_SelectResumesProfileEvent value,
-          $Res Function(_SelectResumesProfileEvent) then) =
-      __$SelectResumesProfileEventCopyWithImpl<$Res>;
+abstract class _$OnClickProfileEventCopyWith<$Res> {
+  factory _$OnClickProfileEventCopyWith(_OnClickProfileEvent value,
+          $Res Function(_OnClickProfileEvent) then) =
+      __$OnClickProfileEventCopyWithImpl<$Res>;
+  $Res call({int page, bool isMoved});
 }
 
 /// @nodoc
-class __$SelectResumesProfileEventCopyWithImpl<$Res>
+class __$OnClickProfileEventCopyWithImpl<$Res>
     extends _$ProfileEventCopyWithImpl<$Res>
-    implements _$SelectResumesProfileEventCopyWith<$Res> {
-  __$SelectResumesProfileEventCopyWithImpl(_SelectResumesProfileEvent _value,
-      $Res Function(_SelectResumesProfileEvent) _then)
-      : super(_value, (v) => _then(v as _SelectResumesProfileEvent));
+    implements _$OnClickProfileEventCopyWith<$Res> {
+  __$OnClickProfileEventCopyWithImpl(
+      _OnClickProfileEvent _value, $Res Function(_OnClickProfileEvent) _then)
+      : super(_value, (v) => _then(v as _OnClickProfileEvent));
 
   @override
-  _SelectResumesProfileEvent get _value =>
-      super._value as _SelectResumesProfileEvent;
+  _OnClickProfileEvent get _value => super._value as _OnClickProfileEvent;
+
+  @override
+  $Res call({
+    Object? page = freezed,
+    Object? isMoved = freezed,
+  }) {
+    return _then(_OnClickProfileEvent(
+      page: page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
+              as int,
+      isMoved: isMoved == freezed
+          ? _value.isMoved
+          : isMoved // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_SelectResumesProfileEvent implements _SelectResumesProfileEvent {
-  const _$_SelectResumesProfileEvent();
+class _$_OnClickProfileEvent implements _OnClickProfileEvent {
+  const _$_OnClickProfileEvent({required this.page, required this.isMoved});
+
+  @override
+  final int page;
+  @override
+  final bool isMoved;
 
   @override
   String toString() {
-    return 'ProfileEvent.selectResumes()';
+    return 'ProfileEvent.onClick(page: $page, isMoved: $isMoved)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _SelectResumesProfileEvent);
+    return identical(this, other) ||
+        (other is _OnClickProfileEvent &&
+            (identical(other.page, page) ||
+                const DeepCollectionEquality().equals(other.page, page)) &&
+            (identical(other.isMoved, isMoved) ||
+                const DeepCollectionEquality().equals(other.isMoved, isMoved)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(page) ^
+      const DeepCollectionEquality().hash(isMoved);
+
+  @JsonKey(ignore: true)
+  @override
+  _$OnClickProfileEventCopyWith<_OnClickProfileEvent> get copyWith =>
+      __$OnClickProfileEventCopyWithImpl<_OnClickProfileEvent>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() refresh,
-    required TResult Function() selectResumes,
-    required TResult Function(int id) toggleResume,
-    required TResult Function(bool isAdd) addResumeButton,
-    required TResult Function(String name) addResumeName,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
   }) {
-    return selectResumes();
+    return onClick(page, isMoved);
   }
 
   @override
@@ -375,14 +602,24 @@ class _$_SelectResumesProfileEvent implements _SelectResumesProfileEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? refresh,
-    TResult Function()? selectResumes,
-    TResult Function(int id)? toggleResume,
-    TResult Function(bool isAdd)? addResumeButton,
-    TResult Function(String name)? addResumeName,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
     required TResult orElse(),
   }) {
-    if (selectResumes != null) {
-      return selectResumes();
+    if (onClick != null) {
+      return onClick(page, isMoved);
     }
     return orElse();
   }
@@ -390,37 +627,256 @@ class _$_SelectResumesProfileEvent implements _SelectResumesProfileEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_IntialProfileEvent value) initial,
+    required TResult Function(_InitialProfileEvent value) initial,
     required TResult Function(_RefreshProfileEvent value) refresh,
-    required TResult Function(_SelectResumesProfileEvent value) selectResumes,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
     required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
-    required TResult Function(_AddResumeButtonProfileEvent value)
-        addResumeButton,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
     required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
   }) {
-    return selectResumes(this);
+    return onClick(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_IntialProfileEvent value)? initial,
+    TResult Function(_InitialProfileEvent value)? initial,
     TResult Function(_RefreshProfileEvent value)? refresh,
-    TResult Function(_SelectResumesProfileEvent value)? selectResumes,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
     TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
-    TResult Function(_AddResumeButtonProfileEvent value)? addResumeButton,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
     TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
     required TResult orElse(),
   }) {
-    if (selectResumes != null) {
-      return selectResumes(this);
+    if (onClick != null) {
+      return onClick(this);
     }
     return orElse();
   }
 }
 
-abstract class _SelectResumesProfileEvent implements ProfileEvent {
-  const factory _SelectResumesProfileEvent() = _$_SelectResumesProfileEvent;
+abstract class _OnClickProfileEvent implements ProfileEvent {
+  const factory _OnClickProfileEvent(
+      {required int page, required bool isMoved}) = _$_OnClickProfileEvent;
+
+  int get page => throw _privateConstructorUsedError;
+  bool get isMoved => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$OnClickProfileEventCopyWith<_OnClickProfileEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ToggleBlocksProfileEventCopyWith<$Res> {
+  factory _$ToggleBlocksProfileEventCopyWith(_ToggleBlocksProfileEvent value,
+          $Res Function(_ToggleBlocksProfileEvent) then) =
+      __$ToggleBlocksProfileEventCopyWithImpl<$Res>;
+  $Res call({int id, String title, bool isSelectBlocks});
+}
+
+/// @nodoc
+class __$ToggleBlocksProfileEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res>
+    implements _$ToggleBlocksProfileEventCopyWith<$Res> {
+  __$ToggleBlocksProfileEventCopyWithImpl(_ToggleBlocksProfileEvent _value,
+      $Res Function(_ToggleBlocksProfileEvent) _then)
+      : super(_value, (v) => _then(v as _ToggleBlocksProfileEvent));
+
+  @override
+  _ToggleBlocksProfileEvent get _value =>
+      super._value as _ToggleBlocksProfileEvent;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? isSelectBlocks = freezed,
+  }) {
+    return _then(_ToggleBlocksProfileEvent(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      isSelectBlocks: isSelectBlocks == freezed
+          ? _value.isSelectBlocks
+          : isSelectBlocks // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ToggleBlocksProfileEvent implements _ToggleBlocksProfileEvent {
+  const _$_ToggleBlocksProfileEvent(
+      {required this.id, required this.title, required this.isSelectBlocks});
+
+  @override
+  final int id;
+  @override
+  final String title;
+  @override
+  final bool isSelectBlocks;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.toggleBlocks(id: $id, title: $title, isSelectBlocks: $isSelectBlocks)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ToggleBlocksProfileEvent &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.isSelectBlocks, isSelectBlocks) ||
+                const DeepCollectionEquality()
+                    .equals(other.isSelectBlocks, isSelectBlocks)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(isSelectBlocks);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ToggleBlocksProfileEventCopyWith<_ToggleBlocksProfileEvent> get copyWith =>
+      __$ToggleBlocksProfileEventCopyWithImpl<_ToggleBlocksProfileEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
+  }) {
+    return toggleBlocks(id, title, isSelectBlocks);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (toggleBlocks != null) {
+      return toggleBlocks(id, title, isSelectBlocks);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialProfileEvent value) initial,
+    required TResult Function(_RefreshProfileEvent value) refresh,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
+    required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
+    required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
+  }) {
+    return toggleBlocks(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialProfileEvent value)? initial,
+    TResult Function(_RefreshProfileEvent value)? refresh,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
+    TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
+    TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (toggleBlocks != null) {
+      return toggleBlocks(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToggleBlocksProfileEvent implements ProfileEvent {
+  const factory _ToggleBlocksProfileEvent(
+      {required int id,
+      required String title,
+      required bool isSelectBlocks}) = _$_ToggleBlocksProfileEvent;
+
+  int get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  bool get isSelectBlocks => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$ToggleBlocksProfileEventCopyWith<_ToggleBlocksProfileEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -428,7 +884,7 @@ abstract class _$ToggleResumeProfileEventCopyWith<$Res> {
   factory _$ToggleResumeProfileEventCopyWith(_ToggleResumeProfileEvent value,
           $Res Function(_ToggleResumeProfileEvent) then) =
       __$ToggleResumeProfileEventCopyWithImpl<$Res>;
-  $Res call({int id});
+  $Res call({String title, int id, bool isPublished});
 }
 
 /// @nodoc
@@ -445,13 +901,23 @@ class __$ToggleResumeProfileEventCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? title = freezed,
     Object? id = freezed,
+    Object? isPublished = freezed,
   }) {
     return _then(_ToggleResumeProfileEvent(
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      isPublished: isPublished == freezed
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -459,27 +925,40 @@ class __$ToggleResumeProfileEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ToggleResumeProfileEvent implements _ToggleResumeProfileEvent {
-  const _$_ToggleResumeProfileEvent({required this.id});
+  const _$_ToggleResumeProfileEvent(
+      {required this.title, required this.id, required this.isPublished});
 
   @override
+  final String title;
+  @override
   final int id;
+  @override
+  final bool isPublished;
 
   @override
   String toString() {
-    return 'ProfileEvent.toggleResume(id: $id)';
+    return 'ProfileEvent.toggleResume(title: $title, id: $id, isPublished: $isPublished)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _ToggleResumeProfileEvent &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.isPublished, isPublished) ||
+                const DeepCollectionEquality()
+                    .equals(other.isPublished, isPublished)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(isPublished);
 
   @JsonKey(ignore: true)
   @override
@@ -492,12 +971,25 @@ class _$_ToggleResumeProfileEvent implements _ToggleResumeProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() refresh,
-    required TResult Function() selectResumes,
-    required TResult Function(int id) toggleResume,
-    required TResult Function(bool isAdd) addResumeButton,
-    required TResult Function(String name) addResumeName,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
   }) {
-    return toggleResume(id);
+    return toggleResume(title, id, isPublished);
   }
 
   @override
@@ -505,14 +997,24 @@ class _$_ToggleResumeProfileEvent implements _ToggleResumeProfileEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? refresh,
-    TResult Function()? selectResumes,
-    TResult Function(int id)? toggleResume,
-    TResult Function(bool isAdd)? addResumeButton,
-    TResult Function(String name)? addResumeName,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
     required TResult orElse(),
   }) {
     if (toggleResume != null) {
-      return toggleResume(id);
+      return toggleResume(title, id, isPublished);
     }
     return orElse();
   }
@@ -520,13 +1022,20 @@ class _$_ToggleResumeProfileEvent implements _ToggleResumeProfileEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_IntialProfileEvent value) initial,
+    required TResult Function(_InitialProfileEvent value) initial,
     required TResult Function(_RefreshProfileEvent value) refresh,
-    required TResult Function(_SelectResumesProfileEvent value) selectResumes,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
     required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
-    required TResult Function(_AddResumeButtonProfileEvent value)
-        addResumeButton,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
     required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
   }) {
     return toggleResume(this);
   }
@@ -534,12 +1043,18 @@ class _$_ToggleResumeProfileEvent implements _ToggleResumeProfileEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_IntialProfileEvent value)? initial,
+    TResult Function(_InitialProfileEvent value)? initial,
     TResult Function(_RefreshProfileEvent value)? refresh,
-    TResult Function(_SelectResumesProfileEvent value)? selectResumes,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
     TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
-    TResult Function(_AddResumeButtonProfileEvent value)? addResumeButton,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
     TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
     required TResult orElse(),
   }) {
     if (toggleResume != null) {
@@ -550,92 +1065,160 @@ class _$_ToggleResumeProfileEvent implements _ToggleResumeProfileEvent {
 }
 
 abstract class _ToggleResumeProfileEvent implements ProfileEvent {
-  const factory _ToggleResumeProfileEvent({required int id}) =
-      _$_ToggleResumeProfileEvent;
+  const factory _ToggleResumeProfileEvent(
+      {required String title,
+      required int id,
+      required bool isPublished}) = _$_ToggleResumeProfileEvent;
 
+  String get title => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
+  bool get isPublished => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$ToggleResumeProfileEventCopyWith<_ToggleResumeProfileEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$AddResumeButtonProfileEventCopyWith<$Res> {
-  factory _$AddResumeButtonProfileEventCopyWith(
-          _AddResumeButtonProfileEvent value,
-          $Res Function(_AddResumeButtonProfileEvent) then) =
-      __$AddResumeButtonProfileEventCopyWithImpl<$Res>;
-  $Res call({bool isAdd});
+abstract class _$ResumeDataEventCopyWith<$Res> {
+  factory _$ResumeDataEventCopyWith(
+          _ResumeDataEvent value, $Res Function(_ResumeDataEvent) then) =
+      __$ResumeDataEventCopyWithImpl<$Res>;
+  $Res call(
+      {String firstField,
+      String secondField,
+      String thirdField,
+      String fourthField,
+      String title});
 }
 
 /// @nodoc
-class __$AddResumeButtonProfileEventCopyWithImpl<$Res>
+class __$ResumeDataEventCopyWithImpl<$Res>
     extends _$ProfileEventCopyWithImpl<$Res>
-    implements _$AddResumeButtonProfileEventCopyWith<$Res> {
-  __$AddResumeButtonProfileEventCopyWithImpl(
-      _AddResumeButtonProfileEvent _value,
-      $Res Function(_AddResumeButtonProfileEvent) _then)
-      : super(_value, (v) => _then(v as _AddResumeButtonProfileEvent));
+    implements _$ResumeDataEventCopyWith<$Res> {
+  __$ResumeDataEventCopyWithImpl(
+      _ResumeDataEvent _value, $Res Function(_ResumeDataEvent) _then)
+      : super(_value, (v) => _then(v as _ResumeDataEvent));
 
   @override
-  _AddResumeButtonProfileEvent get _value =>
-      super._value as _AddResumeButtonProfileEvent;
+  _ResumeDataEvent get _value => super._value as _ResumeDataEvent;
 
   @override
   $Res call({
-    Object? isAdd = freezed,
+    Object? firstField = freezed,
+    Object? secondField = freezed,
+    Object? thirdField = freezed,
+    Object? fourthField = freezed,
+    Object? title = freezed,
   }) {
-    return _then(_AddResumeButtonProfileEvent(
-      isAdd: isAdd == freezed
-          ? _value.isAdd
-          : isAdd // ignore: cast_nullable_to_non_nullable
-              as bool,
+    return _then(_ResumeDataEvent(
+      firstField: firstField == freezed
+          ? _value.firstField
+          : firstField // ignore: cast_nullable_to_non_nullable
+              as String,
+      secondField: secondField == freezed
+          ? _value.secondField
+          : secondField // ignore: cast_nullable_to_non_nullable
+              as String,
+      thirdField: thirdField == freezed
+          ? _value.thirdField
+          : thirdField // ignore: cast_nullable_to_non_nullable
+              as String,
+      fourthField: fourthField == freezed
+          ? _value.fourthField
+          : fourthField // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_AddResumeButtonProfileEvent implements _AddResumeButtonProfileEvent {
-  const _$_AddResumeButtonProfileEvent({required this.isAdd});
+class _$_ResumeDataEvent implements _ResumeDataEvent {
+  const _$_ResumeDataEvent(
+      {required this.firstField,
+      required this.secondField,
+      required this.thirdField,
+      required this.fourthField,
+      required this.title});
 
   @override
-  final bool isAdd;
+  final String firstField;
+  @override
+  final String secondField;
+  @override
+  final String thirdField;
+  @override
+  final String fourthField;
+  @override
+  final String title;
 
   @override
   String toString() {
-    return 'ProfileEvent.addResumeButton(isAdd: $isAdd)';
+    return 'ProfileEvent.resumeData(firstField: $firstField, secondField: $secondField, thirdField: $thirdField, fourthField: $fourthField, title: $title)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AddResumeButtonProfileEvent &&
-            (identical(other.isAdd, isAdd) ||
-                const DeepCollectionEquality().equals(other.isAdd, isAdd)));
+        (other is _ResumeDataEvent &&
+            (identical(other.firstField, firstField) ||
+                const DeepCollectionEquality()
+                    .equals(other.firstField, firstField)) &&
+            (identical(other.secondField, secondField) ||
+                const DeepCollectionEquality()
+                    .equals(other.secondField, secondField)) &&
+            (identical(other.thirdField, thirdField) ||
+                const DeepCollectionEquality()
+                    .equals(other.thirdField, thirdField)) &&
+            (identical(other.fourthField, fourthField) ||
+                const DeepCollectionEquality()
+                    .equals(other.fourthField, fourthField)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isAdd);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(firstField) ^
+      const DeepCollectionEquality().hash(secondField) ^
+      const DeepCollectionEquality().hash(thirdField) ^
+      const DeepCollectionEquality().hash(fourthField) ^
+      const DeepCollectionEquality().hash(title);
 
   @JsonKey(ignore: true)
   @override
-  _$AddResumeButtonProfileEventCopyWith<_AddResumeButtonProfileEvent>
-      get copyWith => __$AddResumeButtonProfileEventCopyWithImpl<
-          _AddResumeButtonProfileEvent>(this, _$identity);
+  _$ResumeDataEventCopyWith<_ResumeDataEvent> get copyWith =>
+      __$ResumeDataEventCopyWithImpl<_ResumeDataEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() refresh,
-    required TResult Function() selectResumes,
-    required TResult Function(int id) toggleResume,
-    required TResult Function(bool isAdd) addResumeButton,
-    required TResult Function(String name) addResumeName,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
   }) {
-    return addResumeButton(isAdd);
+    return resumeData(firstField, secondField, thirdField, fourthField, title);
   }
 
   @override
@@ -643,14 +1226,25 @@ class _$_AddResumeButtonProfileEvent implements _AddResumeButtonProfileEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? refresh,
-    TResult Function()? selectResumes,
-    TResult Function(int id)? toggleResume,
-    TResult Function(bool isAdd)? addResumeButton,
-    TResult Function(String name)? addResumeName,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
     required TResult orElse(),
   }) {
-    if (addResumeButton != null) {
-      return addResumeButton(isAdd);
+    if (resumeData != null) {
+      return resumeData(
+          firstField, secondField, thirdField, fourthField, title);
     }
     return orElse();
   }
@@ -658,42 +1252,654 @@ class _$_AddResumeButtonProfileEvent implements _AddResumeButtonProfileEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_IntialProfileEvent value) initial,
+    required TResult Function(_InitialProfileEvent value) initial,
     required TResult Function(_RefreshProfileEvent value) refresh,
-    required TResult Function(_SelectResumesProfileEvent value) selectResumes,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
     required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
-    required TResult Function(_AddResumeButtonProfileEvent value)
-        addResumeButton,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
     required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
   }) {
-    return addResumeButton(this);
+    return resumeData(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_IntialProfileEvent value)? initial,
+    TResult Function(_InitialProfileEvent value)? initial,
     TResult Function(_RefreshProfileEvent value)? refresh,
-    TResult Function(_SelectResumesProfileEvent value)? selectResumes,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
     TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
-    TResult Function(_AddResumeButtonProfileEvent value)? addResumeButton,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
     TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
     required TResult orElse(),
   }) {
-    if (addResumeButton != null) {
-      return addResumeButton(this);
+    if (resumeData != null) {
+      return resumeData(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddResumeButtonProfileEvent implements ProfileEvent {
-  const factory _AddResumeButtonProfileEvent({required bool isAdd}) =
-      _$_AddResumeButtonProfileEvent;
+abstract class _ResumeDataEvent implements ProfileEvent {
+  const factory _ResumeDataEvent(
+      {required String firstField,
+      required String secondField,
+      required String thirdField,
+      required String fourthField,
+      required String title}) = _$_ResumeDataEvent;
 
-  bool get isAdd => throw _privateConstructorUsedError;
+  String get firstField => throw _privateConstructorUsedError;
+  String get secondField => throw _privateConstructorUsedError;
+  String get thirdField => throw _privateConstructorUsedError;
+  String get fourthField => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AddResumeButtonProfileEventCopyWith<_AddResumeButtonProfileEvent>
+  _$ResumeDataEventCopyWith<_ResumeDataEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$CreateResumeEventCopyWith<$Res> {
+  factory _$CreateResumeEventCopyWith(
+          _CreateResumeEvent value, $Res Function(_CreateResumeEvent) then) =
+      __$CreateResumeEventCopyWithImpl<$Res>;
+  $Res call(
+      {String name,
+      List<Map<String, dynamic>> stages,
+      List<Map<String, dynamic>> grades,
+      String emails,
+      String phones});
+}
+
+/// @nodoc
+class __$CreateResumeEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res>
+    implements _$CreateResumeEventCopyWith<$Res> {
+  __$CreateResumeEventCopyWithImpl(
+      _CreateResumeEvent _value, $Res Function(_CreateResumeEvent) _then)
+      : super(_value, (v) => _then(v as _CreateResumeEvent));
+
+  @override
+  _CreateResumeEvent get _value => super._value as _CreateResumeEvent;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? stages = freezed,
+    Object? grades = freezed,
+    Object? emails = freezed,
+    Object? phones = freezed,
+  }) {
+    return _then(_CreateResumeEvent(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      stages: stages == freezed
+          ? _value.stages
+          : stages // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
+      grades: grades == freezed
+          ? _value.grades
+          : grades // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
+      emails: emails == freezed
+          ? _value.emails
+          : emails // ignore: cast_nullable_to_non_nullable
+              as String,
+      phones: phones == freezed
+          ? _value.phones
+          : phones // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CreateResumeEvent implements _CreateResumeEvent {
+  const _$_CreateResumeEvent(
+      {required this.name,
+      required this.stages,
+      required this.grades,
+      required this.emails,
+      required this.phones});
+
+  @override
+  final String name;
+  @override
+  final List<Map<String, dynamic>> stages;
+  @override
+  final List<Map<String, dynamic>> grades;
+  @override
+  final String emails;
+  @override
+  final String phones;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.createResume(name: $name, stages: $stages, grades: $grades, emails: $emails, phones: $phones)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _CreateResumeEvent &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.stages, stages) ||
+                const DeepCollectionEquality().equals(other.stages, stages)) &&
+            (identical(other.grades, grades) ||
+                const DeepCollectionEquality().equals(other.grades, grades)) &&
+            (identical(other.emails, emails) ||
+                const DeepCollectionEquality().equals(other.emails, emails)) &&
+            (identical(other.phones, phones) ||
+                const DeepCollectionEquality().equals(other.phones, phones)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(stages) ^
+      const DeepCollectionEquality().hash(grades) ^
+      const DeepCollectionEquality().hash(emails) ^
+      const DeepCollectionEquality().hash(phones);
+
+  @JsonKey(ignore: true)
+  @override
+  _$CreateResumeEventCopyWith<_CreateResumeEvent> get copyWith =>
+      __$CreateResumeEventCopyWithImpl<_CreateResumeEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
+  }) {
+    return createResume(name, stages, grades, emails, phones);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (createResume != null) {
+      return createResume(name, stages, grades, emails, phones);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialProfileEvent value) initial,
+    required TResult Function(_RefreshProfileEvent value) refresh,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
+    required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
+    required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
+  }) {
+    return createResume(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialProfileEvent value)? initial,
+    TResult Function(_RefreshProfileEvent value)? refresh,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
+    TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
+    TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (createResume != null) {
+      return createResume(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CreateResumeEvent implements ProfileEvent {
+  const factory _CreateResumeEvent(
+      {required String name,
+      required List<Map<String, dynamic>> stages,
+      required List<Map<String, dynamic>> grades,
+      required String emails,
+      required String phones}) = _$_CreateResumeEvent;
+
+  String get name => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get stages => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get grades => throw _privateConstructorUsedError;
+  String get emails => throw _privateConstructorUsedError;
+  String get phones => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$CreateResumeEventCopyWith<_CreateResumeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ResumeButtonsProfileEventCopyWith<$Res> {
+  factory _$ResumeButtonsProfileEventCopyWith(_ResumeButtonsProfileEvent value,
+          $Res Function(_ResumeButtonsProfileEvent) then) =
+      __$ResumeButtonsProfileEventCopyWithImpl<$Res>;
+  $Res call({int number});
+}
+
+/// @nodoc
+class __$ResumeButtonsProfileEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res>
+    implements _$ResumeButtonsProfileEventCopyWith<$Res> {
+  __$ResumeButtonsProfileEventCopyWithImpl(_ResumeButtonsProfileEvent _value,
+      $Res Function(_ResumeButtonsProfileEvent) _then)
+      : super(_value, (v) => _then(v as _ResumeButtonsProfileEvent));
+
+  @override
+  _ResumeButtonsProfileEvent get _value =>
+      super._value as _ResumeButtonsProfileEvent;
+
+  @override
+  $Res call({
+    Object? number = freezed,
+  }) {
+    return _then(_ResumeButtonsProfileEvent(
+      number: number == freezed
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ResumeButtonsProfileEvent implements _ResumeButtonsProfileEvent {
+  const _$_ResumeButtonsProfileEvent({required this.number});
+
+  @override
+  final int number;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.resumeButtons(number: $number)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ResumeButtonsProfileEvent &&
+            (identical(other.number, number) ||
+                const DeepCollectionEquality().equals(other.number, number)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(number);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ResumeButtonsProfileEventCopyWith<_ResumeButtonsProfileEvent>
+      get copyWith =>
+          __$ResumeButtonsProfileEventCopyWithImpl<_ResumeButtonsProfileEvent>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
+  }) {
+    return resumeButtons(number);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (resumeButtons != null) {
+      return resumeButtons(number);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialProfileEvent value) initial,
+    required TResult Function(_RefreshProfileEvent value) refresh,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
+    required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
+    required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
+  }) {
+    return resumeButtons(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialProfileEvent value)? initial,
+    TResult Function(_RefreshProfileEvent value)? refresh,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
+    TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
+    TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (resumeButtons != null) {
+      return resumeButtons(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResumeButtonsProfileEvent implements ProfileEvent {
+  const factory _ResumeButtonsProfileEvent({required int number}) =
+      _$_ResumeButtonsProfileEvent;
+
+  int get number => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$ResumeButtonsProfileEventCopyWith<_ResumeButtonsProfileEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$AddFileToResumeProfileEventCopyWith<$Res> {
+  factory _$AddFileToResumeProfileEventCopyWith(
+          _AddFileToResumeProfileEvent value,
+          $Res Function(_AddFileToResumeProfileEvent) then) =
+      __$AddFileToResumeProfileEventCopyWithImpl<$Res>;
+  $Res call({String title, String filename});
+}
+
+/// @nodoc
+class __$AddFileToResumeProfileEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res>
+    implements _$AddFileToResumeProfileEventCopyWith<$Res> {
+  __$AddFileToResumeProfileEventCopyWithImpl(
+      _AddFileToResumeProfileEvent _value,
+      $Res Function(_AddFileToResumeProfileEvent) _then)
+      : super(_value, (v) => _then(v as _AddFileToResumeProfileEvent));
+
+  @override
+  _AddFileToResumeProfileEvent get _value =>
+      super._value as _AddFileToResumeProfileEvent;
+
+  @override
+  $Res call({
+    Object? title = freezed,
+    Object? filename = freezed,
+  }) {
+    return _then(_AddFileToResumeProfileEvent(
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      filename: filename == freezed
+          ? _value.filename
+          : filename // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddFileToResumeProfileEvent implements _AddFileToResumeProfileEvent {
+  const _$_AddFileToResumeProfileEvent(
+      {required this.title, required this.filename});
+
+  @override
+  final String title;
+  @override
+  final String filename;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.addFileToResume(title: $title, filename: $filename)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AddFileToResumeProfileEvent &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.filename, filename) ||
+                const DeepCollectionEquality()
+                    .equals(other.filename, filename)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(filename);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddFileToResumeProfileEventCopyWith<_AddFileToResumeProfileEvent>
+      get copyWith => __$AddFileToResumeProfileEventCopyWithImpl<
+          _AddFileToResumeProfileEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
+  }) {
+    return addFileToResume(title, filename);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (addFileToResume != null) {
+      return addFileToResume(title, filename);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialProfileEvent value) initial,
+    required TResult Function(_RefreshProfileEvent value) refresh,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
+    required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
+    required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
+  }) {
+    return addFileToResume(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialProfileEvent value)? initial,
+    TResult Function(_RefreshProfileEvent value)? refresh,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
+    TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
+    TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (addFileToResume != null) {
+      return addFileToResume(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddFileToResumeProfileEvent implements ProfileEvent {
+  const factory _AddFileToResumeProfileEvent(
+      {required String title,
+      required String filename}) = _$_AddFileToResumeProfileEvent;
+
+  String get title => throw _privateConstructorUsedError;
+  String get filename => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$AddFileToResumeProfileEventCopyWith<_AddFileToResumeProfileEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -702,7 +1908,7 @@ abstract class _$AddResumeNameProfileEventCopyWith<$Res> {
   factory _$AddResumeNameProfileEventCopyWith(_AddResumeNameProfileEvent value,
           $Res Function(_AddResumeNameProfileEvent) then) =
       __$AddResumeNameProfileEventCopyWithImpl<$Res>;
-  $Res call({String name});
+  $Res call({String name, int id});
 }
 
 /// @nodoc
@@ -720,12 +1926,17 @@ class __$AddResumeNameProfileEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? id = freezed,
   }) {
     return _then(_AddResumeNameProfileEvent(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -733,14 +1944,16 @@ class __$AddResumeNameProfileEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddResumeNameProfileEvent implements _AddResumeNameProfileEvent {
-  const _$_AddResumeNameProfileEvent({required this.name});
+  const _$_AddResumeNameProfileEvent({required this.name, required this.id});
 
   @override
   final String name;
+  @override
+  final int id;
 
   @override
   String toString() {
-    return 'ProfileEvent.addResumeName(name: $name)';
+    return 'ProfileEvent.addResumeName(name: $name, id: $id)';
   }
 
   @override
@@ -748,12 +1961,16 @@ class _$_AddResumeNameProfileEvent implements _AddResumeNameProfileEvent {
     return identical(this, other) ||
         (other is _AddResumeNameProfileEvent &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(id);
 
   @JsonKey(ignore: true)
   @override
@@ -767,12 +1984,25 @@ class _$_AddResumeNameProfileEvent implements _AddResumeNameProfileEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() refresh,
-    required TResult Function() selectResumes,
-    required TResult Function(int id) toggleResume,
-    required TResult Function(bool isAdd) addResumeButton,
-    required TResult Function(String name) addResumeName,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
   }) {
-    return addResumeName(name);
+    return addResumeName(name, id);
   }
 
   @override
@@ -780,14 +2010,24 @@ class _$_AddResumeNameProfileEvent implements _AddResumeNameProfileEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? refresh,
-    TResult Function()? selectResumes,
-    TResult Function(int id)? toggleResume,
-    TResult Function(bool isAdd)? addResumeButton,
-    TResult Function(String name)? addResumeName,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
     required TResult orElse(),
   }) {
     if (addResumeName != null) {
-      return addResumeName(name);
+      return addResumeName(name, id);
     }
     return orElse();
   }
@@ -795,13 +2035,20 @@ class _$_AddResumeNameProfileEvent implements _AddResumeNameProfileEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_IntialProfileEvent value) initial,
+    required TResult Function(_InitialProfileEvent value) initial,
     required TResult Function(_RefreshProfileEvent value) refresh,
-    required TResult Function(_SelectResumesProfileEvent value) selectResumes,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
     required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
-    required TResult Function(_AddResumeButtonProfileEvent value)
-        addResumeButton,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
     required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
   }) {
     return addResumeName(this);
   }
@@ -809,12 +2056,18 @@ class _$_AddResumeNameProfileEvent implements _AddResumeNameProfileEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_IntialProfileEvent value)? initial,
+    TResult Function(_InitialProfileEvent value)? initial,
     TResult Function(_RefreshProfileEvent value)? refresh,
-    TResult Function(_SelectResumesProfileEvent value)? selectResumes,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
     TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
-    TResult Function(_AddResumeButtonProfileEvent value)? addResumeButton,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
     TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
     required TResult orElse(),
   }) {
     if (addResumeName != null) {
@@ -825,12 +2078,388 @@ class _$_AddResumeNameProfileEvent implements _AddResumeNameProfileEvent {
 }
 
 abstract class _AddResumeNameProfileEvent implements ProfileEvent {
-  const factory _AddResumeNameProfileEvent({required String name}) =
-      _$_AddResumeNameProfileEvent;
+  const factory _AddResumeNameProfileEvent(
+      {required String name, required int id}) = _$_AddResumeNameProfileEvent;
 
   String get name => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$AddResumeNameProfileEventCopyWith<_AddResumeNameProfileEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$EditResumeNameProfileEventCopyWith<$Res> {
+  factory _$EditResumeNameProfileEventCopyWith(
+          _EditResumeNameProfileEvent value,
+          $Res Function(_EditResumeNameProfileEvent) then) =
+      __$EditResumeNameProfileEventCopyWithImpl<$Res>;
+  $Res call({String name, bool isPublished, int id});
+}
+
+/// @nodoc
+class __$EditResumeNameProfileEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res>
+    implements _$EditResumeNameProfileEventCopyWith<$Res> {
+  __$EditResumeNameProfileEventCopyWithImpl(_EditResumeNameProfileEvent _value,
+      $Res Function(_EditResumeNameProfileEvent) _then)
+      : super(_value, (v) => _then(v as _EditResumeNameProfileEvent));
+
+  @override
+  _EditResumeNameProfileEvent get _value =>
+      super._value as _EditResumeNameProfileEvent;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? isPublished = freezed,
+    Object? id = freezed,
+  }) {
+    return _then(_EditResumeNameProfileEvent(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      isPublished: isPublished == freezed
+          ? _value.isPublished
+          : isPublished // ignore: cast_nullable_to_non_nullable
+              as bool,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_EditResumeNameProfileEvent implements _EditResumeNameProfileEvent {
+  const _$_EditResumeNameProfileEvent(
+      {required this.name, required this.isPublished, required this.id});
+
+  @override
+  final String name;
+  @override
+  final bool isPublished;
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.editResumeName(name: $name, isPublished: $isPublished, id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _EditResumeNameProfileEvent &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.isPublished, isPublished) ||
+                const DeepCollectionEquality()
+                    .equals(other.isPublished, isPublished)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(isPublished) ^
+      const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$EditResumeNameProfileEventCopyWith<_EditResumeNameProfileEvent>
+      get copyWith => __$EditResumeNameProfileEventCopyWithImpl<
+          _EditResumeNameProfileEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
+  }) {
+    return editResumeName(name, isPublished, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (editResumeName != null) {
+      return editResumeName(name, isPublished, id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialProfileEvent value) initial,
+    required TResult Function(_RefreshProfileEvent value) refresh,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
+    required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
+    required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
+  }) {
+    return editResumeName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialProfileEvent value)? initial,
+    TResult Function(_RefreshProfileEvent value)? refresh,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
+    TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
+    TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (editResumeName != null) {
+      return editResumeName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EditResumeNameProfileEvent implements ProfileEvent {
+  const factory _EditResumeNameProfileEvent(
+      {required String name,
+      required bool isPublished,
+      required int id}) = _$_EditResumeNameProfileEvent;
+
+  String get name => throw _privateConstructorUsedError;
+  bool get isPublished => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$EditResumeNameProfileEventCopyWith<_EditResumeNameProfileEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$DeActivatedResumeProfileEventCopyWith<$Res> {
+  factory _$DeActivatedResumeProfileEventCopyWith(
+          _DeActivatedResumeProfileEvent value,
+          $Res Function(_DeActivatedResumeProfileEvent) then) =
+      __$DeActivatedResumeProfileEventCopyWithImpl<$Res>;
+  $Res call({int active});
+}
+
+/// @nodoc
+class __$DeActivatedResumeProfileEventCopyWithImpl<$Res>
+    extends _$ProfileEventCopyWithImpl<$Res>
+    implements _$DeActivatedResumeProfileEventCopyWith<$Res> {
+  __$DeActivatedResumeProfileEventCopyWithImpl(
+      _DeActivatedResumeProfileEvent _value,
+      $Res Function(_DeActivatedResumeProfileEvent) _then)
+      : super(_value, (v) => _then(v as _DeActivatedResumeProfileEvent));
+
+  @override
+  _DeActivatedResumeProfileEvent get _value =>
+      super._value as _DeActivatedResumeProfileEvent;
+
+  @override
+  $Res call({
+    Object? active = freezed,
+  }) {
+    return _then(_DeActivatedResumeProfileEvent(
+      active: active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeActivatedResumeProfileEvent
+    implements _DeActivatedResumeProfileEvent {
+  const _$_DeActivatedResumeProfileEvent({required this.active});
+
+  @override
+  final int active;
+
+  @override
+  String toString() {
+    return 'ProfileEvent.deActivatedResume(active: $active)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DeActivatedResumeProfileEvent &&
+            (identical(other.active, active) ||
+                const DeepCollectionEquality().equals(other.active, active)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(active);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DeActivatedResumeProfileEventCopyWith<_DeActivatedResumeProfileEvent>
+      get copyWith => __$DeActivatedResumeProfileEventCopyWithImpl<
+          _DeActivatedResumeProfileEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() refresh,
+    required TResult Function(int page, bool isMoved) onClick,
+    required TResult Function(int id, String title, bool isSelectBlocks)
+        toggleBlocks,
+    required TResult Function(String title, int id, bool isPublished)
+        toggleResume,
+    required TResult Function(String firstField, String secondField,
+            String thirdField, String fourthField, String title)
+        resumeData,
+    required TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)
+        createResume,
+    required TResult Function(int number) resumeButtons,
+    required TResult Function(String title, String filename) addFileToResume,
+    required TResult Function(String name, int id) addResumeName,
+    required TResult Function(String name, bool isPublished, int id)
+        editResumeName,
+    required TResult Function(int active) deActivatedResume,
+  }) {
+    return deActivatedResume(active);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? refresh,
+    TResult Function(int page, bool isMoved)? onClick,
+    TResult Function(int id, String title, bool isSelectBlocks)? toggleBlocks,
+    TResult Function(String title, int id, bool isPublished)? toggleResume,
+    TResult Function(String firstField, String secondField, String thirdField,
+            String fourthField, String title)?
+        resumeData,
+    TResult Function(String name, List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades, String emails, String phones)?
+        createResume,
+    TResult Function(int number)? resumeButtons,
+    TResult Function(String title, String filename)? addFileToResume,
+    TResult Function(String name, int id)? addResumeName,
+    TResult Function(String name, bool isPublished, int id)? editResumeName,
+    TResult Function(int active)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (deActivatedResume != null) {
+      return deActivatedResume(active);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialProfileEvent value) initial,
+    required TResult Function(_RefreshProfileEvent value) refresh,
+    required TResult Function(_OnClickProfileEvent value) onClick,
+    required TResult Function(_ToggleBlocksProfileEvent value) toggleBlocks,
+    required TResult Function(_ToggleResumeProfileEvent value) toggleResume,
+    required TResult Function(_ResumeDataEvent value) resumeData,
+    required TResult Function(_CreateResumeEvent value) createResume,
+    required TResult Function(_ResumeButtonsProfileEvent value) resumeButtons,
+    required TResult Function(_AddFileToResumeProfileEvent value)
+        addFileToResume,
+    required TResult Function(_AddResumeNameProfileEvent value) addResumeName,
+    required TResult Function(_EditResumeNameProfileEvent value) editResumeName,
+    required TResult Function(_DeActivatedResumeProfileEvent value)
+        deActivatedResume,
+  }) {
+    return deActivatedResume(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialProfileEvent value)? initial,
+    TResult Function(_RefreshProfileEvent value)? refresh,
+    TResult Function(_OnClickProfileEvent value)? onClick,
+    TResult Function(_ToggleBlocksProfileEvent value)? toggleBlocks,
+    TResult Function(_ToggleResumeProfileEvent value)? toggleResume,
+    TResult Function(_ResumeDataEvent value)? resumeData,
+    TResult Function(_CreateResumeEvent value)? createResume,
+    TResult Function(_ResumeButtonsProfileEvent value)? resumeButtons,
+    TResult Function(_AddFileToResumeProfileEvent value)? addFileToResume,
+    TResult Function(_AddResumeNameProfileEvent value)? addResumeName,
+    TResult Function(_EditResumeNameProfileEvent value)? editResumeName,
+    TResult Function(_DeActivatedResumeProfileEvent value)? deActivatedResume,
+    required TResult orElse(),
+  }) {
+    if (deActivatedResume != null) {
+      return deActivatedResume(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeActivatedResumeProfileEvent implements ProfileEvent {
+  const factory _DeActivatedResumeProfileEvent({required int active}) =
+      _$_DeActivatedResumeProfileEvent;
+
+  int get active => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$DeActivatedResumeProfileEventCopyWith<_DeActivatedResumeProfileEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -842,33 +2471,44 @@ class _$ProfileStateTearOff {
     return const InitialProfileState();
   }
 
+  AccessResumeProfileState accessResume() {
+    return const AccessResumeProfileState();
+  }
+
   ProfileScreenState profileState(
-      {required ProfileHunter profile,
-      required int feedbacksCount,
+      {required int id,
+      required int buttons,
+      required String title,
       required Resume resume,
-      required int id}) {
+      required bool isEnabled,
+      required List<Block> blocks,
+      required int feedbacksCount,
+      required FormzStatus status,
+      required List<Resume> resumes,
+      required TypeProfileHunter profile,
+      required List<String> localResumes,
+      required List<Map<String, dynamic>> stages,
+      required List<Map<String, dynamic>> grades}) {
     return ProfileScreenState(
-      profile: profile,
-      feedbacksCount: feedbacksCount,
-      resume: resume,
       id: id,
+      buttons: buttons,
+      title: title,
+      resume: resume,
+      isEnabled: isEnabled,
+      blocks: blocks,
+      feedbacksCount: feedbacksCount,
+      status: status,
+      resumes: resumes,
+      profile: profile,
+      localResumes: localResumes,
+      stages: stages,
+      grades: grades,
     );
   }
 
-  SelectResumesProfileState selectResumesState(
-      {required ProfileHunter profile,
-      required int feedbacksCount,
-      required List<Resume> resumes,
-      required bool isAdd,
-      required FormzStatus status,
-      required int id}) {
-    return SelectResumesProfileState(
-      profile: profile,
-      feedbacksCount: feedbacksCount,
-      resumes: resumes,
-      isAdd: isAdd,
-      status: status,
-      id: id,
+  ScreensProfileState screens({required int page}) {
+    return ScreensProfileState(
+      page: page,
     );
   }
 }
@@ -881,39 +2521,62 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() accessResume,
     required TResult Function(
-            ProfileHunter profile, int feedbacksCount, Resume resume, int id)
+            int id,
+            int buttons,
+            String title,
+            Resume resume,
+            bool isEnabled,
+            List<Block> blocks,
+            int feedbacksCount,
+            FormzStatus status,
+            List<Resume> resumes,
+            TypeProfileHunter profile,
+            List<String> localResumes,
+            List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades)
         profileState,
-    required TResult Function(ProfileHunter profile, int feedbacksCount,
-            List<Resume> resumes, bool isAdd, FormzStatus status, int id)
-        selectResumesState,
+    required TResult Function(int page) screens,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? accessResume,
     TResult Function(
-            ProfileHunter profile, int feedbacksCount, Resume resume, int id)?
+            int id,
+            int buttons,
+            String title,
+            Resume resume,
+            bool isEnabled,
+            List<Block> blocks,
+            int feedbacksCount,
+            FormzStatus status,
+            List<Resume> resumes,
+            TypeProfileHunter profile,
+            List<String> localResumes,
+            List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades)?
         profileState,
-    TResult Function(ProfileHunter profile, int feedbacksCount,
-            List<Resume> resumes, bool isAdd, FormzStatus status, int id)?
-        selectResumesState,
+    TResult Function(int page)? screens,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialProfileState value) initial,
+    required TResult Function(AccessResumeProfileState value) accessResume,
     required TResult Function(ProfileScreenState value) profileState,
-    required TResult Function(SelectResumesProfileState value)
-        selectResumesState,
+    required TResult Function(ScreensProfileState value) screens,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialProfileState value)? initial,
+    TResult Function(AccessResumeProfileState value)? accessResume,
     TResult Function(ProfileScreenState value)? profileState,
-    TResult Function(SelectResumesProfileState value)? selectResumesState,
+    TResult Function(ScreensProfileState value)? screens,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -976,12 +2639,23 @@ class _$InitialProfileState implements InitialProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() accessResume,
     required TResult Function(
-            ProfileHunter profile, int feedbacksCount, Resume resume, int id)
+            int id,
+            int buttons,
+            String title,
+            Resume resume,
+            bool isEnabled,
+            List<Block> blocks,
+            int feedbacksCount,
+            FormzStatus status,
+            List<Resume> resumes,
+            TypeProfileHunter profile,
+            List<String> localResumes,
+            List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades)
         profileState,
-    required TResult Function(ProfileHunter profile, int feedbacksCount,
-            List<Resume> resumes, bool isAdd, FormzStatus status, int id)
-        selectResumesState,
+    required TResult Function(int page) screens,
   }) {
     return initial();
   }
@@ -990,12 +2664,23 @@ class _$InitialProfileState implements InitialProfileState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? accessResume,
     TResult Function(
-            ProfileHunter profile, int feedbacksCount, Resume resume, int id)?
+            int id,
+            int buttons,
+            String title,
+            Resume resume,
+            bool isEnabled,
+            List<Block> blocks,
+            int feedbacksCount,
+            FormzStatus status,
+            List<Resume> resumes,
+            TypeProfileHunter profile,
+            List<String> localResumes,
+            List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades)?
         profileState,
-    TResult Function(ProfileHunter profile, int feedbacksCount,
-            List<Resume> resumes, bool isAdd, FormzStatus status, int id)?
-        selectResumesState,
+    TResult Function(int page)? screens,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1008,9 +2693,9 @@ class _$InitialProfileState implements InitialProfileState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialProfileState value) initial,
+    required TResult Function(AccessResumeProfileState value) accessResume,
     required TResult Function(ProfileScreenState value) profileState,
-    required TResult Function(SelectResumesProfileState value)
-        selectResumesState,
+    required TResult Function(ScreensProfileState value) screens,
   }) {
     return initial(this);
   }
@@ -1019,8 +2704,9 @@ class _$InitialProfileState implements InitialProfileState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialProfileState value)? initial,
+    TResult Function(AccessResumeProfileState value)? accessResume,
     TResult Function(ProfileScreenState value)? profileState,
-    TResult Function(SelectResumesProfileState value)? selectResumesState,
+    TResult Function(ScreensProfileState value)? screens,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1035,11 +2721,147 @@ abstract class InitialProfileState implements ProfileState {
 }
 
 /// @nodoc
+abstract class $AccessResumeProfileStateCopyWith<$Res> {
+  factory $AccessResumeProfileStateCopyWith(AccessResumeProfileState value,
+          $Res Function(AccessResumeProfileState) then) =
+      _$AccessResumeProfileStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AccessResumeProfileStateCopyWithImpl<$Res>
+    extends _$ProfileStateCopyWithImpl<$Res>
+    implements $AccessResumeProfileStateCopyWith<$Res> {
+  _$AccessResumeProfileStateCopyWithImpl(AccessResumeProfileState _value,
+      $Res Function(AccessResumeProfileState) _then)
+      : super(_value, (v) => _then(v as AccessResumeProfileState));
+
+  @override
+  AccessResumeProfileState get _value =>
+      super._value as AccessResumeProfileState;
+}
+
+/// @nodoc
+
+class _$AccessResumeProfileState implements AccessResumeProfileState {
+  const _$AccessResumeProfileState();
+
+  @override
+  String toString() {
+    return 'ProfileState.accessResume()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is AccessResumeProfileState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() accessResume,
+    required TResult Function(
+            int id,
+            int buttons,
+            String title,
+            Resume resume,
+            bool isEnabled,
+            List<Block> blocks,
+            int feedbacksCount,
+            FormzStatus status,
+            List<Resume> resumes,
+            TypeProfileHunter profile,
+            List<String> localResumes,
+            List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades)
+        profileState,
+    required TResult Function(int page) screens,
+  }) {
+    return accessResume();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? accessResume,
+    TResult Function(
+            int id,
+            int buttons,
+            String title,
+            Resume resume,
+            bool isEnabled,
+            List<Block> blocks,
+            int feedbacksCount,
+            FormzStatus status,
+            List<Resume> resumes,
+            TypeProfileHunter profile,
+            List<String> localResumes,
+            List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades)?
+        profileState,
+    TResult Function(int page)? screens,
+    required TResult orElse(),
+  }) {
+    if (accessResume != null) {
+      return accessResume();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialProfileState value) initial,
+    required TResult Function(AccessResumeProfileState value) accessResume,
+    required TResult Function(ProfileScreenState value) profileState,
+    required TResult Function(ScreensProfileState value) screens,
+  }) {
+    return accessResume(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialProfileState value)? initial,
+    TResult Function(AccessResumeProfileState value)? accessResume,
+    TResult Function(ProfileScreenState value)? profileState,
+    TResult Function(ScreensProfileState value)? screens,
+    required TResult orElse(),
+  }) {
+    if (accessResume != null) {
+      return accessResume(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AccessResumeProfileState implements ProfileState {
+  const factory AccessResumeProfileState() = _$AccessResumeProfileState;
+}
+
+/// @nodoc
 abstract class $ProfileScreenStateCopyWith<$Res> {
   factory $ProfileScreenStateCopyWith(
           ProfileScreenState value, $Res Function(ProfileScreenState) then) =
       _$ProfileScreenStateCopyWithImpl<$Res>;
-  $Res call({ProfileHunter profile, int feedbacksCount, Resume resume, int id});
+  $Res call(
+      {int id,
+      int buttons,
+      String title,
+      Resume resume,
+      bool isEnabled,
+      List<Block> blocks,
+      int feedbacksCount,
+      FormzStatus status,
+      List<Resume> resumes,
+      TypeProfileHunter profile,
+      List<String> localResumes,
+      List<Map<String, dynamic>> stages,
+      List<Map<String, dynamic>> grades});
 }
 
 /// @nodoc
@@ -1055,28 +2877,73 @@ class _$ProfileScreenStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? profile = freezed,
-    Object? feedbacksCount = freezed,
-    Object? resume = freezed,
     Object? id = freezed,
+    Object? buttons = freezed,
+    Object? title = freezed,
+    Object? resume = freezed,
+    Object? isEnabled = freezed,
+    Object? blocks = freezed,
+    Object? feedbacksCount = freezed,
+    Object? status = freezed,
+    Object? resumes = freezed,
+    Object? profile = freezed,
+    Object? localResumes = freezed,
+    Object? stages = freezed,
+    Object? grades = freezed,
   }) {
     return _then(ProfileScreenState(
-      profile: profile == freezed
-          ? _value.profile
-          : profile // ignore: cast_nullable_to_non_nullable
-              as ProfileHunter,
-      feedbacksCount: feedbacksCount == freezed
-          ? _value.feedbacksCount
-          : feedbacksCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      resume: resume == freezed
-          ? _value.resume
-          : resume // ignore: cast_nullable_to_non_nullable
-              as Resume,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      buttons: buttons == freezed
+          ? _value.buttons
+          : buttons // ignore: cast_nullable_to_non_nullable
+              as int,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      resume: resume == freezed
+          ? _value.resume
+          : resume // ignore: cast_nullable_to_non_nullable
+              as Resume,
+      isEnabled: isEnabled == freezed
+          ? _value.isEnabled
+          : isEnabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+      blocks: blocks == freezed
+          ? _value.blocks
+          : blocks // ignore: cast_nullable_to_non_nullable
+              as List<Block>,
+      feedbacksCount: feedbacksCount == freezed
+          ? _value.feedbacksCount
+          : feedbacksCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as FormzStatus,
+      resumes: resumes == freezed
+          ? _value.resumes
+          : resumes // ignore: cast_nullable_to_non_nullable
+              as List<Resume>,
+      profile: profile == freezed
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as TypeProfileHunter,
+      localResumes: localResumes == freezed
+          ? _value.localResumes
+          : localResumes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      stages: stages == freezed
+          ? _value.stages
+          : stages // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
+      grades: grades == freezed
+          ? _value.grades
+          : grades // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
     ));
   }
 }
@@ -1085,48 +2952,106 @@ class _$ProfileScreenStateCopyWithImpl<$Res>
 
 class _$ProfileScreenState implements ProfileScreenState {
   const _$ProfileScreenState(
-      {required this.profile,
-      required this.feedbacksCount,
+      {required this.id,
+      required this.buttons,
+      required this.title,
       required this.resume,
-      required this.id});
+      required this.isEnabled,
+      required this.blocks,
+      required this.feedbacksCount,
+      required this.status,
+      required this.resumes,
+      required this.profile,
+      required this.localResumes,
+      required this.stages,
+      required this.grades});
 
   @override
-  final ProfileHunter profile;
+  final int id;
   @override
-  final int feedbacksCount;
+  final int buttons;
+  @override
+  final String title;
   @override
   final Resume resume;
   @override
-  final int id;
+  final bool isEnabled;
+  @override
+  final List<Block> blocks;
+  @override
+  final int feedbacksCount;
+  @override
+  final FormzStatus status;
+  @override
+  final List<Resume> resumes;
+  @override
+  final TypeProfileHunter profile;
+  @override
+  final List<String> localResumes;
+  @override
+  final List<Map<String, dynamic>> stages;
+  @override
+  final List<Map<String, dynamic>> grades;
 
   @override
   String toString() {
-    return 'ProfileState.profileState(profile: $profile, feedbacksCount: $feedbacksCount, resume: $resume, id: $id)';
+    return 'ProfileState.profileState(id: $id, buttons: $buttons, title: $title, resume: $resume, isEnabled: $isEnabled, blocks: $blocks, feedbacksCount: $feedbacksCount, status: $status, resumes: $resumes, profile: $profile, localResumes: $localResumes, stages: $stages, grades: $grades)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ProfileScreenState &&
-            (identical(other.profile, profile) ||
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.buttons, buttons) ||
                 const DeepCollectionEquality()
-                    .equals(other.profile, profile)) &&
+                    .equals(other.buttons, buttons)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.resume, resume) ||
+                const DeepCollectionEquality().equals(other.resume, resume)) &&
+            (identical(other.isEnabled, isEnabled) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEnabled, isEnabled)) &&
+            (identical(other.blocks, blocks) ||
+                const DeepCollectionEquality().equals(other.blocks, blocks)) &&
             (identical(other.feedbacksCount, feedbacksCount) ||
                 const DeepCollectionEquality()
                     .equals(other.feedbacksCount, feedbacksCount)) &&
-            (identical(other.resume, resume) ||
-                const DeepCollectionEquality().equals(other.resume, resume)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
+            (identical(other.resumes, resumes) ||
+                const DeepCollectionEquality()
+                    .equals(other.resumes, resumes)) &&
+            (identical(other.profile, profile) ||
+                const DeepCollectionEquality()
+                    .equals(other.profile, profile)) &&
+            (identical(other.localResumes, localResumes) ||
+                const DeepCollectionEquality()
+                    .equals(other.localResumes, localResumes)) &&
+            (identical(other.stages, stages) ||
+                const DeepCollectionEquality().equals(other.stages, stages)) &&
+            (identical(other.grades, grades) ||
+                const DeepCollectionEquality().equals(other.grades, grades)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(profile) ^
-      const DeepCollectionEquality().hash(feedbacksCount) ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(buttons) ^
+      const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(resume) ^
-      const DeepCollectionEquality().hash(id);
+      const DeepCollectionEquality().hash(isEnabled) ^
+      const DeepCollectionEquality().hash(blocks) ^
+      const DeepCollectionEquality().hash(feedbacksCount) ^
+      const DeepCollectionEquality().hash(status) ^
+      const DeepCollectionEquality().hash(resumes) ^
+      const DeepCollectionEquality().hash(profile) ^
+      const DeepCollectionEquality().hash(localResumes) ^
+      const DeepCollectionEquality().hash(stages) ^
+      const DeepCollectionEquality().hash(grades);
 
   @JsonKey(ignore: true)
   @override
@@ -1137,30 +3062,66 @@ class _$ProfileScreenState implements ProfileScreenState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() accessResume,
     required TResult Function(
-            ProfileHunter profile, int feedbacksCount, Resume resume, int id)
+            int id,
+            int buttons,
+            String title,
+            Resume resume,
+            bool isEnabled,
+            List<Block> blocks,
+            int feedbacksCount,
+            FormzStatus status,
+            List<Resume> resumes,
+            TypeProfileHunter profile,
+            List<String> localResumes,
+            List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades)
         profileState,
-    required TResult Function(ProfileHunter profile, int feedbacksCount,
-            List<Resume> resumes, bool isAdd, FormzStatus status, int id)
-        selectResumesState,
+    required TResult Function(int page) screens,
   }) {
-    return profileState(profile, feedbacksCount, resume, id);
+    return profileState(id, buttons, title, resume, isEnabled, blocks,
+        feedbacksCount, status, resumes, profile, localResumes, stages, grades);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? accessResume,
     TResult Function(
-            ProfileHunter profile, int feedbacksCount, Resume resume, int id)?
+            int id,
+            int buttons,
+            String title,
+            Resume resume,
+            bool isEnabled,
+            List<Block> blocks,
+            int feedbacksCount,
+            FormzStatus status,
+            List<Resume> resumes,
+            TypeProfileHunter profile,
+            List<String> localResumes,
+            List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades)?
         profileState,
-    TResult Function(ProfileHunter profile, int feedbacksCount,
-            List<Resume> resumes, bool isAdd, FormzStatus status, int id)?
-        selectResumesState,
+    TResult Function(int page)? screens,
     required TResult orElse(),
   }) {
     if (profileState != null) {
-      return profileState(profile, feedbacksCount, resume, id);
+      return profileState(
+          id,
+          buttons,
+          title,
+          resume,
+          isEnabled,
+          blocks,
+          feedbacksCount,
+          status,
+          resumes,
+          profile,
+          localResumes,
+          stages,
+          grades);
     }
     return orElse();
   }
@@ -1169,9 +3130,9 @@ class _$ProfileScreenState implements ProfileScreenState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialProfileState value) initial,
+    required TResult Function(AccessResumeProfileState value) accessResume,
     required TResult Function(ProfileScreenState value) profileState,
-    required TResult Function(SelectResumesProfileState value)
-        selectResumesState,
+    required TResult Function(ScreensProfileState value) screens,
   }) {
     return profileState(this);
   }
@@ -1180,8 +3141,9 @@ class _$ProfileScreenState implements ProfileScreenState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialProfileState value)? initial,
+    TResult Function(AccessResumeProfileState value)? accessResume,
     TResult Function(ProfileScreenState value)? profileState,
-    TResult Function(SelectResumesProfileState value)? selectResumesState,
+    TResult Function(ScreensProfileState value)? screens,
     required TResult orElse(),
   }) {
     if (profileState != null) {
@@ -1193,79 +3155,65 @@ class _$ProfileScreenState implements ProfileScreenState {
 
 abstract class ProfileScreenState implements ProfileState {
   const factory ProfileScreenState(
-      {required ProfileHunter profile,
-      required int feedbacksCount,
+      {required int id,
+      required int buttons,
+      required String title,
       required Resume resume,
-      required int id}) = _$ProfileScreenState;
+      required bool isEnabled,
+      required List<Block> blocks,
+      required int feedbacksCount,
+      required FormzStatus status,
+      required List<Resume> resumes,
+      required TypeProfileHunter profile,
+      required List<String> localResumes,
+      required List<Map<String, dynamic>> stages,
+      required List<Map<String, dynamic>> grades}) = _$ProfileScreenState;
 
-  ProfileHunter get profile => throw _privateConstructorUsedError;
-  int get feedbacksCount => throw _privateConstructorUsedError;
-  Resume get resume => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
+  int get buttons => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  Resume get resume => throw _privateConstructorUsedError;
+  bool get isEnabled => throw _privateConstructorUsedError;
+  List<Block> get blocks => throw _privateConstructorUsedError;
+  int get feedbacksCount => throw _privateConstructorUsedError;
+  FormzStatus get status => throw _privateConstructorUsedError;
+  List<Resume> get resumes => throw _privateConstructorUsedError;
+  TypeProfileHunter get profile => throw _privateConstructorUsedError;
+  List<String> get localResumes => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get stages => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get grades => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProfileScreenStateCopyWith<ProfileScreenState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SelectResumesProfileStateCopyWith<$Res> {
-  factory $SelectResumesProfileStateCopyWith(SelectResumesProfileState value,
-          $Res Function(SelectResumesProfileState) then) =
-      _$SelectResumesProfileStateCopyWithImpl<$Res>;
-  $Res call(
-      {ProfileHunter profile,
-      int feedbacksCount,
-      List<Resume> resumes,
-      bool isAdd,
-      FormzStatus status,
-      int id});
+abstract class $ScreensProfileStateCopyWith<$Res> {
+  factory $ScreensProfileStateCopyWith(
+          ScreensProfileState value, $Res Function(ScreensProfileState) then) =
+      _$ScreensProfileStateCopyWithImpl<$Res>;
+  $Res call({int page});
 }
 
 /// @nodoc
-class _$SelectResumesProfileStateCopyWithImpl<$Res>
+class _$ScreensProfileStateCopyWithImpl<$Res>
     extends _$ProfileStateCopyWithImpl<$Res>
-    implements $SelectResumesProfileStateCopyWith<$Res> {
-  _$SelectResumesProfileStateCopyWithImpl(SelectResumesProfileState _value,
-      $Res Function(SelectResumesProfileState) _then)
-      : super(_value, (v) => _then(v as SelectResumesProfileState));
+    implements $ScreensProfileStateCopyWith<$Res> {
+  _$ScreensProfileStateCopyWithImpl(
+      ScreensProfileState _value, $Res Function(ScreensProfileState) _then)
+      : super(_value, (v) => _then(v as ScreensProfileState));
 
   @override
-  SelectResumesProfileState get _value =>
-      super._value as SelectResumesProfileState;
+  ScreensProfileState get _value => super._value as ScreensProfileState;
 
   @override
   $Res call({
-    Object? profile = freezed,
-    Object? feedbacksCount = freezed,
-    Object? resumes = freezed,
-    Object? isAdd = freezed,
-    Object? status = freezed,
-    Object? id = freezed,
+    Object? page = freezed,
   }) {
-    return _then(SelectResumesProfileState(
-      profile: profile == freezed
-          ? _value.profile
-          : profile // ignore: cast_nullable_to_non_nullable
-              as ProfileHunter,
-      feedbacksCount: feedbacksCount == freezed
-          ? _value.feedbacksCount
-          : feedbacksCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      resumes: resumes == freezed
-          ? _value.resumes
-          : resumes // ignore: cast_nullable_to_non_nullable
-              as List<Resume>,
-      isAdd: isAdd == freezed
-          ? _value.isAdd
-          : isAdd // ignore: cast_nullable_to_non_nullable
-              as bool,
-      status: status == freezed
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as FormzStatus,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+    return _then(ScreensProfileState(
+      page: page == freezed
+          ? _value.page
+          : page // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -1273,100 +3221,84 @@ class _$SelectResumesProfileStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SelectResumesProfileState implements SelectResumesProfileState {
-  const _$SelectResumesProfileState(
-      {required this.profile,
-      required this.feedbacksCount,
-      required this.resumes,
-      required this.isAdd,
-      required this.status,
-      required this.id});
+class _$ScreensProfileState implements ScreensProfileState {
+  const _$ScreensProfileState({required this.page});
 
   @override
-  final ProfileHunter profile;
-  @override
-  final int feedbacksCount;
-  @override
-  final List<Resume> resumes;
-  @override
-  final bool isAdd;
-  @override
-  final FormzStatus status;
-  @override
-  final int id;
+  final int page;
 
   @override
   String toString() {
-    return 'ProfileState.selectResumesState(profile: $profile, feedbacksCount: $feedbacksCount, resumes: $resumes, isAdd: $isAdd, status: $status, id: $id)';
+    return 'ProfileState.screens(page: $page)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SelectResumesProfileState &&
-            (identical(other.profile, profile) ||
-                const DeepCollectionEquality()
-                    .equals(other.profile, profile)) &&
-            (identical(other.feedbacksCount, feedbacksCount) ||
-                const DeepCollectionEquality()
-                    .equals(other.feedbacksCount, feedbacksCount)) &&
-            (identical(other.resumes, resumes) ||
-                const DeepCollectionEquality()
-                    .equals(other.resumes, resumes)) &&
-            (identical(other.isAdd, isAdd) ||
-                const DeepCollectionEquality().equals(other.isAdd, isAdd)) &&
-            (identical(other.status, status) ||
-                const DeepCollectionEquality().equals(other.status, status)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+        (other is ScreensProfileState &&
+            (identical(other.page, page) ||
+                const DeepCollectionEquality().equals(other.page, page)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(profile) ^
-      const DeepCollectionEquality().hash(feedbacksCount) ^
-      const DeepCollectionEquality().hash(resumes) ^
-      const DeepCollectionEquality().hash(isAdd) ^
-      const DeepCollectionEquality().hash(status) ^
-      const DeepCollectionEquality().hash(id);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(page);
 
   @JsonKey(ignore: true)
   @override
-  $SelectResumesProfileStateCopyWith<SelectResumesProfileState> get copyWith =>
-      _$SelectResumesProfileStateCopyWithImpl<SelectResumesProfileState>(
-          this, _$identity);
+  $ScreensProfileStateCopyWith<ScreensProfileState> get copyWith =>
+      _$ScreensProfileStateCopyWithImpl<ScreensProfileState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() accessResume,
     required TResult Function(
-            ProfileHunter profile, int feedbacksCount, Resume resume, int id)
+            int id,
+            int buttons,
+            String title,
+            Resume resume,
+            bool isEnabled,
+            List<Block> blocks,
+            int feedbacksCount,
+            FormzStatus status,
+            List<Resume> resumes,
+            TypeProfileHunter profile,
+            List<String> localResumes,
+            List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades)
         profileState,
-    required TResult Function(ProfileHunter profile, int feedbacksCount,
-            List<Resume> resumes, bool isAdd, FormzStatus status, int id)
-        selectResumesState,
+    required TResult Function(int page) screens,
   }) {
-    return selectResumesState(
-        profile, feedbacksCount, resumes, isAdd, status, id);
+    return screens(page);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? accessResume,
     TResult Function(
-            ProfileHunter profile, int feedbacksCount, Resume resume, int id)?
+            int id,
+            int buttons,
+            String title,
+            Resume resume,
+            bool isEnabled,
+            List<Block> blocks,
+            int feedbacksCount,
+            FormzStatus status,
+            List<Resume> resumes,
+            TypeProfileHunter profile,
+            List<String> localResumes,
+            List<Map<String, dynamic>> stages,
+            List<Map<String, dynamic>> grades)?
         profileState,
-    TResult Function(ProfileHunter profile, int feedbacksCount,
-            List<Resume> resumes, bool isAdd, FormzStatus status, int id)?
-        selectResumesState,
+    TResult Function(int page)? screens,
     required TResult orElse(),
   }) {
-    if (selectResumesState != null) {
-      return selectResumesState(
-          profile, feedbacksCount, resumes, isAdd, status, id);
+    if (screens != null) {
+      return screens(page);
     }
     return orElse();
   }
@@ -1375,44 +3307,35 @@ class _$SelectResumesProfileState implements SelectResumesProfileState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialProfileState value) initial,
+    required TResult Function(AccessResumeProfileState value) accessResume,
     required TResult Function(ProfileScreenState value) profileState,
-    required TResult Function(SelectResumesProfileState value)
-        selectResumesState,
+    required TResult Function(ScreensProfileState value) screens,
   }) {
-    return selectResumesState(this);
+    return screens(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialProfileState value)? initial,
+    TResult Function(AccessResumeProfileState value)? accessResume,
     TResult Function(ProfileScreenState value)? profileState,
-    TResult Function(SelectResumesProfileState value)? selectResumesState,
+    TResult Function(ScreensProfileState value)? screens,
     required TResult orElse(),
   }) {
-    if (selectResumesState != null) {
-      return selectResumesState(this);
+    if (screens != null) {
+      return screens(this);
     }
     return orElse();
   }
 }
 
-abstract class SelectResumesProfileState implements ProfileState {
-  const factory SelectResumesProfileState(
-      {required ProfileHunter profile,
-      required int feedbacksCount,
-      required List<Resume> resumes,
-      required bool isAdd,
-      required FormzStatus status,
-      required int id}) = _$SelectResumesProfileState;
+abstract class ScreensProfileState implements ProfileState {
+  const factory ScreensProfileState({required int page}) =
+      _$ScreensProfileState;
 
-  ProfileHunter get profile => throw _privateConstructorUsedError;
-  int get feedbacksCount => throw _privateConstructorUsedError;
-  List<Resume> get resumes => throw _privateConstructorUsedError;
-  bool get isAdd => throw _privateConstructorUsedError;
-  FormzStatus get status => throw _privateConstructorUsedError;
-  int get id => throw _privateConstructorUsedError;
+  int get page => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SelectResumesProfileStateCopyWith<SelectResumesProfileState> get copyWith =>
+  $ScreensProfileStateCopyWith<ScreensProfileState> get copyWith =>
       throw _privateConstructorUsedError;
 }

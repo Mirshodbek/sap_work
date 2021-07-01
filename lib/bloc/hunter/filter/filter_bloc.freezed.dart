@@ -45,6 +45,10 @@ class _$FilterEventTearOff {
       search: search,
     );
   }
+
+  _SaveFilterEvent save() {
+    return const _SaveFilterEvent();
+  }
 }
 
 /// @nodoc
@@ -59,6 +63,7 @@ mixin _$FilterEvent {
     required TResult Function(String country, String profession) onTap,
     required TResult Function(String? employmentType) onTapType,
     required TResult Function(String search) search,
+    required TResult Function() save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +73,7 @@ mixin _$FilterEvent {
     TResult Function(String country, String profession)? onTap,
     TResult Function(String? employmentType)? onTapType,
     TResult Function(String search)? search,
+    TResult Function()? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,6 +84,7 @@ mixin _$FilterEvent {
     required TResult Function(_OnTapFilterEvent value) onTap,
     required TResult Function(_OnTapTypeFilterEvent value) onTapType,
     required TResult Function(_SearchFilterEvent value) search,
+    required TResult Function(_SaveFilterEvent value) save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +94,7 @@ mixin _$FilterEvent {
     TResult Function(_OnTapFilterEvent value)? onTap,
     TResult Function(_OnTapTypeFilterEvent value)? onTapType,
     TResult Function(_SearchFilterEvent value)? search,
+    TResult Function(_SaveFilterEvent value)? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -153,6 +161,7 @@ class _$_InitialFilterEvent implements _InitialFilterEvent {
     required TResult Function(String country, String profession) onTap,
     required TResult Function(String? employmentType) onTapType,
     required TResult Function(String search) search,
+    required TResult Function() save,
   }) {
     return initial();
   }
@@ -165,6 +174,7 @@ class _$_InitialFilterEvent implements _InitialFilterEvent {
     TResult Function(String country, String profession)? onTap,
     TResult Function(String? employmentType)? onTapType,
     TResult Function(String search)? search,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -181,6 +191,7 @@ class _$_InitialFilterEvent implements _InitialFilterEvent {
     required TResult Function(_OnTapFilterEvent value) onTap,
     required TResult Function(_OnTapTypeFilterEvent value) onTapType,
     required TResult Function(_SearchFilterEvent value) search,
+    required TResult Function(_SaveFilterEvent value) save,
   }) {
     return initial(this);
   }
@@ -193,6 +204,7 @@ class _$_InitialFilterEvent implements _InitialFilterEvent {
     TResult Function(_OnTapFilterEvent value)? onTap,
     TResult Function(_OnTapTypeFilterEvent value)? onTapType,
     TResult Function(_SearchFilterEvent value)? search,
+    TResult Function(_SaveFilterEvent value)? save,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -279,6 +291,7 @@ class _$_ToggleCheckboxFilterEvent implements _ToggleCheckboxFilterEvent {
     required TResult Function(String country, String profession) onTap,
     required TResult Function(String? employmentType) onTapType,
     required TResult Function(String search) search,
+    required TResult Function() save,
   }) {
     return toggleCheckbox(title);
   }
@@ -291,6 +304,7 @@ class _$_ToggleCheckboxFilterEvent implements _ToggleCheckboxFilterEvent {
     TResult Function(String country, String profession)? onTap,
     TResult Function(String? employmentType)? onTapType,
     TResult Function(String search)? search,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
     if (toggleCheckbox != null) {
@@ -307,6 +321,7 @@ class _$_ToggleCheckboxFilterEvent implements _ToggleCheckboxFilterEvent {
     required TResult Function(_OnTapFilterEvent value) onTap,
     required TResult Function(_OnTapTypeFilterEvent value) onTapType,
     required TResult Function(_SearchFilterEvent value) search,
+    required TResult Function(_SaveFilterEvent value) save,
   }) {
     return toggleCheckbox(this);
   }
@@ -319,6 +334,7 @@ class _$_ToggleCheckboxFilterEvent implements _ToggleCheckboxFilterEvent {
     TResult Function(_OnTapFilterEvent value)? onTap,
     TResult Function(_OnTapTypeFilterEvent value)? onTapType,
     TResult Function(_SearchFilterEvent value)? search,
+    TResult Function(_SaveFilterEvent value)? save,
     required TResult orElse(),
   }) {
     if (toggleCheckbox != null) {
@@ -421,6 +437,7 @@ class _$_OnTapFilterEvent implements _OnTapFilterEvent {
     required TResult Function(String country, String profession) onTap,
     required TResult Function(String? employmentType) onTapType,
     required TResult Function(String search) search,
+    required TResult Function() save,
   }) {
     return onTap(country, profession);
   }
@@ -433,6 +450,7 @@ class _$_OnTapFilterEvent implements _OnTapFilterEvent {
     TResult Function(String country, String profession)? onTap,
     TResult Function(String? employmentType)? onTapType,
     TResult Function(String search)? search,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
     if (onTap != null) {
@@ -449,6 +467,7 @@ class _$_OnTapFilterEvent implements _OnTapFilterEvent {
     required TResult Function(_OnTapFilterEvent value) onTap,
     required TResult Function(_OnTapTypeFilterEvent value) onTapType,
     required TResult Function(_SearchFilterEvent value) search,
+    required TResult Function(_SaveFilterEvent value) save,
   }) {
     return onTap(this);
   }
@@ -461,6 +480,7 @@ class _$_OnTapFilterEvent implements _OnTapFilterEvent {
     TResult Function(_OnTapFilterEvent value)? onTap,
     TResult Function(_OnTapTypeFilterEvent value)? onTapType,
     TResult Function(_SearchFilterEvent value)? search,
+    TResult Function(_SaveFilterEvent value)? save,
     required TResult orElse(),
   }) {
     if (onTap != null) {
@@ -555,6 +575,7 @@ class _$_OnTapTypeFilterEvent implements _OnTapTypeFilterEvent {
     required TResult Function(String country, String profession) onTap,
     required TResult Function(String? employmentType) onTapType,
     required TResult Function(String search) search,
+    required TResult Function() save,
   }) {
     return onTapType(employmentType);
   }
@@ -567,6 +588,7 @@ class _$_OnTapTypeFilterEvent implements _OnTapTypeFilterEvent {
     TResult Function(String country, String profession)? onTap,
     TResult Function(String? employmentType)? onTapType,
     TResult Function(String search)? search,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
     if (onTapType != null) {
@@ -583,6 +605,7 @@ class _$_OnTapTypeFilterEvent implements _OnTapTypeFilterEvent {
     required TResult Function(_OnTapFilterEvent value) onTap,
     required TResult Function(_OnTapTypeFilterEvent value) onTapType,
     required TResult Function(_SearchFilterEvent value) search,
+    required TResult Function(_SaveFilterEvent value) save,
   }) {
     return onTapType(this);
   }
@@ -595,6 +618,7 @@ class _$_OnTapTypeFilterEvent implements _OnTapTypeFilterEvent {
     TResult Function(_OnTapFilterEvent value)? onTap,
     TResult Function(_OnTapTypeFilterEvent value)? onTapType,
     TResult Function(_SearchFilterEvent value)? search,
+    TResult Function(_SaveFilterEvent value)? save,
     required TResult orElse(),
   }) {
     if (onTapType != null) {
@@ -684,6 +708,7 @@ class _$_SearchFilterEvent implements _SearchFilterEvent {
     required TResult Function(String country, String profession) onTap,
     required TResult Function(String? employmentType) onTapType,
     required TResult Function(String search) search,
+    required TResult Function() save,
   }) {
     return search(this.search);
   }
@@ -696,6 +721,7 @@ class _$_SearchFilterEvent implements _SearchFilterEvent {
     TResult Function(String country, String profession)? onTap,
     TResult Function(String? employmentType)? onTapType,
     TResult Function(String search)? search,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -712,6 +738,7 @@ class _$_SearchFilterEvent implements _SearchFilterEvent {
     required TResult Function(_OnTapFilterEvent value) onTap,
     required TResult Function(_OnTapTypeFilterEvent value) onTapType,
     required TResult Function(_SearchFilterEvent value) search,
+    required TResult Function(_SaveFilterEvent value) save,
   }) {
     return search(this);
   }
@@ -724,6 +751,7 @@ class _$_SearchFilterEvent implements _SearchFilterEvent {
     TResult Function(_OnTapFilterEvent value)? onTap,
     TResult Function(_OnTapTypeFilterEvent value)? onTapType,
     TResult Function(_SearchFilterEvent value)? search,
+    TResult Function(_SaveFilterEvent value)? save,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -744,6 +772,108 @@ abstract class _SearchFilterEvent implements FilterEvent {
 }
 
 /// @nodoc
+abstract class _$SaveFilterEventCopyWith<$Res> {
+  factory _$SaveFilterEventCopyWith(
+          _SaveFilterEvent value, $Res Function(_SaveFilterEvent) then) =
+      __$SaveFilterEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SaveFilterEventCopyWithImpl<$Res>
+    extends _$FilterEventCopyWithImpl<$Res>
+    implements _$SaveFilterEventCopyWith<$Res> {
+  __$SaveFilterEventCopyWithImpl(
+      _SaveFilterEvent _value, $Res Function(_SaveFilterEvent) _then)
+      : super(_value, (v) => _then(v as _SaveFilterEvent));
+
+  @override
+  _SaveFilterEvent get _value => super._value as _SaveFilterEvent;
+}
+
+/// @nodoc
+
+class _$_SaveFilterEvent implements _SaveFilterEvent {
+  const _$_SaveFilterEvent();
+
+  @override
+  String toString() {
+    return 'FilterEvent.save()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _SaveFilterEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String title) toggleCheckbox,
+    required TResult Function(String country, String profession) onTap,
+    required TResult Function(String? employmentType) onTapType,
+    required TResult Function(String search) search,
+    required TResult Function() save,
+  }) {
+    return save();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String title)? toggleCheckbox,
+    TResult Function(String country, String profession)? onTap,
+    TResult Function(String? employmentType)? onTapType,
+    TResult Function(String search)? search,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialFilterEvent value) initial,
+    required TResult Function(_ToggleCheckboxFilterEvent value) toggleCheckbox,
+    required TResult Function(_OnTapFilterEvent value) onTap,
+    required TResult Function(_OnTapTypeFilterEvent value) onTapType,
+    required TResult Function(_SearchFilterEvent value) search,
+    required TResult Function(_SaveFilterEvent value) save,
+  }) {
+    return save(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialFilterEvent value)? initial,
+    TResult Function(_ToggleCheckboxFilterEvent value)? toggleCheckbox,
+    TResult Function(_OnTapFilterEvent value)? onTap,
+    TResult Function(_OnTapTypeFilterEvent value)? onTapType,
+    TResult Function(_SearchFilterEvent value)? search,
+    TResult Function(_SaveFilterEvent value)? save,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveFilterEvent implements FilterEvent {
+  const factory _SaveFilterEvent() = _$_SaveFilterEvent;
+}
+
+/// @nodoc
 class _$FilterStateTearOff {
   const _$FilterStateTearOff();
 
@@ -751,8 +881,12 @@ class _$FilterStateTearOff {
     return const InitialFilterState();
   }
 
+  SavedStateFilterState savedState() {
+    return const SavedStateFilterState();
+  }
+
   FilterScreenState filter(
-      {required List<SkillState> checkBoxes,
+      {required List<StageList> checkBoxes,
       required List<String> countries,
       required List<String> professions,
       required String country,
@@ -777,8 +911,9 @@ mixin _$FilterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() savedState,
     required TResult Function(
-            List<SkillState> checkBoxes,
+            List<StageList> checkBoxes,
             List<String> countries,
             List<String> professions,
             String country,
@@ -790,8 +925,9 @@ mixin _$FilterState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? savedState,
     TResult Function(
-            List<SkillState> checkBoxes,
+            List<StageList> checkBoxes,
             List<String> countries,
             List<String> professions,
             String country,
@@ -804,12 +940,14 @@ mixin _$FilterState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialFilterState value) initial,
+    required TResult Function(SavedStateFilterState value) savedState,
     required TResult Function(FilterScreenState value) filter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialFilterState value)? initial,
+    TResult Function(SavedStateFilterState value)? savedState,
     TResult Function(FilterScreenState value)? filter,
     required TResult orElse(),
   }) =>
@@ -873,8 +1011,9 @@ class _$InitialFilterState implements InitialFilterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() savedState,
     required TResult Function(
-            List<SkillState> checkBoxes,
+            List<StageList> checkBoxes,
             List<String> countries,
             List<String> professions,
             String country,
@@ -889,8 +1028,9 @@ class _$InitialFilterState implements InitialFilterState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? savedState,
     TResult Function(
-            List<SkillState> checkBoxes,
+            List<StageList> checkBoxes,
             List<String> countries,
             List<String> professions,
             String country,
@@ -909,6 +1049,7 @@ class _$InitialFilterState implements InitialFilterState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialFilterState value) initial,
+    required TResult Function(SavedStateFilterState value) savedState,
     required TResult Function(FilterScreenState value) filter,
   }) {
     return initial(this);
@@ -918,6 +1059,7 @@ class _$InitialFilterState implements InitialFilterState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialFilterState value)? initial,
+    TResult Function(SavedStateFilterState value)? savedState,
     TResult Function(FilterScreenState value)? filter,
     required TResult orElse(),
   }) {
@@ -933,12 +1075,116 @@ abstract class InitialFilterState implements FilterState {
 }
 
 /// @nodoc
+abstract class $SavedStateFilterStateCopyWith<$Res> {
+  factory $SavedStateFilterStateCopyWith(SavedStateFilterState value,
+          $Res Function(SavedStateFilterState) then) =
+      _$SavedStateFilterStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$SavedStateFilterStateCopyWithImpl<$Res>
+    extends _$FilterStateCopyWithImpl<$Res>
+    implements $SavedStateFilterStateCopyWith<$Res> {
+  _$SavedStateFilterStateCopyWithImpl(
+      SavedStateFilterState _value, $Res Function(SavedStateFilterState) _then)
+      : super(_value, (v) => _then(v as SavedStateFilterState));
+
+  @override
+  SavedStateFilterState get _value => super._value as SavedStateFilterState;
+}
+
+/// @nodoc
+
+class _$SavedStateFilterState implements SavedStateFilterState {
+  const _$SavedStateFilterState();
+
+  @override
+  String toString() {
+    return 'FilterState.savedState()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is SavedStateFilterState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() savedState,
+    required TResult Function(
+            List<StageList> checkBoxes,
+            List<String> countries,
+            List<String> professions,
+            String country,
+            String profession,
+            String? employmentType)
+        filter,
+  }) {
+    return savedState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? savedState,
+    TResult Function(
+            List<StageList> checkBoxes,
+            List<String> countries,
+            List<String> professions,
+            String country,
+            String profession,
+            String? employmentType)?
+        filter,
+    required TResult orElse(),
+  }) {
+    if (savedState != null) {
+      return savedState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialFilterState value) initial,
+    required TResult Function(SavedStateFilterState value) savedState,
+    required TResult Function(FilterScreenState value) filter,
+  }) {
+    return savedState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialFilterState value)? initial,
+    TResult Function(SavedStateFilterState value)? savedState,
+    TResult Function(FilterScreenState value)? filter,
+    required TResult orElse(),
+  }) {
+    if (savedState != null) {
+      return savedState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SavedStateFilterState implements FilterState {
+  const factory SavedStateFilterState() = _$SavedStateFilterState;
+}
+
+/// @nodoc
 abstract class $FilterScreenStateCopyWith<$Res> {
   factory $FilterScreenStateCopyWith(
           FilterScreenState value, $Res Function(FilterScreenState) then) =
       _$FilterScreenStateCopyWithImpl<$Res>;
   $Res call(
-      {List<SkillState> checkBoxes,
+      {List<StageList> checkBoxes,
       List<String> countries,
       List<String> professions,
       String country,
@@ -970,7 +1216,7 @@ class _$FilterScreenStateCopyWithImpl<$Res>
       checkBoxes: checkBoxes == freezed
           ? _value.checkBoxes
           : checkBoxes // ignore: cast_nullable_to_non_nullable
-              as List<SkillState>,
+              as List<StageList>,
       countries: countries == freezed
           ? _value.countries
           : countries // ignore: cast_nullable_to_non_nullable
@@ -1007,7 +1253,7 @@ class _$FilterScreenState implements FilterScreenState {
       required this.employmentType});
 
   @override
-  final List<SkillState> checkBoxes;
+  final List<StageList> checkBoxes;
   @override
   final List<String> countries;
   @override
@@ -1067,8 +1313,9 @@ class _$FilterScreenState implements FilterScreenState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() savedState,
     required TResult Function(
-            List<SkillState> checkBoxes,
+            List<StageList> checkBoxes,
             List<String> countries,
             List<String> professions,
             String country,
@@ -1084,8 +1331,9 @@ class _$FilterScreenState implements FilterScreenState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? savedState,
     TResult Function(
-            List<SkillState> checkBoxes,
+            List<StageList> checkBoxes,
             List<String> countries,
             List<String> professions,
             String country,
@@ -1105,6 +1353,7 @@ class _$FilterScreenState implements FilterScreenState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(InitialFilterState value) initial,
+    required TResult Function(SavedStateFilterState value) savedState,
     required TResult Function(FilterScreenState value) filter,
   }) {
     return filter(this);
@@ -1114,6 +1363,7 @@ class _$FilterScreenState implements FilterScreenState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialFilterState value)? initial,
+    TResult Function(SavedStateFilterState value)? savedState,
     TResult Function(FilterScreenState value)? filter,
     required TResult orElse(),
   }) {
@@ -1126,14 +1376,14 @@ class _$FilterScreenState implements FilterScreenState {
 
 abstract class FilterScreenState implements FilterState {
   const factory FilterScreenState(
-      {required List<SkillState> checkBoxes,
+      {required List<StageList> checkBoxes,
       required List<String> countries,
       required List<String> professions,
       required String country,
       required String profession,
       required String? employmentType}) = _$FilterScreenState;
 
-  List<SkillState> get checkBoxes => throw _privateConstructorUsedError;
+  List<StageList> get checkBoxes => throw _privateConstructorUsedError;
   List<String> get countries => throw _privateConstructorUsedError;
   List<String> get professions => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;

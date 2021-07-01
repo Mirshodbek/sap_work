@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sap_work/bloc/hunter/notifications/notifications_bloc.dart';
 import '../../hunter.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({Key? key}) : super(key: key);
-
-  static Widget create(BuildContext context) {
-    return NotificationsScreen();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,66 +16,34 @@ class NotificationsScreen extends StatelessWidget {
       ),
       bottomNavigationBar:
           BottomNavBarWidget(context.watch<NavigationCubit>().state),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Приглашения",
-              style: AppTextTheme.mediumTextBlack,
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Column(
-              children: [
-                BodyInvites(),
-                // InvitesButton(),
-              ],
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            Text(
-              "Все отклики",
-              style: AppTextTheme.mediumTextBlack,
-            ),
-            BlocBuilder<NotificationsBloc, NotificationsState>(
-              builder: (context, state) {
-                return state.map(
-                  initial: (_) => Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  notificationsState: (_state) {
-                    return Column(
-                      children: _state.feedbacks.map((vacancies) {
-                        return InkWell(
-                          key: ObjectKey(vacancies),
-                          onTap: () =>
-                              _onTapVacancy(context, vacancies.vacancy),
-                          child: VacancyListItemWidget(
-                            false,
-                            true,
-                            vacancies.vacancy,
-                          ),
-                        );
-                      }).toList(),
-                    );
-                  },
-                );
+      body: BlocConsumer<NotificationsBloc, NotificationsState>(
+        listener: (context, state) {
+          if (state is NavigationNotificationsState) {
+            Navigator.pushNamed(
+              context,
+              MessagesScreen.id,
+              arguments: {
+                "notifications_bloc": context.read<NotificationsBloc>()
               },
+            );
+          }
+        },
+        builder: (context, state) {
+          return state.maybeMap(
+            orElse: () => Container(),
+            initial: (_) => SingleChildScrollView(
+              padding: const EdgeInsets.all(18.0),
+              child: InitialNotificationsWidget(),
             ),
-          ],
-        ),
+            notificationsState: (_state) {
+              return SingleChildScrollView(
+                padding: const EdgeInsets.all(18.0),
+                child: NotificationsWidget(_state.feedbacks),
+              );
+            },
+          );
+        },
       ),
     );
   }
-
-  Future<Object?> _onTapVacancy(BuildContext context, Vacancy vacancy) =>
-      Navigator?.pushNamed<String>(
-        context,
-        VacancyScreen.id,
-        arguments: {"id": vacancy.id},
-      );
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sap_work/models/vacancy/vacancy.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
 
 class VacancyListItemWidget extends StatelessWidget {
@@ -9,7 +8,8 @@ class VacancyListItemWidget extends StatelessWidget {
   final Vacancy vacancy;
   final Widget favoriteButton;
 
-  VacancyListItemWidget(this.extension, this.isResponse, this.vacancy,
+  VacancyListItemWidget(
+      this.extension, this.isResponse, this.vacancy,
       {this.favoriteButton = const SizedBox.shrink()});
 
   @override
@@ -50,7 +50,7 @@ class VacancyListItemWidget extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    "vacancy.company!.name",
+                    vacancy.company.name,
                     maxLines: 2,
                     style: AppTextTheme.smallTextBlack,
                   ),
@@ -70,7 +70,7 @@ class VacancyListItemWidget extends StatelessWidget {
                   child: extension
                       ? FittedBox(
                           child: Text(
-                            "${vacancy.salary}₸",
+                            "${vacancy.minsalary}₸-${vacancy.maxsalary}",
                             style: AppTextTheme.mediumTextBlack.copyWith(
                               fontSize: 14.0,
                             ),
@@ -104,7 +104,7 @@ class VacancyListItemWidget extends StatelessWidget {
           const SizedBox(
             height: 20.0,
           ),
-         favoriteButton,
+          favoriteButton,
         ],
       );
 
@@ -138,7 +138,7 @@ class VacancyListItemWidget extends StatelessWidget {
   Widget _wageLocation() => Row(
         children: [
           Text(
-            "${vacancy.salary}",
+            "${vacancy.minsalary}₸-${vacancy.maxsalary}",
             style: AppTextTheme.smallTextBlack.copyWith(
               fontSize: 14.0,
             ),
@@ -158,5 +158,4 @@ class VacancyListItemWidget extends StatelessWidget {
           ),
         ],
       );
-
 }

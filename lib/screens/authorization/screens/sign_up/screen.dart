@@ -51,7 +51,7 @@ class SignUpScreen extends StatelessWidget {
               Flexible(
                 flex: 3,
                 child: context.select((SelectRole value) => value.isHunter)
-                    ? SearcherRole.create()
+                    ? HunterRole.create()
                     : EmployerRole.create(),
               ),
             ],

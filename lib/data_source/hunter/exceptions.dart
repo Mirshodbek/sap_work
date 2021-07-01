@@ -1,0 +1,4 @@
+
+
+
+class DisconnectedInternet implements Exception {}

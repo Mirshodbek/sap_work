@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../hunter.dart';
 
 class BodyInvites extends StatelessWidget {
@@ -118,7 +117,7 @@ class BodyInvites extends StatelessWidget {
               ),
               Expanded(
                 child: IconButton(
-                  onPressed: () =>Navigator.pushNamed(context, ChatScreenS.id),
+                  onPressed: () =>Navigator.pushNamed(context, MessagesScreen.id),
                   icon: SvgPicture.asset(AppIcons.chat),
                 ),
               ),

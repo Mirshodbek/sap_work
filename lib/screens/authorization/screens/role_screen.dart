@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../authorization.dart';
 
 class RoleScreen extends StatelessWidget {
@@ -28,7 +27,7 @@ class RoleScreen extends StatelessWidget {
                 Expanded(
                   child: SelectButton(
                     onPressed: () =>
-                        Navigator.pushNamed(context, SearcherSignInScreen.id),
+                        Navigator.pushNamed(context, HunterSignInScreen.id),
                     left: true,
                     background: Colors.transparent,
                     title: "Соискатель",

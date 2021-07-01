@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sap_work/bloc/hunter/filter/filter_bloc.dart';
-
 import '../../hunter.dart';
 
 class ExtraFilterScreen extends StatelessWidget {
@@ -47,7 +45,8 @@ class ExtraFilterScreen extends StatelessWidget {
             ),
             BlocBuilder<FilterBloc, FilterState>(
               builder: (context, state) {
-                return state.map(
+                return state.maybeMap(
+                  orElse: ()=>Container(),
                   initial: (_) => Container(),
                   filter: (_state) {
                     if (id == ExtraFilterScreen.idCountry) {

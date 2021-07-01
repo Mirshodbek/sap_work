@@ -1,10 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:sap_work/bloc/sign_up/employer_role/employer_sign_up_bloc.dart';
-import 'package:sap_work/data_provider/auth_provider.dart';
-
 import '../../../authorization.dart';
 
 class EmployerRole extends StatefulWidget {
@@ -120,8 +116,16 @@ class _EmployerRoleState extends State<EmployerRole> {
             controller: _phone,
             keyboardType: TextInputType.phone,
             style: AppTextTheme.smallTextWhite,
-            decoration: TextFieldDecoration.decoration("Телефон")
-                .copyWith(prefixText: "+7 "),
+            decoration: TextFieldDecoration.decoration("Телефон").copyWith(
+              prefixIcon: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 9.0),
+                child: Text(
+                  "+7 ",
+                  textAlign: TextAlign.center,
+                  style: AppTextTheme.smallTextWhite,
+                ),
+              ),
+            ),
           ),
           if (_state.phone.invalid)
             Text(

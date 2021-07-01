@@ -4,10 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../hunter.dart';
 
-class SettingsScreenS extends StatelessWidget {
+class SettingsScreen extends StatelessWidget {
   static const String id = '/settings';
 
-  const SettingsScreenS({Key? key}) : super(key: key);
+  const SettingsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
