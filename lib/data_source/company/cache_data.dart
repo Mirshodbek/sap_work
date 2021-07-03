@@ -1,16 +1,9 @@
 import 'dart:convert';
-
-import 'package:sap_work/models/category/category.dart';
-import 'package:sap_work/models/profile_company/profile.dart';
-import 'package:sap_work/models/vacancy/vacancy.dart';
-import 'package:sap_work/models/vacancy_company/vacancy.dart';
-import 'package:sap_work/repository/exceptions_failures.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-const CACHED_PROFILE_COMPANY = 'CACHED_PROFILE_COMPANY';
-const CACHED_VACANCIES_COMPANY = 'CACHED_VACANCIES_COMPANY';
-const CACHED_CATEGORIES = 'CACHED_CATEGORIES';
-const CACHED_VACANCY_COMPANY = 'CACHED_VACANCY_COMPANY';
+import '../data_source.dart';
 
 abstract class CompanyCacheDataBase {
   Future<TypeProfileCompany> getProfileCompany();
@@ -19,11 +12,11 @@ abstract class CompanyCacheDataBase {
 
   Future<List<VacancyCompany>> getVacanciesCompany();
 
-  Future<void> cacheVacanciesCompany(List<VacancyCompany> vacancies);
-
   Future<List<Category>> getCategories();
 
-  Future<void> cacheCategories(List<Category> categories);
+  Future<File> cacheObject(String object, String path);
+
+  Future<FileSystemEntity> deleteObject(String path);
 
   Future<Vacancy> getVacancyCompany();
 
@@ -54,37 +47,49 @@ class CompanyCacheData implements CompanyCacheDataBase {
   }
 
   @override
-  Future<List<VacancyCompany>> getVacanciesCompany() {
-    final jsonString = sharedPreferences.getString(CACHED_VACANCIES_COMPANY);
-    if (jsonString != null) {
-      return Future.value(VacancyCompany.decode(json.decode(jsonString)));
+  Future<List<VacancyCompany>> getVacanciesCompany() async {
+    var cacheDir = await getTemporaryDirectory();
+    if (await File(cacheDir.path + "/" + CACHED_VACANCIES_COMPANY).exists()) {
+      var jsonData = File(cacheDir.path + "/" + CACHED_VACANCIES_COMPANY)
+          .readAsStringSync();
+      return Future.value((json.decode(jsonData) as List)
+          .map((item) => VacancyCompany.fromJson(item))
+          .toList());
     } else {
       throw CacheException();
     }
   }
 
   @override
-  Future<void> cacheVacanciesCompany(List<VacancyCompany> vacancies) {
-    return sharedPreferences.setString(
-        CACHED_VACANCIES_COMPANY, VacancyCompany.encode(vacancies));
-  }
-
-  @override
-  Future<List<Category>> getCategories() {
-    final jsonString = sharedPreferences.getString(CACHED_CATEGORIES);
-    if (jsonString != null) {
-      return Future.value(Category.decode(json.decode(jsonString)));
+  Future<List<Category>> getCategories() async {
+    var cacheDir = await getTemporaryDirectory();
+    if (await File(cacheDir.path + "/" + CACHED_CATEGORIES).exists()) {
+      var jsonData =
+          File(cacheDir.path + "/" + CACHED_CATEGORIES).readAsStringSync();
+      return Future.value((json.decode(jsonData) as List)
+          .map((item) => Category.fromJson(item))
+          .toList());
     } else {
       throw CacheException();
     }
   }
 
   @override
-  Future<void> cacheCategories(List<Category> categories) {
-    return sharedPreferences.setString(
-        CACHED_CATEGORIES, Category.encode(categories));
+  Future<File> cacheObject(String object, String path) async {
+    var cacheDir = await getTemporaryDirectory();
+    File file = File(cacheDir.path + "/" + path);
+    return await file.writeAsString(object, flush: true, mode: FileMode.write);
   }
 
+  @override
+  Future<FileSystemEntity> deleteObject(String path) async {
+    var cacheDir = await getTemporaryDirectory();
+    if (await File(cacheDir.path + "/" + path).exists()) {
+      return cacheDir.delete(recursive: true);
+    } else {
+      return File("");
+    }
+  }
 
   @override
   Future<Vacancy> getVacancyCompany() {

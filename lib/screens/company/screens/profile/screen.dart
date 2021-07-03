@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sap_work/bloc/navigation/navigation_cubit.dart';
+import 'package:sap_work/resources/icons.dart';
+import 'package:sap_work/screens/company/screens/profile/widgets/feedback.dart';
+import 'package:sap_work/screens/company/screens/profile/widgets/profile.dart';
+import 'package:sap_work/screens/company/screens/profile/widgets/vacancies_or_vacancy.dart';
 import 'package:sap_work/screens/hunter/screens/settings/screen.dart';
-import 'widgets/widget.dart';
-
+import 'package:sap_work/screens/widgets/bottom_nav_bar.dart';
+import 'package:sap_work/theme/color_theme.dart';
 
 class ProfileScreenCompany extends StatelessWidget {
   const ProfileScreenCompany({Key? key}) : super(key: key);

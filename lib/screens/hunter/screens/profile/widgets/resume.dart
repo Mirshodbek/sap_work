@@ -42,7 +42,7 @@ class ResumeWidget extends StatelessWidget {
         ),
         ResumeButtonsWidget(
           titlePdf: "Резюме PDF",
-          titleVisible:  "Видимость резюме",
+          titleVisible:   Text("Видимость резюме",style: AppTextTheme.smallTextMediumBlack),
           pdf: () async {
             FilePickerResult? result = await FilePicker.platform.pickFiles();
             if (result != null) {

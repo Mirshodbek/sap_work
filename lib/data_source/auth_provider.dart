@@ -1,8 +1,10 @@
 
 import 'package:http/http.dart' as http;
 
+import 'common_urls.dart';
+import 'data_source.dart';
+
 class AuthProvider {
-  static const String _baseApi = 'http://194.58.98.181:16498';
   static const String _userRegister = '/api/register/user';
   static const String _userLogin = '/api/login/user';
   static const String _userSend = '/api/send/user';
@@ -85,7 +87,7 @@ class AuthProvider {
 
   Future<http.Response> _callPostApi(String endpoint,
       Map<String, String> headers, Map<String, String> params) async {
-    final uri = Uri.parse(_baseApi + endpoint);
+    final uri = Uri.parse(BASE_API + endpoint);
     final response = await http.post(uri, headers: headers, body: params);
     return response;
   }

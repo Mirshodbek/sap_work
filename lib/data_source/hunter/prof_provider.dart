@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../data_source.dart';
 
 class ProfProvider {
   static const String _baseApi = 'http://194.58.98.181:16498';
@@ -155,7 +158,7 @@ class ProfProvider {
     var request = http.MultipartRequest('POST', uri);
     request.headers.addAll({
       "Accept": "application/json",
-      "Authorization": "Bearer ${prefs.getString("tokenHunter")}"
+      "Authorization": "Bearer ${prefs.getString(USER_TOKEN)}"
     });
     request.files.add(await http.MultipartFile.fromPath('file_name', filename));
     var res = await request.send();
@@ -170,7 +173,7 @@ class ProfProvider {
             headers: {
               "Accept": "application/json",
               "Content-type": "application/json",
-              "Authorization": "Bearer ${prefs.getString("tokenHunter")}"
+              "Authorization": "Bearer ${prefs.getString(USER_TOKEN)}"
             },
             body: params)
         .catchError((e) {

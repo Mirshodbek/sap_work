@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sap_work/models/feedback_vacancy/feedback.dart';
 
-import 'feedbacks.dart';
 
 part 'feedbacks_vacancy_bloc.freezed.dart';
 

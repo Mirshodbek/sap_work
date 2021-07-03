@@ -19,6 +19,14 @@ class _$VacancyCompanyEventTearOff {
   _GetVacancyCompanyEvent getVacancy() {
     return const _GetVacancyCompanyEvent();
   }
+
+  _ActivateOrDeactivateVacancyCompanyEvent activateOrDeactivate(
+      {required int id, required int active}) {
+    return _ActivateOrDeactivateVacancyCompanyEvent(
+      id: id,
+      active: active,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,22 +37,28 @@ mixin _$VacancyCompanyEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getVacancy,
+    required TResult Function(int id, int active) activateOrDeactivate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getVacancy,
+    TResult Function(int id, int active)? activateOrDeactivate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetVacancyCompanyEvent value) getVacancy,
+    required TResult Function(_ActivateOrDeactivateVacancyCompanyEvent value)
+        activateOrDeactivate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetVacancyCompanyEvent value)? getVacancy,
+    TResult Function(_ActivateOrDeactivateVacancyCompanyEvent value)?
+        activateOrDeactivate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,6 +122,7 @@ class _$_GetVacancyCompanyEvent implements _GetVacancyCompanyEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getVacancy,
+    required TResult Function(int id, int active) activateOrDeactivate,
   }) {
     return getVacancy();
   }
@@ -116,6 +131,7 @@ class _$_GetVacancyCompanyEvent implements _GetVacancyCompanyEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getVacancy,
+    TResult Function(int id, int active)? activateOrDeactivate,
     required TResult orElse(),
   }) {
     if (getVacancy != null) {
@@ -128,6 +144,8 @@ class _$_GetVacancyCompanyEvent implements _GetVacancyCompanyEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetVacancyCompanyEvent value) getVacancy,
+    required TResult Function(_ActivateOrDeactivateVacancyCompanyEvent value)
+        activateOrDeactivate,
   }) {
     return getVacancy(this);
   }
@@ -136,6 +154,8 @@ class _$_GetVacancyCompanyEvent implements _GetVacancyCompanyEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetVacancyCompanyEvent value)? getVacancy,
+    TResult Function(_ActivateOrDeactivateVacancyCompanyEvent value)?
+        activateOrDeactivate,
     required TResult orElse(),
   }) {
     if (getVacancy != null) {
@@ -150,6 +170,148 @@ abstract class _GetVacancyCompanyEvent implements VacancyCompanyEvent {
 }
 
 /// @nodoc
+abstract class _$ActivateOrDeactivateVacancyCompanyEventCopyWith<$Res> {
+  factory _$ActivateOrDeactivateVacancyCompanyEventCopyWith(
+          _ActivateOrDeactivateVacancyCompanyEvent value,
+          $Res Function(_ActivateOrDeactivateVacancyCompanyEvent) then) =
+      __$ActivateOrDeactivateVacancyCompanyEventCopyWithImpl<$Res>;
+  $Res call({int id, int active});
+}
+
+/// @nodoc
+class __$ActivateOrDeactivateVacancyCompanyEventCopyWithImpl<$Res>
+    extends _$VacancyCompanyEventCopyWithImpl<$Res>
+    implements _$ActivateOrDeactivateVacancyCompanyEventCopyWith<$Res> {
+  __$ActivateOrDeactivateVacancyCompanyEventCopyWithImpl(
+      _ActivateOrDeactivateVacancyCompanyEvent _value,
+      $Res Function(_ActivateOrDeactivateVacancyCompanyEvent) _then)
+      : super(_value,
+            (v) => _then(v as _ActivateOrDeactivateVacancyCompanyEvent));
+
+  @override
+  _ActivateOrDeactivateVacancyCompanyEvent get _value =>
+      super._value as _ActivateOrDeactivateVacancyCompanyEvent;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? active = freezed,
+  }) {
+    return _then(_ActivateOrDeactivateVacancyCompanyEvent(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      active: active == freezed
+          ? _value.active
+          : active // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ActivateOrDeactivateVacancyCompanyEvent
+    implements _ActivateOrDeactivateVacancyCompanyEvent {
+  const _$_ActivateOrDeactivateVacancyCompanyEvent(
+      {required this.id, required this.active});
+
+  @override
+  final int id;
+  @override
+  final int active;
+
+  @override
+  String toString() {
+    return 'VacancyCompanyEvent.activateOrDeactivate(id: $id, active: $active)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ActivateOrDeactivateVacancyCompanyEvent &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.active, active) ||
+                const DeepCollectionEquality().equals(other.active, active)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(active);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ActivateOrDeactivateVacancyCompanyEventCopyWith<
+          _ActivateOrDeactivateVacancyCompanyEvent>
+      get copyWith => __$ActivateOrDeactivateVacancyCompanyEventCopyWithImpl<
+          _ActivateOrDeactivateVacancyCompanyEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getVacancy,
+    required TResult Function(int id, int active) activateOrDeactivate,
+  }) {
+    return activateOrDeactivate(id, active);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getVacancy,
+    TResult Function(int id, int active)? activateOrDeactivate,
+    required TResult orElse(),
+  }) {
+    if (activateOrDeactivate != null) {
+      return activateOrDeactivate(id, active);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetVacancyCompanyEvent value) getVacancy,
+    required TResult Function(_ActivateOrDeactivateVacancyCompanyEvent value)
+        activateOrDeactivate,
+  }) {
+    return activateOrDeactivate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetVacancyCompanyEvent value)? getVacancy,
+    TResult Function(_ActivateOrDeactivateVacancyCompanyEvent value)?
+        activateOrDeactivate,
+    required TResult orElse(),
+  }) {
+    if (activateOrDeactivate != null) {
+      return activateOrDeactivate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ActivateOrDeactivateVacancyCompanyEvent
+    implements VacancyCompanyEvent {
+  const factory _ActivateOrDeactivateVacancyCompanyEvent(
+      {required int id,
+      required int active}) = _$_ActivateOrDeactivateVacancyCompanyEvent;
+
+  int get id => throw _privateConstructorUsedError;
+  int get active => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$ActivateOrDeactivateVacancyCompanyEventCopyWith<
+          _ActivateOrDeactivateVacancyCompanyEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$VacancyCompanyStateTearOff {
   const _$VacancyCompanyStateTearOff();
 
@@ -161,9 +323,11 @@ class _$VacancyCompanyStateTearOff {
     return const LoadingVacancyCompanyState();
   }
 
-  LoadedVacancyCompanyState loaded({required Vacancy vacancy}) {
+  LoadedVacancyCompanyState loaded(
+      {required Vacancy vacancy, required FormzStatus status}) {
     return LoadedVacancyCompanyState(
       vacancy: vacancy,
+      status: status,
     );
   }
 
@@ -181,7 +345,7 @@ mixin _$VacancyCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(Vacancy vacancy) loaded,
+    required TResult Function(Vacancy vacancy, FormzStatus status) loaded,
     required TResult Function() noVacancy,
   }) =>
       throw _privateConstructorUsedError;
@@ -189,7 +353,7 @@ mixin _$VacancyCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(Vacancy vacancy)? loaded,
+    TResult Function(Vacancy vacancy, FormzStatus status)? loaded,
     TResult Function()? noVacancy,
     required TResult orElse(),
   }) =>
@@ -273,7 +437,7 @@ class _$EmptyVacancyCompanyState implements EmptyVacancyCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(Vacancy vacancy) loaded,
+    required TResult Function(Vacancy vacancy, FormzStatus status) loaded,
     required TResult Function() noVacancy,
   }) {
     return empty();
@@ -284,7 +448,7 @@ class _$EmptyVacancyCompanyState implements EmptyVacancyCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(Vacancy vacancy)? loaded,
+    TResult Function(Vacancy vacancy, FormzStatus status)? loaded,
     TResult Function()? noVacancy,
     required TResult orElse(),
   }) {
@@ -368,7 +532,7 @@ class _$LoadingVacancyCompanyState implements LoadingVacancyCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(Vacancy vacancy) loaded,
+    required TResult Function(Vacancy vacancy, FormzStatus status) loaded,
     required TResult Function() noVacancy,
   }) {
     return loading();
@@ -379,7 +543,7 @@ class _$LoadingVacancyCompanyState implements LoadingVacancyCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(Vacancy vacancy)? loaded,
+    TResult Function(Vacancy vacancy, FormzStatus status)? loaded,
     TResult Function()? noVacancy,
     required TResult orElse(),
   }) {
@@ -425,7 +589,7 @@ abstract class $LoadedVacancyCompanyStateCopyWith<$Res> {
   factory $LoadedVacancyCompanyStateCopyWith(LoadedVacancyCompanyState value,
           $Res Function(LoadedVacancyCompanyState) then) =
       _$LoadedVacancyCompanyStateCopyWithImpl<$Res>;
-  $Res call({Vacancy vacancy});
+  $Res call({Vacancy vacancy, FormzStatus status});
 }
 
 /// @nodoc
@@ -443,12 +607,17 @@ class _$LoadedVacancyCompanyStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? vacancy = freezed,
+    Object? status = freezed,
   }) {
     return _then(LoadedVacancyCompanyState(
       vacancy: vacancy == freezed
           ? _value.vacancy
           : vacancy // ignore: cast_nullable_to_non_nullable
               as Vacancy,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as FormzStatus,
     ));
   }
 }
@@ -456,14 +625,17 @@ class _$LoadedVacancyCompanyStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedVacancyCompanyState implements LoadedVacancyCompanyState {
-  const _$LoadedVacancyCompanyState({required this.vacancy});
+  const _$LoadedVacancyCompanyState(
+      {required this.vacancy, required this.status});
 
   @override
   final Vacancy vacancy;
+  @override
+  final FormzStatus status;
 
   @override
   String toString() {
-    return 'VacancyCompanyState.loaded(vacancy: $vacancy)';
+    return 'VacancyCompanyState.loaded(vacancy: $vacancy, status: $status)';
   }
 
   @override
@@ -471,12 +643,17 @@ class _$LoadedVacancyCompanyState implements LoadedVacancyCompanyState {
     return identical(this, other) ||
         (other is LoadedVacancyCompanyState &&
             (identical(other.vacancy, vacancy) ||
-                const DeepCollectionEquality().equals(other.vacancy, vacancy)));
+                const DeepCollectionEquality()
+                    .equals(other.vacancy, vacancy)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(vacancy);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(vacancy) ^
+      const DeepCollectionEquality().hash(status);
 
   @JsonKey(ignore: true)
   @override
@@ -489,10 +666,10 @@ class _$LoadedVacancyCompanyState implements LoadedVacancyCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(Vacancy vacancy) loaded,
+    required TResult Function(Vacancy vacancy, FormzStatus status) loaded,
     required TResult Function() noVacancy,
   }) {
-    return loaded(vacancy);
+    return loaded(vacancy, status);
   }
 
   @override
@@ -500,12 +677,12 @@ class _$LoadedVacancyCompanyState implements LoadedVacancyCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(Vacancy vacancy)? loaded,
+    TResult Function(Vacancy vacancy, FormzStatus status)? loaded,
     TResult Function()? noVacancy,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(vacancy);
+      return loaded(vacancy, status);
     }
     return orElse();
   }
@@ -538,10 +715,12 @@ class _$LoadedVacancyCompanyState implements LoadedVacancyCompanyState {
 }
 
 abstract class LoadedVacancyCompanyState implements VacancyCompanyState {
-  const factory LoadedVacancyCompanyState({required Vacancy vacancy}) =
-      _$LoadedVacancyCompanyState;
+  const factory LoadedVacancyCompanyState(
+      {required Vacancy vacancy,
+      required FormzStatus status}) = _$LoadedVacancyCompanyState;
 
   Vacancy get vacancy => throw _privateConstructorUsedError;
+  FormzStatus get status => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedVacancyCompanyStateCopyWith<LoadedVacancyCompanyState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -589,7 +768,7 @@ class _$NoVacancyCompanyState implements NoVacancyCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(Vacancy vacancy) loaded,
+    required TResult Function(Vacancy vacancy, FormzStatus status) loaded,
     required TResult Function() noVacancy,
   }) {
     return noVacancy();
@@ -600,7 +779,7 @@ class _$NoVacancyCompanyState implements NoVacancyCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(Vacancy vacancy)? loaded,
+    TResult Function(Vacancy vacancy, FormzStatus status)? loaded,
     TResult Function()? noVacancy,
     required TResult orElse(),
   }) {

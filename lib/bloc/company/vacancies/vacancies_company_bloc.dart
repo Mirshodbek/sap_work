@@ -1,7 +1,7 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sap_work/bloc/company/vacancies/vacancies.dart';
+import '../company.dart';
 
 part 'vacancies_company_bloc.freezed.dart';
 

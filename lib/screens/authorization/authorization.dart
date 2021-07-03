@@ -24,3 +24,4 @@ export 'package:sap_work/bloc/sign_up/company/company_sign_up_bloc.dart';
 export 'package:sap_work/bloc/sign_in/user/user_sign_in_bloc.dart';
 export 'package:sap_work/bloc/sign_in/company/company_sign_in_bloc.dart';
 export 'package:sap_work/screens/widgets/widget.dart';
+export 'package:sap_work/resources/constants.dart';

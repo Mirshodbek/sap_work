@@ -1,9 +1,8 @@
 import 'dart:convert';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'core.dart';
+import '../company.dart';
 
 part 'core_profile_bloc.freezed.dart';
 
@@ -91,7 +90,7 @@ class CoreProfileBloc extends Bloc<CoreProfileEvent, CoreProfileState> {
             orElse: () => state,
             attributes: (_state) =>
                 _state.copyWith(status: FormzStatus.submissionInProgress));
-        final result = await postVacancy.postVacancyCompany(
+        final result = await postVacancy.postVacancyCompany(ParamsVacancy(
           name: event.vacancyName,
           city: event.city,
           grade: event.grade,
@@ -103,7 +102,7 @@ class CoreProfileBloc extends Bloc<CoreProfileEvent, CoreProfileState> {
           type: event.type,
           abilities: event.abilities,
           category: event.categoryId,
-        );
+        ));
         await getLocalVacancy(Params(
             writeVacancy: true,
             vacancy: LocalVacancyData(

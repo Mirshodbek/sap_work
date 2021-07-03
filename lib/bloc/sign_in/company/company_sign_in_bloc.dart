@@ -125,7 +125,7 @@ class CompanySignInBloc
     if (token != null) {
       final sharedPref = await SharedPreferences.getInstance();
       await sharedPref.setInt("screen", 2);
-      await sharedPref.setString("tokenEmployer", token);
+      await sharedPref.setString(COMPANY_TOKEN, token);
     }
     return result;
   }

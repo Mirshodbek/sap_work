@@ -1,20 +1,16 @@
 import 'dart:convert';
 
-import 'package:sap_work/models/vacancy_company/vacancy.dart';
-import 'package:sap_work/repository/exceptions_failures.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-const CACHED_VACANCIES_NAME = 'CACHED_VACANCIES_NAME';
-const CACHED_LOCAL_VACANCIES_COMPANY = 'CACHED_LOCAL_VACANCIES_COMPANY';
+import '../data_source.dart';
 
 abstract class CompanyLocalDataBase {
-  Future<List<LocalVacancyData>> getListVacanciesNameCompany();
+  Future<List<LocalVacancyData>> getLocalVacanciesCompany();
 
-  Future<void> cacheListVacanciesNameCompany(List<LocalVacancyData> vacancies);
+  Future<void> cacheLocalVacanciesCompany(List<LocalVacancyData> vacancies);
 
-  Future<LocalVacancyData> getVacancyNameCompany();
+  Future<LocalVacancyData> getVacancyCompany();
 
-  Future<void> cacheVacancyNameCompany(LocalVacancyData vacancy);
+  Future<void> cacheVacancyCompany(LocalVacancyData vacancy);
 }
 
 class CompanyLocalData implements CompanyLocalDataBase {
@@ -23,9 +19,9 @@ class CompanyLocalData implements CompanyLocalDataBase {
   CompanyLocalData({required this.sharedPreferences});
 
   @override
-  Future<List<LocalVacancyData>> getListVacanciesNameCompany() {
+  Future<List<LocalVacancyData>> getLocalVacanciesCompany() {
     final jsonString =
-        sharedPreferences.getString(CACHED_LOCAL_VACANCIES_COMPANY);
+        sharedPreferences.getString(LOCAL_VACANCIES_COMPANY);
     if (jsonString != null) {
       return Future.value(LocalVacancyData.decode(jsonString));
     } else {
@@ -34,14 +30,14 @@ class CompanyLocalData implements CompanyLocalDataBase {
   }
 
   @override
-  Future<void> cacheListVacanciesNameCompany(List<LocalVacancyData> vacancies) {
+  Future<void> cacheLocalVacanciesCompany(List<LocalVacancyData> vacancies) {
     return sharedPreferences.setString(
-        CACHED_LOCAL_VACANCIES_COMPANY, LocalVacancyData.encode(vacancies));
+        LOCAL_VACANCIES_COMPANY, LocalVacancyData.encode(vacancies));
   }
 
   @override
-  Future<LocalVacancyData> getVacancyNameCompany() {
-    final jsonString = sharedPreferences.getString(CACHED_VACANCIES_NAME);
+  Future<LocalVacancyData> getVacancyCompany() {
+    final jsonString = sharedPreferences.getString(LOCAL_VACANCY_COMPANY);
     if (jsonString != null) {
       return Future.value(LocalVacancyData.fromJson(json.decode(jsonString)));
     } else {
@@ -50,8 +46,8 @@ class CompanyLocalData implements CompanyLocalDataBase {
   }
 
   @override
-  Future<void> cacheVacancyNameCompany(LocalVacancyData vacancy) {
+  Future<void> cacheVacancyCompany(LocalVacancyData vacancy) {
     return sharedPreferences.setString(
-        CACHED_VACANCIES_NAME, json.encode(vacancy));
+        LOCAL_VACANCY_COMPANY, json.encode(vacancy));
   }
 }

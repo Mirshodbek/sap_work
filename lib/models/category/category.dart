@@ -27,7 +27,7 @@ class Category extends Equatable {
       );
 
   static List<Category> decode(String categories) =>
-      (json.decode(categories) as List<dynamic>)
+      (json.decode(categories) as List)
           .map<Category>((item) => Category.fromJson(item))
           .toList();
 

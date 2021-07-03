@@ -33,32 +33,3 @@ class Params extends Equatable {
   List<Object?> get props => [writeVacancies, vacancies, writeVacancy, vacancy];
 }
 
-class ParamsVacancy extends Equatable {
-  final String name;
-  final String city;
-  final String grade;
-  final String stage;
-  final String schedule;
-  final String body;
-  final String minsalary;
-  final String maxsalary;
-  final String type;
-  final String abilities;
-  final int category;
-
-  ParamsVacancy(
-      {this.name = "",
-      this.city = "",
-      this.grade = "",
-      this.stage = "",
-      this.schedule = "",
-      this.body = "",
-      this.minsalary = "",
-      this.maxsalary = "",
-      this.type = "",
-      this.abilities = "",
-      this.category = 1000});
-
-  @override
-  List<Object?> get props => [];
-}

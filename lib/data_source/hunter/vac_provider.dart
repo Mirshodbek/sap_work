@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'dart:io';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:http/http.dart' as http;
+import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../data_source.dart';
 
 class VacProvider {
   static const String _baseApi = 'http://194.58.98.181:16498';
@@ -13,7 +13,7 @@ class VacProvider {
   static const String _postFeedback = '/api/feedback';
 
   Future<List<Vacancy>> favoriteVacancies() async {
-    final result = await _callPostApi(_favoriteVacancies, "tokenHunter", {});
+    final result = await _callPostApi(_favoriteVacancies, {});
     return (json.decode(result.body) as List)
         .map((e) => Vacancy.fromJson(e))
         .toList();
@@ -21,14 +21,14 @@ class VacProvider {
 
   Future<http.Response> favoriteVacancy(String endPoint, int id) async {
     final result = await _callPostApi(
-        _favoriteVacancies + endPoint + id.toString(), "tokenHunter", {});
+        _favoriteVacancies + endPoint + id.toString(),  {});
     return result;
   }
 
   Future<http.Response> postFeedback(int resumeId, int vacancyId) async {
     final result = await _callPostApi(
         "$_postFeedback?resume=$resumeId&vacancy=$vacancyId",
-        "tokenHunter", {});
+         {});
 
     return result;
   }
@@ -45,7 +45,6 @@ class VacProvider {
       String maxsalary = ''}) async {
     final response = await _callPostApi(
       _searchVacancies,
-      "tokenHunter",
       {
         "garde": grade,
         "stage": stage,
@@ -63,13 +62,13 @@ class VacProvider {
   }
 
   Future<http.Response> _callPostApi(
-      String endpoint, String token, Map<String, dynamic> params) async {
+      String endpoint,  Map<String, dynamic> params) async {
     final prefs = await SharedPreferences.getInstance();
     final uri = Uri.parse(_baseApi + endpoint);
     final response = await http.post(uri,
         headers: {
           "Accept": "application/json",
-          "Authorization": "Bearer ${prefs.getString(token)}"
+          "Authorization": "Bearer ${prefs.getString(USER_TOKEN)}"
         },
         body: params);
 

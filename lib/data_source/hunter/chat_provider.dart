@@ -1,8 +1,11 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../data_source.dart';
 
 class ChatProvider {
   static const String _baseApi = 'http://194.58.98.181:16498';
@@ -13,7 +16,6 @@ class ChatProvider {
   Future<List<Message>> getMessages(int id) async {
     final result = await _callPostApi(
       _getMessage + id.toString(),
-      "tokenHunter",
       {},
     );
     if (result.statusCode == 200 || result.statusCode == 201) {
@@ -27,7 +29,6 @@ class ChatProvider {
   Future<http.Response> postMessage(int id, String text) async {
     final result = await _callPostApi(
       _postMessage + id.toString(),
-      "tokenHunter",
       {"text": text},
     );
     return result;
@@ -35,7 +36,7 @@ class ChatProvider {
 
   Future<List<FeedbackResume>> getFeedbacksHunter(int id) async {
     final result =
-        await _callPostApi(_feedback + id.toString(), "tokenHunter", {});
+        await _callPostApi(_feedback + id.toString(),  {});
     if (result.statusCode == 200 || result.statusCode == 201) {
       final list = (json.decode(result.body) as List)
           .map((e) => FeedbackResume.fromJson(e))
@@ -46,14 +47,14 @@ class ChatProvider {
   }
 
   Future<http.Response> _callPostApi(
-      String endPoint, String token, Map<String, dynamic> params) async {
+      String endPoint,Map<String, dynamic> params) async {
     final prefs = await SharedPreferences.getInstance();
     final uri = Uri.parse(_baseApi + endPoint);
     final response = await http
         .post(uri,
             headers: {
               "Accept": "application/json",
-              "Authorization": "Bearer ${prefs.getString(token)}"
+              "Authorization": "Bearer ${prefs.getString(USER_TOKEN)}"
             },
             body: params)
         .catchError((onError) {

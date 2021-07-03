@@ -123,7 +123,7 @@ class UserSignInBloc extends Bloc<UserSignInEvent, UserSignInState> {
     if (token != null) {
       final sharedPref = await SharedPreferences.getInstance();
       await sharedPref.setInt("screen", 1);
-      await sharedPref.setString("tokenHunter", token);
+      await sharedPref.setString(USER_TOKEN, token);
     }
     return result;
   }

@@ -1,13 +1,13 @@
 import 'package:either_dart/either.dart';
-import 'package:sap_work/data_source/company/cache_data.dart';
 import 'package:sap_work/data_source/company/local_data.dart';
 import 'package:sap_work/models/category/category.dart';
 import 'package:sap_work/models/profile_company/profile.dart';
 import 'package:sap_work/models/vacancy/vacancy.dart';
 import 'package:sap_work/models/vacancy_company/vacancy.dart';
-import 'package:sap_work/repository/company/company_repository.dart';
-import 'package:sap_work/repository/exceptions_failures.dart';
-import 'package:sap_work/repository/usercases.dart';
+
+import '../../../exceptions_failures.dart';
+import '../../../usercases.dart';
+import '../../company_repository.dart';
 
 class GetProfileCompany implements UseCase<TypeProfileCompany, NoParams> {
   final CompanyRepositoryBase repository;
@@ -50,10 +50,10 @@ class GetLocalVacanciesCompany implements UseCase<List<LocalVacancyData>, Params
   @override
   Future<Either<Failure, List<LocalVacancyData>>> call(Params params) async {
     if (params.writeVacancies) {
-      await localData.cacheListVacanciesNameCompany(params.vacancies);
+      await localData.cacheLocalVacanciesCompany(params.vacancies);
     }
     try {
-      return Right(await localData.getListVacanciesNameCompany());
+      return Right(await localData.getLocalVacanciesCompany());
     } on CacheException {
       return Left(CacheFailure());
     }
@@ -68,10 +68,10 @@ class GetLocalVacancyCompany implements UseCase<LocalVacancyData, Params> {
   @override
   Future<Either<Failure, LocalVacancyData>> call(Params params) async {
     if (params.writeVacancy) {
-      await localData.cacheVacancyNameCompany(params.vacancy!);
+      await localData.cacheVacancyCompany(params.vacancy!);
     }
     try {
-      return Right(await localData.getVacancyNameCompany());
+      return Right(await localData.getVacancyCompany());
     } on CacheException {
       return Left(CacheFailure());
     }
@@ -80,9 +80,8 @@ class GetLocalVacancyCompany implements UseCase<LocalVacancyData, Params> {
 
 class GetVacancyCompany implements UseCase<Vacancy, Params> {
   final CompanyRepositoryBase repository;
-  final CompanyCacheDataBase cacheData;
 
-  GetVacancyCompany(this.repository, this.cacheData);
+  GetVacancyCompany(this.repository);
 
   @override
   Future<Either<Failure, Vacancy>> call(Params params) async {

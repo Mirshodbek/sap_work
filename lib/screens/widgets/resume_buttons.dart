@@ -8,7 +8,7 @@ class ResumeButtonsWidget extends StatelessWidget {
   final VoidCallback visible;
   final int active;
   final String titlePdf;
-  final String titleVisible;
+  final Widget titleVisible;
 
   const ResumeButtonsWidget(
       {required this.pdf,
@@ -16,71 +16,48 @@ class ResumeButtonsWidget extends StatelessWidget {
       required this.visible,
       required this.active,
       required this.titlePdf,
-        required this.titleVisible,
+      required this.titleVisible,
       Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Padding(
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      Padding(
           padding: const EdgeInsets.symmetric(horizontal: 14.0),
-          child: Row(
-            children: [
-              Expanded(
+          child: Row(children: [
+            Expanded(
                 child: TextButton.icon(
-                  icon: SvgPicture.asset(AppIcons.share),
-                  label: Text(
-                    "Поделиться",
-                    style: AppTextTheme.smallSizeText,
-                  ),
-                  onPressed: share,
-                ),
-              ),
-              Expanded(
-                child: TextButton.icon(
-                  icon: SvgPicture.asset(AppIcons.pdf),
-                  label: Flexible(
-                    child: Text(
-                      titlePdf,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    icon: SvgPicture.asset(AppIcons.share),
+                    label: Text(
+                      "Поделиться",
                       style: AppTextTheme.smallSizeText,
                     ),
-                  ),
-                  onPressed: pdf,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: 5.0,
-        ),
-        TextButton.icon(
+                    onPressed: share)),
+            Expanded(
+                child: TextButton.icon(
+                    icon: SvgPicture.asset(AppIcons.pdf),
+                    label: Flexible(
+                        child: Text(titlePdf,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextTheme.smallSizeText)),
+                    onPressed: pdf)),
+          ])),
+      const SizedBox(height: 5.0),
+      TextButton.icon(
           style: ButtonStyle(
-            side: MaterialStateProperty.all(const BorderSide()),
-            shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
-            alignment: Alignment.centerLeft,
-            padding: MaterialStateProperty.all(
-              const EdgeInsets.symmetric(
-                  horizontal: 22.0, vertical: 15.0),
-            ),
-          ),
+              side: MaterialStateProperty.all(const BorderSide()),
+              shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(borderRadius: BorderRadius.zero)),
+              alignment: Alignment.centerLeft,
+              padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
+                  horizontal: 22.0, vertical: 15.0))),
           onPressed: visible,
           icon: SvgPicture.asset(
-            active == 1 ? AppIcons.view : AppIcons.no_visible,
-            color: Colors.black,
-          ),
-          label: Text(
-           titleVisible,
-            style: AppTextTheme.smallSizeText,
-          ),
-        ),
-      ],
-    );
+              active == 1 ? AppIcons.view : AppIcons.no_visible,
+              color: Colors.black),
+          label: titleVisible),
+    ]);
   }
 }

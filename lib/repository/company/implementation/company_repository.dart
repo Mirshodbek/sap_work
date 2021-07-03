@@ -5,11 +5,11 @@ import 'package:sap_work/models/category/category.dart';
 import 'package:sap_work/models/profile_company/profile.dart';
 import 'package:sap_work/models/vacancy/vacancy.dart';
 import 'package:sap_work/models/vacancy_company/vacancy.dart';
-import 'package:sap_work/repository/company/company_repository.dart';
-import 'package:sap_work/repository/exceptions_failures.dart';
-import 'package:sap_work/repository/usercases.dart';
 
+import '../../exceptions_failures.dart';
 import '../../network_info.dart';
+import '../company_repository.dart';
+
 
 class CompanyRepository implements CompanyRepositoryBase {
   final CompanyRemoteDataBase remoteDataSource;
@@ -47,7 +47,6 @@ class CompanyRepository implements CompanyRepositoryBase {
     if (await networkInfo.isConnected) {
       try {
         final remoteData = await remoteDataSource.getVacanciesCompany();
-        localDataSource.cacheVacanciesCompany(remoteData);
         return Right(remoteData);
       } on ServerException {
         return Left(ServerFailure());
@@ -67,7 +66,6 @@ class CompanyRepository implements CompanyRepositoryBase {
     if (await networkInfo.isConnected) {
       try {
         final remoteData = await remoteDataSource.getCategories();
-        localDataSource.cacheCategories(remoteData);
         return Right(remoteData);
       } on ServerException {
         return Left(ServerFailure());

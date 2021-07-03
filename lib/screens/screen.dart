@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sap_work/bloc/company/core/core_profile_bloc.dart';
-import 'package:sap_work/bloc/company/profile/profile_company_bloc.dart';
+import 'package:sap_work/bloc/company/profile/profile_company.dart';
 import 'package:sap_work/bloc/company/vacancies/vacancies_company_bloc.dart';
 import 'package:sap_work/bloc/company/vacancy/vacancy_company_bloc.dart';
 import 'package:sap_work/bloc/hunter/notifications/notifications_bloc.dart';
@@ -55,13 +55,13 @@ class NavigationBar extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ProfileCompanyBloc>(
-            create: (_) => ProfileCompanyBloc(sl())
+            create: (_) => ProfileCompanyBloc(sl(),sl())
               ..add(const ProfileCompanyEvent.getProfileData())),
         BlocProvider<VacanciesCompanyBloc>(
             create: (_) => VacanciesCompanyBloc(sl(), sl())
               ..add(const VacanciesCompanyEvent.getVacancies())),
         BlocProvider<VacancyCompanyBloc>(
-            create: (_) => VacancyCompanyBloc(sl(),sl())
+            create: (_) => VacancyCompanyBloc(sl(),sl(),sl())
               ..add(const VacancyCompanyEvent.getVacancy())),
         BlocProvider<CoreProfileBloc>(
           create: (context) => CoreProfileBloc(sl(), sl(), sl())

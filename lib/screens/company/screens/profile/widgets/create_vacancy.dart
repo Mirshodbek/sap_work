@@ -19,18 +19,26 @@ class CreateVacancyWidget extends StatelessWidget {
         state.maybeMap(
             orElse: () => state,
             attributes: (_attributes) {
+              if (!_attributes.status.isValidated) {
+                SmallWidgets.scaffoldMessage(
+                    context: context, message: "Заполняте все строки");
+              }
               if (_attributes.status == FormzStatus.submissionInProgress) {
-                showDialog(
-                    context: context,
-                    builder: (context) =>
-                        SimpleDialog(title: CircularProgressIndicator()));
+                SmallWidgets.showDialogFunction(
+                    context: context, title: "Опубликовывается вакансии...");
               } else if (_attributes.status == FormzStatus.submissionSuccess) {
                 Future.sync(() =>
-                        context.read<VacancyCompanyBloc>().add(const VacancyCompanyEvent.getVacancy()))
-                    .whenComplete(() => Future.sync(() => context
+                    context.read<VacancyCompanyBloc>().add(
+                        const VacancyCompanyEvent.getVacancy()))
+                    .whenComplete(() =>
+                    Future.sync(() =>
+                        context
                             .read<VacanciesCompanyBloc>()
                             .add(VacanciesCompanyEvent.addOrDeleteLocalVacancy(
-                                nameVacancy: vacancyName, delete: true)))
+                            nameVacancy: vacancyName, delete: true)))
+                        .whenComplete(() =>
+                        context.read<VacanciesCompanyBloc>().add(
+                            const VacanciesCompanyEvent.getVacancies()))
                         .whenComplete(() => Navigator.of(context).pop()));
               }
             });
@@ -54,10 +62,12 @@ class CreateVacancyWidget extends StatelessWidget {
                             style: AppTextTheme.smallTextMediumBlack),
                         const SizedBox(height: 40),
                         TextField(
-                            decoration: _inputDecoration("Должность"),
-                            onChanged: (value) => context
-                                .read<VariableVacancyCubit>()
-                                .grade(value)),
+                            decoration: SmallWidgets.inputDecoration(
+                                "Должность"),
+                            onChanged: (value) =>
+                                context
+                                    .read<VariableVacancyCubit>()
+                                    .grade(value)),
                         const SizedBox(height: 20),
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -67,34 +77,39 @@ class CreateVacancyWidget extends StatelessWidget {
                                       ? _state.categoryTitle
                                       : null,
                                   title: "Профессиональная сфера",
-                                  onChanged: (String? value) => context
-                                      .read<VariableVacancyCubit>()
-                                      .category(value!),
+                                  onChanged: (String? value) =>
+                                      context
+                                          .read<VariableVacancyCubit>()
+                                          .category(value!),
                                   items: categories.map((type) {
                                     return DropdownMenuItem<String>(
-                                        onTap: () => context
-                                            .read<VariableVacancyCubit>()
-                                            .categoryId(type.id),
+                                        onTap: () =>
+                                            context
+                                                .read<VariableVacancyCubit>()
+                                                .categoryId(type.id),
                                         value: type.name,
                                         child: Text(type.name));
                                   }).toList()),
                               const SizedBox(height: 20),
                               TextField(
                                   controller: TextEditingController(text: ""),
-                                  onSubmitted: (value) => context
-                                      .read<VariableVacancyCubit>()
-                                      .addingTools(value),
+                                  onSubmitted: (value) =>
+                                      context
+                                          .read<VariableVacancyCubit>()
+                                          .addingTools(value),
                                   decoration:
-                                      _inputDecoration("Навыки и инструменты")),
+                                  SmallWidgets.inputDecoration(
+                                      "Навыки и инструменты")),
                               const SizedBox(height: 10),
                               Wrap(
-                                children: _state.tools.map((item) {
-                                  return Chip(
-                                      label: Text(item),
-                                      onDeleted: () => context
-                                          .read<VariableVacancyCubit>()
-                                          .deletingTools(item));
-                                }).toList(),
+                                  children: _state.tools.map((item) {
+                                    return Chip(
+                                        label: Text(item),
+                                        onDeleted: () =>
+                                            context
+                                                .read<VariableVacancyCubit>()
+                                                .deletingTools(item));
+                                  }).toList()
                               ),
                               const SizedBox(height: 20),
                               DropDownWidget(
@@ -102,9 +117,10 @@ class CreateVacancyWidget extends StatelessWidget {
                                       ? _state.city
                                       : null,
                                   title: "Город",
-                                  onChanged: (String? value) => context
-                                      .read<VariableVacancyCubit>()
-                                      .city(value!),
+                                  onChanged: (String? value) =>
+                                      context
+                                          .read<VariableVacancyCubit>()
+                                          .city(value!),
                                   items: Lists.countryList.map((item) {
                                     return DropdownMenuItem<String>(
                                         value: item, child: Text(item));
@@ -113,35 +129,43 @@ class CreateVacancyWidget extends StatelessWidget {
                               TextField(
                                   maxLines: 5,
                                   decoration:
-                                      _inputDecoration("Описание вакансии"),
-                                  onChanged: (value) => context
-                                      .read<VariableVacancyCubit>()
-                                      .body(value)),
+                                  SmallWidgets.inputDecoration(
+                                      "Описание вакансии"),
+                                  onChanged: (value) =>
+                                      context
+                                          .read<VariableVacancyCubit>()
+                                          .body(value)),
                               const SizedBox(height: 20),
                               Row(children: [
                                 Expanded(
                                     child: TextField(
                                         keyboardType: TextInputType.number,
                                         inputFormatters: [Utils.money],
-                                        onChanged: (value) => context
-                                            .read<VariableVacancyCubit>()
-                                            .minsalary(Utils.getMoney(value)),
-                                        decoration: _inputDecoration("120 000")
+                                        onChanged: (value) =>
+                                            context
+                                                .read<VariableVacancyCubit>()
+                                                .minsalary(
+                                                Utils.getMoney(value)),
+                                        decoration: SmallWidgets
+                                            .inputDecoration("120 000")
                                             .copyWith(
-                                                prefixIcon:
-                                                    _suffixText("от")))),
+                                            prefixIcon:
+                                            SmallWidgets.suffixText("от")))),
                                 const SizedBox(width: 10),
                                 Expanded(
                                     child: TextField(
                                         keyboardType: TextInputType.number,
                                         inputFormatters: [Utils.money],
-                                        onChanged: (value) => context
-                                            .read<VariableVacancyCubit>()
-                                            .maxsalary(Utils.getMoney(value)),
-                                        decoration: _inputDecoration("150 000₽")
+                                        onChanged: (value) =>
+                                            context
+                                                .read<VariableVacancyCubit>()
+                                                .maxsalary(
+                                                Utils.getMoney(value)),
+                                        decoration: SmallWidgets
+                                            .inputDecoration("150 000₽")
                                             .copyWith(
-                                                prefixIcon:
-                                                    _suffixText("до")))),
+                                            prefixIcon:
+                                            SmallWidgets.suffixText("до")))),
                               ]),
                               const SizedBox(height: 40),
                               Text("Занятость",
@@ -149,9 +173,10 @@ class CreateVacancyWidget extends StatelessWidget {
                               const SizedBox(height: 20),
                               ...Lists.scheduleList.map((item) {
                                 return ListTile(
-                                    onTap: () => context
-                                        .read<VariableVacancyCubit>()
-                                        .schedule(item),
+                                    onTap: () =>
+                                        context
+                                            .read<VariableVacancyCubit>()
+                                            .schedule(item),
                                     leading: SvgPicture.asset(
                                         _state.schedule == item
                                             ? AppIcons.selected_circle
@@ -164,9 +189,10 @@ class CreateVacancyWidget extends StatelessWidget {
                               const SizedBox(height: 20),
                               ...Lists.skillList.map((item) {
                                 return ListTile(
-                                    onTap: () => context
-                                        .read<VariableVacancyCubit>()
-                                        .stage(item.title),
+                                    onTap: () =>
+                                        context
+                                            .read<VariableVacancyCubit>()
+                                            .stage(item.title),
                                     leading: SvgPicture.asset(
                                         _state.stage == item.title
                                             ? AppIcons.selected_circle
@@ -179,9 +205,10 @@ class CreateVacancyWidget extends StatelessWidget {
                               const SizedBox(height: 20),
                               ...Lists.typeList.map((item) {
                                 return ListTile(
-                                    onTap: () => context
-                                        .read<VariableVacancyCubit>()
-                                        .type(item),
+                                    onTap: () =>
+                                        context
+                                            .read<VariableVacancyCubit>()
+                                            .type(item),
                                     leading: SvgPicture.asset(
                                         _state.type == item
                                             ? AppIcons.selected_circle
@@ -191,19 +218,21 @@ class CreateVacancyWidget extends StatelessWidget {
                               const SizedBox(height: 40),
                               RedButtonWidget(
                                   "Опубликовать вакансию",
-                                  () => context.read<CoreProfileBloc>().add(
-                                      CoreProfileEvent.postVacancy(
-                                          vacancyName: vacancyName,
-                                          city: _state.city,
-                                          body: _state.body,
-                                          grade: _state.grade,
-                                          minsalary: _state.minsalary,
-                                          maxsalary: _state.maxsalary,
-                                          type: _state.type,
-                                          stage: _state.stage,
-                                          schedule: _state.schedule,
-                                          abilities: _state.tools.join(", "),
-                                          categoryId: _state.categoryId)),
+                                      () =>
+                                      context.read<CoreProfileBloc>().add(
+                                          CoreProfileEvent.postVacancy(
+                                              vacancyName: vacancyName,
+                                              city: _state.city,
+                                              body: _state.body,
+                                              grade: _state.grade,
+                                              minsalary: _state.minsalary,
+                                              maxsalary: _state.maxsalary,
+                                              type: _state.type,
+                                              stage: _state.stage,
+                                              schedule: _state.schedule,
+                                              abilities: _state.tools.join(
+                                                  ", "),
+                                              categoryId: _state.categoryId)),
                                   true),
                             ]),
                       ]));
@@ -214,17 +243,5 @@ class CreateVacancyWidget extends StatelessWidget {
     );
   }
 
-  Widget _suffixText(String title) {
-    return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
-        child: Text(title, style: AppTextTheme.smallTextMediumBlack));
-  }
 
-  InputDecoration _inputDecoration(String hintText) {
-    return InputDecoration(
-        hintText: hintText,
-        border: OutlineInputBorder(
-            borderSide: const BorderSide(),
-            borderRadius: BorderRadius.circular(5.0)));
-  }
 }

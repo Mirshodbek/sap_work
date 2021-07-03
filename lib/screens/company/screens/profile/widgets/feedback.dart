@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sap_work/screens/company/screens/profile/widgets/profile.dart';
 import 'package:sap_work/theme/theme.dart';
 
 import 'widget.dart';

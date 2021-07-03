@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'profile_company_bloc.dart';
+part of 'profile_company.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -300,9 +300,11 @@ class _$ProfileCompanyStateTearOff {
     return const LoadingProfileCompanyState();
   }
 
-  LoadedProfileCompanyState loaded({required TypeProfileCompany profile}) {
+  LoadedProfileCompanyState loaded(
+      {required TypeProfileCompany profile, required FormzStatus status}) {
     return LoadedProfileCompanyState(
       profile: profile,
+      status: status,
     );
   }
 
@@ -322,7 +324,8 @@ mixin _$ProfileCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileCompany profile) loaded,
+    required TResult Function(TypeProfileCompany profile, FormzStatus status)
+        loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -330,7 +333,7 @@ mixin _$ProfileCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileCompany profile)? loaded,
+    TResult Function(TypeProfileCompany profile, FormzStatus status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -414,7 +417,8 @@ class _$EmptyProfileCompanyState implements EmptyProfileCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileCompany profile) loaded,
+    required TResult Function(TypeProfileCompany profile, FormzStatus status)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return empty();
@@ -425,7 +429,7 @@ class _$EmptyProfileCompanyState implements EmptyProfileCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileCompany profile)? loaded,
+    TResult Function(TypeProfileCompany profile, FormzStatus status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -509,7 +513,8 @@ class _$LoadingProfileCompanyState implements LoadingProfileCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileCompany profile) loaded,
+    required TResult Function(TypeProfileCompany profile, FormzStatus status)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -520,7 +525,7 @@ class _$LoadingProfileCompanyState implements LoadingProfileCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileCompany profile)? loaded,
+    TResult Function(TypeProfileCompany profile, FormzStatus status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -566,7 +571,7 @@ abstract class $LoadedProfileCompanyStateCopyWith<$Res> {
   factory $LoadedProfileCompanyStateCopyWith(LoadedProfileCompanyState value,
           $Res Function(LoadedProfileCompanyState) then) =
       _$LoadedProfileCompanyStateCopyWithImpl<$Res>;
-  $Res call({TypeProfileCompany profile});
+  $Res call({TypeProfileCompany profile, FormzStatus status});
 }
 
 /// @nodoc
@@ -584,12 +589,17 @@ class _$LoadedProfileCompanyStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? profile = freezed,
+    Object? status = freezed,
   }) {
     return _then(LoadedProfileCompanyState(
       profile: profile == freezed
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as TypeProfileCompany,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as FormzStatus,
     ));
   }
 }
@@ -597,14 +607,17 @@ class _$LoadedProfileCompanyStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedProfileCompanyState implements LoadedProfileCompanyState {
-  const _$LoadedProfileCompanyState({required this.profile});
+  const _$LoadedProfileCompanyState(
+      {required this.profile, required this.status});
 
   @override
   final TypeProfileCompany profile;
+  @override
+  final FormzStatus status;
 
   @override
   String toString() {
-    return 'ProfileCompanyState.loaded(profile: $profile)';
+    return 'ProfileCompanyState.loaded(profile: $profile, status: $status)';
   }
 
   @override
@@ -612,12 +625,17 @@ class _$LoadedProfileCompanyState implements LoadedProfileCompanyState {
     return identical(this, other) ||
         (other is LoadedProfileCompanyState &&
             (identical(other.profile, profile) ||
-                const DeepCollectionEquality().equals(other.profile, profile)));
+                const DeepCollectionEquality()
+                    .equals(other.profile, profile)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(profile);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(profile) ^
+      const DeepCollectionEquality().hash(status);
 
   @JsonKey(ignore: true)
   @override
@@ -630,10 +648,11 @@ class _$LoadedProfileCompanyState implements LoadedProfileCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileCompany profile) loaded,
+    required TResult Function(TypeProfileCompany profile, FormzStatus status)
+        loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(profile);
+    return loaded(profile, status);
   }
 
   @override
@@ -641,12 +660,12 @@ class _$LoadedProfileCompanyState implements LoadedProfileCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileCompany profile)? loaded,
+    TResult Function(TypeProfileCompany profile, FormzStatus status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(profile);
+      return loaded(profile, status);
     }
     return orElse();
   }
@@ -680,9 +699,11 @@ class _$LoadedProfileCompanyState implements LoadedProfileCompanyState {
 
 abstract class LoadedProfileCompanyState implements ProfileCompanyState {
   const factory LoadedProfileCompanyState(
-      {required TypeProfileCompany profile}) = _$LoadedProfileCompanyState;
+      {required TypeProfileCompany profile,
+      required FormzStatus status}) = _$LoadedProfileCompanyState;
 
   TypeProfileCompany get profile => throw _privateConstructorUsedError;
+  FormzStatus get status => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedProfileCompanyStateCopyWith<LoadedProfileCompanyState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -757,7 +778,8 @@ class _$ErrorProfileCompanyState implements ErrorProfileCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileCompany profile) loaded,
+    required TResult Function(TypeProfileCompany profile, FormzStatus status)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -768,7 +790,7 @@ class _$ErrorProfileCompanyState implements ErrorProfileCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileCompany profile)? loaded,
+    TResult Function(TypeProfileCompany profile, FormzStatus status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

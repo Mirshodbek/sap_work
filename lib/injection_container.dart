@@ -18,7 +18,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetVacanciesCompany(sl()));
   sl.registerLazySingleton(() => GetLocalVacanciesCompany(sl()));
   sl.registerLazySingleton(() => GetLocalVacancyCompany(sl()));
-  sl.registerLazySingleton(() => GetVacancyCompany(sl(),sl()));
+  sl.registerLazySingleton(() => GetVacancyCompany(sl()));
   sl.registerLazySingleton(() => GetCategories(sl()));
   sl.registerLazySingleton<CompanyRepositoryBase>(
     () => CompanyRepository(
@@ -30,13 +30,13 @@ Future<void> init() async {
 
   // Data sources
   sl.registerLazySingleton<CompanyRemoteDataBase>(
-    () => CompanyRemoteData(client: sl()),
+    () => CompanyRemoteData(sl(), client: sl()),
   );
 
   sl.registerLazySingleton<CompanyCacheDataBase>(
     () => CompanyCacheData(sharedPreferences: sl()),
   );
-sl.registerLazySingleton<CompanyLocalDataBase>(
+  sl.registerLazySingleton<CompanyLocalDataBase>(
     () => CompanyLocalData(sharedPreferences: sl()),
   );
 
