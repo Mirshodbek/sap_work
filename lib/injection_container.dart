@@ -20,6 +20,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetLocalVacancyCompany(sl()));
   sl.registerLazySingleton(() => GetVacancyCompany(sl()));
   sl.registerLazySingleton(() => GetCategories(sl()));
+  sl.registerLazySingleton(() => GetFeedbacksVacancy(sl()));
   sl.registerLazySingleton<CompanyRepositoryBase>(
     () => CompanyRepository(
       localDataSource: sl(),

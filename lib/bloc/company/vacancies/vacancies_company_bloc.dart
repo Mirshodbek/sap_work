@@ -1,5 +1,6 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../company.dart';
 
@@ -9,9 +10,11 @@ class VacanciesCompanyBloc
     extends Bloc<VacanciesCompanyEvent, VacanciesCompanyState> {
   final GetVacanciesCompany vacanciesCompany;
   final GetLocalVacanciesCompany localVacanciesName;
+  final CompanyRemoteDataBase remoteData;
   List<LocalVacancyData> nameVacancies = <LocalVacancyData>[];
 
-  VacanciesCompanyBloc(this.vacanciesCompany, this.localVacanciesName)
+  VacanciesCompanyBloc(
+      this.vacanciesCompany, this.localVacanciesName, this.remoteData)
       : super(const VacanciesCompanyState.empty());
 
   @override
@@ -36,13 +39,16 @@ class VacanciesCompanyBloc
       (data) async* {
         final localVacancy = await localVacanciesName(Params());
         yield* localVacancy.fold((failure) async* {
-          nameVacancies = <LocalVacancyData>[];
           yield VacanciesCompanyState.loaded(
-              vacancies: data, localVacanciesName: nameVacancies);
+              vacancies: data,
+              localVacanciesName: nameVacancies,
+              status: FormzStatus.pure);
         }, (names) async* {
           nameVacancies = names;
           yield VacanciesCompanyState.loaded(
-              vacancies: data, localVacanciesName: names);
+              vacancies: data,
+              localVacanciesName: names,
+              status: FormzStatus.pure);
         });
       },
     );
@@ -69,16 +75,35 @@ class VacanciesCompanyBloc
 
   Stream<VacanciesCompanyState> _editLocalName(
       _EditLocalNameVacanciesCompanyEvent event) async* {
-    nameVacancies = List.from(nameVacancies)
-      ..replaceWhere((it) => it.id == event.id,
-          LocalVacancyData(event.nameVacancy, event.id));
-    final localVacancy = await localVacanciesName(
-        Params(writeVacancies: true, vacancies: nameVacancies));
+    final localVacancy = await localVacanciesName(Params(
+        writeVacancies: true,
+        vacancies: List.from(nameVacancies)
+          ..replaceWhere((it) => it.id == event.id,
+              LocalVacancyData(event.nameVacancy, event.id))));
     yield* _updateLocalNames(localVacancy);
   }
 
   Stream<VacanciesCompanyState> _editRemotedName(
-      _EditRemotedNameVacanciesCompanyEvent event) async* {}
+      _EditRemotedNameVacanciesCompanyEvent event) async* {
+    try {
+      final result = await remoteData.changeVacancyCompany(event.id,
+          ParamsVacancy(name: event.vacancyName, category: event.category));
+      yield state.maybeMap(
+          orElse: () => state,
+          loaded: (_state) => _state.copyWith(
+              vacancies: List.from(_state.vacancies)
+                ..replaceWhere((it) => it.id == event.id, result)));
+    } catch (_) {
+      yield state.maybeMap(
+          orElse: () => state,
+          loaded: (_state) => _state.copyWith(status: FormzStatus.invalid));
+      yield state.maybeMap(
+          orElse: () => state,
+          loaded: (_state) => _state.copyWith(
+              status: FormzStatus.submissionFailure,
+              vacancies: _state.vacancies));
+    }
+  }
 
   Stream<VacanciesCompanyState> _updateLocalNames(
       Either<Failure, List<LocalVacancyData>> localVacancy) async* {
@@ -121,7 +146,8 @@ abstract class VacanciesCompanyEvent with _$VacanciesCompanyEvent {
       required final int id}) = _EditLocalNameVacanciesCompanyEvent;
 
   const factory VacanciesCompanyEvent.editRemotedName(
-      {required final String nameVacancy,
+      {required final String vacancyName,
+      required final int category,
       required final int id}) = _EditRemotedNameVacanciesCompanyEvent;
 }
 
@@ -132,7 +158,8 @@ abstract class VacanciesCompanyState with _$VacanciesCompanyState {
   const factory VacanciesCompanyState.loading() = LoadingVacanciesCompanyState;
 
   const factory VacanciesCompanyState.loaded(
-          {required final List<VacancyCompany> vacancies,
+          {required final List<Vacancy> vacancies,
+          required final FormzStatus status,
           required final List<LocalVacancyData> localVacanciesName}) =
       LoadedVacanciesCompanyState;
 

@@ -27,6 +27,7 @@ class _$VariableVacancyStateTearOff {
       required String schedule,
       required String stage,
       required String type,
+      required String abilities,
       required int categoryId,
       required List<String> tools}) {
     return ArgumentsVacancyState(
@@ -40,6 +41,7 @@ class _$VariableVacancyStateTearOff {
       schedule: schedule,
       stage: stage,
       type: type,
+      abilities: abilities,
       categoryId: categoryId,
       tools: tools,
     );
@@ -61,6 +63,7 @@ mixin _$VariableVacancyState {
   String get schedule => throw _privateConstructorUsedError;
   String get stage => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
+  String get abilities => throw _privateConstructorUsedError;
   int get categoryId => throw _privateConstructorUsedError;
   List<String> get tools => throw _privateConstructorUsedError;
 
@@ -77,6 +80,7 @@ mixin _$VariableVacancyState {
             String schedule,
             String stage,
             String type,
+            String abilities,
             int categoryId,
             List<String> tools)
         arguments,
@@ -95,6 +99,7 @@ mixin _$VariableVacancyState {
             String schedule,
             String stage,
             String type,
+            String abilities,
             int categoryId,
             List<String> tools)?
         arguments,
@@ -134,6 +139,7 @@ abstract class $VariableVacancyStateCopyWith<$Res> {
       String schedule,
       String stage,
       String type,
+      String abilities,
       int categoryId,
       List<String> tools});
 }
@@ -159,6 +165,7 @@ class _$VariableVacancyStateCopyWithImpl<$Res>
     Object? schedule = freezed,
     Object? stage = freezed,
     Object? type = freezed,
+    Object? abilities = freezed,
     Object? categoryId = freezed,
     Object? tools = freezed,
   }) {
@@ -203,6 +210,10 @@ class _$VariableVacancyStateCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      abilities: abilities == freezed
+          ? _value.abilities
+          : abilities // ignore: cast_nullable_to_non_nullable
+              as String,
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -233,6 +244,7 @@ abstract class $ArgumentsVacancyStateCopyWith<$Res>
       String schedule,
       String stage,
       String type,
+      String abilities,
       int categoryId,
       List<String> tools});
 }
@@ -260,6 +272,7 @@ class _$ArgumentsVacancyStateCopyWithImpl<$Res>
     Object? schedule = freezed,
     Object? stage = freezed,
     Object? type = freezed,
+    Object? abilities = freezed,
     Object? categoryId = freezed,
     Object? tools = freezed,
   }) {
@@ -304,6 +317,10 @@ class _$ArgumentsVacancyStateCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
+      abilities: abilities == freezed
+          ? _value.abilities
+          : abilities // ignore: cast_nullable_to_non_nullable
+              as String,
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
@@ -330,6 +347,7 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
       required this.schedule,
       required this.stage,
       required this.type,
+      required this.abilities,
       required this.categoryId,
       required this.tools});
 
@@ -354,13 +372,15 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
   @override
   final String type;
   @override
+  final String abilities;
+  @override
   final int categoryId;
   @override
   final List<String> tools;
 
   @override
   String toString() {
-    return 'VariableVacancyState.arguments(categoryTitle: $categoryTitle, city: $city, name: $name, body: $body, grade: $grade, minsalary: $minsalary, maxsalary: $maxsalary, schedule: $schedule, stage: $stage, type: $type, categoryId: $categoryId, tools: $tools)';
+    return 'VariableVacancyState.arguments(categoryTitle: $categoryTitle, city: $city, name: $name, body: $body, grade: $grade, minsalary: $minsalary, maxsalary: $maxsalary, schedule: $schedule, stage: $stage, type: $type, abilities: $abilities, categoryId: $categoryId, tools: $tools)';
   }
 
   @override
@@ -391,6 +411,9 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
                 const DeepCollectionEquality().equals(other.stage, stage)) &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.abilities, abilities) ||
+                const DeepCollectionEquality()
+                    .equals(other.abilities, abilities)) &&
             (identical(other.categoryId, categoryId) ||
                 const DeepCollectionEquality()
                     .equals(other.categoryId, categoryId)) &&
@@ -411,6 +434,7 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
       const DeepCollectionEquality().hash(schedule) ^
       const DeepCollectionEquality().hash(stage) ^
       const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(abilities) ^
       const DeepCollectionEquality().hash(categoryId) ^
       const DeepCollectionEquality().hash(tools);
 
@@ -434,12 +458,13 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
             String schedule,
             String stage,
             String type,
+            String abilities,
             int categoryId,
             List<String> tools)
         arguments,
   }) {
     return arguments(categoryTitle, city, name, body, grade, minsalary,
-        maxsalary, schedule, stage, type, categoryId, tools);
+        maxsalary, schedule, stage, type, abilities, categoryId, tools);
   }
 
   @override
@@ -456,6 +481,7 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
             String schedule,
             String stage,
             String type,
+            String abilities,
             int categoryId,
             List<String> tools)?
         arguments,
@@ -463,7 +489,7 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
   }) {
     if (arguments != null) {
       return arguments(categoryTitle, city, name, body, grade, minsalary,
-          maxsalary, schedule, stage, type, categoryId, tools);
+          maxsalary, schedule, stage, type, abilities, categoryId, tools);
     }
     return orElse();
   }
@@ -501,6 +527,7 @@ abstract class ArgumentsVacancyState implements VariableVacancyState {
       required String schedule,
       required String stage,
       required String type,
+      required String abilities,
       required int categoryId,
       required List<String> tools}) = _$ArgumentsVacancyState;
 
@@ -524,6 +551,8 @@ abstract class ArgumentsVacancyState implements VariableVacancyState {
   String get stage => throw _privateConstructorUsedError;
   @override
   String get type => throw _privateConstructorUsedError;
+  @override
+  String get abilities => throw _privateConstructorUsedError;
   @override
   int get categoryId => throw _privateConstructorUsedError;
   @override

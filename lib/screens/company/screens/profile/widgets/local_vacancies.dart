@@ -30,7 +30,7 @@ class _LocalVacanciesWidgetState extends State<LocalVacanciesWidget> {
                   child: Text("Пусто",
                       style: AppTextTheme.smallSizeText
                           .copyWith(color: AppColor.grey))),
-            if (!_click.isEdit)
+            if (!_click.isEditNames)
               ...widget.vacanciesState.localVacanciesName.map((item) {
                 return BlocBuilder<CoreProfileBloc, CoreProfileState>(
                   builder: (context, state) {
@@ -66,7 +66,7 @@ class _LocalVacanciesWidgetState extends State<LocalVacanciesWidget> {
                                                   .getVacancy()))
                                           .whenComplete(() =>
                                           context.read<ProfileBtnCubit>()
-                                              .isSelect()),
+                                              .selectVacancies()),
                                   title: Center(child: Text(item.name,
                                       style: AppTextTheme.smallTextMediumBlack
                                           .copyWith(
@@ -78,7 +78,7 @@ class _LocalVacanciesWidgetState extends State<LocalVacanciesWidget> {
                   },
                 );
               }),
-            if (_click.isEdit)
+            if (_click.isEditNames)
               ...widget.vacanciesState.localVacanciesName.map((item) {
                 return TextField(
                     key: ObjectKey(item),
@@ -95,29 +95,29 @@ class _LocalVacanciesWidgetState extends State<LocalVacanciesWidget> {
                         contentPadding:
                         const EdgeInsets.symmetric(vertical: 30.0)));
               }),
-            if (!_click.isEdit)
+            if (!_click.isEditNames)
               Column(children: [
-                if (_click.isExtra)
+                if (_click.isExtraName)
                   TextField(onChanged: (value) {
                     nameVacancy = value;
                   }),
-                if (nameVacancy.isEmpty && _click.isExtra)
+                if (nameVacancy.isEmpty && _click.isExtraName)
                   Text("Вводите имя вакансии",
                       style: AppTextTheme.smallSizeText),
                 TextButton.icon(
                     onPressed: () {
-                      context.read<ProfileBtnCubit>().isExtra();
-                      if (_click.isExtra && nameVacancy.isNotEmpty) {
+                      context.read<ProfileBtnCubit>().extraName();
+                      if (_click.isExtraName && nameVacancy.isNotEmpty) {
                         context.read<VacanciesCompanyBloc>().add(
                             VacanciesCompanyEvent.addOrDeleteLocalVacancy(
                                 delete: false, nameVacancy: nameVacancy));
                       }
                     },
-                    icon: !_click.isExtra
+                    icon: !_click.isExtraName
                         ? SvgPicture.asset(AppIcons.plus_black)
                         : const SizedBox.shrink(),
                     label: Text(
-                        !_click.isExtra
+                        !_click.isExtraName
                             ? "Добавить вакансии"
                             : "Сохранить вакансии",
                         style: AppTextTheme.smallTextMediumBlack)),

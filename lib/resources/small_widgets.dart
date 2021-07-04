@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 import 'package:sap_work/theme/text_theme.dart';
+
+import 'icons.dart';
 
 class SmallWidgets {
   static void scaffoldMessage(
@@ -27,5 +30,18 @@ class SmallWidgets {
       showDialog(
           context: context,
           builder: (context) =>
-              SimpleDialog(title: Center(child: JumpingText(title))));
+              SimpleDialog(title: Expanded(child: JumpingText(title))));
+
+  static Iterable<ListTile> buildList(
+          {required Function(String item) onTap,
+          required String title,
+          required List<String> list}) =>
+      list.map((item) {
+        return ListTile(
+            onTap: () => onTap(item),
+            leading: SvgPicture.asset(title == item
+                ? AppIcons.selected_circle
+                : AppIcons.empty_circle),
+            title: Text(item));
+      });
 }

@@ -1,9 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sap_work/resources/constants.dart';
 
 part 'variable_vacancy_cubit.freezed.dart';
-
-const EMPTY_STRING = "";
 
 class VariableVacancyCubit extends Cubit<VariableVacancyState> {
   VariableVacancyCubit()
@@ -18,10 +17,12 @@ class VariableVacancyCubit extends Cubit<VariableVacancyState> {
             name: EMPTY_STRING,
             body: EMPTY_STRING,
             type: EMPTY_STRING,
+            abilities: EMPTY_STRING,
             categoryId: 0,
             tools: []));
 
   void category(String title) => emit(state.copyWith(categoryTitle: title));
+
   void categoryId(int id) => emit(state.copyWith(categoryId: id));
 
   void grade(String grade) => emit(state.copyWith(grade: grade));
@@ -36,6 +37,9 @@ class VariableVacancyCubit extends Cubit<VariableVacancyState> {
 
   void addingTools(String abilities) =>
       emit(state.copyWith(tools: <String>[...state.tools, abilities]));
+
+  void abilities(String abilities) =>
+      emit(state.copyWith(abilities: abilities));
 
   void deletingTools(String abilities) =>
       emit(state.copyWith(tools: List.from(state.tools)..remove(abilities)));
@@ -62,6 +66,7 @@ abstract class VariableVacancyState with _$VariableVacancyState {
       required final String schedule,
       required final String stage,
       required final String type,
+      required final String abilities,
       required final int categoryId,
       required final List<String> tools}) = ArgumentsVacancyState;
 }

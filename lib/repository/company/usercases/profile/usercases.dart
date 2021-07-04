@@ -1,11 +1,7 @@
 import 'package:either_dart/either.dart';
-import 'package:sap_work/data_source/company/local_data.dart';
-import 'package:sap_work/models/category/category.dart';
-import 'package:sap_work/models/profile_company/profile.dart';
-import 'package:sap_work/models/vacancy/vacancy.dart';
-import 'package:sap_work/models/vacancy_company/vacancy.dart';
 
 import '../../../exceptions_failures.dart';
+import '../../../repository.dart';
 import '../../../usercases.dart';
 import '../../company_repository.dart';
 
@@ -20,13 +16,13 @@ class GetProfileCompany implements UseCase<TypeProfileCompany, NoParams> {
   }
 }
 
-class GetVacanciesCompany implements UseCase<List<VacancyCompany>, NoParams> {
+class GetVacanciesCompany implements UseCase<List<Vacancy>, NoParams> {
   final CompanyRepositoryBase repository;
 
   GetVacanciesCompany(this.repository);
 
   @override
-  Future<Either<Failure, List<VacancyCompany>>> call(NoParams params) async {
+  Future<Either<Failure, List<Vacancy>>> call(NoParams params) async {
     return await repository.getVacanciesCompany();
   }
 }
@@ -50,7 +46,7 @@ class GetLocalVacanciesCompany implements UseCase<List<LocalVacancyData>, Params
   @override
   Future<Either<Failure, List<LocalVacancyData>>> call(Params params) async {
     if (params.writeVacancies) {
-      await localData.cacheLocalVacanciesCompany(params.vacancies);
+      await localData.localVacanciesCompany(params.vacancies);
     }
     try {
       return Right(await localData.getLocalVacanciesCompany());
@@ -68,23 +64,34 @@ class GetLocalVacancyCompany implements UseCase<LocalVacancyData, Params> {
   @override
   Future<Either<Failure, LocalVacancyData>> call(Params params) async {
     if (params.writeVacancy) {
-      await localData.cacheVacancyCompany(params.vacancy!);
+      await localData.localVacancyCompany(params.vacancy!);
     }
     try {
-      return Right(await localData.getVacancyCompany());
+      return Right(await localData.getLocalVacancyCompany());
     } on CacheException {
       return Left(CacheFailure());
     }
   }
 }
 
-class GetVacancyCompany implements UseCase<Vacancy, Params> {
+class GetVacancyCompany implements UseCase<Vacancy, int> {
   final CompanyRepositoryBase repository;
 
   GetVacancyCompany(this.repository);
 
   @override
-  Future<Either<Failure, Vacancy>> call(Params params) async {
-    return await repository.getVacancyCompany(params.id);
+  Future<Either<Failure, Vacancy>> call(int id) async {
+    return await repository.getVacancyCompany(id);
   }
+}
+
+class GetFeedbacksVacancy implements UseCase<List<FeedbackVacancy>,int>{
+  final CompanyRepositoryBase repository;
+
+  GetFeedbacksVacancy(this.repository);
+  @override
+  Future<Either<Failure, List<FeedbackVacancy>>> call(int id) async{
+   return await repository.getFeedbacksVacancy(id);
+  }
+
 }

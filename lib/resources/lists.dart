@@ -29,13 +29,13 @@ class Lists {
     "Стажировка",
   ];
 
-  static final List<StageList> skillList = <StageList>[
-    StageList(title: "Любой"),
-    StageList(title: "Без опыта"),
-    StageList(title: "0-1 год"),
-    StageList(title: "1-3 года"),
-    StageList(title: "3-5 лет"),
-    StageList(title: "Более 5 лет"),
+  static final List<String> stageList = <String>[
+    "Любой",
+    "Без опыта",
+    "0-1 год",
+    "1-3 года",
+    "3-5 лет",
+    "Более 5 лет",
   ];
 
   static final List<String> typeList = <String>[

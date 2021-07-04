@@ -38,7 +38,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
   }
 
   Stream<FilterState> _initialEvent(_InitialFilterEvent event) async* {
-    _checkBoxes = Lists.skillList;
+    _checkBoxes = [];
     _countries = Lists.countryList;
     _professions = Lists.listProfessions;
     yield FilterState.filter(

@@ -37,9 +37,10 @@ class _$VacanciesCompanyEventTearOff {
   }
 
   _EditRemotedNameVacanciesCompanyEvent editRemotedName(
-      {required String nameVacancy, required int id}) {
+      {required String vacancyName, required int category, required int id}) {
     return _EditRemotedNameVacanciesCompanyEvent(
-      nameVacancy: nameVacancy,
+      vacancyName: vacancyName,
+      category: category,
       id: id,
     );
   }
@@ -56,7 +57,8 @@ mixin _$VacanciesCompanyEvent {
     required TResult Function(String nameVacancy, bool delete)
         addOrDeleteLocalVacancy,
     required TResult Function(String nameVacancy, int id) editLocalName,
-    required TResult Function(String nameVacancy, int id) editRemotedName,
+    required TResult Function(String vacancyName, int category, int id)
+        editRemotedName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,7 +66,7 @@ mixin _$VacanciesCompanyEvent {
     TResult Function()? getVacancies,
     TResult Function(String nameVacancy, bool delete)? addOrDeleteLocalVacancy,
     TResult Function(String nameVacancy, int id)? editLocalName,
-    TResult Function(String nameVacancy, int id)? editRemotedName,
+    TResult Function(String vacancyName, int category, int id)? editRemotedName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -154,7 +156,8 @@ class _$_GetVacanciesCompanyEvent implements _GetVacanciesCompanyEvent {
     required TResult Function(String nameVacancy, bool delete)
         addOrDeleteLocalVacancy,
     required TResult Function(String nameVacancy, int id) editLocalName,
-    required TResult Function(String nameVacancy, int id) editRemotedName,
+    required TResult Function(String vacancyName, int category, int id)
+        editRemotedName,
   }) {
     return getVacancies();
   }
@@ -165,7 +168,7 @@ class _$_GetVacanciesCompanyEvent implements _GetVacanciesCompanyEvent {
     TResult Function()? getVacancies,
     TResult Function(String nameVacancy, bool delete)? addOrDeleteLocalVacancy,
     TResult Function(String nameVacancy, int id)? editLocalName,
-    TResult Function(String nameVacancy, int id)? editRemotedName,
+    TResult Function(String vacancyName, int category, int id)? editRemotedName,
     required TResult orElse(),
   }) {
     if (getVacancies != null) {
@@ -299,7 +302,8 @@ class _$_AddOrDeleteLocalVacanciesCompanyEvent
     required TResult Function(String nameVacancy, bool delete)
         addOrDeleteLocalVacancy,
     required TResult Function(String nameVacancy, int id) editLocalName,
-    required TResult Function(String nameVacancy, int id) editRemotedName,
+    required TResult Function(String vacancyName, int category, int id)
+        editRemotedName,
   }) {
     return addOrDeleteLocalVacancy(nameVacancy, delete);
   }
@@ -310,7 +314,7 @@ class _$_AddOrDeleteLocalVacanciesCompanyEvent
     TResult Function()? getVacancies,
     TResult Function(String nameVacancy, bool delete)? addOrDeleteLocalVacancy,
     TResult Function(String nameVacancy, int id)? editLocalName,
-    TResult Function(String nameVacancy, int id)? editRemotedName,
+    TResult Function(String vacancyName, int category, int id)? editRemotedName,
     required TResult orElse(),
   }) {
     if (addOrDeleteLocalVacancy != null) {
@@ -453,7 +457,8 @@ class _$_EditLocalNameVacanciesCompanyEvent
     required TResult Function(String nameVacancy, bool delete)
         addOrDeleteLocalVacancy,
     required TResult Function(String nameVacancy, int id) editLocalName,
-    required TResult Function(String nameVacancy, int id) editRemotedName,
+    required TResult Function(String vacancyName, int category, int id)
+        editRemotedName,
   }) {
     return editLocalName(nameVacancy, id);
   }
@@ -464,7 +469,7 @@ class _$_EditLocalNameVacanciesCompanyEvent
     TResult Function()? getVacancies,
     TResult Function(String nameVacancy, bool delete)? addOrDeleteLocalVacancy,
     TResult Function(String nameVacancy, int id)? editLocalName,
-    TResult Function(String nameVacancy, int id)? editRemotedName,
+    TResult Function(String vacancyName, int category, int id)? editRemotedName,
     required TResult orElse(),
   }) {
     if (editLocalName != null) {
@@ -525,7 +530,7 @@ abstract class _$EditRemotedNameVacanciesCompanyEventCopyWith<$Res> {
           _EditRemotedNameVacanciesCompanyEvent value,
           $Res Function(_EditRemotedNameVacanciesCompanyEvent) then) =
       __$EditRemotedNameVacanciesCompanyEventCopyWithImpl<$Res>;
-  $Res call({String nameVacancy, int id});
+  $Res call({String vacancyName, int category, int id});
 }
 
 /// @nodoc
@@ -543,14 +548,19 @@ class __$EditRemotedNameVacanciesCompanyEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? nameVacancy = freezed,
+    Object? vacancyName = freezed,
+    Object? category = freezed,
     Object? id = freezed,
   }) {
     return _then(_EditRemotedNameVacanciesCompanyEvent(
-      nameVacancy: nameVacancy == freezed
-          ? _value.nameVacancy
-          : nameVacancy // ignore: cast_nullable_to_non_nullable
+      vacancyName: vacancyName == freezed
+          ? _value.vacancyName
+          : vacancyName // ignore: cast_nullable_to_non_nullable
               as String,
+      category: category == freezed
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as int,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -564,25 +574,30 @@ class __$EditRemotedNameVacanciesCompanyEventCopyWithImpl<$Res>
 class _$_EditRemotedNameVacanciesCompanyEvent
     implements _EditRemotedNameVacanciesCompanyEvent {
   const _$_EditRemotedNameVacanciesCompanyEvent(
-      {required this.nameVacancy, required this.id});
+      {required this.vacancyName, required this.category, required this.id});
 
   @override
-  final String nameVacancy;
+  final String vacancyName;
+  @override
+  final int category;
   @override
   final int id;
 
   @override
   String toString() {
-    return 'VacanciesCompanyEvent.editRemotedName(nameVacancy: $nameVacancy, id: $id)';
+    return 'VacanciesCompanyEvent.editRemotedName(vacancyName: $vacancyName, category: $category, id: $id)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _EditRemotedNameVacanciesCompanyEvent &&
-            (identical(other.nameVacancy, nameVacancy) ||
+            (identical(other.vacancyName, vacancyName) ||
                 const DeepCollectionEquality()
-                    .equals(other.nameVacancy, nameVacancy)) &&
+                    .equals(other.vacancyName, vacancyName)) &&
+            (identical(other.category, category) ||
+                const DeepCollectionEquality()
+                    .equals(other.category, category)) &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)));
   }
@@ -590,7 +605,8 @@ class _$_EditRemotedNameVacanciesCompanyEvent
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(nameVacancy) ^
+      const DeepCollectionEquality().hash(vacancyName) ^
+      const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(id);
 
   @JsonKey(ignore: true)
@@ -607,9 +623,10 @@ class _$_EditRemotedNameVacanciesCompanyEvent
     required TResult Function(String nameVacancy, bool delete)
         addOrDeleteLocalVacancy,
     required TResult Function(String nameVacancy, int id) editLocalName,
-    required TResult Function(String nameVacancy, int id) editRemotedName,
+    required TResult Function(String vacancyName, int category, int id)
+        editRemotedName,
   }) {
-    return editRemotedName(nameVacancy, id);
+    return editRemotedName(vacancyName, category, id);
   }
 
   @override
@@ -618,11 +635,11 @@ class _$_EditRemotedNameVacanciesCompanyEvent
     TResult Function()? getVacancies,
     TResult Function(String nameVacancy, bool delete)? addOrDeleteLocalVacancy,
     TResult Function(String nameVacancy, int id)? editLocalName,
-    TResult Function(String nameVacancy, int id)? editRemotedName,
+    TResult Function(String vacancyName, int category, int id)? editRemotedName,
     required TResult orElse(),
   }) {
     if (editRemotedName != null) {
-      return editRemotedName(nameVacancy, id);
+      return editRemotedName(vacancyName, category, id);
     }
     return orElse();
   }
@@ -662,10 +679,12 @@ class _$_EditRemotedNameVacanciesCompanyEvent
 abstract class _EditRemotedNameVacanciesCompanyEvent
     implements VacanciesCompanyEvent {
   const factory _EditRemotedNameVacanciesCompanyEvent(
-      {required String nameVacancy,
+      {required String vacancyName,
+      required int category,
       required int id}) = _$_EditRemotedNameVacanciesCompanyEvent;
 
-  String get nameVacancy => throw _privateConstructorUsedError;
+  String get vacancyName => throw _privateConstructorUsedError;
+  int get category => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$EditRemotedNameVacanciesCompanyEventCopyWith<
@@ -686,10 +705,12 @@ class _$VacanciesCompanyStateTearOff {
   }
 
   LoadedVacanciesCompanyState loaded(
-      {required List<VacancyCompany> vacancies,
+      {required List<Vacancy> vacancies,
+      required FormzStatus status,
       required List<LocalVacancyData> localVacanciesName}) {
     return LoadedVacanciesCompanyState(
       vacancies: vacancies,
+      status: status,
       localVacanciesName: localVacanciesName,
     );
   }
@@ -710,7 +731,7 @@ mixin _$VacanciesCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<VacancyCompany> vacancies,
+    required TResult Function(List<Vacancy> vacancies, FormzStatus status,
             List<LocalVacancyData> localVacanciesName)
         loaded,
     required TResult Function(String message) error,
@@ -720,7 +741,7 @@ mixin _$VacanciesCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<VacancyCompany> vacancies,
+    TResult Function(List<Vacancy> vacancies, FormzStatus status,
             List<LocalVacancyData> localVacanciesName)?
         loaded,
     TResult Function(String message)? error,
@@ -806,7 +827,7 @@ class _$EmptyVacanciesCompanyState implements EmptyVacanciesCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<VacancyCompany> vacancies,
+    required TResult Function(List<Vacancy> vacancies, FormzStatus status,
             List<LocalVacancyData> localVacanciesName)
         loaded,
     required TResult Function(String message) error,
@@ -819,7 +840,7 @@ class _$EmptyVacanciesCompanyState implements EmptyVacanciesCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<VacancyCompany> vacancies,
+    TResult Function(List<Vacancy> vacancies, FormzStatus status,
             List<LocalVacancyData> localVacanciesName)?
         loaded,
     TResult Function(String message)? error,
@@ -907,7 +928,7 @@ class _$LoadingVacanciesCompanyState implements LoadingVacanciesCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<VacancyCompany> vacancies,
+    required TResult Function(List<Vacancy> vacancies, FormzStatus status,
             List<LocalVacancyData> localVacanciesName)
         loaded,
     required TResult Function(String message) error,
@@ -920,7 +941,7 @@ class _$LoadingVacanciesCompanyState implements LoadingVacanciesCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<VacancyCompany> vacancies,
+    TResult Function(List<Vacancy> vacancies, FormzStatus status,
             List<LocalVacancyData> localVacanciesName)?
         loaded,
     TResult Function(String message)? error,
@@ -970,7 +991,8 @@ abstract class $LoadedVacanciesCompanyStateCopyWith<$Res> {
           $Res Function(LoadedVacanciesCompanyState) then) =
       _$LoadedVacanciesCompanyStateCopyWithImpl<$Res>;
   $Res call(
-      {List<VacancyCompany> vacancies,
+      {List<Vacancy> vacancies,
+      FormzStatus status,
       List<LocalVacancyData> localVacanciesName});
 }
 
@@ -989,13 +1011,18 @@ class _$LoadedVacanciesCompanyStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? vacancies = freezed,
+    Object? status = freezed,
     Object? localVacanciesName = freezed,
   }) {
     return _then(LoadedVacanciesCompanyState(
       vacancies: vacancies == freezed
           ? _value.vacancies
           : vacancies // ignore: cast_nullable_to_non_nullable
-              as List<VacancyCompany>,
+              as List<Vacancy>,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as FormzStatus,
       localVacanciesName: localVacanciesName == freezed
           ? _value.localVacanciesName
           : localVacanciesName // ignore: cast_nullable_to_non_nullable
@@ -1008,16 +1035,20 @@ class _$LoadedVacanciesCompanyStateCopyWithImpl<$Res>
 
 class _$LoadedVacanciesCompanyState implements LoadedVacanciesCompanyState {
   const _$LoadedVacanciesCompanyState(
-      {required this.vacancies, required this.localVacanciesName});
+      {required this.vacancies,
+      required this.status,
+      required this.localVacanciesName});
 
   @override
-  final List<VacancyCompany> vacancies;
+  final List<Vacancy> vacancies;
+  @override
+  final FormzStatus status;
   @override
   final List<LocalVacancyData> localVacanciesName;
 
   @override
   String toString() {
-    return 'VacanciesCompanyState.loaded(vacancies: $vacancies, localVacanciesName: $localVacanciesName)';
+    return 'VacanciesCompanyState.loaded(vacancies: $vacancies, status: $status, localVacanciesName: $localVacanciesName)';
   }
 
   @override
@@ -1027,6 +1058,8 @@ class _$LoadedVacanciesCompanyState implements LoadedVacanciesCompanyState {
             (identical(other.vacancies, vacancies) ||
                 const DeepCollectionEquality()
                     .equals(other.vacancies, vacancies)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)) &&
             (identical(other.localVacanciesName, localVacanciesName) ||
                 const DeepCollectionEquality()
                     .equals(other.localVacanciesName, localVacanciesName)));
@@ -1036,6 +1069,7 @@ class _$LoadedVacanciesCompanyState implements LoadedVacanciesCompanyState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(vacancies) ^
+      const DeepCollectionEquality().hash(status) ^
       const DeepCollectionEquality().hash(localVacanciesName);
 
   @JsonKey(ignore: true)
@@ -1049,12 +1083,12 @@ class _$LoadedVacanciesCompanyState implements LoadedVacanciesCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<VacancyCompany> vacancies,
+    required TResult Function(List<Vacancy> vacancies, FormzStatus status,
             List<LocalVacancyData> localVacanciesName)
         loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(vacancies, localVacanciesName);
+    return loaded(vacancies, status, localVacanciesName);
   }
 
   @override
@@ -1062,14 +1096,14 @@ class _$LoadedVacanciesCompanyState implements LoadedVacanciesCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<VacancyCompany> vacancies,
+    TResult Function(List<Vacancy> vacancies, FormzStatus status,
             List<LocalVacancyData> localVacanciesName)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(vacancies, localVacanciesName);
+      return loaded(vacancies, status, localVacanciesName);
     }
     return orElse();
   }
@@ -1103,11 +1137,13 @@ class _$LoadedVacanciesCompanyState implements LoadedVacanciesCompanyState {
 
 abstract class LoadedVacanciesCompanyState implements VacanciesCompanyState {
   const factory LoadedVacanciesCompanyState(
-          {required List<VacancyCompany> vacancies,
+          {required List<Vacancy> vacancies,
+          required FormzStatus status,
           required List<LocalVacancyData> localVacanciesName}) =
       _$LoadedVacanciesCompanyState;
 
-  List<VacancyCompany> get vacancies => throw _privateConstructorUsedError;
+  List<Vacancy> get vacancies => throw _privateConstructorUsedError;
+  FormzStatus get status => throw _privateConstructorUsedError;
   List<LocalVacancyData> get localVacanciesName =>
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1185,7 +1221,7 @@ class _$ErrorVacanciesCompanyState implements ErrorVacanciesCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<VacancyCompany> vacancies,
+    required TResult Function(List<Vacancy> vacancies, FormzStatus status,
             List<LocalVacancyData> localVacanciesName)
         loaded,
     required TResult Function(String message) error,
@@ -1198,7 +1234,7 @@ class _$ErrorVacanciesCompanyState implements ErrorVacanciesCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<VacancyCompany> vacancies,
+    TResult Function(List<Vacancy> vacancies, FormzStatus status,
             List<LocalVacancyData> localVacanciesName)?
         loaded,
     TResult Function(String message)? error,

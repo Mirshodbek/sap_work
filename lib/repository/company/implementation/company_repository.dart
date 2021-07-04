@@ -2,9 +2,9 @@ import 'package:either_dart/either.dart';
 import 'package:sap_work/data_source/company/cache_data.dart';
 import 'package:sap_work/data_source/company/remote_data.dart';
 import 'package:sap_work/models/category/category.dart';
+import 'package:sap_work/models/feedback_vacancy/feedback.dart';
 import 'package:sap_work/models/profile_company/profile.dart';
 import 'package:sap_work/models/vacancy/vacancy.dart';
-import 'package:sap_work/models/vacancy_company/vacancy.dart';
 
 import '../../exceptions_failures.dart';
 import '../../network_info.dart';
@@ -43,7 +43,7 @@ class CompanyRepository implements CompanyRepositoryBase {
   }
 
   @override
-  Future<Either<Failure, List<VacancyCompany>>> getVacanciesCompany() async {
+  Future<Either<Failure, List<Vacancy>>> getVacanciesCompany() async {
     if (await networkInfo.isConnected) {
       try {
         final remoteData = await remoteDataSource.getVacanciesCompany();
@@ -94,6 +94,25 @@ class CompanyRepository implements CompanyRepositoryBase {
     } else {
       try {
         final localData = await localDataSource.getVacancyCompany();
+        return Right(localData);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<FeedbackVacancy>>> getFeedbacksVacancy(int id) async{
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteData = await remoteDataSource.getFeedbacksVacancy(id);
+        return Right(remoteData);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final localData = await localDataSource.getFeedbacksVacancy();
         return Right(localData);
       } on CacheException {
         return Left(CacheFailure());

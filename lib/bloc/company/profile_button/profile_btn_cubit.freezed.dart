@@ -17,11 +17,31 @@ class _$ProfileBtnStateTearOff {
   const _$ProfileBtnStateTearOff();
 
   OnClickProfileBtnState onClick(
-      {required bool isSelect, required bool isEdit, required bool isExtra}) {
+      {required bool isSelectVacancies,
+      required bool isEditNames,
+      required bool isEditCategory,
+      required bool isEditCity,
+      required bool isEditBody,
+      required bool isEditGrade,
+      required bool isEditMinAndMaxSalary,
+      required bool isEditSchedule,
+      required bool isEditStage,
+      required bool isEditType,
+      required bool isEditAbilities,
+      required bool isExtraName}) {
     return OnClickProfileBtnState(
-      isSelect: isSelect,
-      isEdit: isEdit,
-      isExtra: isExtra,
+      isSelectVacancies: isSelectVacancies,
+      isEditNames: isEditNames,
+      isEditCategory: isEditCategory,
+      isEditCity: isEditCity,
+      isEditBody: isEditBody,
+      isEditGrade: isEditGrade,
+      isEditMinAndMaxSalary: isEditMinAndMaxSalary,
+      isEditSchedule: isEditSchedule,
+      isEditStage: isEditStage,
+      isEditType: isEditType,
+      isEditAbilities: isEditAbilities,
+      isExtraName: isExtraName,
     );
   }
 }
@@ -31,18 +51,53 @@ const $ProfileBtnState = _$ProfileBtnStateTearOff();
 
 /// @nodoc
 mixin _$ProfileBtnState {
-  bool get isSelect => throw _privateConstructorUsedError;
-  bool get isEdit => throw _privateConstructorUsedError;
-  bool get isExtra => throw _privateConstructorUsedError;
+  bool get isSelectVacancies => throw _privateConstructorUsedError;
+  bool get isEditNames => throw _privateConstructorUsedError;
+  bool get isEditCategory => throw _privateConstructorUsedError;
+  bool get isEditCity => throw _privateConstructorUsedError;
+  bool get isEditBody => throw _privateConstructorUsedError;
+  bool get isEditGrade => throw _privateConstructorUsedError;
+  bool get isEditMinAndMaxSalary => throw _privateConstructorUsedError;
+  bool get isEditSchedule => throw _privateConstructorUsedError;
+  bool get isEditStage => throw _privateConstructorUsedError;
+  bool get isEditType => throw _privateConstructorUsedError;
+  bool get isEditAbilities => throw _privateConstructorUsedError;
+  bool get isExtraName => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isSelect, bool isEdit, bool isExtra) onClick,
+    required TResult Function(
+            bool isSelectVacancies,
+            bool isEditNames,
+            bool isEditCategory,
+            bool isEditCity,
+            bool isEditBody,
+            bool isEditGrade,
+            bool isEditMinAndMaxSalary,
+            bool isEditSchedule,
+            bool isEditStage,
+            bool isEditType,
+            bool isEditAbilities,
+            bool isExtraName)
+        onClick,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isSelect, bool isEdit, bool isExtra)? onClick,
+    TResult Function(
+            bool isSelectVacancies,
+            bool isEditNames,
+            bool isEditCategory,
+            bool isEditCity,
+            bool isEditBody,
+            bool isEditGrade,
+            bool isEditMinAndMaxSalary,
+            bool isEditSchedule,
+            bool isEditStage,
+            bool isEditType,
+            bool isEditAbilities,
+            bool isExtraName)?
+        onClick,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,7 +123,19 @@ abstract class $ProfileBtnStateCopyWith<$Res> {
   factory $ProfileBtnStateCopyWith(
           ProfileBtnState value, $Res Function(ProfileBtnState) then) =
       _$ProfileBtnStateCopyWithImpl<$Res>;
-  $Res call({bool isSelect, bool isEdit, bool isExtra});
+  $Res call(
+      {bool isSelectVacancies,
+      bool isEditNames,
+      bool isEditCategory,
+      bool isEditCity,
+      bool isEditBody,
+      bool isEditGrade,
+      bool isEditMinAndMaxSalary,
+      bool isEditSchedule,
+      bool isEditStage,
+      bool isEditType,
+      bool isEditAbilities,
+      bool isExtraName});
 }
 
 /// @nodoc
@@ -82,22 +149,67 @@ class _$ProfileBtnStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isSelect = freezed,
-    Object? isEdit = freezed,
-    Object? isExtra = freezed,
+    Object? isSelectVacancies = freezed,
+    Object? isEditNames = freezed,
+    Object? isEditCategory = freezed,
+    Object? isEditCity = freezed,
+    Object? isEditBody = freezed,
+    Object? isEditGrade = freezed,
+    Object? isEditMinAndMaxSalary = freezed,
+    Object? isEditSchedule = freezed,
+    Object? isEditStage = freezed,
+    Object? isEditType = freezed,
+    Object? isEditAbilities = freezed,
+    Object? isExtraName = freezed,
   }) {
     return _then(_value.copyWith(
-      isSelect: isSelect == freezed
-          ? _value.isSelect
-          : isSelect // ignore: cast_nullable_to_non_nullable
+      isSelectVacancies: isSelectVacancies == freezed
+          ? _value.isSelectVacancies
+          : isSelectVacancies // ignore: cast_nullable_to_non_nullable
               as bool,
-      isEdit: isEdit == freezed
-          ? _value.isEdit
-          : isEdit // ignore: cast_nullable_to_non_nullable
+      isEditNames: isEditNames == freezed
+          ? _value.isEditNames
+          : isEditNames // ignore: cast_nullable_to_non_nullable
               as bool,
-      isExtra: isExtra == freezed
-          ? _value.isExtra
-          : isExtra // ignore: cast_nullable_to_non_nullable
+      isEditCategory: isEditCategory == freezed
+          ? _value.isEditCategory
+          : isEditCategory // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditCity: isEditCity == freezed
+          ? _value.isEditCity
+          : isEditCity // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditBody: isEditBody == freezed
+          ? _value.isEditBody
+          : isEditBody // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditGrade: isEditGrade == freezed
+          ? _value.isEditGrade
+          : isEditGrade // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditMinAndMaxSalary: isEditMinAndMaxSalary == freezed
+          ? _value.isEditMinAndMaxSalary
+          : isEditMinAndMaxSalary // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditSchedule: isEditSchedule == freezed
+          ? _value.isEditSchedule
+          : isEditSchedule // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditStage: isEditStage == freezed
+          ? _value.isEditStage
+          : isEditStage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditType: isEditType == freezed
+          ? _value.isEditType
+          : isEditType // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditAbilities: isEditAbilities == freezed
+          ? _value.isEditAbilities
+          : isEditAbilities // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isExtraName: isExtraName == freezed
+          ? _value.isExtraName
+          : isExtraName // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -110,7 +222,19 @@ abstract class $OnClickProfileBtnStateCopyWith<$Res>
           $Res Function(OnClickProfileBtnState) then) =
       _$OnClickProfileBtnStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isSelect, bool isEdit, bool isExtra});
+  $Res call(
+      {bool isSelectVacancies,
+      bool isEditNames,
+      bool isEditCategory,
+      bool isEditCity,
+      bool isEditBody,
+      bool isEditGrade,
+      bool isEditMinAndMaxSalary,
+      bool isEditSchedule,
+      bool isEditStage,
+      bool isEditType,
+      bool isEditAbilities,
+      bool isExtraName});
 }
 
 /// @nodoc
@@ -126,22 +250,67 @@ class _$OnClickProfileBtnStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? isSelect = freezed,
-    Object? isEdit = freezed,
-    Object? isExtra = freezed,
+    Object? isSelectVacancies = freezed,
+    Object? isEditNames = freezed,
+    Object? isEditCategory = freezed,
+    Object? isEditCity = freezed,
+    Object? isEditBody = freezed,
+    Object? isEditGrade = freezed,
+    Object? isEditMinAndMaxSalary = freezed,
+    Object? isEditSchedule = freezed,
+    Object? isEditStage = freezed,
+    Object? isEditType = freezed,
+    Object? isEditAbilities = freezed,
+    Object? isExtraName = freezed,
   }) {
     return _then(OnClickProfileBtnState(
-      isSelect: isSelect == freezed
-          ? _value.isSelect
-          : isSelect // ignore: cast_nullable_to_non_nullable
+      isSelectVacancies: isSelectVacancies == freezed
+          ? _value.isSelectVacancies
+          : isSelectVacancies // ignore: cast_nullable_to_non_nullable
               as bool,
-      isEdit: isEdit == freezed
-          ? _value.isEdit
-          : isEdit // ignore: cast_nullable_to_non_nullable
+      isEditNames: isEditNames == freezed
+          ? _value.isEditNames
+          : isEditNames // ignore: cast_nullable_to_non_nullable
               as bool,
-      isExtra: isExtra == freezed
-          ? _value.isExtra
-          : isExtra // ignore: cast_nullable_to_non_nullable
+      isEditCategory: isEditCategory == freezed
+          ? _value.isEditCategory
+          : isEditCategory // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditCity: isEditCity == freezed
+          ? _value.isEditCity
+          : isEditCity // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditBody: isEditBody == freezed
+          ? _value.isEditBody
+          : isEditBody // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditGrade: isEditGrade == freezed
+          ? _value.isEditGrade
+          : isEditGrade // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditMinAndMaxSalary: isEditMinAndMaxSalary == freezed
+          ? _value.isEditMinAndMaxSalary
+          : isEditMinAndMaxSalary // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditSchedule: isEditSchedule == freezed
+          ? _value.isEditSchedule
+          : isEditSchedule // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditStage: isEditStage == freezed
+          ? _value.isEditStage
+          : isEditStage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditType: isEditType == freezed
+          ? _value.isEditType
+          : isEditType // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditAbilities: isEditAbilities == freezed
+          ? _value.isEditAbilities
+          : isEditAbilities // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isExtraName: isExtraName == freezed
+          ? _value.isExtraName
+          : isExtraName // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -151,39 +320,106 @@ class _$OnClickProfileBtnStateCopyWithImpl<$Res>
 
 class _$OnClickProfileBtnState implements OnClickProfileBtnState {
   const _$OnClickProfileBtnState(
-      {required this.isSelect, required this.isEdit, required this.isExtra});
+      {required this.isSelectVacancies,
+      required this.isEditNames,
+      required this.isEditCategory,
+      required this.isEditCity,
+      required this.isEditBody,
+      required this.isEditGrade,
+      required this.isEditMinAndMaxSalary,
+      required this.isEditSchedule,
+      required this.isEditStage,
+      required this.isEditType,
+      required this.isEditAbilities,
+      required this.isExtraName});
 
   @override
-  final bool isSelect;
+  final bool isSelectVacancies;
   @override
-  final bool isEdit;
+  final bool isEditNames;
   @override
-  final bool isExtra;
+  final bool isEditCategory;
+  @override
+  final bool isEditCity;
+  @override
+  final bool isEditBody;
+  @override
+  final bool isEditGrade;
+  @override
+  final bool isEditMinAndMaxSalary;
+  @override
+  final bool isEditSchedule;
+  @override
+  final bool isEditStage;
+  @override
+  final bool isEditType;
+  @override
+  final bool isEditAbilities;
+  @override
+  final bool isExtraName;
 
   @override
   String toString() {
-    return 'ProfileBtnState.onClick(isSelect: $isSelect, isEdit: $isEdit, isExtra: $isExtra)';
+    return 'ProfileBtnState.onClick(isSelectVacancies: $isSelectVacancies, isEditNames: $isEditNames, isEditCategory: $isEditCategory, isEditCity: $isEditCity, isEditBody: $isEditBody, isEditGrade: $isEditGrade, isEditMinAndMaxSalary: $isEditMinAndMaxSalary, isEditSchedule: $isEditSchedule, isEditStage: $isEditStage, isEditType: $isEditType, isEditAbilities: $isEditAbilities, isExtraName: $isExtraName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is OnClickProfileBtnState &&
-            (identical(other.isSelect, isSelect) ||
+            (identical(other.isSelectVacancies, isSelectVacancies) ||
                 const DeepCollectionEquality()
-                    .equals(other.isSelect, isSelect)) &&
-            (identical(other.isEdit, isEdit) ||
-                const DeepCollectionEquality().equals(other.isEdit, isEdit)) &&
-            (identical(other.isExtra, isExtra) ||
-                const DeepCollectionEquality().equals(other.isExtra, isExtra)));
+                    .equals(other.isSelectVacancies, isSelectVacancies)) &&
+            (identical(other.isEditNames, isEditNames) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditNames, isEditNames)) &&
+            (identical(other.isEditCategory, isEditCategory) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditCategory, isEditCategory)) &&
+            (identical(other.isEditCity, isEditCity) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditCity, isEditCity)) &&
+            (identical(other.isEditBody, isEditBody) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditBody, isEditBody)) &&
+            (identical(other.isEditGrade, isEditGrade) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditGrade, isEditGrade)) &&
+            (identical(other.isEditMinAndMaxSalary, isEditMinAndMaxSalary) ||
+                const DeepCollectionEquality().equals(
+                    other.isEditMinAndMaxSalary, isEditMinAndMaxSalary)) &&
+            (identical(other.isEditSchedule, isEditSchedule) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditSchedule, isEditSchedule)) &&
+            (identical(other.isEditStage, isEditStage) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditStage, isEditStage)) &&
+            (identical(other.isEditType, isEditType) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditType, isEditType)) &&
+            (identical(other.isEditAbilities, isEditAbilities) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditAbilities, isEditAbilities)) &&
+            (identical(other.isExtraName, isExtraName) ||
+                const DeepCollectionEquality()
+                    .equals(other.isExtraName, isExtraName)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isSelect) ^
-      const DeepCollectionEquality().hash(isEdit) ^
-      const DeepCollectionEquality().hash(isExtra);
+      const DeepCollectionEquality().hash(isSelectVacancies) ^
+      const DeepCollectionEquality().hash(isEditNames) ^
+      const DeepCollectionEquality().hash(isEditCategory) ^
+      const DeepCollectionEquality().hash(isEditCity) ^
+      const DeepCollectionEquality().hash(isEditBody) ^
+      const DeepCollectionEquality().hash(isEditGrade) ^
+      const DeepCollectionEquality().hash(isEditMinAndMaxSalary) ^
+      const DeepCollectionEquality().hash(isEditSchedule) ^
+      const DeepCollectionEquality().hash(isEditStage) ^
+      const DeepCollectionEquality().hash(isEditType) ^
+      const DeepCollectionEquality().hash(isEditAbilities) ^
+      const DeepCollectionEquality().hash(isExtraName);
 
   @JsonKey(ignore: true)
   @override
@@ -194,19 +430,69 @@ class _$OnClickProfileBtnState implements OnClickProfileBtnState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool isSelect, bool isEdit, bool isExtra) onClick,
+    required TResult Function(
+            bool isSelectVacancies,
+            bool isEditNames,
+            bool isEditCategory,
+            bool isEditCity,
+            bool isEditBody,
+            bool isEditGrade,
+            bool isEditMinAndMaxSalary,
+            bool isEditSchedule,
+            bool isEditStage,
+            bool isEditType,
+            bool isEditAbilities,
+            bool isExtraName)
+        onClick,
   }) {
-    return onClick(isSelect, isEdit, isExtra);
+    return onClick(
+        isSelectVacancies,
+        isEditNames,
+        isEditCategory,
+        isEditCity,
+        isEditBody,
+        isEditGrade,
+        isEditMinAndMaxSalary,
+        isEditSchedule,
+        isEditStage,
+        isEditType,
+        isEditAbilities,
+        isExtraName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool isSelect, bool isEdit, bool isExtra)? onClick,
+    TResult Function(
+            bool isSelectVacancies,
+            bool isEditNames,
+            bool isEditCategory,
+            bool isEditCity,
+            bool isEditBody,
+            bool isEditGrade,
+            bool isEditMinAndMaxSalary,
+            bool isEditSchedule,
+            bool isEditStage,
+            bool isEditType,
+            bool isEditAbilities,
+            bool isExtraName)?
+        onClick,
     required TResult orElse(),
   }) {
     if (onClick != null) {
-      return onClick(isSelect, isEdit, isExtra);
+      return onClick(
+          isSelectVacancies,
+          isEditNames,
+          isEditCategory,
+          isEditCity,
+          isEditBody,
+          isEditGrade,
+          isEditMinAndMaxSalary,
+          isEditSchedule,
+          isEditStage,
+          isEditType,
+          isEditAbilities,
+          isExtraName);
     }
     return orElse();
   }
@@ -234,16 +520,43 @@ class _$OnClickProfileBtnState implements OnClickProfileBtnState {
 
 abstract class OnClickProfileBtnState implements ProfileBtnState {
   const factory OnClickProfileBtnState(
-      {required bool isSelect,
-      required bool isEdit,
-      required bool isExtra}) = _$OnClickProfileBtnState;
+      {required bool isSelectVacancies,
+      required bool isEditNames,
+      required bool isEditCategory,
+      required bool isEditCity,
+      required bool isEditBody,
+      required bool isEditGrade,
+      required bool isEditMinAndMaxSalary,
+      required bool isEditSchedule,
+      required bool isEditStage,
+      required bool isEditType,
+      required bool isEditAbilities,
+      required bool isExtraName}) = _$OnClickProfileBtnState;
 
   @override
-  bool get isSelect => throw _privateConstructorUsedError;
+  bool get isSelectVacancies => throw _privateConstructorUsedError;
   @override
-  bool get isEdit => throw _privateConstructorUsedError;
+  bool get isEditNames => throw _privateConstructorUsedError;
   @override
-  bool get isExtra => throw _privateConstructorUsedError;
+  bool get isEditCategory => throw _privateConstructorUsedError;
+  @override
+  bool get isEditCity => throw _privateConstructorUsedError;
+  @override
+  bool get isEditBody => throw _privateConstructorUsedError;
+  @override
+  bool get isEditGrade => throw _privateConstructorUsedError;
+  @override
+  bool get isEditMinAndMaxSalary => throw _privateConstructorUsedError;
+  @override
+  bool get isEditSchedule => throw _privateConstructorUsedError;
+  @override
+  bool get isEditStage => throw _privateConstructorUsedError;
+  @override
+  bool get isEditType => throw _privateConstructorUsedError;
+  @override
+  bool get isEditAbilities => throw _privateConstructorUsedError;
+  @override
+  bool get isExtraName => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $OnClickProfileBtnStateCopyWith<OnClickProfileBtnState> get copyWith =>

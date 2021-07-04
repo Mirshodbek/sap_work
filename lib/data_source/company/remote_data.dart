@@ -8,19 +8,23 @@ import 'cache_data.dart';
 abstract class CompanyRemoteDataBase {
   Future<TypeProfileCompany> getProfileCompany();
 
-  Future<List<VacancyCompany>> getVacanciesCompany();
+  Future<List<Vacancy>> getVacanciesCompany();
 
   Future<http.Response> postVacancyCompany(ParamsVacancy paramsVacancy);
 
   Future<Vacancy> getVacancyCompany(int id);
 
-  Future<Vacancy> changeVacancyCompany(int id);
+  Future<Vacancy> changeVacancyCompany(int id, ParamsVacancy paramsVacancy);
 
   Future<List<Category>> getCategories();
 
   Future<Vacancy> activateOrDeactivateVacancy(String id);
 
   Future<String> updateAvatar(String filename);
+
+  Future<List<FeedbackVacancy>> getFeedbacksVacancy(int id);
+
+  Future<http.Response> getStatusSubscribeVacancy();
 }
 
 class CompanyRemoteData implements CompanyRemoteDataBase {
@@ -33,10 +37,29 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   static const String _changeVacancy = '/api/vacancy/change?id=';
   static const String _updateAvatar = '/api/updateAvatar';
   static const String _activateOrDeactivate = '/api/vacancy/';
+  static const String _feedbacksVacancy = '/api/vacancy/feedbacks?vacancy=';
+  static const String _statusSubscribeVacancy = '/api/subscribe/status';
 
   final http.Client client;
 
   CompanyRemoteData(this.localDataSource, {required this.client});
+
+  @override
+  Future<List<FeedbackVacancy>> getFeedbacksVacancy(int id) async {
+    final result =
+        await _callPostApi(_feedbacksVacancy + id.toString(), json.encode({}));
+    await localDataSource.deleteObject(CACHED_FEEDBACKS_VACANCY);
+    await localDataSource.cacheObject(result.body, CACHED_FEEDBACKS_VACANCY);
+    return (json.decode(result.body) as List)
+        .map((item) => FeedbackVacancy.fromJson(item))
+        .toList();
+  }
+
+  @override
+  Future<http.Response> getStatusSubscribeVacancy() async {
+    final result = await _callPostApi(_statusSubscribeVacancy, json.encode({}));
+    return result;
+  }
 
   @override
   Future<TypeProfileCompany> getProfileCompany() async {
@@ -45,32 +68,19 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   }
 
   @override
-  Future<List<VacancyCompany>> getVacanciesCompany() async {
+  Future<List<Vacancy>> getVacanciesCompany() async {
     final result = await _callPostApi(_vacancies, json.encode({}));
     await localDataSource.deleteObject(CACHED_VACANCIES_COMPANY);
     await localDataSource.cacheObject(result.body, CACHED_VACANCIES_COMPANY);
     return (json.decode(result.body) as List<dynamic>)
-        .map((item) => VacancyCompany.fromJson(item))
+        .map((item) => Vacancy.fromJson(item))
         .toList();
   }
 
   @override
   Future<http.Response> postVacancyCompany(ParamsVacancy paramsVacancy) async {
-    final result = await _callPostApi(
-        _createVacancy,
-        json.encode({
-          // "name": name,
-          // "city": city,
-          // "grade": grade,
-          // "stage": stage,
-          // "schedule": schedule,
-          // "category": category,
-          // "body": body,
-          // "minsalary": minsalary,
-          // "maxsalary": maxsalary,
-          // "type": type,
-          // "abilities": abilities
-        }));
+    final result =
+        await _callPostApi(_createVacancy, json.encode(paramsVacancy.toJson()));
     return result;
   }
 
@@ -78,7 +88,6 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   Future<Vacancy> activateOrDeactivateVacancy(String id) async {
     final result =
         await _callPostApi(_activateOrDeactivate + id, json.encode({}));
-    await localDataSource.cacheVacancyCompany(json.decode(result.body));
     return Vacancy.fromJson(json.decode(result.body));
   }
 
@@ -100,9 +109,24 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   }
 
   @override
-  Future<Vacancy> changeVacancyCompany(int id) async {
-    final result = await _callPostApi(_changeVacancy, json.encode({}));
-    return Vacancy.fromJson(json.decode(result.body));
+  Future<Vacancy> changeVacancyCompany(
+      int id, ParamsVacancy paramsVacancy) async {
+    await _callPostApi(
+        _changeVacancy + id.toString(),
+        json.encode({
+          "name": paramsVacancy.name,
+          "body": paramsVacancy.body,
+          "city": paramsVacancy.city,
+          "garde": paramsVacancy.grade,
+          "stage": paramsVacancy.stage,
+          "schedule": paramsVacancy.schedule,
+          "category": paramsVacancy.category,
+          "minsalary": paramsVacancy.minsalary,
+          "maxsalary": paramsVacancy.maxsalary,
+          "type": paramsVacancy.type,
+          "abilities": paramsVacancy.abilities,
+        }));
+    return await getVacancyCompany(id);
   }
 
   @override

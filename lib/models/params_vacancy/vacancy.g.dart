@@ -8,17 +8,17 @@ part of 'vacancy.dart';
 
 ParamsVacancy _$ParamsVacancyFromJson(Map<String, dynamic> json) {
   return ParamsVacancy(
-    name: json['name'] as String,
-    city: json['city'] as String,
-    grade: json['grade'] as String,
-    stage: json['stage'] as String,
-    schedule: json['schedule'] as String,
-    body: json['body'] as String,
-    minsalary: json['minsalary'] as String,
-    maxsalary: json['maxsalary'] as String,
-    type: json['type'] as String,
-    abilities: json['abilities'] as String,
-    category: json['category'] as int,
+    name: json['name'],
+    city: json['city'],
+    grade: json['grade'],
+    stage: json['stage'],
+    schedule: json['schedule'],
+    body: json['body'],
+    minsalary: json['minsalary'],
+    maxsalary: json['maxsalary'],
+    type: json['type'],
+    abilities: json['abilities'],
+    category: json['category'],
   );
 }
 

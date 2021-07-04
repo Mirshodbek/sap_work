@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sap_work/bloc/company/core/core_profile_bloc.dart';
+import 'package:sap_work/bloc/company/feedbacks/feedbacks_vacancy_bloc.dart';
 import 'package:sap_work/bloc/company/profile/profile_company.dart';
 import 'package:sap_work/bloc/company/vacancies/vacancies_company_bloc.dart';
 import 'package:sap_work/bloc/company/vacancy/vacancy_company_bloc.dart';
@@ -11,6 +12,7 @@ import 'package:sap_work/bloc/internet/internet_cubit.dart';
 import 'package:sap_work/bloc/navigation/navigation_cubit.dart';
 import 'package:sap_work/injection_container.dart';
 import 'package:sap_work/repository/hunter/hunter_repository.dart';
+import 'package:sap_work/resources/small_widgets.dart';
 import 'company/screens/feedback/screen.dart';
 import 'company/screens/profile/screen.dart';
 import 'company/screens/resume/screen.dart';
@@ -23,7 +25,7 @@ class NavigationBar extends StatelessWidget {
 
   const NavigationBar({Key? key}) : super(key: key);
 
-  Map<BottomNavItem, WidgetBuilder> get widgetBuildersHunter {
+  Map<BottomNavItem, WidgetBuilder> get widgetBuildersUser {
     return {
       BottomNavItem.announces: (context) => VacanciesScreen(),
       BottomNavItem.messages: (context) => NotificationsScreen(),
@@ -31,7 +33,7 @@ class NavigationBar extends StatelessWidget {
     };
   }
 
-  Map<BottomNavItem, WidgetBuilder> get widgetBuildersEmployer {
+  Map<BottomNavItem, WidgetBuilder> get widgetBuildersCompany {
     return {
       BottomNavItem.announces: (context) => ResumeScreenCompany.create(),
       BottomNavItem.messages: (context) => FeedbackScreenCompany.create(),
@@ -45,34 +47,53 @@ class NavigationBar extends StatelessWidget {
     final role = arguments["role"];
     return BlocBuilder<NavigationCubit, BottomNavItem>(
       builder: (context, state) => role == "searcher"
-          ? _widgetBuildersHunter(context, state)
-          : _widgetBuildersEmployer(context, state),
+          ? _widgetBuildersUser(context, state)
+          : _widgetBuildersCompany(context, state),
     );
   }
 
-  Widget _widgetBuildersEmployer(
-      BuildContext context, BottomNavItem itemState) {
+  Widget _widgetBuildersCompany(BuildContext context, BottomNavItem itemState) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ProfileCompanyBloc>(
-            create: (_) => ProfileCompanyBloc(sl(),sl())
+            create: (_) => ProfileCompanyBloc(sl(), sl())
               ..add(const ProfileCompanyEvent.getProfileData())),
         BlocProvider<VacanciesCompanyBloc>(
-            create: (_) => VacanciesCompanyBloc(sl(), sl())
+            create: (_) => VacanciesCompanyBloc(sl(), sl(), sl())
               ..add(const VacanciesCompanyEvent.getVacancies())),
         BlocProvider<VacancyCompanyBloc>(
-            create: (_) => VacancyCompanyBloc(sl(),sl(),sl())
+            create: (_) => VacancyCompanyBloc(sl(), sl(), sl())
               ..add(const VacancyCompanyEvent.getVacancy())),
         BlocProvider<CoreProfileBloc>(
-          create: (context) => CoreProfileBloc(sl(), sl(), sl())
-            ..add(const CoreProfileEvent.initial()),
-        ),
+            create: (context) => CoreProfileBloc(sl(), sl(), sl())
+              ..add(const CoreProfileEvent.initial())),
+        BlocProvider(
+            create: (_) => FeedbacksVacancyBloc(sl(), sl())
+              ..add(const FeedbacksVacancyEvent.getFeedbacks())),
       ],
-      child: widgetBuildersEmployer[itemState]!(context),
+      child: BlocListener<InternetCubit, InternetState>(
+        listener: (context, state) {
+          if (state is ConnectedInternetState &&
+              state.connectionType == ConnectionType.Wifi) {
+            context
+                .read<VacancyCompanyBloc>()
+                .add(const VacancyCompanyEvent.getVacancy());
+          } else if (state is ConnectedInternetState &&
+              state.connectionType == ConnectionType.Mobile) {
+            context
+                .read<VacancyCompanyBloc>()
+                .add(const VacancyCompanyEvent.getVacancy());
+          } else {
+            SmallWidgets.scaffoldMessage(
+                context: context, message: "Нет доступ к интернету");
+          }
+        },
+        child: widgetBuildersCompany[itemState]!(context),
+      ),
     );
   }
 
-  Widget _widgetBuildersHunter(BuildContext context, BottomNavItem itemState) {
+  Widget _widgetBuildersUser(BuildContext context, BottomNavItem itemState) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<VacanciesBloc>(
@@ -110,7 +131,7 @@ class NavigationBar extends StatelessWidget {
                 content: Text("Нет доступ к интернету")));
           }
         },
-        child: widgetBuildersHunter[itemState]!(context),
+        child: widgetBuildersUser[itemState]!(context),
       ),
     );
   }

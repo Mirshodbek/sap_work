@@ -101,20 +101,6 @@ class Vacancy extends Equatable {
 
   Map<String, dynamic> toJson() => _$VacancyToJson(this);
 
-  static Map<String, dynamic> toMap(Vacancy vacancy) =>
-      {"id": vacancy.id, 'name': vacancy.name};
-
-  static String encode(List<Vacancy> vacancies) => json.encode(
-        vacancies
-            .map<Map<String, dynamic>>((vacancy) => Vacancy.toMap(vacancy))
-            .toList(),
-      );
-
-  static List<Vacancy> decode(String vacancies) =>
-      (json.decode(vacancies) as List<dynamic>)
-          .map<Vacancy>((item) => Vacancy.fromJson(item))
-          .toList();
-
   @override
   List<Object?> get props => [
         id,

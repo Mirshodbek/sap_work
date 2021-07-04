@@ -45,7 +45,7 @@ class ProfileAvatarWidget extends StatelessWidget {
           loaded: (_state) {
             if (_state.status == FormzStatus.submissionFailure) {
               SmallWidgets.scaffoldMessage(
-                  context: context, message: "Проверяйте соединение интернет");
+                  context: context, message: "Нет доступ к интернету");
             }
           });
     }, builder: (context, state) {

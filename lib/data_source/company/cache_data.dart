@@ -10,9 +10,11 @@ abstract class CompanyCacheDataBase {
 
   Future<void> cacheProfileCompany(TypeProfileCompany profile);
 
-  Future<List<VacancyCompany>> getVacanciesCompany();
+  Future<List<Vacancy>> getVacanciesCompany();
 
   Future<List<Category>> getCategories();
+
+  Future<List<FeedbackVacancy>> getFeedbacksVacancy();
 
   Future<File> cacheObject(String object, String path);
 
@@ -47,13 +49,13 @@ class CompanyCacheData implements CompanyCacheDataBase {
   }
 
   @override
-  Future<List<VacancyCompany>> getVacanciesCompany() async {
-    var cacheDir = await getTemporaryDirectory();
-    if (await File(cacheDir.path + "/" + CACHED_VACANCIES_COMPANY).exists()) {
-      var jsonData = File(cacheDir.path + "/" + CACHED_VACANCIES_COMPANY)
-          .readAsStringSync();
+  Future<List<Vacancy>> getVacanciesCompany() async {
+    var cacheDir = await getApplicationDocumentsDirectory();
+    final file = File(cacheDir.path + "/" + CACHED_VACANCIES_COMPANY);
+    if (await file.exists()) {
+      var jsonData = file.readAsStringSync();
       return Future.value((json.decode(jsonData) as List)
-          .map((item) => VacancyCompany.fromJson(item))
+          .map((item) => Vacancy.fromJson(item))
           .toList());
     } else {
       throw CacheException();
@@ -62,10 +64,10 @@ class CompanyCacheData implements CompanyCacheDataBase {
 
   @override
   Future<List<Category>> getCategories() async {
-    var cacheDir = await getTemporaryDirectory();
-    if (await File(cacheDir.path + "/" + CACHED_CATEGORIES).exists()) {
-      var jsonData =
-          File(cacheDir.path + "/" + CACHED_CATEGORIES).readAsStringSync();
+    var cacheDir = await getApplicationDocumentsDirectory();
+    final file = File(cacheDir.path + "/" + CACHED_CATEGORIES);
+    if (await file.exists()) {
+      var jsonData = file.readAsStringSync();
       return Future.value((json.decode(jsonData) as List)
           .map((item) => Category.fromJson(item))
           .toList());
@@ -75,19 +77,33 @@ class CompanyCacheData implements CompanyCacheDataBase {
   }
 
   @override
+  Future<List<FeedbackVacancy>> getFeedbacksVacancy() async {
+    var cacheDir = await getApplicationDocumentsDirectory();
+    final file = File(cacheDir.path + "/" + CACHED_FEEDBACKS_VACANCY);
+    if ( file.existsSync()) {
+      var jsonData = file.readAsStringSync();
+      return Future.value((json.decode(jsonData) as List)
+          .map((item) => FeedbackVacancy.fromJson(item))
+          .toList());
+    } else {
+      throw CacheException();
+    }
+  }
+
+  @override
   Future<File> cacheObject(String object, String path) async {
-    var cacheDir = await getTemporaryDirectory();
+    var cacheDir = await getApplicationDocumentsDirectory();
     File file = File(cacheDir.path + "/" + path);
     return await file.writeAsString(object, flush: true, mode: FileMode.write);
   }
 
   @override
   Future<FileSystemEntity> deleteObject(String path) async {
-    var cacheDir = await getTemporaryDirectory();
-    if (await File(cacheDir.path + "/" + path).exists()) {
-      return cacheDir.delete(recursive: true);
+    var cacheDir = await getApplicationDocumentsDirectory();
+    if (await File(cacheDir.path + "/" + path).existsSync()) {
+      return await cacheDir.delete(recursive: true);
     } else {
-      return File("");
+      return File(cacheDir.path + "/" + path);
     }
   }
 

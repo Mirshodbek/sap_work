@@ -25,9 +25,9 @@ class CoreProfileBloc extends Bloc<CoreProfileEvent, CoreProfileState> {
   Stream<CoreProfileState> _initialPagesEvent(
       _InitialCoreProfileEvent event) async* {
     yield const CoreProfileState.loading();
-    final nameVacancy = await getLocalVacancy(Params());
+    final localVacancy = await getLocalVacancy(Params());
     final categories = await getCategories(NoParams());
-    yield* nameVacancy.fold((failure) async* {
+    yield* localVacancy.fold((failure) async* {
       yield* categories.fold((failure) async* {
         yield* _attributesState(
             vacancy: LocalVacancyData(EMPTY_TITLE_VACANCY, 0), categories: []);
