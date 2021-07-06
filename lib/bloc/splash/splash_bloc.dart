@@ -28,13 +28,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     } else if (splash == 1) {
       // yield const SplashState.user();
       yield const SplashState.splash();
-      // EsfDIpSegoRQQHlfcwByArH7z3xSuc6IMTUcqo7Hu4KirmIF8jEWC73u9eoC
     } else if (splash == 2) {
       yield const SplashState.company();
       // yield const SplashState.splash();
-      // Kya0p3P4w9f6L61C52ABPubkbSX9Yv2Cyl53I7tNWmKueT5zYZVE4ZUXjQdU
-      // hOT5qJMTaxfEvEvCVXtaWgDXWiiW55QxuwlTpTS9y9UruR2QErR87AbVasKh
-      // ljsFtecYNlR9qIBmc04dckkD7i0LtGjmvkwHWevjT8rfQQD4REfI5868aISE
+      // tGvclV6QCZh3Rm0AYCJyzpeh4hz5Fb3tVBoqGzIFU3kkmSGg2AuGkkY8W0mT
     } else {
       yield const SplashState.splash();
     }

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import 'package:json_annotation/json_annotation.dart';
+import 'package:sap_work/models/profile_user/profile.dart';
 import 'package:sap_work/models/resume/resume.dart';
 
 part 'feedback.g.dart';
@@ -17,7 +18,7 @@ class FeedbackVacancy extends Equatable {
   late final String created_at;
   // ignore: non_constant_identifier_names
   late final String updated_at;
-  late final String user;
+  late final ProfileUser user;
   late final Resume resume;
 
   FeedbackVacancy(this.id, this.vacancy_id, this.expires_at, this.answer,

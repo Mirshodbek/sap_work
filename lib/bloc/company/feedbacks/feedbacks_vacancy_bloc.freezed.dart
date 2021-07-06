@@ -162,6 +162,10 @@ class _$FeedbacksVacancyStateTearOff {
     return const LoadingFeedbacksVacancyState();
   }
 
+  NoFeedbacksVacancyState noFeedbacks() {
+    return const NoFeedbacksVacancyState();
+  }
+
   LoadedFeedbacksVacancyState loaded(
       {required List<FeedbackVacancy> feedbacks, required String vacancyName}) {
     return LoadedFeedbacksVacancyState(
@@ -186,6 +190,7 @@ mixin _$FeedbacksVacancyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
+    required TResult Function() noFeedbacks,
     required TResult Function(
             List<FeedbackVacancy> feedbacks, String vacancyName)
         loaded,
@@ -196,6 +201,7 @@ mixin _$FeedbacksVacancyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
+    TResult Function()? noFeedbacks,
     TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
         loaded,
     TResult Function(String message)? error,
@@ -206,6 +212,7 @@ mixin _$FeedbacksVacancyState {
   TResult map<TResult extends Object?>({
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
+    required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) =>
@@ -214,6 +221,7 @@ mixin _$FeedbacksVacancyState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
+    TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),
@@ -281,6 +289,7 @@ class _$EmptyFeedbacksVacancyState implements EmptyFeedbacksVacancyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
+    required TResult Function() noFeedbacks,
     required TResult Function(
             List<FeedbackVacancy> feedbacks, String vacancyName)
         loaded,
@@ -294,6 +303,7 @@ class _$EmptyFeedbacksVacancyState implements EmptyFeedbacksVacancyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
+    TResult Function()? noFeedbacks,
     TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
         loaded,
     TResult Function(String message)? error,
@@ -310,6 +320,7 @@ class _$EmptyFeedbacksVacancyState implements EmptyFeedbacksVacancyState {
   TResult map<TResult extends Object?>({
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
+    required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) {
@@ -321,6 +332,7 @@ class _$EmptyFeedbacksVacancyState implements EmptyFeedbacksVacancyState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
+    TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),
@@ -381,6 +393,7 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
+    required TResult Function() noFeedbacks,
     required TResult Function(
             List<FeedbackVacancy> feedbacks, String vacancyName)
         loaded,
@@ -394,6 +407,7 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
+    TResult Function()? noFeedbacks,
     TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
         loaded,
     TResult Function(String message)? error,
@@ -410,6 +424,7 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
   TResult map<TResult extends Object?>({
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
+    required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) {
@@ -421,6 +436,7 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
+    TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),
@@ -434,6 +450,107 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
 
 abstract class LoadingFeedbacksVacancyState implements FeedbacksVacancyState {
   const factory LoadingFeedbacksVacancyState() = _$LoadingFeedbacksVacancyState;
+}
+
+/// @nodoc
+abstract class $NoFeedbacksVacancyStateCopyWith<$Res> {
+  factory $NoFeedbacksVacancyStateCopyWith(NoFeedbacksVacancyState value,
+          $Res Function(NoFeedbacksVacancyState) then) =
+      _$NoFeedbacksVacancyStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoFeedbacksVacancyStateCopyWithImpl<$Res>
+    extends _$FeedbacksVacancyStateCopyWithImpl<$Res>
+    implements $NoFeedbacksVacancyStateCopyWith<$Res> {
+  _$NoFeedbacksVacancyStateCopyWithImpl(NoFeedbacksVacancyState _value,
+      $Res Function(NoFeedbacksVacancyState) _then)
+      : super(_value, (v) => _then(v as NoFeedbacksVacancyState));
+
+  @override
+  NoFeedbacksVacancyState get _value => super._value as NoFeedbacksVacancyState;
+}
+
+/// @nodoc
+
+class _$NoFeedbacksVacancyState implements NoFeedbacksVacancyState {
+  const _$NoFeedbacksVacancyState();
+
+  @override
+  String toString() {
+    return 'FeedbacksVacancyState.noFeedbacks()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoFeedbacksVacancyState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function() loading,
+    required TResult Function() noFeedbacks,
+    required TResult Function(
+            List<FeedbackVacancy> feedbacks, String vacancyName)
+        loaded,
+    required TResult Function(String message) error,
+  }) {
+    return noFeedbacks();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? loading,
+    TResult Function()? noFeedbacks,
+    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
+        loaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (noFeedbacks != null) {
+      return noFeedbacks();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyFeedbacksVacancyState value) empty,
+    required TResult Function(LoadingFeedbacksVacancyState value) loading,
+    required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
+    required TResult Function(LoadedFeedbacksVacancyState value) loaded,
+    required TResult Function(ErrorFeedbacksVacancyState value) error,
+  }) {
+    return noFeedbacks(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyFeedbacksVacancyState value)? empty,
+    TResult Function(LoadingFeedbacksVacancyState value)? loading,
+    TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
+    TResult Function(LoadedFeedbacksVacancyState value)? loaded,
+    TResult Function(ErrorFeedbacksVacancyState value)? error,
+    required TResult orElse(),
+  }) {
+    if (noFeedbacks != null) {
+      return noFeedbacks(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoFeedbacksVacancyState implements FeedbacksVacancyState {
+  const factory NoFeedbacksVacancyState() = _$NoFeedbacksVacancyState;
 }
 
 /// @nodoc
@@ -520,6 +637,7 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
+    required TResult Function() noFeedbacks,
     required TResult Function(
             List<FeedbackVacancy> feedbacks, String vacancyName)
         loaded,
@@ -533,6 +651,7 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
+    TResult Function()? noFeedbacks,
     TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
         loaded,
     TResult Function(String message)? error,
@@ -549,6 +668,7 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
   TResult map<TResult extends Object?>({
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
+    required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) {
@@ -560,6 +680,7 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
+    TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),
@@ -653,6 +774,7 @@ class _$ErrorFeedbacksVacancyState implements ErrorFeedbacksVacancyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
+    required TResult Function() noFeedbacks,
     required TResult Function(
             List<FeedbackVacancy> feedbacks, String vacancyName)
         loaded,
@@ -666,6 +788,7 @@ class _$ErrorFeedbacksVacancyState implements ErrorFeedbacksVacancyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
+    TResult Function()? noFeedbacks,
     TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
         loaded,
     TResult Function(String message)? error,
@@ -682,6 +805,7 @@ class _$ErrorFeedbacksVacancyState implements ErrorFeedbacksVacancyState {
   TResult map<TResult extends Object?>({
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
+    required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) {
@@ -693,6 +817,7 @@ class _$ErrorFeedbacksVacancyState implements ErrorFeedbacksVacancyState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
+    TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),

@@ -23,6 +23,10 @@ abstract class CompanyCacheDataBase {
   Future<Vacancy> getVacancyCompany();
 
   Future<void> cacheVacancyCompany(Vacancy vacancy);
+
+  Future<String> getStatusCompany();
+
+  Future<void> cacheStatusCompany(String status);
 }
 
 class CompanyCacheData implements CompanyCacheDataBase {
@@ -51,8 +55,8 @@ class CompanyCacheData implements CompanyCacheDataBase {
   @override
   Future<List<Vacancy>> getVacanciesCompany() async {
     var cacheDir = await getApplicationDocumentsDirectory();
-    final file = File(cacheDir.path + "/" + CACHED_VACANCIES_COMPANY);
-    if (await file.exists()) {
+    final file = File(cacheDir.path + "/" + CACHED_VACANCIES_COMPANY + ".json");
+    if (file.existsSync()) {
       var jsonData = file.readAsStringSync();
       return Future.value((json.decode(jsonData) as List)
           .map((item) => Vacancy.fromJson(item))
@@ -65,8 +69,8 @@ class CompanyCacheData implements CompanyCacheDataBase {
   @override
   Future<List<Category>> getCategories() async {
     var cacheDir = await getApplicationDocumentsDirectory();
-    final file = File(cacheDir.path + "/" + CACHED_CATEGORIES);
-    if (await file.exists()) {
+    final file = File(cacheDir.path + "/" + CACHED_CATEGORIES + ".json");
+    if (file.existsSync()) {
       var jsonData = file.readAsStringSync();
       return Future.value((json.decode(jsonData) as List)
           .map((item) => Category.fromJson(item))
@@ -79,8 +83,8 @@ class CompanyCacheData implements CompanyCacheDataBase {
   @override
   Future<List<FeedbackVacancy>> getFeedbacksVacancy() async {
     var cacheDir = await getApplicationDocumentsDirectory();
-    final file = File(cacheDir.path + "/" + CACHED_FEEDBACKS_VACANCY);
-    if ( file.existsSync()) {
+    final file = File(cacheDir.path + "/" + CACHED_FEEDBACKS_VACANCY + ".json");
+    if (file.existsSync()) {
       var jsonData = file.readAsStringSync();
       return Future.value((json.decode(jsonData) as List)
           .map((item) => FeedbackVacancy.fromJson(item))
@@ -93,17 +97,22 @@ class CompanyCacheData implements CompanyCacheDataBase {
   @override
   Future<File> cacheObject(String object, String path) async {
     var cacheDir = await getApplicationDocumentsDirectory();
-    File file = File(cacheDir.path + "/" + path);
-    return await file.writeAsString(object, flush: true, mode: FileMode.write);
+    File file = File(cacheDir.path + "/" + path + ".json");
+    return await Future.delayed(Duration(milliseconds: 500), () async {
+      return await file.writeAsString(object,
+          flush: true, mode: FileMode.write);
+    });
   }
 
   @override
   Future<FileSystemEntity> deleteObject(String path) async {
     var cacheDir = await getApplicationDocumentsDirectory();
-    if (await File(cacheDir.path + "/" + path).existsSync()) {
-      return await cacheDir.delete(recursive: true);
+    if (File(cacheDir.path + "/" + path + ".json").existsSync()) {
+      return await Future.delayed(Duration(milliseconds: 500), () async {
+        return await cacheDir.delete(recursive: true);
+      });
     } else {
-      return File(cacheDir.path + "/" + path);
+      return File(cacheDir.path + "/" + path + ".json");
     }
   }
 
@@ -121,5 +130,20 @@ class CompanyCacheData implements CompanyCacheDataBase {
   Future<void> cacheVacancyCompany(Vacancy vacancy) {
     return sharedPreferences.setString(
         CACHED_VACANCY_COMPANY, json.encode(vacancy.toJson()));
+  }
+
+  @override
+  Future<String> getStatusCompany() {
+    final string = sharedPreferences.getString(CACHED_STATUS_COMPANY);
+    if (string != null) {
+      return Future.value(string);
+    } else {
+      throw CacheException();
+    }
+  }
+
+  @override
+  Future<void> cacheStatusCompany(String status) {
+    return sharedPreferences.setString(CACHED_STATUS_COMPANY, status);
   }
 }

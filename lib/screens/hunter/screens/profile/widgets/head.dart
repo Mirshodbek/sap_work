@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../hunter.dart';
 
 class HeadWidget extends StatelessWidget {
-  final TypeProfileHunter profile;
+  final TypeProfileUser profile;
   final int feedbacksCount;
 
   HeadWidget(this.profile,this.feedbacksCount);

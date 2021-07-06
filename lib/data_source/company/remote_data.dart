@@ -24,7 +24,9 @@ abstract class CompanyRemoteDataBase {
 
   Future<List<FeedbackVacancy>> getFeedbacksVacancy(int id);
 
-  Future<http.Response> getStatusSubscribeVacancy();
+  Future<String> getStatusCompany();
+
+  Future<String> addStatusSubscribeCompany(String sum);
 }
 
 class CompanyRemoteData implements CompanyRemoteDataBase {
@@ -38,11 +40,26 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   static const String _updateAvatar = '/api/updateAvatar';
   static const String _activateOrDeactivate = '/api/vacancy/';
   static const String _feedbacksVacancy = '/api/vacancy/feedbacks?vacancy=';
-  static const String _statusSubscribeVacancy = '/api/subscribe/status';
+  static const String _statusSubscribe = '/api/subscribe/status';
+  static const String _addStatusSubscribe = '/api/subscribe/add?days=';
 
   final http.Client client;
 
   CompanyRemoteData(this.localDataSource, {required this.client});
+
+  @override
+  Future<String> getStatusCompany() async {
+    final result = await _callPostApi(_statusSubscribe, json.encode({}));
+    print(result.body);
+    return result.body;
+  }
+
+  @override
+  Future<String> addStatusSubscribeCompany(String sum) async {
+  final result =  await _callPostApi(_addStatusSubscribe + sum, json.encode({}));
+  print(sum);
+    return await getStatusCompany();
+  }
 
   @override
   Future<List<FeedbackVacancy>> getFeedbacksVacancy(int id) async {
@@ -53,12 +70,6 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
     return (json.decode(result.body) as List)
         .map((item) => FeedbackVacancy.fromJson(item))
         .toList();
-  }
-
-  @override
-  Future<http.Response> getStatusSubscribeVacancy() async {
-    final result = await _callPostApi(_statusSubscribeVacancy, json.encode({}));
-    return result;
   }
 
   @override

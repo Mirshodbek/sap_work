@@ -1,3 +1,4 @@
+import 'package:sap_work/models/profile_user/profile.dart';
 import 'package:sap_work/models/resume/resume.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
 import 'package:http/http.dart' as http;
@@ -58,7 +59,7 @@ class HunterRepository extends HunterRepositoryBase {
   }
 
   @override
-  Future<TypeProfileHunter> getProfile() async {
+  Future<TypeProfileUser> getProfile() async {
     return await _profProvider.getProfileHunter();
   }
 

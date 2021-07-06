@@ -7,8 +7,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sap_work/models/stage.dart';
 import 'package:sap_work/repository/hunter/hunter_repository.dart';
 import 'package:sap_work/resources/lists.dart';
-import 'package:sap_work/extensions/list_extension.dart';
-import 'package:sap_work/extensions/string_extension.dart';
+import 'package:sap_work/resources/extensions/list_extension.dart';
+import 'package:sap_work/resources/extensions/string_extension.dart';
 
 part 'filter_bloc.freezed.dart';
 

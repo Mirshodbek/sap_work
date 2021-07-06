@@ -38,7 +38,8 @@ class GetCategories implements UseCase<List<Category>, NoParams> {
   }
 }
 
-class GetLocalVacanciesCompany implements UseCase<List<LocalVacancyData>, Params> {
+class GetLocalVacanciesCompany
+    implements UseCase<List<LocalVacancyData>, Params> {
   final CompanyLocalDataBase localData;
 
   GetLocalVacanciesCompany(this.localData);
@@ -85,13 +86,24 @@ class GetVacancyCompany implements UseCase<Vacancy, int> {
   }
 }
 
-class GetFeedbacksVacancy implements UseCase<List<FeedbackVacancy>,int>{
+class GetFeedbacksVacancy implements UseCase<List<FeedbackVacancy>, int> {
   final CompanyRepositoryBase repository;
 
   GetFeedbacksVacancy(this.repository);
-  @override
-  Future<Either<Failure, List<FeedbackVacancy>>> call(int id) async{
-   return await repository.getFeedbacksVacancy(id);
-  }
 
+  @override
+  Future<Either<Failure, List<FeedbackVacancy>>> call(int id) async {
+    return await repository.getFeedbacksVacancy(id);
+  }
+}
+
+class GetStatusCompany implements UseCase<String, NoParams> {
+  final CompanyRepositoryBase repository;
+
+  GetStatusCompany(this.repository);
+
+  @override
+  Future<Either<Failure, String>> call(NoParams params) async {
+    return await repository.getStatusCompany();
+  }
 }

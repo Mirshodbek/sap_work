@@ -119,4 +119,23 @@ class CompanyRepository implements CompanyRepositoryBase {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, String>> getStatusCompany() async{
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteData = await remoteDataSource.getStatusCompany();
+        return Right(remoteData);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final localData = await localDataSource.getStatusCompany();
+        return Right(localData);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
+  }
 }

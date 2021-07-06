@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:sap_work/models/profile_user/profile.dart';
 import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -147,9 +148,9 @@ class ProfProvider {
     return Resume.fromJson(json.decode(result.body));
   }
 
-  Future<TypeProfileHunter> getProfileHunter() async {
+  Future<TypeProfileUser> getProfileHunter() async {
     final result = await _callPostApi(_profile, "");
-    return TypeProfileHunter.fromJson(json.decode(result.body));
+    return TypeProfileUser.fromJson(json.decode(result.body));
   }
 
   Future<String> addFileToResume(int id, String filename) async {

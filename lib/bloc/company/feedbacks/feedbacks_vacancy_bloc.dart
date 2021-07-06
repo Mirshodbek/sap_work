@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sap_work/models/feedback_vacancy/feedback.dart';
 
 import '../company.dart';
 
@@ -24,7 +23,9 @@ class FeedbacksVacancyBloc
       _GetFeedbacksVacancyEvent event) async* {
     yield const FeedbacksVacancyState.loading();
     final localVacancy = await getLocalVacancy(Params());
-    yield* localVacancy.fold((failure) async* {}, (vacancy) async* {
+    yield* localVacancy.fold((failure) async* {
+      yield const NoFeedbacksVacancyState();
+    }, (vacancy) async* {
       final getFeedbacks = await getFeedbacksVacancy(vacancy.id);
       yield* getFeedbacks.fold((failure) async* {
         yield FeedbacksVacancyState.error(
@@ -59,6 +60,7 @@ abstract class FeedbacksVacancyState with _$FeedbacksVacancyState {
   const factory FeedbacksVacancyState.empty() = EmptyFeedbacksVacancyState;
 
   const factory FeedbacksVacancyState.loading() = LoadingFeedbacksVacancyState;
+  const factory FeedbacksVacancyState.noFeedbacks() = NoFeedbacksVacancyState;
 
   const factory FeedbacksVacancyState.loaded(
       {required final List<FeedbackVacancy> feedbacks,

@@ -12,7 +12,6 @@ class NoParams extends Equatable {
   List<Object> get props => [];
 }
 
-const EMPTY_TITLE_VACANCY = 'Введите название вакансии';
 
 class Params extends Equatable {
   final bool writeVacancies;

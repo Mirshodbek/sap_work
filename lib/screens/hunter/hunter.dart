@@ -6,8 +6,8 @@ export 'package:sap_work/screens/hunter/screens/vacancies/screen.dart';
 export 'package:sap_work/bloc/navigation/navigation_cubit.dart';
 
 export 'package:sap_work/screens/widgets/bottom_nav_bar.dart';
-export 'package:sap_work/theme/text_theme.dart';
-export 'package:sap_work/theme/color_theme.dart';
+export 'package:sap_work/resources/theme/text_theme.dart';
+export 'package:sap_work/resources/theme/color_theme.dart';
 export 'package:sap_work/screens/widgets/vacancy_list_item.dart';
 export 'package:sap_work/screens/widgets/backward.dart';
 export 'package:sap_work/screens/hunter/screens/filter/screen.dart';
@@ -31,8 +31,8 @@ export 'package:sap_work/repository/hunter/implementation/hunter_repository.dart
 export 'package:sap_work/screens/hunter/screens/settings/screen.dart';
 export 'package:sap_work/screens/hunter/screens/messages/widgets/chat_list_item.dart';
 export 'package:sap_work/models/vacancy/vacancy.dart';
-export 'package:sap_work/extensions/list_extension.dart';
-export 'package:sap_work/extensions/string_extension.dart';
+export 'package:sap_work/resources/extensions/list_extension.dart';
+export 'package:sap_work/resources/extensions/string_extension.dart';
 export 'package:sap_work/models/resume/resume.dart';
 export 'package:sap_work/data_source/hunter/prof_provider.dart';
 export 'package:sap_work/bloc/internet/internet_cubit.dart';
@@ -51,10 +51,10 @@ export 'package:sap_work/screens/hunter/screens/notifications/widgets/notificati
 export 'package:sap_work/screens/hunter/screens/notifications/widgets/initial.dart';
 export 'package:sap_work/models/user/feedback/feedback.dart';
 export 'package:sap_work/models/user/message/message.dart';
-export 'package:sap_work/utils/validator.dart';
+export 'package:sap_work/resources/utils/validator.dart';
 export 'package:sap_work/data_source/hunter/chat_provider.dart';
 export 'package:sap_work/data_source/hunter/vac_provider.dart';
 export 'package:sap_work/screens/hunter/screens/profile/widgets/head.dart';
 export 'package:sap_work/models/resume/resume_attributes.dart';
-export 'package:sap_work/models/user/profile/profile.dart';
+export 'package:sap_work/models/profile_user/profile.dart';
 

@@ -2485,7 +2485,7 @@ class _$ProfileStateTearOff {
       required int feedbacksCount,
       required FormzStatus status,
       required List<Resume> resumes,
-      required TypeProfileHunter profile,
+      required TypeProfileUser profile,
       required List<String> localResumes,
       required List<Map<String, dynamic>> stages,
       required List<Map<String, dynamic>> grades}) {
@@ -2532,7 +2532,7 @@ mixin _$ProfileState {
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
-            TypeProfileHunter profile,
+            TypeProfileUser profile,
             List<String> localResumes,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
@@ -2554,7 +2554,7 @@ mixin _$ProfileState {
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
-            TypeProfileHunter profile,
+            TypeProfileUser profile,
             List<String> localResumes,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
@@ -2650,7 +2650,7 @@ class _$InitialProfileState implements InitialProfileState {
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
-            TypeProfileHunter profile,
+            TypeProfileUser profile,
             List<String> localResumes,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
@@ -2675,7 +2675,7 @@ class _$InitialProfileState implements InitialProfileState {
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
-            TypeProfileHunter profile,
+            TypeProfileUser profile,
             List<String> localResumes,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
@@ -2773,7 +2773,7 @@ class _$AccessResumeProfileState implements AccessResumeProfileState {
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
-            TypeProfileHunter profile,
+            TypeProfileUser profile,
             List<String> localResumes,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
@@ -2798,7 +2798,7 @@ class _$AccessResumeProfileState implements AccessResumeProfileState {
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
-            TypeProfileHunter profile,
+            TypeProfileUser profile,
             List<String> localResumes,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
@@ -2858,7 +2858,7 @@ abstract class $ProfileScreenStateCopyWith<$Res> {
       int feedbacksCount,
       FormzStatus status,
       List<Resume> resumes,
-      TypeProfileHunter profile,
+      TypeProfileUser profile,
       List<String> localResumes,
       List<Map<String, dynamic>> stages,
       List<Map<String, dynamic>> grades});
@@ -2931,7 +2931,7 @@ class _$ProfileScreenStateCopyWithImpl<$Res>
       profile: profile == freezed
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
-              as TypeProfileHunter,
+              as TypeProfileUser,
       localResumes: localResumes == freezed
           ? _value.localResumes
           : localResumes // ignore: cast_nullable_to_non_nullable
@@ -2985,7 +2985,7 @@ class _$ProfileScreenState implements ProfileScreenState {
   @override
   final List<Resume> resumes;
   @override
-  final TypeProfileHunter profile;
+  final TypeProfileUser profile;
   @override
   final List<String> localResumes;
   @override
@@ -3073,7 +3073,7 @@ class _$ProfileScreenState implements ProfileScreenState {
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
-            TypeProfileHunter profile,
+            TypeProfileUser profile,
             List<String> localResumes,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
@@ -3099,7 +3099,7 @@ class _$ProfileScreenState implements ProfileScreenState {
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
-            TypeProfileHunter profile,
+            TypeProfileUser profile,
             List<String> localResumes,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
@@ -3164,7 +3164,7 @@ abstract class ProfileScreenState implements ProfileState {
       required int feedbacksCount,
       required FormzStatus status,
       required List<Resume> resumes,
-      required TypeProfileHunter profile,
+      required TypeProfileUser profile,
       required List<String> localResumes,
       required List<Map<String, dynamic>> stages,
       required List<Map<String, dynamic>> grades}) = _$ProfileScreenState;
@@ -3178,7 +3178,7 @@ abstract class ProfileScreenState implements ProfileState {
   int get feedbacksCount => throw _privateConstructorUsedError;
   FormzStatus get status => throw _privateConstructorUsedError;
   List<Resume> get resumes => throw _privateConstructorUsedError;
-  TypeProfileHunter get profile => throw _privateConstructorUsedError;
+  TypeProfileUser get profile => throw _privateConstructorUsedError;
   List<String> get localResumes => throw _privateConstructorUsedError;
   List<Map<String, dynamic>> get stages => throw _privateConstructorUsedError;
   List<Map<String, dynamic>> get grades => throw _privateConstructorUsedError;
@@ -3264,7 +3264,7 @@ class _$ScreensProfileState implements ScreensProfileState {
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
-            TypeProfileHunter profile,
+            TypeProfileUser profile,
             List<String> localResumes,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
@@ -3289,7 +3289,7 @@ class _$ScreensProfileState implements ScreensProfileState {
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
-            TypeProfileHunter profile,
+            TypeProfileUser profile,
             List<String> localResumes,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?

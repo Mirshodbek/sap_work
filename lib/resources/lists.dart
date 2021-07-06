@@ -1,4 +1,5 @@
 import 'package:sap_work/models/stage.dart';
+import 'package:sap_work/models/tariff/tariff.dart';
 import 'package:sap_work/models/user/block/block.dart';
 
 class Lists {
@@ -78,5 +79,10 @@ class Lists {
         7, 128, 129, 130, 131),
     Block("Рекомендательные письма", "Рекомендательные письма", "hintText",
         "hintText", "hintText", 8, 132, 133, 134, 135)
+  ];
+
+  static final List<Tariff> tariffs = <Tariff>[
+    Tariff("Мини", "Тариф действует при покупке от 1 до 4 дней ", 1000),
+    Tariff("Мега", "Тариф действует при покупке от 4 до 8 дней ", 2000),
   ];
 }

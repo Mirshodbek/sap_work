@@ -1,6 +1,6 @@
 import 'package:sap_work/models/user/feedback/feedback.dart';
 import 'package:sap_work/models/user/message/message.dart';
-import 'package:sap_work/models/user/profile/profile.dart';
+import 'package:sap_work/models/profile_user/profile.dart';
 import 'package:sap_work/models/resume/resume.dart';
 import 'package:sap_work/models/vacancy/vacancy.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
@@ -30,7 +30,7 @@ abstract class HunterRepositoryBase {
 
   Future<http.Response> postMessage(int id, String text);
 
-  Future<TypeProfileHunter> getProfile();
+  Future<TypeProfileUser> getProfile();
 
   Future<http.Response> createResume(String name,
       List<Map<String, dynamic>> stages, List<Map<String, dynamic>> grades,

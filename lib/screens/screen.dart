@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sap_work/bloc/company/core/core_profile_bloc.dart';
+import 'package:sap_work/bloc/company/core_profile/core_profile_bloc.dart';
 import 'package:sap_work/bloc/company/feedbacks/feedbacks_vacancy_bloc.dart';
 import 'package:sap_work/bloc/company/profile/profile_company.dart';
 import 'package:sap_work/bloc/company/vacancies/vacancies_company_bloc.dart';
@@ -13,9 +13,9 @@ import 'package:sap_work/bloc/navigation/navigation_cubit.dart';
 import 'package:sap_work/injection_container.dart';
 import 'package:sap_work/repository/hunter/hunter_repository.dart';
 import 'package:sap_work/resources/small_widgets.dart';
-import 'company/screens/feedback/screen.dart';
-import 'company/screens/profile/screen.dart';
-import 'company/screens/resume/screen.dart';
+import 'company/feedback/screen.dart';
+import 'company/profile/screen.dart';
+import 'company/resumes/screen.dart';
 import 'hunter/screens/notifications/screen.dart';
 import 'hunter/screens/profile/screen.dart';
 import 'hunter/screens/vacancies/screen.dart';
@@ -35,8 +35,8 @@ class NavigationBar extends StatelessWidget {
 
   Map<BottomNavItem, WidgetBuilder> get widgetBuildersCompany {
     return {
-      BottomNavItem.announces: (context) => ResumeScreenCompany.create(),
-      BottomNavItem.messages: (context) => FeedbackScreenCompany.create(),
+      BottomNavItem.announces: (context) => ResumesScreenCompany.create(),
+      BottomNavItem.messages: (context) => FeedbacksScreenCompany.create(),
       BottomNavItem.profile: (context) => ProfileScreenCompany.create(),
     };
   }

@@ -52,7 +52,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       _feedbacks = FeedbackResume.decode(_prefs.getString("feedbacks_saved")!);
     }
     if (_prefs.getString("profile_saved") != null) {
-      _profile = TypeProfileHunter.fromJson(
+      _profile = TypeProfileUser.fromJson(
           jsonDecode(_prefs.getString("profile_saved")!));
     }
     if (_prefs.getString("resumes_saved") != null) {
@@ -418,7 +418,7 @@ abstract class ProfileState with _$ProfileState {
     required final int feedbacksCount,
     required final FormzStatus status,
     required final List<Resume> resumes,
-    required final TypeProfileHunter profile,
+    required final TypeProfileUser profile,
     required final List<String> localResumes,
     required final List<Map<String, dynamic>> stages,
     required final List<Map<String, dynamic>> grades,

@@ -14,7 +14,7 @@ FeedbackVacancy _$FeedbackVacancyFromJson(Map<String, dynamic> json) {
     json['answer'] as String?,
     json['created_at'] as String,
     json['updated_at'] as String,
-    json['user'] as String,
+    ProfileUser.fromJson(json['user'] as Map<String, dynamic>),
     Resume.fromJson(json['resume'] as Map<String, dynamic>),
   );
 }

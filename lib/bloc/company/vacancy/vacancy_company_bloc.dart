@@ -41,7 +41,6 @@ class VacancyCompanyBloc
                 vacancy: data, status: FormzStatus.pure);
           } else {
             yield const VacancyCompanyState.noInternet();
-            yield const VacancyCompanyState.loading();
           }
         });
       } else {

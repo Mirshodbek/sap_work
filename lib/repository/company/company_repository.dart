@@ -13,4 +13,5 @@ abstract class CompanyRepositoryBase {
   Future<Either<Failure, List<Category>>> getCategories();
 
   Future<Either<Failure, List<FeedbackVacancy>>> getFeedbacksVacancy(int id);
+  Future<Either<Failure,String>> getStatusCompany();
 }
