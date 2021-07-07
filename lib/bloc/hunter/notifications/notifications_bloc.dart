@@ -121,7 +121,7 @@ abstract class NotificationsState with _$NotificationsState {
 
   const factory NotificationsState.notificationsState({
     required final List<FeedbackResume> feedbacks,
-    required final List<Message> messages,
+    required final List<Chat> messages,
     required final int isSend,
   }) = NotificationsScreenState;
 
@@ -133,7 +133,7 @@ abstract class NotificationsState with _$NotificationsState {
 
   const factory NotificationsState.messagesState({
     required final List<FeedbackResume> feedbacks,
-    required final List<Message> messages,
+    required final List<Chat> messages,
     required final int isSend,
   }) = MessagesScreenState;
 }

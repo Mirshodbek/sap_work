@@ -16,7 +16,7 @@ class VacancyWidget extends StatelessWidget {
     return BlocBuilder<CoreProfileBloc, CoreProfileState>(
         builder: (context, state) {
       return state.map(
-          initial: (_) => const SizedBox.shrink(),
+          empty: (_) => const SizedBox.shrink(),
           loading: (_) => ShimmerWidget.rectangular(height: 18, width: 100),
           attributes: (_state) {
             return Column(

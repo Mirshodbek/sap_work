@@ -19,6 +19,23 @@ class _$FeedbacksVacancyEventTearOff {
   _GetFeedbacksVacancyEvent getFeedbacks() {
     return const _GetFeedbacksVacancyEvent();
   }
+
+  _PostInviteFeedbacksVacancyEvent postInvite(
+      {required String date,
+      required String contact,
+      required String contactType,
+      required String answer,
+      required int resume,
+      required int vacancy}) {
+    return _PostInviteFeedbacksVacancyEvent(
+      date: date,
+      contact: contact,
+      contactType: contactType,
+      answer: answer,
+      resume: resume,
+      vacancy: vacancy,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,22 +46,31 @@ mixin _$FeedbacksVacancyEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getFeedbacks,
+    required TResult Function(String date, String contact, String contactType,
+            String answer, int resume, int vacancy)
+        postInvite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getFeedbacks,
+    TResult Function(String date, String contact, String contactType,
+            String answer, int resume, int vacancy)?
+        postInvite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetFeedbacksVacancyEvent value) getFeedbacks,
+    required TResult Function(_PostInviteFeedbacksVacancyEvent value)
+        postInvite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetFeedbacksVacancyEvent value)? getFeedbacks,
+    TResult Function(_PostInviteFeedbacksVacancyEvent value)? postInvite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -109,6 +135,9 @@ class _$_GetFeedbacksVacancyEvent implements _GetFeedbacksVacancyEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getFeedbacks,
+    required TResult Function(String date, String contact, String contactType,
+            String answer, int resume, int vacancy)
+        postInvite,
   }) {
     return getFeedbacks();
   }
@@ -117,6 +146,9 @@ class _$_GetFeedbacksVacancyEvent implements _GetFeedbacksVacancyEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getFeedbacks,
+    TResult Function(String date, String contact, String contactType,
+            String answer, int resume, int vacancy)?
+        postInvite,
     required TResult orElse(),
   }) {
     if (getFeedbacks != null) {
@@ -129,6 +161,8 @@ class _$_GetFeedbacksVacancyEvent implements _GetFeedbacksVacancyEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetFeedbacksVacancyEvent value) getFeedbacks,
+    required TResult Function(_PostInviteFeedbacksVacancyEvent value)
+        postInvite,
   }) {
     return getFeedbacks(this);
   }
@@ -137,6 +171,7 @@ class _$_GetFeedbacksVacancyEvent implements _GetFeedbacksVacancyEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetFeedbacksVacancyEvent value)? getFeedbacks,
+    TResult Function(_PostInviteFeedbacksVacancyEvent value)? postInvite,
     required TResult orElse(),
   }) {
     if (getFeedbacks != null) {
@@ -148,6 +183,209 @@ class _$_GetFeedbacksVacancyEvent implements _GetFeedbacksVacancyEvent {
 
 abstract class _GetFeedbacksVacancyEvent implements FeedbacksVacancyEvent {
   const factory _GetFeedbacksVacancyEvent() = _$_GetFeedbacksVacancyEvent;
+}
+
+/// @nodoc
+abstract class _$PostInviteFeedbacksVacancyEventCopyWith<$Res> {
+  factory _$PostInviteFeedbacksVacancyEventCopyWith(
+          _PostInviteFeedbacksVacancyEvent value,
+          $Res Function(_PostInviteFeedbacksVacancyEvent) then) =
+      __$PostInviteFeedbacksVacancyEventCopyWithImpl<$Res>;
+  $Res call(
+      {String date,
+      String contact,
+      String contactType,
+      String answer,
+      int resume,
+      int vacancy});
+}
+
+/// @nodoc
+class __$PostInviteFeedbacksVacancyEventCopyWithImpl<$Res>
+    extends _$FeedbacksVacancyEventCopyWithImpl<$Res>
+    implements _$PostInviteFeedbacksVacancyEventCopyWith<$Res> {
+  __$PostInviteFeedbacksVacancyEventCopyWithImpl(
+      _PostInviteFeedbacksVacancyEvent _value,
+      $Res Function(_PostInviteFeedbacksVacancyEvent) _then)
+      : super(_value, (v) => _then(v as _PostInviteFeedbacksVacancyEvent));
+
+  @override
+  _PostInviteFeedbacksVacancyEvent get _value =>
+      super._value as _PostInviteFeedbacksVacancyEvent;
+
+  @override
+  $Res call({
+    Object? date = freezed,
+    Object? contact = freezed,
+    Object? contactType = freezed,
+    Object? answer = freezed,
+    Object? resume = freezed,
+    Object? vacancy = freezed,
+  }) {
+    return _then(_PostInviteFeedbacksVacancyEvent(
+      date: date == freezed
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      contact: contact == freezed
+          ? _value.contact
+          : contact // ignore: cast_nullable_to_non_nullable
+              as String,
+      contactType: contactType == freezed
+          ? _value.contactType
+          : contactType // ignore: cast_nullable_to_non_nullable
+              as String,
+      answer: answer == freezed
+          ? _value.answer
+          : answer // ignore: cast_nullable_to_non_nullable
+              as String,
+      resume: resume == freezed
+          ? _value.resume
+          : resume // ignore: cast_nullable_to_non_nullable
+              as int,
+      vacancy: vacancy == freezed
+          ? _value.vacancy
+          : vacancy // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PostInviteFeedbacksVacancyEvent
+    implements _PostInviteFeedbacksVacancyEvent {
+  const _$_PostInviteFeedbacksVacancyEvent(
+      {required this.date,
+      required this.contact,
+      required this.contactType,
+      required this.answer,
+      required this.resume,
+      required this.vacancy});
+
+  @override
+  final String date;
+  @override
+  final String contact;
+  @override
+  final String contactType;
+  @override
+  final String answer;
+  @override
+  final int resume;
+  @override
+  final int vacancy;
+
+  @override
+  String toString() {
+    return 'FeedbacksVacancyEvent.postInvite(date: $date, contact: $contact, contactType: $contactType, answer: $answer, resume: $resume, vacancy: $vacancy)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _PostInviteFeedbacksVacancyEvent &&
+            (identical(other.date, date) ||
+                const DeepCollectionEquality().equals(other.date, date)) &&
+            (identical(other.contact, contact) ||
+                const DeepCollectionEquality()
+                    .equals(other.contact, contact)) &&
+            (identical(other.contactType, contactType) ||
+                const DeepCollectionEquality()
+                    .equals(other.contactType, contactType)) &&
+            (identical(other.answer, answer) ||
+                const DeepCollectionEquality().equals(other.answer, answer)) &&
+            (identical(other.resume, resume) ||
+                const DeepCollectionEquality().equals(other.resume, resume)) &&
+            (identical(other.vacancy, vacancy) ||
+                const DeepCollectionEquality().equals(other.vacancy, vacancy)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(date) ^
+      const DeepCollectionEquality().hash(contact) ^
+      const DeepCollectionEquality().hash(contactType) ^
+      const DeepCollectionEquality().hash(answer) ^
+      const DeepCollectionEquality().hash(resume) ^
+      const DeepCollectionEquality().hash(vacancy);
+
+  @JsonKey(ignore: true)
+  @override
+  _$PostInviteFeedbacksVacancyEventCopyWith<_PostInviteFeedbacksVacancyEvent>
+      get copyWith => __$PostInviteFeedbacksVacancyEventCopyWithImpl<
+          _PostInviteFeedbacksVacancyEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getFeedbacks,
+    required TResult Function(String date, String contact, String contactType,
+            String answer, int resume, int vacancy)
+        postInvite,
+  }) {
+    return postInvite(date, contact, contactType, answer, resume, vacancy);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getFeedbacks,
+    TResult Function(String date, String contact, String contactType,
+            String answer, int resume, int vacancy)?
+        postInvite,
+    required TResult orElse(),
+  }) {
+    if (postInvite != null) {
+      return postInvite(date, contact, contactType, answer, resume, vacancy);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetFeedbacksVacancyEvent value) getFeedbacks,
+    required TResult Function(_PostInviteFeedbacksVacancyEvent value)
+        postInvite,
+  }) {
+    return postInvite(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetFeedbacksVacancyEvent value)? getFeedbacks,
+    TResult Function(_PostInviteFeedbacksVacancyEvent value)? postInvite,
+    required TResult orElse(),
+  }) {
+    if (postInvite != null) {
+      return postInvite(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PostInviteFeedbacksVacancyEvent
+    implements FeedbacksVacancyEvent {
+  const factory _PostInviteFeedbacksVacancyEvent(
+      {required String date,
+      required String contact,
+      required String contactType,
+      required String answer,
+      required int resume,
+      required int vacancy}) = _$_PostInviteFeedbacksVacancyEvent;
+
+  String get date => throw _privateConstructorUsedError;
+  String get contact => throw _privateConstructorUsedError;
+  String get contactType => throw _privateConstructorUsedError;
+  String get answer => throw _privateConstructorUsedError;
+  int get resume => throw _privateConstructorUsedError;
+  int get vacancy => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$PostInviteFeedbacksVacancyEventCopyWith<_PostInviteFeedbacksVacancyEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -167,10 +405,13 @@ class _$FeedbacksVacancyStateTearOff {
   }
 
   LoadedFeedbacksVacancyState loaded(
-      {required List<FeedbackVacancy> feedbacks, required String vacancyName}) {
+      {required List<FeedbackVacancy> feedbacks,
+      required String vacancyName,
+      required FormzStatus status}) {
     return LoadedFeedbacksVacancyState(
       feedbacks: feedbacks,
       vacancyName: vacancyName,
+      status: status,
     );
   }
 
@@ -191,8 +432,8 @@ mixin _$FeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(
-            List<FeedbackVacancy> feedbacks, String vacancyName)
+    required TResult Function(List<FeedbackVacancy> feedbacks,
+            String vacancyName, FormzStatus status)
         loaded,
     required TResult Function(String message) error,
   }) =>
@@ -202,7 +443,8 @@ mixin _$FeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
+    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
+            FormzStatus status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -290,8 +532,8 @@ class _$EmptyFeedbacksVacancyState implements EmptyFeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(
-            List<FeedbackVacancy> feedbacks, String vacancyName)
+    required TResult Function(List<FeedbackVacancy> feedbacks,
+            String vacancyName, FormzStatus status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -304,7 +546,8 @@ class _$EmptyFeedbacksVacancyState implements EmptyFeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
+    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
+            FormzStatus status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -394,8 +637,8 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(
-            List<FeedbackVacancy> feedbacks, String vacancyName)
+    required TResult Function(List<FeedbackVacancy> feedbacks,
+            String vacancyName, FormzStatus status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -408,7 +651,8 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
+    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
+            FormzStatus status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -495,8 +739,8 @@ class _$NoFeedbacksVacancyState implements NoFeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(
-            List<FeedbackVacancy> feedbacks, String vacancyName)
+    required TResult Function(List<FeedbackVacancy> feedbacks,
+            String vacancyName, FormzStatus status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -509,7 +753,8 @@ class _$NoFeedbacksVacancyState implements NoFeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
+    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
+            FormzStatus status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -559,7 +804,10 @@ abstract class $LoadedFeedbacksVacancyStateCopyWith<$Res> {
           LoadedFeedbacksVacancyState value,
           $Res Function(LoadedFeedbacksVacancyState) then) =
       _$LoadedFeedbacksVacancyStateCopyWithImpl<$Res>;
-  $Res call({List<FeedbackVacancy> feedbacks, String vacancyName});
+  $Res call(
+      {List<FeedbackVacancy> feedbacks,
+      String vacancyName,
+      FormzStatus status});
 }
 
 /// @nodoc
@@ -578,6 +826,7 @@ class _$LoadedFeedbacksVacancyStateCopyWithImpl<$Res>
   $Res call({
     Object? feedbacks = freezed,
     Object? vacancyName = freezed,
+    Object? status = freezed,
   }) {
     return _then(LoadedFeedbacksVacancyState(
       feedbacks: feedbacks == freezed
@@ -588,6 +837,10 @@ class _$LoadedFeedbacksVacancyStateCopyWithImpl<$Res>
           ? _value.vacancyName
           : vacancyName // ignore: cast_nullable_to_non_nullable
               as String,
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as FormzStatus,
     ));
   }
 }
@@ -596,16 +849,20 @@ class _$LoadedFeedbacksVacancyStateCopyWithImpl<$Res>
 
 class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
   const _$LoadedFeedbacksVacancyState(
-      {required this.feedbacks, required this.vacancyName});
+      {required this.feedbacks,
+      required this.vacancyName,
+      required this.status});
 
   @override
   final List<FeedbackVacancy> feedbacks;
   @override
   final String vacancyName;
+  @override
+  final FormzStatus status;
 
   @override
   String toString() {
-    return 'FeedbacksVacancyState.loaded(feedbacks: $feedbacks, vacancyName: $vacancyName)';
+    return 'FeedbacksVacancyState.loaded(feedbacks: $feedbacks, vacancyName: $vacancyName, status: $status)';
   }
 
   @override
@@ -617,14 +874,17 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
                     .equals(other.feedbacks, feedbacks)) &&
             (identical(other.vacancyName, vacancyName) ||
                 const DeepCollectionEquality()
-                    .equals(other.vacancyName, vacancyName)));
+                    .equals(other.vacancyName, vacancyName)) &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(feedbacks) ^
-      const DeepCollectionEquality().hash(vacancyName);
+      const DeepCollectionEquality().hash(vacancyName) ^
+      const DeepCollectionEquality().hash(status);
 
   @JsonKey(ignore: true)
   @override
@@ -638,12 +898,12 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(
-            List<FeedbackVacancy> feedbacks, String vacancyName)
+    required TResult Function(List<FeedbackVacancy> feedbacks,
+            String vacancyName, FormzStatus status)
         loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(feedbacks, vacancyName);
+    return loaded(feedbacks, vacancyName, status);
   }
 
   @override
@@ -652,13 +912,14 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
+    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
+            FormzStatus status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(feedbacks, vacancyName);
+      return loaded(feedbacks, vacancyName, status);
     }
     return orElse();
   }
@@ -695,10 +956,12 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
 abstract class LoadedFeedbacksVacancyState implements FeedbacksVacancyState {
   const factory LoadedFeedbacksVacancyState(
       {required List<FeedbackVacancy> feedbacks,
-      required String vacancyName}) = _$LoadedFeedbacksVacancyState;
+      required String vacancyName,
+      required FormzStatus status}) = _$LoadedFeedbacksVacancyState;
 
   List<FeedbackVacancy> get feedbacks => throw _privateConstructorUsedError;
   String get vacancyName => throw _privateConstructorUsedError;
+  FormzStatus get status => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedFeedbacksVacancyStateCopyWith<LoadedFeedbacksVacancyState>
       get copyWith => throw _privateConstructorUsedError;
@@ -775,8 +1038,8 @@ class _$ErrorFeedbacksVacancyState implements ErrorFeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(
-            List<FeedbackVacancy> feedbacks, String vacancyName)
+    required TResult Function(List<FeedbackVacancy> feedbacks,
+            String vacancyName, FormzStatus status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -789,7 +1052,8 @@ class _$ErrorFeedbacksVacancyState implements ErrorFeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName)?
+    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
+            FormzStatus status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),

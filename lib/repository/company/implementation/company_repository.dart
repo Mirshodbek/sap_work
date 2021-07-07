@@ -2,8 +2,10 @@ import 'package:either_dart/either.dart';
 import 'package:sap_work/data_source/company/cache_data.dart';
 import 'package:sap_work/data_source/company/remote_data.dart';
 import 'package:sap_work/models/category/category.dart';
+import 'package:sap_work/models/chat/chat.dart';
 import 'package:sap_work/models/feedback_vacancy/feedback.dart';
 import 'package:sap_work/models/profile_company/profile.dart';
+import 'package:sap_work/models/tariff/tariff.dart';
 import 'package:sap_work/models/vacancy/vacancy.dart';
 
 import '../../exceptions_failures.dart';
@@ -121,10 +123,11 @@ class CompanyRepository implements CompanyRepositoryBase {
   }
 
   @override
-  Future<Either<Failure, String>> getStatusCompany() async{
+  Future<Either<Failure, Tariffs>> getStatusCompany() async{
     if (await networkInfo.isConnected) {
       try {
         final remoteData = await remoteDataSource.getStatusCompany();
+        localDataSource.cacheStatusCompany(remoteData);
         return Right(remoteData);
       } on ServerException {
         return Left(ServerFailure());
@@ -132,6 +135,25 @@ class CompanyRepository implements CompanyRepositoryBase {
     } else {
       try {
         final localData = await localDataSource.getStatusCompany();
+        return Right(localData);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Chat>>> getChats(int id) async{
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteData = await remoteDataSource.getChats(id);
+        return Right(remoteData);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final localData = await localDataSource.getChats();
         return Right(localData);
       } on CacheException {
         return Left(CacheFailure());

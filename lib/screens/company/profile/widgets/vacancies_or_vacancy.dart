@@ -51,7 +51,7 @@ class VacanciesOrVacancyWidget extends StatelessWidget {
               }, builder: (context, state) {
                 return state.map(
                     empty: (_) => const SizedBox.shrink(),
-                    loading: (_) => LoadingListVacanciesWidget(),
+                    loading: (_) => LoadingVacanciesWidget(),
                     loaded: (_loaded) {
                       return Column(children: [
                         RemotedVacanciesWidget(vacanciesState: _loaded),

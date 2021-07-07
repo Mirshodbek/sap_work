@@ -49,7 +49,7 @@ class HunterRepository extends HunterRepositoryBase {
   }
 
   @override
-  Stream<List<Message>> getMessages(int id) async* {
+  Stream<List<Chat>> getMessages(int id) async* {
     yield await _chatProvider.getMessages(id);
   }
 

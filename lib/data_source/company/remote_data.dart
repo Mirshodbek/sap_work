@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:sap_work/models/chat/chat.dart';
+import 'package:sap_work/models/params_company/feedback/feedback.dart';
+import 'package:sap_work/models/tariff/tariff.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../common_urls.dart';
 import '../data_source.dart';
@@ -24,14 +27,19 @@ abstract class CompanyRemoteDataBase {
 
   Future<List<FeedbackVacancy>> getFeedbacksVacancy(int id);
 
-  Future<String> getStatusCompany();
+  Future<List<FeedbackVacancy>> postInviteFeedback(ParamsFeedback params);
 
-  Future<String> addStatusSubscribeCompany(String sum);
+  Future<List<Chat>> getChats(int id);
+
+  Future<List<Chat>> postChat(int id, String text);
+
+  Future<Tariffs> getStatusCompany();
+
+  Future<Tariffs> addStatusSubscribeCompany(String sum);
 }
 
 class CompanyRemoteData implements CompanyRemoteDataBase {
   final CompanyCacheDataBase localDataSource;
-  static const String _profile = '/api/profile';
   static const String _vacancies = '/api/vacancies';
   static const String _categories = '/api/categories';
   static const String _createVacancy = '/api/vacancy/create';
@@ -41,24 +49,35 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   static const String _activateOrDeactivate = '/api/vacancy/';
   static const String _feedbacksVacancy = '/api/vacancy/feedbacks?vacancy=';
   static const String _statusSubscribe = '/api/subscribe/status';
+  static const String _priceSubscribe = '/api/price';
   static const String _addStatusSubscribe = '/api/subscribe/add?days=';
+  static const String _inviteFeedback = '/api/vacancy/answer?';
 
   final http.Client client;
 
   CompanyRemoteData(this.localDataSource, {required this.client});
 
   @override
-  Future<String> getStatusCompany() async {
-    final result = await _callPostApi(_statusSubscribe, json.encode({}));
-    print(result.body);
-    return result.body;
+  Future<Tariffs> getStatusCompany() async {
+    final subscribe = await _callPostApi(_statusSubscribe, json.encode({}));
+    final price = await _callPostApi(_priceSubscribe, json.encode({}));
+    return Tariffs(subscribe.body, price.body);
   }
 
   @override
-  Future<String> addStatusSubscribeCompany(String sum) async {
-  final result =  await _callPostApi(_addStatusSubscribe + sum, json.encode({}));
-  print(sum);
+  Future<Tariffs> addStatusSubscribeCompany(String sum) async {
+    await _callPostApi(_addStatusSubscribe + sum, json.encode({}));
     return await getStatusCompany();
+  }
+
+  @override
+  Future<List<FeedbackVacancy>> postInviteFeedback(
+      ParamsFeedback params) async {
+    print(json.encode(params.toJson()));
+    final result =
+        await _callPostApi(_inviteFeedback, json.encode(params.toJson()));
+    print(result.statusCode);
+    return await getFeedbacksVacancy(params.vacancy);
   }
 
   @override
@@ -73,8 +92,25 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   }
 
   @override
+  Future<List<Chat>> getChats(int id) async {
+    final result =
+        await _callPostApi(GET_CHATS + id.toString(), json.encode({}));
+    await localDataSource.deleteObject(CACHED_CHATS_COMPANY);
+    await localDataSource.cacheObject(result.body, CACHED_CHATS_COMPANY);
+    return (json.decode(result.body) as List<dynamic>)
+        .map((item) => Chat.fromJson(item))
+        .toList();
+  }
+
+  @override
+  Future<List<Chat>> postChat(int id, String text) async {
+    await _callPostApi(SEND_CHAT + id.toString(), json.encode({"text": text}));
+    return await getChats(id);
+  }
+
+  @override
   Future<TypeProfileCompany> getProfileCompany() async {
-    final result = await _callPostApi(_profile, json.encode({}));
+    final result = await _callPostApi(GET_PROFILE, json.encode({}));
     return TypeProfileCompany.fromJson(json.decode(result.body));
   }
 

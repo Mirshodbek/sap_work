@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:sap_work/models/chat/chat.dart';
+import 'package:sap_work/models/tariff/tariff.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data_source.dart';
@@ -15,6 +17,7 @@ abstract class CompanyCacheDataBase {
   Future<List<Category>> getCategories();
 
   Future<List<FeedbackVacancy>> getFeedbacksVacancy();
+  Future<List<Chat>> getChats();
 
   Future<File> cacheObject(String object, String path);
 
@@ -24,9 +27,9 @@ abstract class CompanyCacheDataBase {
 
   Future<void> cacheVacancyCompany(Vacancy vacancy);
 
-  Future<String> getStatusCompany();
+  Future<Tariffs> getStatusCompany();
 
-  Future<void> cacheStatusCompany(String status);
+  Future<void> cacheStatusCompany(Tariffs tariffs);
 }
 
 class CompanyCacheData implements CompanyCacheDataBase {
@@ -95,6 +98,20 @@ class CompanyCacheData implements CompanyCacheDataBase {
   }
 
   @override
+  Future<List<Chat>> getChats() async{
+    var cacheDir = await getApplicationDocumentsDirectory();
+    final file = File(cacheDir.path + "/" + CACHED_CHATS_COMPANY + ".json");
+    if (file.existsSync()) {
+      var jsonData = file.readAsStringSync();
+      return Future.value((json.decode(jsonData) as List)
+          .map((item) => Chat.fromJson(item))
+          .toList());
+    } else {
+      throw CacheException();
+    }
+  }
+
+  @override
   Future<File> cacheObject(String object, String path) async {
     var cacheDir = await getApplicationDocumentsDirectory();
     File file = File(cacheDir.path + "/" + path + ".json");
@@ -133,17 +150,19 @@ class CompanyCacheData implements CompanyCacheDataBase {
   }
 
   @override
-  Future<String> getStatusCompany() {
+  Future<Tariffs> getStatusCompany() {
     final string = sharedPreferences.getString(CACHED_STATUS_COMPANY);
     if (string != null) {
-      return Future.value(string);
+      return Future.value(Tariffs.fromJson(json.decode(string)));
     } else {
       throw CacheException();
     }
   }
 
   @override
-  Future<void> cacheStatusCompany(String status) {
-    return sharedPreferences.setString(CACHED_STATUS_COMPANY, status);
+  Future<void> cacheStatusCompany(Tariffs tariffs) {
+    print( json.encode(tariffs));
+    return sharedPreferences.setString(
+        CACHED_STATUS_COMPANY, json.encode(tariffs));
   }
 }

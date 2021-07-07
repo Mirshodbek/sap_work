@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
+import 'package:sap_work/screens/company/chat/screen.dart';
+import 'package:sap_work/screens/company/invite/screen.dart';
 import 'package:sap_work/screens/company/payment/screen.dart';
 import 'package:sap_work/screens/company/resume/screen.dart';
 import 'package:sap_work/screens/hunter/hunter.dart';
@@ -81,10 +83,20 @@ class AppRouter {
           settings: routeSettings,
           builder: (_) => PaymentScreen(),
         );
-      case ResumeScreen.id:
+      case ResumeScreenCompany.id:
         return MaterialPageRoute<String>(
           settings: routeSettings,
-          builder: (_) => ResumeScreen(),
+          builder: (_) => ResumeScreenCompany(),
+        );
+      case InviteScreen.id:
+        return MaterialPageRoute<String>(
+          settings: routeSettings,
+          builder: (_) => InviteScreen(),
+        );
+      case ChatScreenCompany.id:
+        return MaterialPageRoute<String>(
+          settings: routeSettings,
+          builder: (_) => ChatScreenCompany(),
         );
       default:
         return null;

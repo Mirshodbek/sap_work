@@ -7,8 +7,6 @@ class MessagesScreen extends StatelessWidget {
 
   const MessagesScreen({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     final arguments = ModalRoute.of(context)!.settings.arguments as Map;
@@ -66,7 +64,11 @@ class MessagesScreen extends StatelessWidget {
                                 final messages =
                                     _state.messages.reversed.toList();
                                 final chat = messages[index];
-                                return MessageListItemWidget(chat);
+                                return ChatListItemWidget(
+                                  chat: chat,
+                                  avatarCompany: "",
+                                  avatarUser: "",
+                                );
                               },
                             ),
                           ),
@@ -82,7 +84,9 @@ class MessagesScreen extends StatelessWidget {
                         const SizedBox(
                           height: 10.0,
                         ),
-                        ChatTextField(),
+                        ChatTextField((value) => context
+                            .read<NotificationsBloc>()
+                            .add(NotificationsEvent.sendMessage(text: value))),
                       ],
                     );
                   },

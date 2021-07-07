@@ -78,7 +78,7 @@ class ResumeWidget extends StatelessWidget {
               ],
             ),
           ),
-        if (_state.title == _state.resume.name) BlocksWidget(_state),
+        // if (_state.title == _state.resume.name) BlocksWidget(_state),
 
       ],
     );

@@ -711,8 +711,8 @@ abstract class _PostVacancyCoreProfileEvent implements CoreProfileEvent {
 class _$CoreProfileStateTearOff {
   const _$CoreProfileStateTearOff();
 
-  InitialCoreProfileState initial() {
-    return const InitialCoreProfileState();
+  EmptyCoreProfileState empty() {
+    return const EmptyCoreProfileState();
   }
 
   LoadingCoreProfileState loading() {
@@ -746,7 +746,7 @@ const $CoreProfileState = _$CoreProfileStateTearOff();
 mixin _$CoreProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(LocalVacancyData localVacancy, int vacancyId,
             List<Category> categories, FormzStatus status)
@@ -756,7 +756,7 @@ mixin _$CoreProfileState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(LocalVacancyData localVacancy, int vacancyId,
             List<Category> categories, FormzStatus status)?
@@ -767,7 +767,7 @@ mixin _$CoreProfileState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialCoreProfileState value) initial,
+    required TResult Function(EmptyCoreProfileState value) empty,
     required TResult Function(LoadingCoreProfileState value) loading,
     required TResult Function(AttributesCoreProfileState value) attributes,
     required TResult Function(ErrorCoreProfileState value) error,
@@ -775,7 +775,7 @@ mixin _$CoreProfileState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialCoreProfileState value)? initial,
+    TResult Function(EmptyCoreProfileState value)? empty,
     TResult Function(LoadingCoreProfileState value)? loading,
     TResult Function(AttributesCoreProfileState value)? attributes,
     TResult Function(ErrorCoreProfileState value)? error,
@@ -802,37 +802,37 @@ class _$CoreProfileStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $InitialCoreProfileStateCopyWith<$Res> {
-  factory $InitialCoreProfileStateCopyWith(InitialCoreProfileState value,
-          $Res Function(InitialCoreProfileState) then) =
-      _$InitialCoreProfileStateCopyWithImpl<$Res>;
+abstract class $EmptyCoreProfileStateCopyWith<$Res> {
+  factory $EmptyCoreProfileStateCopyWith(EmptyCoreProfileState value,
+          $Res Function(EmptyCoreProfileState) then) =
+      _$EmptyCoreProfileStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialCoreProfileStateCopyWithImpl<$Res>
+class _$EmptyCoreProfileStateCopyWithImpl<$Res>
     extends _$CoreProfileStateCopyWithImpl<$Res>
-    implements $InitialCoreProfileStateCopyWith<$Res> {
-  _$InitialCoreProfileStateCopyWithImpl(InitialCoreProfileState _value,
-      $Res Function(InitialCoreProfileState) _then)
-      : super(_value, (v) => _then(v as InitialCoreProfileState));
+    implements $EmptyCoreProfileStateCopyWith<$Res> {
+  _$EmptyCoreProfileStateCopyWithImpl(
+      EmptyCoreProfileState _value, $Res Function(EmptyCoreProfileState) _then)
+      : super(_value, (v) => _then(v as EmptyCoreProfileState));
 
   @override
-  InitialCoreProfileState get _value => super._value as InitialCoreProfileState;
+  EmptyCoreProfileState get _value => super._value as EmptyCoreProfileState;
 }
 
 /// @nodoc
 
-class _$InitialCoreProfileState implements InitialCoreProfileState {
-  const _$InitialCoreProfileState();
+class _$EmptyCoreProfileState implements EmptyCoreProfileState {
+  const _$EmptyCoreProfileState();
 
   @override
   String toString() {
-    return 'CoreProfileState.initial()';
+    return 'CoreProfileState.empty()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is InitialCoreProfileState);
+    return identical(this, other) || (other is EmptyCoreProfileState);
   }
 
   @override
@@ -841,20 +841,20 @@ class _$InitialCoreProfileState implements InitialCoreProfileState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(LocalVacancyData localVacancy, int vacancyId,
             List<Category> categories, FormzStatus status)
         attributes,
     required TResult Function(String message) error,
   }) {
-    return initial();
+    return empty();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(LocalVacancyData localVacancy, int vacancyId,
             List<Category> categories, FormzStatus status)?
@@ -862,8 +862,8 @@ class _$InitialCoreProfileState implements InitialCoreProfileState {
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (empty != null) {
+      return empty();
     }
     return orElse();
   }
@@ -871,32 +871,32 @@ class _$InitialCoreProfileState implements InitialCoreProfileState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialCoreProfileState value) initial,
+    required TResult Function(EmptyCoreProfileState value) empty,
     required TResult Function(LoadingCoreProfileState value) loading,
     required TResult Function(AttributesCoreProfileState value) attributes,
     required TResult Function(ErrorCoreProfileState value) error,
   }) {
-    return initial(this);
+    return empty(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialCoreProfileState value)? initial,
+    TResult Function(EmptyCoreProfileState value)? empty,
     TResult Function(LoadingCoreProfileState value)? loading,
     TResult Function(AttributesCoreProfileState value)? attributes,
     TResult Function(ErrorCoreProfileState value)? error,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (empty != null) {
+      return empty(this);
     }
     return orElse();
   }
 }
 
-abstract class InitialCoreProfileState implements CoreProfileState {
-  const factory InitialCoreProfileState() = _$InitialCoreProfileState;
+abstract class EmptyCoreProfileState implements CoreProfileState {
+  const factory EmptyCoreProfileState() = _$EmptyCoreProfileState;
 }
 
 /// @nodoc
@@ -939,7 +939,7 @@ class _$LoadingCoreProfileState implements LoadingCoreProfileState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(LocalVacancyData localVacancy, int vacancyId,
             List<Category> categories, FormzStatus status)
@@ -952,7 +952,7 @@ class _$LoadingCoreProfileState implements LoadingCoreProfileState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(LocalVacancyData localVacancy, int vacancyId,
             List<Category> categories, FormzStatus status)?
@@ -969,7 +969,7 @@ class _$LoadingCoreProfileState implements LoadingCoreProfileState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialCoreProfileState value) initial,
+    required TResult Function(EmptyCoreProfileState value) empty,
     required TResult Function(LoadingCoreProfileState value) loading,
     required TResult Function(AttributesCoreProfileState value) attributes,
     required TResult Function(ErrorCoreProfileState value) error,
@@ -980,7 +980,7 @@ class _$LoadingCoreProfileState implements LoadingCoreProfileState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialCoreProfileState value)? initial,
+    TResult Function(EmptyCoreProfileState value)? empty,
     TResult Function(LoadingCoreProfileState value)? loading,
     TResult Function(AttributesCoreProfileState value)? attributes,
     TResult Function(ErrorCoreProfileState value)? error,
@@ -1107,7 +1107,7 @@ class _$AttributesCoreProfileState implements AttributesCoreProfileState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(LocalVacancyData localVacancy, int vacancyId,
             List<Category> categories, FormzStatus status)
@@ -1120,7 +1120,7 @@ class _$AttributesCoreProfileState implements AttributesCoreProfileState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(LocalVacancyData localVacancy, int vacancyId,
             List<Category> categories, FormzStatus status)?
@@ -1137,7 +1137,7 @@ class _$AttributesCoreProfileState implements AttributesCoreProfileState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialCoreProfileState value) initial,
+    required TResult Function(EmptyCoreProfileState value) empty,
     required TResult Function(LoadingCoreProfileState value) loading,
     required TResult Function(AttributesCoreProfileState value) attributes,
     required TResult Function(ErrorCoreProfileState value) error,
@@ -1148,7 +1148,7 @@ class _$AttributesCoreProfileState implements AttributesCoreProfileState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialCoreProfileState value)? initial,
+    TResult Function(EmptyCoreProfileState value)? empty,
     TResult Function(LoadingCoreProfileState value)? loading,
     TResult Function(AttributesCoreProfileState value)? attributes,
     TResult Function(ErrorCoreProfileState value)? error,
@@ -1243,7 +1243,7 @@ class _$ErrorCoreProfileState implements ErrorCoreProfileState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(LocalVacancyData localVacancy, int vacancyId,
             List<Category> categories, FormzStatus status)
@@ -1256,7 +1256,7 @@ class _$ErrorCoreProfileState implements ErrorCoreProfileState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(LocalVacancyData localVacancy, int vacancyId,
             List<Category> categories, FormzStatus status)?
@@ -1273,7 +1273,7 @@ class _$ErrorCoreProfileState implements ErrorCoreProfileState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialCoreProfileState value) initial,
+    required TResult Function(EmptyCoreProfileState value) empty,
     required TResult Function(LoadingCoreProfileState value) loading,
     required TResult Function(AttributesCoreProfileState value) attributes,
     required TResult Function(ErrorCoreProfileState value) error,
@@ -1284,7 +1284,7 @@ class _$ErrorCoreProfileState implements ErrorCoreProfileState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialCoreProfileState value)? initial,
+    TResult Function(EmptyCoreProfileState value)? empty,
     TResult Function(LoadingCoreProfileState value)? loading,
     TResult Function(AttributesCoreProfileState value)? attributes,
     TResult Function(ErrorCoreProfileState value)? error,

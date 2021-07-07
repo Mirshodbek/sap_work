@@ -4,4 +4,4 @@ export 'profile_company/profile.dart';
 export 'resume/resume.dart';
 export 'resume/resume_attributes.dart';
 export 'vacancy/vacancy.dart';
-export 'params_vacancy/vacancy.dart';
+export 'params_company/vacancy/vacancy.dart';

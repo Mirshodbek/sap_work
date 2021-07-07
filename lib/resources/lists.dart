@@ -1,6 +1,4 @@
-import 'package:sap_work/models/stage.dart';
 import 'package:sap_work/models/tariff/tariff.dart';
-import 'package:sap_work/models/user/block/block.dart';
 
 class Lists {
   static final List<String> listProfessions = <String>[
@@ -51,35 +49,35 @@ class Lists {
     "Telegram",
     "Сайт",
   ];
-  static final List<Block> blocksResumeList = <Block>[
-    Block(
-        "Опыт работы",
-        "Должность",
-        "Компания",
-        "с __.___ по __.___",
-        "Опишите ваш опыт работы в компании, какие задачи решали, какие результаты достугнуты.",
-        0,
-        100,
-        101,
-        102,
-        103),
-    Block("Образование", "с...по...", "position", "university", "hintText", 1,
-        104, 105, 106, 107),
-    Block("Профессия", "Профессия", "hintText", "hintText", "hintText", 2, 108,
-        109, 110, 111),
-    Block("Дипломы и сертификаты", "Дипломы и сертификаты", "hintText",
-        "hintText", "hintText", 3, 112, 113, 114, 115),
-    Block("Свободный блок", "Свободный блок", "hintText", "hintText",
-        "hintText", 4, 116, 117, 118, 119),
-    Block("Языки", "Языки", "hintText", "hintText", "hintText", 5, 120, 121,
-        122, 123),
-    Block("Ключевые навыки", "Ключевые навыки", "hintText", "hintText",
-        "hintText", 6, 124, 125, 126, 127),
-    Block("Видео-визитка", "Видео-визитка", "hintText", "hintText", "hintText",
-        7, 128, 129, 130, 131),
-    Block("Рекомендательные письма", "Рекомендательные письма", "hintText",
-        "hintText", "hintText", 8, 132, 133, 134, 135)
-  ];
+  // static final List<Block> blocksResumeList = <Block>[
+  //   Block(
+  //       "Опыт работы",
+  //       "Должность",
+  //       "Компания",
+  //       "с __.___ по __.___",
+  //       "Опишите ваш опыт работы в компании, какие задачи решали, какие результаты достугнуты.",
+  //       0,
+  //       100,
+  //       101,
+  //       102,
+  //       103),
+  //   Block("Образование", "с...по...", "position", "university", "hintText", 1,
+  //       104, 105, 106, 107),
+  //   Block("Профессия", "Профессия", "hintText", "hintText", "hintText", 2, 108,
+  //       109, 110, 111),
+  //   Block("Дипломы и сертификаты", "Дипломы и сертификаты", "hintText",
+  //       "hintText", "hintText", 3, 112, 113, 114, 115),
+  //   Block("Свободный блок", "Свободный блок", "hintText", "hintText",
+  //       "hintText", 4, 116, 117, 118, 119),
+  //   Block("Языки", "Языки", "hintText", "hintText", "hintText", 5, 120, 121,
+  //       122, 123),
+  //   Block("Ключевые навыки", "Ключевые навыки", "hintText", "hintText",
+  //       "hintText", 6, 124, 125, 126, 127),
+  //   Block("Видео-визитка", "Видео-визитка", "hintText", "hintText", "hintText",
+  //       7, 128, 129, 130, 131),
+  //   Block("Рекомендательные письма", "Рекомендательные письма", "hintText",
+  //       "hintText", "hintText", 8, 132, 133, 134, 135)
+  // ];
 
   static final List<Tariff> tariffs = <Tariff>[
     Tariff("Мини", "Тариф действует при покупке от 1 до 4 дней ", 1000),

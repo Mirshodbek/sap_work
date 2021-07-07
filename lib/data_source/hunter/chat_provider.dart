@@ -13,14 +13,14 @@ class ChatProvider {
   static const String _getMessage = '/api/chat?id=';
   static const String _feedback = '/api/resume/feedbacks?resume=';
 
-  Future<List<Message>> getMessages(int id) async {
+  Future<List<Chat>> getMessages(int id) async {
     final result = await _callPostApi(
       _getMessage + id.toString(),
       {},
     );
     if (result.statusCode == 200 || result.statusCode == 201) {
       return (jsonDecode(result.body) as List)
-          .map((e) => Message.fromJson(e))
+          .map((e) => Chat.fromJson(e))
           .toList();
     }
     return [];

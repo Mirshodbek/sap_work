@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
-import 'package:sap_work/bloc/company/profile/profile_company.dart';
+import 'package:sap_work/bloc/company/profile/profile_company_bloc.dart';
 import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/resources/lists.dart';
 import 'package:sap_work/resources/small_widgets.dart';
 import 'package:sap_work/screens/widgets/shimmer.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
 
-class ProfileNameWidget extends StatelessWidget {
-  const ProfileNameWidget({Key? key}) : super(key: key);
+class ProfileCompanyNameWidget extends StatelessWidget {
+  const ProfileCompanyNameWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,8 +60,8 @@ class ProfileAvatarWidget extends StatelessWidget {
                 child: Stack(children: [
                   _state.status == FormzStatus.submissionInProgress
                       ? SmallWidgets.uploadAvatar()
-                      : SmallWidgets.circleAvatar(
-                          _state.profile.profile.avatar),
+                      : SmallWidgets.circleAvatar(url:
+                          _state.profile.profile.avatar,height: 80,width: 80),
                   SmallWidgets.uploadAvatarButton((path) {
                     context
                         .read<ProfileCompanyBloc>()

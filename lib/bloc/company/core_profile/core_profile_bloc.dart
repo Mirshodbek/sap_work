@@ -12,7 +12,7 @@ class CoreProfileBloc extends Bloc<CoreProfileEvent, CoreProfileState> {
   final GetCategories getCategories;
 
   CoreProfileBloc(this.getLocalVacancy, this.remoteCompany, this.getCategories)
-      : super(const CoreProfileState.initial());
+      : super(const CoreProfileState.empty());
 
   @override
   Stream<CoreProfileState> mapEventToState(CoreProfileEvent event) async* {
@@ -145,7 +145,7 @@ abstract class CoreProfileEvent with _$CoreProfileEvent {
 
 @freezed
 abstract class CoreProfileState with _$CoreProfileState {
-  const factory CoreProfileState.initial() = InitialCoreProfileState;
+  const factory CoreProfileState.empty() = EmptyCoreProfileState;
 
   const factory CoreProfileState.loading() = LoadingCoreProfileState;
 

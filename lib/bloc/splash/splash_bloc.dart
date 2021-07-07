@@ -26,12 +26,13 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     if (splash == 0) {
       yield const SplashState.selectedRole();
     } else if (splash == 1) {
-      // yield const SplashState.user();
-      yield const SplashState.splash();
-    } else if (splash == 2) {
-      yield const SplashState.company();
+      yield const SplashState.user();
       // yield const SplashState.splash();
-      // tGvclV6QCZh3Rm0AYCJyzpeh4hz5Fb3tVBoqGzIFU3kkmSGg2AuGkkY8W0mT
+      // 5kLh0uKhiJPhl67fyF5ac1I5ZvzRQdL9JRHs9mGtO2KvhD61cjSYJMZVo5Lo
+    } else if (splash == 2) {
+      // yield const SplashState.company();
+      yield const SplashState.splash();
+      // JA1n3gBxqkDh8QgJCePf2Zh9RNCrzQwRTSDrOddMBNbjZq8hc9tKlEpnmSNG
     } else {
       yield const SplashState.splash();
     }

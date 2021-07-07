@@ -24,9 +24,24 @@ class _$FeedbacksBtnStateTearOff {
     return const PaymentFeedbacksBtnState();
   }
 
-  ResumeFeedbacksBtnState resume({required FeedbackVacancy resume}) {
-    return ResumeFeedbacksBtnState(
+  ChatFeedbacksBtnState chat(
+      {required String avatarUser,
+      required String avatarCompany,
+      required String name,
+      required int userId}) {
+    return ChatFeedbacksBtnState(
+      avatarUser: avatarUser,
+      avatarCompany: avatarCompany,
+      name: name,
+      userId: userId,
+    );
+  }
+
+  ResumeInviteFeedbacksBtnState resumeInvite(
+      {required FeedbackVacancy resume, required bool isInvite}) {
+    return ResumeInviteFeedbacksBtnState(
       resume: resume,
+      isInvite: isInvite,
     );
   }
 
@@ -49,7 +64,11 @@ mixin _$FeedbacksBtnState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() payment,
-    required TResult Function(FeedbackVacancy resume) resume,
+    required TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)
+        chat,
+    required TResult Function(FeedbackVacancy resume, bool isInvite)
+        resumeInvite,
     required TResult Function(String title, int sum, int total) sum,
   }) =>
       throw _privateConstructorUsedError;
@@ -57,7 +76,10 @@ mixin _$FeedbacksBtnState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? payment,
-    TResult Function(FeedbackVacancy resume)? resume,
+    TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)?
+        chat,
+    TResult Function(FeedbackVacancy resume, bool isInvite)? resumeInvite,
     TResult Function(String title, int sum, int total)? sum,
     required TResult orElse(),
   }) =>
@@ -66,7 +88,8 @@ mixin _$FeedbacksBtnState {
   TResult map<TResult extends Object?>({
     required TResult Function(EmptyFeedbacksBtnState value) empty,
     required TResult Function(PaymentFeedbacksBtnState value) payment,
-    required TResult Function(ResumeFeedbacksBtnState value) resume,
+    required TResult Function(ChatFeedbacksBtnState value) chat,
+    required TResult Function(ResumeInviteFeedbacksBtnState value) resumeInvite,
     required TResult Function(SumFeedbacksBtnState value) sum,
   }) =>
       throw _privateConstructorUsedError;
@@ -74,7 +97,8 @@ mixin _$FeedbacksBtnState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmptyFeedbacksBtnState value)? empty,
     TResult Function(PaymentFeedbacksBtnState value)? payment,
-    TResult Function(ResumeFeedbacksBtnState value)? resume,
+    TResult Function(ChatFeedbacksBtnState value)? chat,
+    TResult Function(ResumeInviteFeedbacksBtnState value)? resumeInvite,
     TResult Function(SumFeedbacksBtnState value)? sum,
     required TResult orElse(),
   }) =>
@@ -140,7 +164,11 @@ class _$EmptyFeedbacksBtnState implements EmptyFeedbacksBtnState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() payment,
-    required TResult Function(FeedbackVacancy resume) resume,
+    required TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)
+        chat,
+    required TResult Function(FeedbackVacancy resume, bool isInvite)
+        resumeInvite,
     required TResult Function(String title, int sum, int total) sum,
   }) {
     return empty();
@@ -151,7 +179,10 @@ class _$EmptyFeedbacksBtnState implements EmptyFeedbacksBtnState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? payment,
-    TResult Function(FeedbackVacancy resume)? resume,
+    TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)?
+        chat,
+    TResult Function(FeedbackVacancy resume, bool isInvite)? resumeInvite,
     TResult Function(String title, int sum, int total)? sum,
     required TResult orElse(),
   }) {
@@ -166,7 +197,8 @@ class _$EmptyFeedbacksBtnState implements EmptyFeedbacksBtnState {
   TResult map<TResult extends Object?>({
     required TResult Function(EmptyFeedbacksBtnState value) empty,
     required TResult Function(PaymentFeedbacksBtnState value) payment,
-    required TResult Function(ResumeFeedbacksBtnState value) resume,
+    required TResult Function(ChatFeedbacksBtnState value) chat,
+    required TResult Function(ResumeInviteFeedbacksBtnState value) resumeInvite,
     required TResult Function(SumFeedbacksBtnState value) sum,
   }) {
     return empty(this);
@@ -177,7 +209,8 @@ class _$EmptyFeedbacksBtnState implements EmptyFeedbacksBtnState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmptyFeedbacksBtnState value)? empty,
     TResult Function(PaymentFeedbacksBtnState value)? payment,
-    TResult Function(ResumeFeedbacksBtnState value)? resume,
+    TResult Function(ChatFeedbacksBtnState value)? chat,
+    TResult Function(ResumeInviteFeedbacksBtnState value)? resumeInvite,
     TResult Function(SumFeedbacksBtnState value)? sum,
     required TResult orElse(),
   }) {
@@ -235,7 +268,11 @@ class _$PaymentFeedbacksBtnState implements PaymentFeedbacksBtnState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() payment,
-    required TResult Function(FeedbackVacancy resume) resume,
+    required TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)
+        chat,
+    required TResult Function(FeedbackVacancy resume, bool isInvite)
+        resumeInvite,
     required TResult Function(String title, int sum, int total) sum,
   }) {
     return payment();
@@ -246,7 +283,10 @@ class _$PaymentFeedbacksBtnState implements PaymentFeedbacksBtnState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? payment,
-    TResult Function(FeedbackVacancy resume)? resume,
+    TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)?
+        chat,
+    TResult Function(FeedbackVacancy resume, bool isInvite)? resumeInvite,
     TResult Function(String title, int sum, int total)? sum,
     required TResult orElse(),
   }) {
@@ -261,7 +301,8 @@ class _$PaymentFeedbacksBtnState implements PaymentFeedbacksBtnState {
   TResult map<TResult extends Object?>({
     required TResult Function(EmptyFeedbacksBtnState value) empty,
     required TResult Function(PaymentFeedbacksBtnState value) payment,
-    required TResult Function(ResumeFeedbacksBtnState value) resume,
+    required TResult Function(ChatFeedbacksBtnState value) chat,
+    required TResult Function(ResumeInviteFeedbacksBtnState value) resumeInvite,
     required TResult Function(SumFeedbacksBtnState value) sum,
   }) {
     return payment(this);
@@ -272,7 +313,8 @@ class _$PaymentFeedbacksBtnState implements PaymentFeedbacksBtnState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmptyFeedbacksBtnState value)? empty,
     TResult Function(PaymentFeedbacksBtnState value)? payment,
-    TResult Function(ResumeFeedbacksBtnState value)? resume,
+    TResult Function(ChatFeedbacksBtnState value)? chat,
+    TResult Function(ResumeInviteFeedbacksBtnState value)? resumeInvite,
     TResult Function(SumFeedbacksBtnState value)? sum,
     required TResult orElse(),
   }) {
@@ -288,66 +330,103 @@ abstract class PaymentFeedbacksBtnState implements FeedbacksBtnState {
 }
 
 /// @nodoc
-abstract class $ResumeFeedbacksBtnStateCopyWith<$Res> {
-  factory $ResumeFeedbacksBtnStateCopyWith(ResumeFeedbacksBtnState value,
-          $Res Function(ResumeFeedbacksBtnState) then) =
-      _$ResumeFeedbacksBtnStateCopyWithImpl<$Res>;
-  $Res call({FeedbackVacancy resume});
+abstract class $ChatFeedbacksBtnStateCopyWith<$Res> {
+  factory $ChatFeedbacksBtnStateCopyWith(ChatFeedbacksBtnState value,
+          $Res Function(ChatFeedbacksBtnState) then) =
+      _$ChatFeedbacksBtnStateCopyWithImpl<$Res>;
+  $Res call({String avatarUser, String avatarCompany, String name, int userId});
 }
 
 /// @nodoc
-class _$ResumeFeedbacksBtnStateCopyWithImpl<$Res>
+class _$ChatFeedbacksBtnStateCopyWithImpl<$Res>
     extends _$FeedbacksBtnStateCopyWithImpl<$Res>
-    implements $ResumeFeedbacksBtnStateCopyWith<$Res> {
-  _$ResumeFeedbacksBtnStateCopyWithImpl(ResumeFeedbacksBtnState _value,
-      $Res Function(ResumeFeedbacksBtnState) _then)
-      : super(_value, (v) => _then(v as ResumeFeedbacksBtnState));
+    implements $ChatFeedbacksBtnStateCopyWith<$Res> {
+  _$ChatFeedbacksBtnStateCopyWithImpl(
+      ChatFeedbacksBtnState _value, $Res Function(ChatFeedbacksBtnState) _then)
+      : super(_value, (v) => _then(v as ChatFeedbacksBtnState));
 
   @override
-  ResumeFeedbacksBtnState get _value => super._value as ResumeFeedbacksBtnState;
+  ChatFeedbacksBtnState get _value => super._value as ChatFeedbacksBtnState;
 
   @override
   $Res call({
-    Object? resume = freezed,
+    Object? avatarUser = freezed,
+    Object? avatarCompany = freezed,
+    Object? name = freezed,
+    Object? userId = freezed,
   }) {
-    return _then(ResumeFeedbacksBtnState(
-      resume: resume == freezed
-          ? _value.resume
-          : resume // ignore: cast_nullable_to_non_nullable
-              as FeedbackVacancy,
+    return _then(ChatFeedbacksBtnState(
+      avatarUser: avatarUser == freezed
+          ? _value.avatarUser
+          : avatarUser // ignore: cast_nullable_to_non_nullable
+              as String,
+      avatarCompany: avatarCompany == freezed
+          ? _value.avatarCompany
+          : avatarCompany // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ResumeFeedbacksBtnState implements ResumeFeedbacksBtnState {
-  const _$ResumeFeedbacksBtnState({required this.resume});
+class _$ChatFeedbacksBtnState implements ChatFeedbacksBtnState {
+  const _$ChatFeedbacksBtnState(
+      {required this.avatarUser,
+      required this.avatarCompany,
+      required this.name,
+      required this.userId});
 
   @override
-  final FeedbackVacancy resume;
+  final String avatarUser;
+  @override
+  final String avatarCompany;
+  @override
+  final String name;
+  @override
+  final int userId;
 
   @override
   String toString() {
-    return 'FeedbacksBtnState.resume(resume: $resume)';
+    return 'FeedbacksBtnState.chat(avatarUser: $avatarUser, avatarCompany: $avatarCompany, name: $name, userId: $userId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is ResumeFeedbacksBtnState &&
-            (identical(other.resume, resume) ||
-                const DeepCollectionEquality().equals(other.resume, resume)));
+        (other is ChatFeedbacksBtnState &&
+            (identical(other.avatarUser, avatarUser) ||
+                const DeepCollectionEquality()
+                    .equals(other.avatarUser, avatarUser)) &&
+            (identical(other.avatarCompany, avatarCompany) ||
+                const DeepCollectionEquality()
+                    .equals(other.avatarCompany, avatarCompany)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.userId, userId) ||
+                const DeepCollectionEquality().equals(other.userId, userId)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(resume);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(avatarUser) ^
+      const DeepCollectionEquality().hash(avatarCompany) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(userId);
 
   @JsonKey(ignore: true)
   @override
-  $ResumeFeedbacksBtnStateCopyWith<ResumeFeedbacksBtnState> get copyWith =>
-      _$ResumeFeedbacksBtnStateCopyWithImpl<ResumeFeedbacksBtnState>(
+  $ChatFeedbacksBtnStateCopyWith<ChatFeedbacksBtnState> get copyWith =>
+      _$ChatFeedbacksBtnStateCopyWithImpl<ChatFeedbacksBtnState>(
           this, _$identity);
 
   @override
@@ -355,10 +434,14 @@ class _$ResumeFeedbacksBtnState implements ResumeFeedbacksBtnState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() payment,
-    required TResult Function(FeedbackVacancy resume) resume,
+    required TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)
+        chat,
+    required TResult Function(FeedbackVacancy resume, bool isInvite)
+        resumeInvite,
     required TResult Function(String title, int sum, int total) sum,
   }) {
-    return resume(this.resume);
+    return chat(avatarUser, avatarCompany, name, userId);
   }
 
   @override
@@ -366,12 +449,15 @@ class _$ResumeFeedbacksBtnState implements ResumeFeedbacksBtnState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? payment,
-    TResult Function(FeedbackVacancy resume)? resume,
+    TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)?
+        chat,
+    TResult Function(FeedbackVacancy resume, bool isInvite)? resumeInvite,
     TResult Function(String title, int sum, int total)? sum,
     required TResult orElse(),
   }) {
-    if (resume != null) {
-      return resume(this.resume);
+    if (chat != null) {
+      return chat(avatarUser, avatarCompany, name, userId);
     }
     return orElse();
   }
@@ -381,10 +467,11 @@ class _$ResumeFeedbacksBtnState implements ResumeFeedbacksBtnState {
   TResult map<TResult extends Object?>({
     required TResult Function(EmptyFeedbacksBtnState value) empty,
     required TResult Function(PaymentFeedbacksBtnState value) payment,
-    required TResult Function(ResumeFeedbacksBtnState value) resume,
+    required TResult Function(ChatFeedbacksBtnState value) chat,
+    required TResult Function(ResumeInviteFeedbacksBtnState value) resumeInvite,
     required TResult Function(SumFeedbacksBtnState value) sum,
   }) {
-    return resume(this);
+    return chat(this);
   }
 
   @override
@@ -392,25 +479,185 @@ class _$ResumeFeedbacksBtnState implements ResumeFeedbacksBtnState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmptyFeedbacksBtnState value)? empty,
     TResult Function(PaymentFeedbacksBtnState value)? payment,
-    TResult Function(ResumeFeedbacksBtnState value)? resume,
+    TResult Function(ChatFeedbacksBtnState value)? chat,
+    TResult Function(ResumeInviteFeedbacksBtnState value)? resumeInvite,
     TResult Function(SumFeedbacksBtnState value)? sum,
     required TResult orElse(),
   }) {
-    if (resume != null) {
-      return resume(this);
+    if (chat != null) {
+      return chat(this);
     }
     return orElse();
   }
 }
 
-abstract class ResumeFeedbacksBtnState implements FeedbacksBtnState {
-  const factory ResumeFeedbacksBtnState({required FeedbackVacancy resume}) =
-      _$ResumeFeedbacksBtnState;
+abstract class ChatFeedbacksBtnState implements FeedbacksBtnState {
+  const factory ChatFeedbacksBtnState(
+      {required String avatarUser,
+      required String avatarCompany,
+      required String name,
+      required int userId}) = _$ChatFeedbacksBtnState;
+
+  String get avatarUser => throw _privateConstructorUsedError;
+  String get avatarCompany => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  int get userId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ChatFeedbacksBtnStateCopyWith<ChatFeedbacksBtnState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ResumeInviteFeedbacksBtnStateCopyWith<$Res> {
+  factory $ResumeInviteFeedbacksBtnStateCopyWith(
+          ResumeInviteFeedbacksBtnState value,
+          $Res Function(ResumeInviteFeedbacksBtnState) then) =
+      _$ResumeInviteFeedbacksBtnStateCopyWithImpl<$Res>;
+  $Res call({FeedbackVacancy resume, bool isInvite});
+}
+
+/// @nodoc
+class _$ResumeInviteFeedbacksBtnStateCopyWithImpl<$Res>
+    extends _$FeedbacksBtnStateCopyWithImpl<$Res>
+    implements $ResumeInviteFeedbacksBtnStateCopyWith<$Res> {
+  _$ResumeInviteFeedbacksBtnStateCopyWithImpl(
+      ResumeInviteFeedbacksBtnState _value,
+      $Res Function(ResumeInviteFeedbacksBtnState) _then)
+      : super(_value, (v) => _then(v as ResumeInviteFeedbacksBtnState));
+
+  @override
+  ResumeInviteFeedbacksBtnState get _value =>
+      super._value as ResumeInviteFeedbacksBtnState;
+
+  @override
+  $Res call({
+    Object? resume = freezed,
+    Object? isInvite = freezed,
+  }) {
+    return _then(ResumeInviteFeedbacksBtnState(
+      resume: resume == freezed
+          ? _value.resume
+          : resume // ignore: cast_nullable_to_non_nullable
+              as FeedbackVacancy,
+      isInvite: isInvite == freezed
+          ? _value.isInvite
+          : isInvite // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ResumeInviteFeedbacksBtnState implements ResumeInviteFeedbacksBtnState {
+  const _$ResumeInviteFeedbacksBtnState(
+      {required this.resume, required this.isInvite});
+
+  @override
+  final FeedbackVacancy resume;
+  @override
+  final bool isInvite;
+
+  @override
+  String toString() {
+    return 'FeedbacksBtnState.resumeInvite(resume: $resume, isInvite: $isInvite)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ResumeInviteFeedbacksBtnState &&
+            (identical(other.resume, resume) ||
+                const DeepCollectionEquality().equals(other.resume, resume)) &&
+            (identical(other.isInvite, isInvite) ||
+                const DeepCollectionEquality()
+                    .equals(other.isInvite, isInvite)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(resume) ^
+      const DeepCollectionEquality().hash(isInvite);
+
+  @JsonKey(ignore: true)
+  @override
+  $ResumeInviteFeedbacksBtnStateCopyWith<ResumeInviteFeedbacksBtnState>
+      get copyWith => _$ResumeInviteFeedbacksBtnStateCopyWithImpl<
+          ResumeInviteFeedbacksBtnState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function() payment,
+    required TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)
+        chat,
+    required TResult Function(FeedbackVacancy resume, bool isInvite)
+        resumeInvite,
+    required TResult Function(String title, int sum, int total) sum,
+  }) {
+    return resumeInvite(resume, isInvite);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? payment,
+    TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)?
+        chat,
+    TResult Function(FeedbackVacancy resume, bool isInvite)? resumeInvite,
+    TResult Function(String title, int sum, int total)? sum,
+    required TResult orElse(),
+  }) {
+    if (resumeInvite != null) {
+      return resumeInvite(resume, isInvite);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyFeedbacksBtnState value) empty,
+    required TResult Function(PaymentFeedbacksBtnState value) payment,
+    required TResult Function(ChatFeedbacksBtnState value) chat,
+    required TResult Function(ResumeInviteFeedbacksBtnState value) resumeInvite,
+    required TResult Function(SumFeedbacksBtnState value) sum,
+  }) {
+    return resumeInvite(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyFeedbacksBtnState value)? empty,
+    TResult Function(PaymentFeedbacksBtnState value)? payment,
+    TResult Function(ChatFeedbacksBtnState value)? chat,
+    TResult Function(ResumeInviteFeedbacksBtnState value)? resumeInvite,
+    TResult Function(SumFeedbacksBtnState value)? sum,
+    required TResult orElse(),
+  }) {
+    if (resumeInvite != null) {
+      return resumeInvite(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ResumeInviteFeedbacksBtnState implements FeedbacksBtnState {
+  const factory ResumeInviteFeedbacksBtnState(
+      {required FeedbackVacancy resume,
+      required bool isInvite}) = _$ResumeInviteFeedbacksBtnState;
 
   FeedbackVacancy get resume => throw _privateConstructorUsedError;
+  bool get isInvite => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ResumeFeedbacksBtnStateCopyWith<ResumeFeedbacksBtnState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ResumeInviteFeedbacksBtnStateCopyWith<ResumeInviteFeedbacksBtnState>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -503,7 +750,11 @@ class _$SumFeedbacksBtnState implements SumFeedbacksBtnState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() payment,
-    required TResult Function(FeedbackVacancy resume) resume,
+    required TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)
+        chat,
+    required TResult Function(FeedbackVacancy resume, bool isInvite)
+        resumeInvite,
     required TResult Function(String title, int sum, int total) sum,
   }) {
     return sum(title, this.sum, total);
@@ -514,7 +765,10 @@ class _$SumFeedbacksBtnState implements SumFeedbacksBtnState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? payment,
-    TResult Function(FeedbackVacancy resume)? resume,
+    TResult Function(
+            String avatarUser, String avatarCompany, String name, int userId)?
+        chat,
+    TResult Function(FeedbackVacancy resume, bool isInvite)? resumeInvite,
     TResult Function(String title, int sum, int total)? sum,
     required TResult orElse(),
   }) {
@@ -529,7 +783,8 @@ class _$SumFeedbacksBtnState implements SumFeedbacksBtnState {
   TResult map<TResult extends Object?>({
     required TResult Function(EmptyFeedbacksBtnState value) empty,
     required TResult Function(PaymentFeedbacksBtnState value) payment,
-    required TResult Function(ResumeFeedbacksBtnState value) resume,
+    required TResult Function(ChatFeedbacksBtnState value) chat,
+    required TResult Function(ResumeInviteFeedbacksBtnState value) resumeInvite,
     required TResult Function(SumFeedbacksBtnState value) sum,
   }) {
     return sum(this);
@@ -540,7 +795,8 @@ class _$SumFeedbacksBtnState implements SumFeedbacksBtnState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(EmptyFeedbacksBtnState value)? empty,
     TResult Function(PaymentFeedbacksBtnState value)? payment,
-    TResult Function(ResumeFeedbacksBtnState value)? resume,
+    TResult Function(ChatFeedbacksBtnState value)? chat,
+    TResult Function(ResumeInviteFeedbacksBtnState value)? resumeInvite,
     TResult Function(SumFeedbacksBtnState value)? sum,
     required TResult orElse(),
   }) {

@@ -16,7 +16,7 @@ export 'package:sap_work/screens/authorization/screens/sign_in/user/screen.dart'
 export 'package:sap_work/resources/images.dart';
 export 'package:sap_work/resources/theme/color_theme.dart';
 export 'package:sap_work/resources/theme/text_theme.dart';
-export 'package:sap_work/resources/utils/validator.dart';
+export 'package:sap_work/resources/validator.dart';
 export 'package:sap_work/bloc/splash/splash_bloc.dart';
 export 'package:sap_work/bloc/sign_up/user/user_sign_up_bloc.dart';
 export 'package:sap_work/data_source/auth_provider.dart';

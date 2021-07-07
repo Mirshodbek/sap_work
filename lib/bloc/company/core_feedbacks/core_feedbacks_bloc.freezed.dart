@@ -301,17 +301,17 @@ abstract class _PayStatusCoreFeedbacksEvent implements CoreFeedbacksEvent {
 class _$CoreFeedbacksStateTearOff {
   const _$CoreFeedbacksStateTearOff();
 
-  InitialCoreFeedbacksState initial() {
-    return const InitialCoreFeedbacksState();
+  EmptyCoreFeedbacksState empty() {
+    return const EmptyCoreFeedbacksState();
   }
 
   LoadingCoreFeedbacksState loading() {
     return const LoadingCoreFeedbacksState();
   }
 
-  StatusSubscribeCoreFeedbacksState statusSubscribe(
-      {required String subscribe, required FormzStatus status}) {
-    return StatusSubscribeCoreFeedbacksState(
+  LoadedCoreFeedbacksState loaded(
+      {required Tariffs subscribe, required FormzStatus status}) {
+    return LoadedCoreFeedbacksState(
       subscribe: subscribe,
       status: status,
     );
@@ -331,36 +331,34 @@ const $CoreFeedbacksState = _$CoreFeedbacksStateTearOff();
 mixin _$CoreFeedbacksState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(String subscribe, FormzStatus status)
-        statusSubscribe,
+    required TResult Function(Tariffs subscribe, FormzStatus status) loaded,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(String subscribe, FormzStatus status)? statusSubscribe,
+    TResult Function(Tariffs subscribe, FormzStatus status)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialCoreFeedbacksState value) initial,
+    required TResult Function(EmptyCoreFeedbacksState value) empty,
     required TResult Function(LoadingCoreFeedbacksState value) loading,
-    required TResult Function(StatusSubscribeCoreFeedbacksState value)
-        statusSubscribe,
+    required TResult Function(LoadedCoreFeedbacksState value) loaded,
     required TResult Function(ErrorCoreFeedbacksState value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialCoreFeedbacksState value)? initial,
+    TResult Function(EmptyCoreFeedbacksState value)? empty,
     TResult Function(LoadingCoreFeedbacksState value)? loading,
-    TResult Function(StatusSubscribeCoreFeedbacksState value)? statusSubscribe,
+    TResult Function(LoadedCoreFeedbacksState value)? loaded,
     TResult Function(ErrorCoreFeedbacksState value)? error,
     required TResult orElse(),
   }) =>
@@ -385,38 +383,37 @@ class _$CoreFeedbacksStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class $InitialCoreFeedbacksStateCopyWith<$Res> {
-  factory $InitialCoreFeedbacksStateCopyWith(InitialCoreFeedbacksState value,
-          $Res Function(InitialCoreFeedbacksState) then) =
-      _$InitialCoreFeedbacksStateCopyWithImpl<$Res>;
+abstract class $EmptyCoreFeedbacksStateCopyWith<$Res> {
+  factory $EmptyCoreFeedbacksStateCopyWith(EmptyCoreFeedbacksState value,
+          $Res Function(EmptyCoreFeedbacksState) then) =
+      _$EmptyCoreFeedbacksStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$InitialCoreFeedbacksStateCopyWithImpl<$Res>
+class _$EmptyCoreFeedbacksStateCopyWithImpl<$Res>
     extends _$CoreFeedbacksStateCopyWithImpl<$Res>
-    implements $InitialCoreFeedbacksStateCopyWith<$Res> {
-  _$InitialCoreFeedbacksStateCopyWithImpl(InitialCoreFeedbacksState _value,
-      $Res Function(InitialCoreFeedbacksState) _then)
-      : super(_value, (v) => _then(v as InitialCoreFeedbacksState));
+    implements $EmptyCoreFeedbacksStateCopyWith<$Res> {
+  _$EmptyCoreFeedbacksStateCopyWithImpl(EmptyCoreFeedbacksState _value,
+      $Res Function(EmptyCoreFeedbacksState) _then)
+      : super(_value, (v) => _then(v as EmptyCoreFeedbacksState));
 
   @override
-  InitialCoreFeedbacksState get _value =>
-      super._value as InitialCoreFeedbacksState;
+  EmptyCoreFeedbacksState get _value => super._value as EmptyCoreFeedbacksState;
 }
 
 /// @nodoc
 
-class _$InitialCoreFeedbacksState implements InitialCoreFeedbacksState {
-  const _$InitialCoreFeedbacksState();
+class _$EmptyCoreFeedbacksState implements EmptyCoreFeedbacksState {
+  const _$EmptyCoreFeedbacksState();
 
   @override
   String toString() {
-    return 'CoreFeedbacksState.initial()';
+    return 'CoreFeedbacksState.empty()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is InitialCoreFeedbacksState);
+    return identical(this, other) || (other is EmptyCoreFeedbacksState);
   }
 
   @override
@@ -425,26 +422,25 @@ class _$InitialCoreFeedbacksState implements InitialCoreFeedbacksState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(String subscribe, FormzStatus status)
-        statusSubscribe,
+    required TResult Function(Tariffs subscribe, FormzStatus status) loaded,
     required TResult Function(String error) error,
   }) {
-    return initial();
+    return empty();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(String subscribe, FormzStatus status)? statusSubscribe,
+    TResult Function(Tariffs subscribe, FormzStatus status)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (empty != null) {
+      return empty();
     }
     return orElse();
   }
@@ -452,33 +448,32 @@ class _$InitialCoreFeedbacksState implements InitialCoreFeedbacksState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialCoreFeedbacksState value) initial,
+    required TResult Function(EmptyCoreFeedbacksState value) empty,
     required TResult Function(LoadingCoreFeedbacksState value) loading,
-    required TResult Function(StatusSubscribeCoreFeedbacksState value)
-        statusSubscribe,
+    required TResult Function(LoadedCoreFeedbacksState value) loaded,
     required TResult Function(ErrorCoreFeedbacksState value) error,
   }) {
-    return initial(this);
+    return empty(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialCoreFeedbacksState value)? initial,
+    TResult Function(EmptyCoreFeedbacksState value)? empty,
     TResult Function(LoadingCoreFeedbacksState value)? loading,
-    TResult Function(StatusSubscribeCoreFeedbacksState value)? statusSubscribe,
+    TResult Function(LoadedCoreFeedbacksState value)? loaded,
     TResult Function(ErrorCoreFeedbacksState value)? error,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (empty != null) {
+      return empty(this);
     }
     return orElse();
   }
 }
 
-abstract class InitialCoreFeedbacksState implements CoreFeedbacksState {
-  const factory InitialCoreFeedbacksState() = _$InitialCoreFeedbacksState;
+abstract class EmptyCoreFeedbacksState implements CoreFeedbacksState {
+  const factory EmptyCoreFeedbacksState() = _$EmptyCoreFeedbacksState;
 }
 
 /// @nodoc
@@ -522,10 +517,9 @@ class _$LoadingCoreFeedbacksState implements LoadingCoreFeedbacksState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(String subscribe, FormzStatus status)
-        statusSubscribe,
+    required TResult Function(Tariffs subscribe, FormzStatus status) loaded,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -534,9 +528,9 @@ class _$LoadingCoreFeedbacksState implements LoadingCoreFeedbacksState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(String subscribe, FormzStatus status)? statusSubscribe,
+    TResult Function(Tariffs subscribe, FormzStatus status)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -549,10 +543,9 @@ class _$LoadingCoreFeedbacksState implements LoadingCoreFeedbacksState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialCoreFeedbacksState value) initial,
+    required TResult Function(EmptyCoreFeedbacksState value) empty,
     required TResult Function(LoadingCoreFeedbacksState value) loading,
-    required TResult Function(StatusSubscribeCoreFeedbacksState value)
-        statusSubscribe,
+    required TResult Function(LoadedCoreFeedbacksState value) loaded,
     required TResult Function(ErrorCoreFeedbacksState value) error,
   }) {
     return loading(this);
@@ -561,9 +554,9 @@ class _$LoadingCoreFeedbacksState implements LoadingCoreFeedbacksState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialCoreFeedbacksState value)? initial,
+    TResult Function(EmptyCoreFeedbacksState value)? empty,
     TResult Function(LoadingCoreFeedbacksState value)? loading,
-    TResult Function(StatusSubscribeCoreFeedbacksState value)? statusSubscribe,
+    TResult Function(LoadedCoreFeedbacksState value)? loaded,
     TResult Function(ErrorCoreFeedbacksState value)? error,
     required TResult orElse(),
   }) {
@@ -579,37 +572,35 @@ abstract class LoadingCoreFeedbacksState implements CoreFeedbacksState {
 }
 
 /// @nodoc
-abstract class $StatusSubscribeCoreFeedbacksStateCopyWith<$Res> {
-  factory $StatusSubscribeCoreFeedbacksStateCopyWith(
-          StatusSubscribeCoreFeedbacksState value,
-          $Res Function(StatusSubscribeCoreFeedbacksState) then) =
-      _$StatusSubscribeCoreFeedbacksStateCopyWithImpl<$Res>;
-  $Res call({String subscribe, FormzStatus status});
+abstract class $LoadedCoreFeedbacksStateCopyWith<$Res> {
+  factory $LoadedCoreFeedbacksStateCopyWith(LoadedCoreFeedbacksState value,
+          $Res Function(LoadedCoreFeedbacksState) then) =
+      _$LoadedCoreFeedbacksStateCopyWithImpl<$Res>;
+  $Res call({Tariffs subscribe, FormzStatus status});
 }
 
 /// @nodoc
-class _$StatusSubscribeCoreFeedbacksStateCopyWithImpl<$Res>
+class _$LoadedCoreFeedbacksStateCopyWithImpl<$Res>
     extends _$CoreFeedbacksStateCopyWithImpl<$Res>
-    implements $StatusSubscribeCoreFeedbacksStateCopyWith<$Res> {
-  _$StatusSubscribeCoreFeedbacksStateCopyWithImpl(
-      StatusSubscribeCoreFeedbacksState _value,
-      $Res Function(StatusSubscribeCoreFeedbacksState) _then)
-      : super(_value, (v) => _then(v as StatusSubscribeCoreFeedbacksState));
+    implements $LoadedCoreFeedbacksStateCopyWith<$Res> {
+  _$LoadedCoreFeedbacksStateCopyWithImpl(LoadedCoreFeedbacksState _value,
+      $Res Function(LoadedCoreFeedbacksState) _then)
+      : super(_value, (v) => _then(v as LoadedCoreFeedbacksState));
 
   @override
-  StatusSubscribeCoreFeedbacksState get _value =>
-      super._value as StatusSubscribeCoreFeedbacksState;
+  LoadedCoreFeedbacksState get _value =>
+      super._value as LoadedCoreFeedbacksState;
 
   @override
   $Res call({
     Object? subscribe = freezed,
     Object? status = freezed,
   }) {
-    return _then(StatusSubscribeCoreFeedbacksState(
+    return _then(LoadedCoreFeedbacksState(
       subscribe: subscribe == freezed
           ? _value.subscribe
           : subscribe // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Tariffs,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -620,25 +611,24 @@ class _$StatusSubscribeCoreFeedbacksStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StatusSubscribeCoreFeedbacksState
-    implements StatusSubscribeCoreFeedbacksState {
-  const _$StatusSubscribeCoreFeedbacksState(
+class _$LoadedCoreFeedbacksState implements LoadedCoreFeedbacksState {
+  const _$LoadedCoreFeedbacksState(
       {required this.subscribe, required this.status});
 
   @override
-  final String subscribe;
+  final Tariffs subscribe;
   @override
   final FormzStatus status;
 
   @override
   String toString() {
-    return 'CoreFeedbacksState.statusSubscribe(subscribe: $subscribe, status: $status)';
+    return 'CoreFeedbacksState.loaded(subscribe: $subscribe, status: $status)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is StatusSubscribeCoreFeedbacksState &&
+        (other is LoadedCoreFeedbacksState &&
             (identical(other.subscribe, subscribe) ||
                 const DeepCollectionEquality()
                     .equals(other.subscribe, subscribe)) &&
@@ -654,33 +644,32 @@ class _$StatusSubscribeCoreFeedbacksState
 
   @JsonKey(ignore: true)
   @override
-  $StatusSubscribeCoreFeedbacksStateCopyWith<StatusSubscribeCoreFeedbacksState>
-      get copyWith => _$StatusSubscribeCoreFeedbacksStateCopyWithImpl<
-          StatusSubscribeCoreFeedbacksState>(this, _$identity);
+  $LoadedCoreFeedbacksStateCopyWith<LoadedCoreFeedbacksState> get copyWith =>
+      _$LoadedCoreFeedbacksStateCopyWithImpl<LoadedCoreFeedbacksState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(String subscribe, FormzStatus status)
-        statusSubscribe,
+    required TResult Function(Tariffs subscribe, FormzStatus status) loaded,
     required TResult Function(String error) error,
   }) {
-    return statusSubscribe(subscribe, status);
+    return loaded(subscribe, status);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(String subscribe, FormzStatus status)? statusSubscribe,
+    TResult Function(Tariffs subscribe, FormzStatus status)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
-    if (statusSubscribe != null) {
-      return statusSubscribe(subscribe, status);
+    if (loaded != null) {
+      return loaded(subscribe, status);
     }
     return orElse();
   }
@@ -688,41 +677,40 @@ class _$StatusSubscribeCoreFeedbacksState
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialCoreFeedbacksState value) initial,
+    required TResult Function(EmptyCoreFeedbacksState value) empty,
     required TResult Function(LoadingCoreFeedbacksState value) loading,
-    required TResult Function(StatusSubscribeCoreFeedbacksState value)
-        statusSubscribe,
+    required TResult Function(LoadedCoreFeedbacksState value) loaded,
     required TResult Function(ErrorCoreFeedbacksState value) error,
   }) {
-    return statusSubscribe(this);
+    return loaded(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialCoreFeedbacksState value)? initial,
+    TResult Function(EmptyCoreFeedbacksState value)? empty,
     TResult Function(LoadingCoreFeedbacksState value)? loading,
-    TResult Function(StatusSubscribeCoreFeedbacksState value)? statusSubscribe,
+    TResult Function(LoadedCoreFeedbacksState value)? loaded,
     TResult Function(ErrorCoreFeedbacksState value)? error,
     required TResult orElse(),
   }) {
-    if (statusSubscribe != null) {
-      return statusSubscribe(this);
+    if (loaded != null) {
+      return loaded(this);
     }
     return orElse();
   }
 }
 
-abstract class StatusSubscribeCoreFeedbacksState implements CoreFeedbacksState {
-  const factory StatusSubscribeCoreFeedbacksState(
-      {required String subscribe,
-      required FormzStatus status}) = _$StatusSubscribeCoreFeedbacksState;
+abstract class LoadedCoreFeedbacksState implements CoreFeedbacksState {
+  const factory LoadedCoreFeedbacksState(
+      {required Tariffs subscribe,
+      required FormzStatus status}) = _$LoadedCoreFeedbacksState;
 
-  String get subscribe => throw _privateConstructorUsedError;
+  Tariffs get subscribe => throw _privateConstructorUsedError;
   FormzStatus get status => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StatusSubscribeCoreFeedbacksStateCopyWith<StatusSubscribeCoreFeedbacksState>
-      get copyWith => throw _privateConstructorUsedError;
+  $LoadedCoreFeedbacksStateCopyWith<LoadedCoreFeedbacksState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -791,10 +779,9 @@ class _$ErrorCoreFeedbacksState implements ErrorCoreFeedbacksState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(String subscribe, FormzStatus status)
-        statusSubscribe,
+    required TResult Function(Tariffs subscribe, FormzStatus status) loaded,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -803,9 +790,9 @@ class _$ErrorCoreFeedbacksState implements ErrorCoreFeedbacksState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(String subscribe, FormzStatus status)? statusSubscribe,
+    TResult Function(Tariffs subscribe, FormzStatus status)? loaded,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -818,10 +805,9 @@ class _$ErrorCoreFeedbacksState implements ErrorCoreFeedbacksState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(InitialCoreFeedbacksState value) initial,
+    required TResult Function(EmptyCoreFeedbacksState value) empty,
     required TResult Function(LoadingCoreFeedbacksState value) loading,
-    required TResult Function(StatusSubscribeCoreFeedbacksState value)
-        statusSubscribe,
+    required TResult Function(LoadedCoreFeedbacksState value) loaded,
     required TResult Function(ErrorCoreFeedbacksState value) error,
   }) {
     return error(this);
@@ -830,9 +816,9 @@ class _$ErrorCoreFeedbacksState implements ErrorCoreFeedbacksState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(InitialCoreFeedbacksState value)? initial,
+    TResult Function(EmptyCoreFeedbacksState value)? empty,
     TResult Function(LoadingCoreFeedbacksState value)? loading,
-    TResult Function(StatusSubscribeCoreFeedbacksState value)? statusSubscribe,
+    TResult Function(LoadedCoreFeedbacksState value)? loaded,
     TResult Function(ErrorCoreFeedbacksState value)? error,
     required TResult orElse(),
   }) {

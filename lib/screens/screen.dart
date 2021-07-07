@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sap_work/bloc/company/core_feedbacks/core_feedbacks_bloc.dart';
 import 'package:sap_work/bloc/company/core_profile/core_profile_bloc.dart';
 import 'package:sap_work/bloc/company/feedbacks/feedbacks_vacancy_bloc.dart';
-import 'package:sap_work/bloc/company/profile/profile_company.dart';
+import 'package:sap_work/bloc/company/profile/profile_company_bloc.dart';
 import 'package:sap_work/bloc/company/vacancies/vacancies_company_bloc.dart';
 import 'package:sap_work/bloc/company/vacancy/vacancy_company_bloc.dart';
-import 'package:sap_work/bloc/hunter/notifications/notifications_bloc.dart';
-import 'package:sap_work/bloc/hunter/profile/profile_bloc.dart';
-import 'package:sap_work/bloc/hunter/vacancies/vacancies_bloc.dart';
 import 'package:sap_work/bloc/internet/internet_cubit.dart';
 import 'package:sap_work/bloc/navigation/navigation_cubit.dart';
+import 'package:sap_work/bloc/user/profile/profile_user_bloc.dart';
 import 'package:sap_work/injection_container.dart';
-import 'package:sap_work/repository/hunter/hunter_repository.dart';
 import 'package:sap_work/resources/small_widgets.dart';
-import 'company/feedback/screen.dart';
+import 'package:sap_work/screens/user/feedbacks/screen.dart';
+import 'package:sap_work/screens/user/profile/screen.dart';
+import 'package:sap_work/screens/user/vacancies/screen.dart';
+import 'company/feedbacks/screen.dart';
 import 'company/profile/screen.dart';
 import 'company/resumes/screen.dart';
-import 'hunter/screens/notifications/screen.dart';
-import 'hunter/screens/profile/screen.dart';
-import 'hunter/screens/vacancies/screen.dart';
 
 class NavigationBar extends StatelessWidget {
   static const String id = '/navigation_bar';
@@ -27,9 +25,9 @@ class NavigationBar extends StatelessWidget {
 
   Map<BottomNavItem, WidgetBuilder> get widgetBuildersUser {
     return {
-      BottomNavItem.announces: (context) => VacanciesScreen(),
-      BottomNavItem.messages: (context) => NotificationsScreen(),
-      BottomNavItem.profile: (context) => ProfileScreen(),
+      BottomNavItem.announces: (context) => VacanciesScreenUser(),
+      BottomNavItem.messages: (context) => FeedbacksScreenUser(),
+      BottomNavItem.profile: (context) => ProfileScreenUser(),
     };
   }
 
@@ -68,21 +66,20 @@ class NavigationBar extends StatelessWidget {
             create: (context) => CoreProfileBloc(sl(), sl(), sl())
               ..add(const CoreProfileEvent.initial())),
         BlocProvider(
-            create: (_) => FeedbacksVacancyBloc(sl(), sl())
+            create: (_) => FeedbacksVacancyBloc(sl(), sl(), sl())
               ..add(const FeedbacksVacancyEvent.getFeedbacks())),
+        BlocProvider<CoreFeedbacksBloc>(
+            create: (_) => CoreFeedbacksBloc(sl(), sl())
+              ..add(const CoreFeedbacksEvent.getStatusSubscribe())),
       ],
       child: BlocListener<InternetCubit, InternetState>(
         listener: (context, state) {
           if (state is ConnectedInternetState &&
               state.connectionType == ConnectionType.Wifi) {
-            context
-                .read<VacancyCompanyBloc>()
-                .add(const VacancyCompanyEvent.getVacancy());
+            updatedStatesCompany(context);
           } else if (state is ConnectedInternetState &&
               state.connectionType == ConnectionType.Mobile) {
-            context
-                .read<VacancyCompanyBloc>()
-                .add(const VacancyCompanyEvent.getVacancy());
+            updatedStatesCompany(context);
           } else {
             SmallWidgets.scaffoldMessage(
                 context: context, message: "Нет доступ к интернету");
@@ -93,42 +90,31 @@ class NavigationBar extends StatelessWidget {
     );
   }
 
+  void updatedStatesCompany(BuildContext context) {
+    context
+        .read<FeedbacksVacancyBloc>()
+        .add(const FeedbacksVacancyEvent.getFeedbacks());
+    context
+        .read<VacancyCompanyBloc>()
+        .add(const VacancyCompanyEvent.getVacancy());
+  }
+
   Widget _widgetBuildersUser(BuildContext context, BottomNavItem itemState) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<VacanciesBloc>(
-            create: (_) => VacanciesBloc(
-                  context.read<HunterRepositoryBase>(),
-                )..add(const VacanciesEvent.refresh())),
-        BlocProvider<NotificationsBloc>(
-            create: (context) =>
-                NotificationsBloc(context.read<HunterRepositoryBase>())
-                  ..add(const NotificationsEvent.refresh())),
-        BlocProvider<ProfileBloc>(
-            create: (context) =>
-                ProfileBloc(context.read<HunterRepositoryBase>())
-                  ..add(const ProfileEvent.refresh())),
+        BlocProvider<ProfileUserBloc>(
+            create: (_) => ProfileUserBloc(sl())
+              ..add(const ProfileUserEvent.getProfileData())),
       ],
       child: BlocListener<InternetCubit, InternetState>(
         listener: (context, state) {
           if (state is ConnectedInternetState &&
               state.connectionType == ConnectionType.Wifi) {
-            context.read<VacanciesBloc>().add(const VacanciesEvent.refresh());
-            context
-                .read<NotificationsBloc>()
-                .add(const NotificationsEvent.refresh());
-            context.read<ProfileBloc>().add(const ProfileEvent.refresh());
           } else if (state is ConnectedInternetState &&
               state.connectionType == ConnectionType.Mobile) {
-            context.read<VacanciesBloc>().add(const VacanciesEvent.refresh());
-            context
-                .read<NotificationsBloc>()
-                .add(const NotificationsEvent.refresh());
-            context.read<ProfileBloc>().add(const ProfileEvent.refresh());
           } else {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                behavior: SnackBarBehavior.floating,
-                content: Text("Нет доступ к интернету")));
+            SmallWidgets.scaffoldMessage(
+                context: context, message: "Нет доступ к интернету");
           }
         },
         child: widgetBuildersUser[itemState]!(context),

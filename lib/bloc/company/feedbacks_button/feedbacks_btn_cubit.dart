@@ -6,15 +6,28 @@ import 'package:sap_work/resources/lists.dart';
 part 'feedbacks_btn_cubit.freezed.dart';
 
 class FeedbacksBtnCubit extends Cubit<FeedbacksBtnState> {
-  int sum = 0;
+  int sum = 1;
   int total = 1000;
   String title = Lists.tariffs.first.title;
 
   FeedbacksBtnCubit() : super(const FeedbacksBtnState.empty());
 
-  void resume(FeedbackVacancy resume) {
+  void chat(
+      {required String avatarUser,
+      required String avatarCompany,
+      required String name,
+      required int userId}) {
     emit(const FeedbacksBtnState.empty());
-    emit(FeedbacksBtnState.resume(resume: resume));
+    emit(FeedbacksBtnState.chat(
+        avatarUser: avatarUser,
+        avatarCompany: avatarCompany,
+        name: name,
+        userId: userId));
+  }
+
+  void resumeInvite(FeedbackVacancy resume, bool isInvite) {
+    emit(const FeedbacksBtnState.empty());
+    emit(FeedbacksBtnState.resumeInvite(resume: resume, isInvite: isInvite));
   }
 
   void payment() {
@@ -25,7 +38,7 @@ class FeedbacksBtnCubit extends Cubit<FeedbacksBtnState> {
 
   void minus() {
     if (sum > 1) {
-      totally;
+      total = Utils.totally(title);
       emit(state.maybeMap(
           orElse: () => state,
           sum: (_state) =>
@@ -35,27 +48,18 @@ class FeedbacksBtnCubit extends Cubit<FeedbacksBtnState> {
 
   void onTap(String title) {
     this.title = title;
-    totally;
+    total = Utils.totally(title);
     emit(state.maybeMap(
         orElse: () => state,
         sum: (_state) => _state.copyWith(title: title, total: total * sum)));
   }
 
   void plus() {
-    totally;
+    total = Utils.totally(title);
     emit(state.maybeMap(
         orElse: () => state,
         sum: (_state) =>
             _state.copyWith(sum: sum = sum + 1, total: total * sum)));
-  }
-
-  int get totally {
-    if (title == Lists.tariffs[0].title) {
-      return total = 1000;
-    } else if (title == Lists.tariffs[1].title) {
-      return total = 2000;
-    }
-    return total = 0;
   }
 }
 
@@ -65,8 +69,15 @@ abstract class FeedbacksBtnState with _$FeedbacksBtnState {
 
   const factory FeedbacksBtnState.payment() = PaymentFeedbacksBtnState;
 
-  const factory FeedbacksBtnState.resume({required FeedbackVacancy resume}) =
-      ResumeFeedbacksBtnState;
+  const factory FeedbacksBtnState.chat(
+      {required final String avatarUser,
+      required final String avatarCompany,
+      required final String name,
+      required final int userId}) = ChatFeedbacksBtnState;
+
+  const factory FeedbacksBtnState.resumeInvite(
+      {required FeedbackVacancy resume,
+      required final bool isInvite}) = ResumeInviteFeedbacksBtnState;
 
   const factory FeedbacksBtnState.sum(
       {required final String title,

@@ -9,7 +9,7 @@ import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/screens/company/widgets/feedback.dart';
 import 'package:sap_work/screens/company/widgets/profile.dart';
 import 'package:sap_work/screens/company/profile/widgets/vacancies_or_vacancy.dart';
-import 'package:sap_work/screens/hunter/screens/settings/screen.dart';
+import 'package:sap_work/screens/settings/screen.dart';
 import 'package:sap_work/screens/widgets/bottom_nav_bar.dart';
 import 'package:sap_work/resources/theme/color_theme.dart';
 
@@ -47,9 +47,9 @@ class ProfileScreenCompany extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ProfileNameWidget(),
+                    ProfileCompanyNameWidget(),
                     const SizedBox(height: 5),
-                    FeedbackCountWidget(),
+                    FeedbackCountCompanyWidget(),
                     const SizedBox(height: 5),
                     LinksWidget(),
                   ],

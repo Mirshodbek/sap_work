@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:intl/intl.dart';
+import 'package:sap_work/models/tariff/tariff.dart';
 
 import '../company.dart';
 
@@ -12,12 +12,13 @@ class CoreFeedbacksBloc extends Bloc<CoreFeedbacksEvent, CoreFeedbacksState> {
   final GetStatusCompany getStatus;
 
   CoreFeedbacksBloc(this.remoteCompany, this.getStatus)
-      : super(const CoreFeedbacksState.initial());
+      : super(const CoreFeedbacksState.empty());
 
   @override
   Stream<CoreFeedbacksState> mapEventToState(CoreFeedbacksEvent event) async* {
     yield* event.map(
-        getStatusSubscribe: _getStatusSubscribe, payStatus: _payStatusEvent);
+        getStatusSubscribe: _getStatusSubscribe,
+        payStatus: _payStatusEvent);
   }
 
   Stream<CoreFeedbacksState> _getStatusSubscribe(
@@ -26,15 +27,8 @@ class CoreFeedbacksBloc extends Bloc<CoreFeedbacksEvent, CoreFeedbacksState> {
     yield* status.fold((failure) async* {
       yield CoreFeedbacksState.error(error: _mapFailureToMessage(failure));
     }, (subscribe) async* {
-      if (subscribe != "0") {
-        final date =
-            DateFormat('dd.MM.yyyy (kk:mm)').format(DateTime.parse(subscribe));
-        yield CoreFeedbacksState.statusSubscribe(
-            subscribe: date, status: FormzStatus.pure);
-      } else {
-        yield CoreFeedbacksState.statusSubscribe(
-            subscribe: subscribe, status: FormzStatus.pure);
-      }
+      yield CoreFeedbacksState.loaded(
+          subscribe: subscribe, status: FormzStatus.pure);
     });
   }
 
@@ -43,20 +37,19 @@ class CoreFeedbacksBloc extends Bloc<CoreFeedbacksEvent, CoreFeedbacksState> {
     try {
       yield state.maybeMap(
           orElse: () => state,
-          statusSubscribe: (_state) =>
+          loaded: (_state) =>
               _state.copyWith(status: FormzStatus.submissionInProgress));
-      final subscribe = await remoteCompany
-          .addStatusSubscribeCompany(event.sum.toString());
-      final date =
-          DateFormat('dd.MM.yyyy (kk:mm)').format(DateTime.parse(subscribe));
+      final subscribe =
+          await remoteCompany.addStatusSubscribeCompany(event.sum.toString());
+
       yield state.maybeMap(
           orElse: () => state,
-          statusSubscribe: (_state) => _state.copyWith(
-              subscribe: date, status: FormzStatus.submissionSuccess));
+          loaded: (_state) => _state.copyWith(
+              subscribe: subscribe, status: FormzStatus.submissionSuccess));
     } catch (_) {
       yield state.maybeMap(
           orElse: () => state,
-          statusSubscribe: (_state) =>
+          loaded: (_state) =>
               _state.copyWith(status: FormzStatus.submissionFailure));
     }
   }
@@ -80,17 +73,19 @@ abstract class CoreFeedbacksEvent with _$CoreFeedbacksEvent {
 
   const factory CoreFeedbacksEvent.payStatus({required final int sum}) =
       _PayStatusCoreFeedbacksEvent;
+
+
 }
 
 @freezed
 abstract class CoreFeedbacksState with _$CoreFeedbacksState {
-  const factory CoreFeedbacksState.initial() = InitialCoreFeedbacksState;
+  const factory CoreFeedbacksState.empty() = EmptyCoreFeedbacksState;
 
   const factory CoreFeedbacksState.loading() = LoadingCoreFeedbacksState;
 
-  const factory CoreFeedbacksState.statusSubscribe(
-      {required final String subscribe,
-      required final FormzStatus status}) = StatusSubscribeCoreFeedbacksState;
+  const factory CoreFeedbacksState.loaded(
+      {required final Tariffs subscribe,
+      required final FormzStatus status}) = LoadedCoreFeedbacksState;
 
   const factory CoreFeedbacksState.error({required final String error}) =
       ErrorCoreFeedbacksState;

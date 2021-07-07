@@ -4,12 +4,18 @@ import 'package:sap_work/data_source/company/cache_data.dart';
 import 'package:sap_work/data_source/company/remote_data.dart';
 import 'package:sap_work/repository/company/company_repository.dart';
 import 'package:sap_work/repository/company/implementation/company_repository.dart';
-import 'package:sap_work/repository/company/usercases/profile/usercases.dart';
+import 'package:sap_work/repository/company/usercases/usercases.dart';
 import 'package:sap_work/repository/network_info.dart';
+import 'package:sap_work/repository/user/implementation/user_repository.dart';
+import 'package:sap_work/repository/user/user_repository.dart';
+import 'package:sap_work/repository/user/usercases/usercases.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 import 'data_source/company/local_data.dart';
+import 'data_source/user/cache_data.dart';
+import 'data_source/user/local_data.dart';
+import 'data_source/user/remote_data.dart';
 
 final sl = GetIt.instance;
 
@@ -22,8 +28,17 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetCategories(sl()));
   sl.registerLazySingleton(() => GetFeedbacksVacancy(sl()));
   sl.registerLazySingleton(() => GetStatusCompany(sl()));
+  sl.registerLazySingleton(() => GetChatsCompany(sl()));
+  sl.registerLazySingleton(() => GetProfileUser(sl()));
   sl.registerLazySingleton<CompanyRepositoryBase>(
     () => CompanyRepository(
+      localDataSource: sl(),
+      networkInfo: sl(),
+      remoteDataSource: sl(),
+    ),
+  );
+  sl.registerLazySingleton<UserRepositoryBase>(
+    () => UserRepository(
       localDataSource: sl(),
       networkInfo: sl(),
       remoteDataSource: sl(),
@@ -32,15 +47,22 @@ Future<void> init() async {
 
   // Data sources
   sl.registerLazySingleton<CompanyRemoteDataBase>(
-    () => CompanyRemoteData(sl(), client: sl()),
-  );
+      () => CompanyRemoteData(sl(), client: sl()));
 
   sl.registerLazySingleton<CompanyCacheDataBase>(
-    () => CompanyCacheData(sharedPreferences: sl()),
-  );
+      () => CompanyCacheData(sharedPreferences: sl()));
+
   sl.registerLazySingleton<CompanyLocalDataBase>(
-    () => CompanyLocalData(sharedPreferences: sl()),
-  );
+      () => CompanyLocalData(sharedPreferences: sl()));
+
+  sl.registerLazySingleton<UserRemoteDataBase>(
+      () => UserRemoteData(sl(), client: sl()));
+
+  sl.registerLazySingleton<UserCacheDataBase>(
+      () => UserCacheData(sharedPreferences: sl()));
+
+  sl.registerLazySingleton<UserLocalDataBase>(
+      () => UserLocalData(sharedPreferences: sl()));
 
   //! Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));

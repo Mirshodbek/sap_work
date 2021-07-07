@@ -51,10 +51,17 @@ class SmallWidgets {
             title: Text(item));
       });
 
-  static ClipRRect circleAvatar(String url) => ClipRRect(
-      borderRadius: BorderRadius.circular(100),
-      child: ExtendedImage.network(url != DEFAULT_PHOTO ? BASE_API + url : url,
-          height: 80, width: 80, fit: BoxFit.cover));
+  static ClipRRect circleAvatar(
+          {required String url,
+          required double height,
+          required double width}) =>
+      ClipRRect(
+          borderRadius: BorderRadius.circular(100),
+          child: ExtendedImage.network(
+              url != DEFAULT_PHOTO ? BASE_API + url : url,
+              height: height,
+              width: width,
+              fit: BoxFit.cover));
 
   static CircleAvatar uploadAvatar() => CircleAvatar(
       radius: 40,
@@ -63,16 +70,40 @@ class SmallWidgets {
           alignment: Alignment.topCenter),
       backgroundColor: Colors.white);
 
-  static Positioned uploadAvatarButton(Function(String path) event) => Positioned(
-      bottom: 0,
-      right: 15,
-      child: IconButton(
-          alignment: Alignment.bottomCenter,
-          onPressed: () async {
-            FilePickerResult? result = await FilePicker.platform.pickFiles();
-            if (result != null) {
-              event(result.files.first.path!);
-            }
-          },
-          icon: SvgPicture.asset(AppIcons.photo, color: AppColor.red)));
+  static Positioned uploadAvatarButton(Function(String path) event) =>
+      Positioned(
+          bottom: 0,
+          right: 15,
+          child: IconButton(
+              alignment: Alignment.bottomCenter,
+              onPressed: () async {
+                FilePickerResult? result =
+                    await FilePicker.platform.pickFiles();
+                if (result != null) {
+                  event(result.files.first.path!);
+                }
+              },
+              icon: SvgPicture.asset(AppIcons.photo, color: AppColor.red)));
+
+  static Text textRich(String text) => Text.rich(
+      TextSpan(children: [
+        TextSpan(text: text),
+        WidgetSpan(child: SvgPicture.asset(AppIcons.right_arrow_ios))
+      ]),
+      textAlign: TextAlign.center,
+      style: AppTextTheme.smallTextMediumBlack);
+
+  static Text textRichSearch() => Text.rich(TextSpan(children: [
+        TextSpan(
+            text: "Подходящие резюме в городе  ",
+            style: AppTextTheme.mediumTextBlack),
+        TextSpan(
+            text: "Москва",
+            style: AppTextTheme.mediumTextBlack.copyWith(color: AppColor.red)),
+        WidgetSpan(
+            child: SvgPicture.asset(
+          AppIcons.down_arrow,
+          color: AppColor.red,
+        ))
+      ]));
 }

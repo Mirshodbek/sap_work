@@ -2481,7 +2481,7 @@ class _$ProfileStateTearOff {
       required String title,
       required Resume resume,
       required bool isEnabled,
-      required List<Block> blocks,
+      required List<String> blocks,
       required int feedbacksCount,
       required FormzStatus status,
       required List<Resume> resumes,
@@ -2528,7 +2528,7 @@ mixin _$ProfileState {
             String title,
             Resume resume,
             bool isEnabled,
-            List<Block> blocks,
+            List<String> blocks,
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
@@ -2550,7 +2550,7 @@ mixin _$ProfileState {
             String title,
             Resume resume,
             bool isEnabled,
-            List<Block> blocks,
+            List<String> blocks,
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
@@ -2646,7 +2646,7 @@ class _$InitialProfileState implements InitialProfileState {
             String title,
             Resume resume,
             bool isEnabled,
-            List<Block> blocks,
+            List<String> blocks,
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
@@ -2671,7 +2671,7 @@ class _$InitialProfileState implements InitialProfileState {
             String title,
             Resume resume,
             bool isEnabled,
-            List<Block> blocks,
+            List<String> blocks,
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
@@ -2769,7 +2769,7 @@ class _$AccessResumeProfileState implements AccessResumeProfileState {
             String title,
             Resume resume,
             bool isEnabled,
-            List<Block> blocks,
+            List<String> blocks,
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
@@ -2794,7 +2794,7 @@ class _$AccessResumeProfileState implements AccessResumeProfileState {
             String title,
             Resume resume,
             bool isEnabled,
-            List<Block> blocks,
+            List<String> blocks,
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
@@ -2854,7 +2854,7 @@ abstract class $ProfileScreenStateCopyWith<$Res> {
       String title,
       Resume resume,
       bool isEnabled,
-      List<Block> blocks,
+      List<String> blocks,
       int feedbacksCount,
       FormzStatus status,
       List<Resume> resumes,
@@ -2915,7 +2915,7 @@ class _$ProfileScreenStateCopyWithImpl<$Res>
       blocks: blocks == freezed
           ? _value.blocks
           : blocks // ignore: cast_nullable_to_non_nullable
-              as List<Block>,
+              as List<String>,
       feedbacksCount: feedbacksCount == freezed
           ? _value.feedbacksCount
           : feedbacksCount // ignore: cast_nullable_to_non_nullable
@@ -2977,7 +2977,7 @@ class _$ProfileScreenState implements ProfileScreenState {
   @override
   final bool isEnabled;
   @override
-  final List<Block> blocks;
+  final List<String> blocks;
   @override
   final int feedbacksCount;
   @override
@@ -3069,7 +3069,7 @@ class _$ProfileScreenState implements ProfileScreenState {
             String title,
             Resume resume,
             bool isEnabled,
-            List<Block> blocks,
+            List<String> blocks,
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
@@ -3095,7 +3095,7 @@ class _$ProfileScreenState implements ProfileScreenState {
             String title,
             Resume resume,
             bool isEnabled,
-            List<Block> blocks,
+            List<String> blocks,
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
@@ -3160,7 +3160,7 @@ abstract class ProfileScreenState implements ProfileState {
       required String title,
       required Resume resume,
       required bool isEnabled,
-      required List<Block> blocks,
+      required List<String> blocks,
       required int feedbacksCount,
       required FormzStatus status,
       required List<Resume> resumes,
@@ -3174,7 +3174,7 @@ abstract class ProfileScreenState implements ProfileState {
   String get title => throw _privateConstructorUsedError;
   Resume get resume => throw _privateConstructorUsedError;
   bool get isEnabled => throw _privateConstructorUsedError;
-  List<Block> get blocks => throw _privateConstructorUsedError;
+  List<String> get blocks => throw _privateConstructorUsedError;
   int get feedbacksCount => throw _privateConstructorUsedError;
   FormzStatus get status => throw _privateConstructorUsedError;
   List<Resume> get resumes => throw _privateConstructorUsedError;
@@ -3260,7 +3260,7 @@ class _$ScreensProfileState implements ScreensProfileState {
             String title,
             Resume resume,
             bool isEnabled,
-            List<Block> blocks,
+            List<String> blocks,
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,
@@ -3285,7 +3285,7 @@ class _$ScreensProfileState implements ScreensProfileState {
             String title,
             Resume resume,
             bool isEnabled,
-            List<Block> blocks,
+            List<String> blocks,
             int feedbacksCount,
             FormzStatus status,
             List<Resume> resumes,

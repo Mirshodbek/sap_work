@@ -1,4 +1,4 @@
-export 'package:sap_work/models/params_vacancy/vacancy.dart';
+export 'package:sap_work/models/params_company/vacancy/vacancy.dart';
 export 'package:sap_work/models/category/category.dart';
 export 'package:sap_work/models/profile_company/profile.dart';
 export 'package:sap_work/models/vacancy/vacancy.dart';

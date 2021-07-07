@@ -18,7 +18,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   List<String> _localResumes = [];
   List<FeedbackResume> _feedbacks = [];
   final HunterRepositoryBase _repository;
-  List<Block> _blocks = Lists.blocksResumeList;
+  // List<Block> _blocks = Lists.blocksResumeList;
   List<Map<String, dynamic>> grades = <Map<String, dynamic>>[];
   List<Map<String, dynamic>> stages = <Map<String, dynamic>>[];
   Resume _resume = Resume(
@@ -74,7 +74,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       orElse: () => state,
       profileState: (_state) => _state.copyWith(
         id: _resumeId,
-        blocks: _blocks,
+        blocks: [],
         resume: _resume,
         profile: _profile,
         resumes: _resumes,
@@ -104,7 +104,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           buttons: 0,
           resume: _resume,
           isEnabled: true,
-          blocks: _blocks,
+          blocks: [],
           feedbacksCount: _feedbacks.length,
           status: FormzStatus.pure,
           resumes: _resumes,
@@ -121,25 +121,25 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   Stream<ProfileState> _toggleBlocks(_ToggleBlocksProfileEvent event) async* {
-    var block = _blocks.where((it) => it.id == event.id).single;
-    if (event.isSelectBlocks) {
-      var deleteBloc = _blocks.where((it) => it.title == event.title).last;
-      _blocks = List.from(_blocks)..removeWhere((it) => it.id == deleteBloc.id);
-    } else {
-      int current = _blocks.indexOf(block);
-      block = block.copyWith(
-        id: _blocks.length + 50,
-        firstId: block.text1 + 50,
-        secondId: block.text2 + 50,
-        thirdId: block.text3 + 50,
-        fourthId: block.text4 + 50,
-      );
-      _blocks = List.from(_blocks)..insert(current + 1, block);
-    }
-    yield state.maybeMap(
-      orElse: () => state,
-      profileState: (_state) => _state.copyWith(blocks: _blocks),
-    );
+    // var block = _blocks.where((it) => it.id == event.id).single;
+    // if (event.isSelectBlocks) {
+    //   var deleteBloc = _blocks.where((it) => it.title == event.title).last;
+    //   _blocks = List.from(_blocks)..removeWhere((it) => it.id == deleteBloc.id);
+    // } else {
+    //   int current = _blocks.indexOf(block);
+    //   block = block.copyWith(
+    //     id: _blocks.length + 50,
+    //     firstId: block.text1 + 50,
+    //     secondId: block.text2 + 50,
+    //     thirdId: block.text3 + 50,
+    //     fourthId: block.text4 + 50,
+    //   );
+    //   _blocks = List.from(_blocks)..insert(current + 1, block);
+    // }
+    // yield state.maybeMap(
+    //   orElse: () => state,
+    //   profileState: (_state) => _state.copyWith(blocks: _blocks),
+    // );
   }
 
   Stream<ProfileState> _onClickEvent(_OnClickProfileEvent event) async* {
@@ -229,26 +229,26 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   }
 
   Stream<ProfileState> _resumeDataEvent(_ResumeDataEvent event) async* {
-    if (event.title == Lists.blocksResumeList[0].title) {
-      stages = <Map<String, dynamic>>[
-        ...stages,
-        Stage.toMap(event.firstField, event.secondField, event.thirdField,
-            event.fourthField)
-      ];
-      yield state.maybeMap(
-        orElse: () => state,
-        profileState: (_state) => _state.copyWith(stages: stages),
-      );
-    } else if (event.title == Lists.blocksResumeList[1].title) {
-      grades = <Map<String, dynamic>>[
-        ...grades,
-        Grade.toMap(event.firstField, event.secondField, event.thirdField)
-      ];
-      yield state.maybeMap(
-        orElse: () => state,
-        profileState: (_state) => _state.copyWith(grades: grades),
-      );
-    }
+    // if (event.title == Lists.blocksResumeList[0].title) {
+    //   stages = <Map<String, dynamic>>[
+    //     ...stages,
+    //     Stage.toMap(event.firstField, event.secondField, event.thirdField,
+    //         event.fourthField)
+    //   ];
+    //   yield state.maybeMap(
+    //     orElse: () => state,
+    //     profileState: (_state) => _state.copyWith(stages: stages),
+    //   );
+    // } else if (event.title == Lists.blocksResumeList[1].title) {
+    //   grades = <Map<String, dynamic>>[
+    //     ...grades,
+    //     Grade.toMap(event.firstField, event.secondField, event.thirdField)
+    //   ];
+    //   yield state.maybeMap(
+    //     orElse: () => state,
+    //     profileState: (_state) => _state.copyWith(grades: grades),
+    //   );
+    // }
   }
 
   Stream<ProfileState> _createResumeEvent(_CreateResumeEvent event) async* {
@@ -414,7 +414,7 @@ abstract class ProfileState with _$ProfileState {
     required final String title,
     required final Resume resume,
     required final bool isEnabled,
-    required final List<Block> blocks,
+    required final List<String> blocks,
     required final int feedbacksCount,
     required final FormzStatus status,
     required final List<Resume> resumes,

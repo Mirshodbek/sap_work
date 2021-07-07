@@ -6,7 +6,8 @@ import 'package:sap_work/resources/theme/text_theme.dart';
 
 class TariffsWidget extends StatelessWidget {
   final String title;
-  const TariffsWidget({Key? key,required this.title}) : super(key: key);
+  final String price;
+  const TariffsWidget({Key? key,required this.title,required this.price}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class TariffsWidget extends StatelessWidget {
                                     style: AppTextTheme.mediumTextBlack)),
                             Expanded(
                                 flex: 2,
-                                child: Text(item.sum.toString(),
+                                child: Text(price.toString(),
                                     style: AppTextTheme.mediumTextBlack)),
                           ])),
                           const Divider(

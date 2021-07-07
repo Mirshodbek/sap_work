@@ -1,5 +1,5 @@
-import 'package:sap_work/models/user/feedback/feedback.dart';
-import 'package:sap_work/models/user/message/message.dart';
+import 'package:sap_work/models/feedback_resume/feedback.dart';
+import 'package:sap_work/models/chat/chat.dart';
 import 'package:sap_work/models/profile_user/profile.dart';
 import 'package:sap_work/models/resume/resume.dart';
 import 'package:sap_work/models/vacancy/vacancy.dart';
@@ -26,7 +26,7 @@ abstract class HunterRepositoryBase {
 
   Future<List<FeedbackResume>> getFeedbacks(int id);
 
-  Stream<List<Message>> getMessages(int id);
+  Stream<List<Chat>> getMessages(int id);
 
   Future<http.Response> postMessage(int id, String text);
 

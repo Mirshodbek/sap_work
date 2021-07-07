@@ -695,7 +695,7 @@ class _$NotificationsStateTearOff {
 
   NotificationsScreenState notificationsState(
       {required List<FeedbackResume> feedbacks,
-      required List<Message> messages,
+      required List<Chat> messages,
       required int isSend}) {
     return NotificationsScreenState(
       feedbacks: feedbacks,
@@ -714,7 +714,7 @@ class _$NotificationsStateTearOff {
 
   MessagesScreenState messagesState(
       {required List<FeedbackResume> feedbacks,
-      required List<Message> messages,
+      required List<Chat> messages,
       required int isSend}) {
     return MessagesScreenState(
       feedbacks: feedbacks,
@@ -733,12 +733,12 @@ mixin _$NotificationsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         notificationsState,
     required TResult Function() navigationState,
     required TResult Function() disconnectedInternet,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         messagesState,
   }) =>
       throw _privateConstructorUsedError;
@@ -746,12 +746,12 @@ mixin _$NotificationsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         notificationsState,
     TResult Function()? navigationState,
     TResult Function()? disconnectedInternet,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         messagesState,
     required TResult orElse(),
   }) =>
@@ -841,12 +841,12 @@ class _$InitialNotificationsState implements InitialNotificationsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         notificationsState,
     required TResult Function() navigationState,
     required TResult Function() disconnectedInternet,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         messagesState,
   }) {
     return initial();
@@ -857,12 +857,12 @@ class _$InitialNotificationsState implements InitialNotificationsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         notificationsState,
     TResult Function()? navigationState,
     TResult Function()? disconnectedInternet,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         messagesState,
     required TResult orElse(),
   }) {
@@ -914,8 +914,7 @@ abstract class $NotificationsScreenStateCopyWith<$Res> {
   factory $NotificationsScreenStateCopyWith(NotificationsScreenState value,
           $Res Function(NotificationsScreenState) then) =
       _$NotificationsScreenStateCopyWithImpl<$Res>;
-  $Res call(
-      {List<FeedbackResume> feedbacks, List<Message> messages, int isSend});
+  $Res call({List<FeedbackResume> feedbacks, List<Chat> messages, int isSend});
 }
 
 /// @nodoc
@@ -944,7 +943,7 @@ class _$NotificationsScreenStateCopyWithImpl<$Res>
       messages: messages == freezed
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
-              as List<Message>,
+              as List<Chat>,
       isSend: isSend == freezed
           ? _value.isSend
           : isSend // ignore: cast_nullable_to_non_nullable
@@ -962,7 +961,7 @@ class _$NotificationsScreenState implements NotificationsScreenState {
   @override
   final List<FeedbackResume> feedbacks;
   @override
-  final List<Message> messages;
+  final List<Chat> messages;
   @override
   final int isSend;
 
@@ -1003,12 +1002,12 @@ class _$NotificationsScreenState implements NotificationsScreenState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         notificationsState,
     required TResult Function() navigationState,
     required TResult Function() disconnectedInternet,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         messagesState,
   }) {
     return notificationsState(feedbacks, messages, isSend);
@@ -1019,12 +1018,12 @@ class _$NotificationsScreenState implements NotificationsScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         notificationsState,
     TResult Function()? navigationState,
     TResult Function()? disconnectedInternet,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         messagesState,
     required TResult orElse(),
   }) {
@@ -1070,11 +1069,11 @@ class _$NotificationsScreenState implements NotificationsScreenState {
 abstract class NotificationsScreenState implements NotificationsState {
   const factory NotificationsScreenState(
       {required List<FeedbackResume> feedbacks,
-      required List<Message> messages,
+      required List<Chat> messages,
       required int isSend}) = _$NotificationsScreenState;
 
   List<FeedbackResume> get feedbacks => throw _privateConstructorUsedError;
-  List<Message> get messages => throw _privateConstructorUsedError;
+  List<Chat> get messages => throw _privateConstructorUsedError;
   int get isSend => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $NotificationsScreenStateCopyWith<NotificationsScreenState> get copyWith =>
@@ -1126,12 +1125,12 @@ class _$NavigationNotificationsState implements NavigationNotificationsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         notificationsState,
     required TResult Function() navigationState,
     required TResult Function() disconnectedInternet,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         messagesState,
   }) {
     return navigationState();
@@ -1142,12 +1141,12 @@ class _$NavigationNotificationsState implements NavigationNotificationsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         notificationsState,
     TResult Function()? navigationState,
     TResult Function()? disconnectedInternet,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         messagesState,
     required TResult orElse(),
   }) {
@@ -1242,12 +1241,12 @@ class _$DisconnectedInternetNotificationsState
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         notificationsState,
     required TResult Function() navigationState,
     required TResult Function() disconnectedInternet,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         messagesState,
   }) {
     return disconnectedInternet();
@@ -1258,12 +1257,12 @@ class _$DisconnectedInternetNotificationsState
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         notificationsState,
     TResult Function()? navigationState,
     TResult Function()? disconnectedInternet,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         messagesState,
     required TResult orElse(),
   }) {
@@ -1317,8 +1316,7 @@ abstract class $MessagesScreenStateCopyWith<$Res> {
   factory $MessagesScreenStateCopyWith(
           MessagesScreenState value, $Res Function(MessagesScreenState) then) =
       _$MessagesScreenStateCopyWithImpl<$Res>;
-  $Res call(
-      {List<FeedbackResume> feedbacks, List<Message> messages, int isSend});
+  $Res call({List<FeedbackResume> feedbacks, List<Chat> messages, int isSend});
 }
 
 /// @nodoc
@@ -1346,7 +1344,7 @@ class _$MessagesScreenStateCopyWithImpl<$Res>
       messages: messages == freezed
           ? _value.messages
           : messages // ignore: cast_nullable_to_non_nullable
-              as List<Message>,
+              as List<Chat>,
       isSend: isSend == freezed
           ? _value.isSend
           : isSend // ignore: cast_nullable_to_non_nullable
@@ -1364,7 +1362,7 @@ class _$MessagesScreenState implements MessagesScreenState {
   @override
   final List<FeedbackResume> feedbacks;
   @override
-  final List<Message> messages;
+  final List<Chat> messages;
   @override
   final int isSend;
 
@@ -1404,12 +1402,12 @@ class _$MessagesScreenState implements MessagesScreenState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         notificationsState,
     required TResult Function() navigationState,
     required TResult Function() disconnectedInternet,
     required TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)
         messagesState,
   }) {
     return messagesState(feedbacks, messages, isSend);
@@ -1420,12 +1418,12 @@ class _$MessagesScreenState implements MessagesScreenState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         notificationsState,
     TResult Function()? navigationState,
     TResult Function()? disconnectedInternet,
     TResult Function(
-            List<FeedbackResume> feedbacks, List<Message> messages, int isSend)?
+            List<FeedbackResume> feedbacks, List<Chat> messages, int isSend)?
         messagesState,
     required TResult orElse(),
   }) {
@@ -1471,11 +1469,11 @@ class _$MessagesScreenState implements MessagesScreenState {
 abstract class MessagesScreenState implements NotificationsState {
   const factory MessagesScreenState(
       {required List<FeedbackResume> feedbacks,
-      required List<Message> messages,
+      required List<Chat> messages,
       required int isSend}) = _$MessagesScreenState;
 
   List<FeedbackResume> get feedbacks => throw _privateConstructorUsedError;
-  List<Message> get messages => throw _privateConstructorUsedError;
+  List<Chat> get messages => throw _privateConstructorUsedError;
   int get isSend => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MessagesScreenStateCopyWith<MessagesScreenState> get copyWith =>
