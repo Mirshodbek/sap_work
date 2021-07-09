@@ -19,6 +19,7 @@ class Resume extends Equatable {
   late final String name;
   late final String email;
   late final String phone;
+  late final String city;
   late final String abilities;
 
 // ignore: non_constant_identifier_names
@@ -43,6 +44,7 @@ class Resume extends Equatable {
       this.email,
       this.phone,
       this.active,
+      this.city,
       this.grades,
       this.stages);
 
@@ -62,6 +64,7 @@ class Resume extends Equatable {
         grades,
         email,
         phone,
+        city,
         stages,
         category_id,
       ];

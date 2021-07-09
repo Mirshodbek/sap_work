@@ -25,6 +25,7 @@ class _$ResumeUserEventTearOff {
       required String email,
       String? body,
       String? abilities,
+      String? city,
       required int category,
       required int id}) {
     return _EditResumeUserEvent(
@@ -32,6 +33,7 @@ class _$ResumeUserEventTearOff {
       email: email,
       body: body,
       abilities: abilities,
+      city: city,
       category: category,
       id: id,
     );
@@ -42,6 +44,7 @@ class _$ResumeUserEventTearOff {
       required String abilities,
       required String name,
       required String phone,
+      required String city,
       required String email,
       required int category,
       required List<Map<String, dynamic>> stages,
@@ -51,6 +54,7 @@ class _$ResumeUserEventTearOff {
       abilities: abilities,
       name: name,
       phone: phone,
+      city: city,
       email: email,
       category: category,
       stages: stages,
@@ -122,13 +126,14 @@ mixin _$ResumeUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)
+            String? abilities, String? city, int category, int id)
         editResume,
     required TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -151,13 +156,14 @@ mixin _$ResumeUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)?
+            String? abilities, String? city, int category, int id)?
         editResume,
     TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -270,13 +276,14 @@ class _$_GetVResumeUserEvent implements _GetVResumeUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)
+            String? abilities, String? city, int category, int id)
         editResume,
     required TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -302,13 +309,14 @@ class _$_GetVResumeUserEvent implements _GetVResumeUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)?
+            String? abilities, String? city, int category, int id)?
         editResume,
     TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -389,6 +397,7 @@ abstract class _$EditResumeUserEventCopyWith<$Res> {
       String email,
       String? body,
       String? abilities,
+      String? city,
       int category,
       int id});
 }
@@ -410,6 +419,7 @@ class __$EditResumeUserEventCopyWithImpl<$Res>
     Object? email = freezed,
     Object? body = freezed,
     Object? abilities = freezed,
+    Object? city = freezed,
     Object? category = freezed,
     Object? id = freezed,
   }) {
@@ -429,6 +439,10 @@ class __$EditResumeUserEventCopyWithImpl<$Res>
       abilities: abilities == freezed
           ? _value.abilities
           : abilities // ignore: cast_nullable_to_non_nullable
+              as String?,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
               as String?,
       category: category == freezed
           ? _value.category
@@ -450,6 +464,7 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
       required this.email,
       this.body,
       this.abilities,
+      this.city,
       required this.category,
       required this.id});
 
@@ -462,13 +477,15 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
   @override
   final String? abilities;
   @override
+  final String? city;
+  @override
   final int category;
   @override
   final int id;
 
   @override
   String toString() {
-    return 'ResumeUserEvent.editResume(phone: $phone, email: $email, body: $body, abilities: $abilities, category: $category, id: $id)';
+    return 'ResumeUserEvent.editResume(phone: $phone, email: $email, body: $body, abilities: $abilities, city: $city, category: $category, id: $id)';
   }
 
   @override
@@ -484,6 +501,8 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
             (identical(other.abilities, abilities) ||
                 const DeepCollectionEquality()
                     .equals(other.abilities, abilities)) &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)) &&
             (identical(other.category, category) ||
                 const DeepCollectionEquality()
                     .equals(other.category, category)) &&
@@ -498,6 +517,7 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(abilities) ^
+      const DeepCollectionEquality().hash(city) ^
       const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(id);
 
@@ -512,13 +532,14 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)
+            String? abilities, String? city, int category, int id)
         editResume,
     required TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -536,7 +557,7 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
             int resumeId, String typeBlock, int? stageId, int? gradeId)
         deleteExtraBlocks,
   }) {
-    return editResume(phone, email, body, abilities, category, id);
+    return editResume(phone, email, body, abilities, city, category, id);
   }
 
   @override
@@ -544,13 +565,14 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)?
+            String? abilities, String? city, int category, int id)?
         editResume,
     TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -570,7 +592,7 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
     required TResult orElse(),
   }) {
     if (editResume != null) {
-      return editResume(phone, email, body, abilities, category, id);
+      return editResume(phone, email, body, abilities, city, category, id);
     }
     return orElse();
   }
@@ -623,6 +645,7 @@ abstract class _EditResumeUserEvent implements ResumeUserEvent {
       required String email,
       String? body,
       String? abilities,
+      String? city,
       required int category,
       required int id}) = _$_EditResumeUserEvent;
 
@@ -630,6 +653,7 @@ abstract class _EditResumeUserEvent implements ResumeUserEvent {
   String get email => throw _privateConstructorUsedError;
   String? get body => throw _privateConstructorUsedError;
   String? get abilities => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
   int get category => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -647,6 +671,7 @@ abstract class _$PostResumeUserEventCopyWith<$Res> {
       String abilities,
       String name,
       String phone,
+      String city,
       String email,
       int category,
       List<Map<String, dynamic>> stages,
@@ -670,6 +695,7 @@ class __$PostResumeUserEventCopyWithImpl<$Res>
     Object? abilities = freezed,
     Object? name = freezed,
     Object? phone = freezed,
+    Object? city = freezed,
     Object? email = freezed,
     Object? category = freezed,
     Object? stages = freezed,
@@ -691,6 +717,10 @@ class __$PostResumeUserEventCopyWithImpl<$Res>
       phone: phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
               as String,
       email: email == freezed
           ? _value.email
@@ -720,6 +750,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
       required this.abilities,
       required this.name,
       required this.phone,
+      required this.city,
       required this.email,
       required this.category,
       required this.stages,
@@ -734,6 +765,8 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
   @override
   final String phone;
   @override
+  final String city;
+  @override
   final String email;
   @override
   final int category;
@@ -744,7 +777,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
 
   @override
   String toString() {
-    return 'ResumeUserEvent.postResume(body: $body, abilities: $abilities, name: $name, phone: $phone, email: $email, category: $category, stages: $stages, grades: $grades)';
+    return 'ResumeUserEvent.postResume(body: $body, abilities: $abilities, name: $name, phone: $phone, city: $city, email: $email, category: $category, stages: $stages, grades: $grades)';
   }
 
   @override
@@ -760,6 +793,8 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
                 const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.phone, phone) ||
                 const DeepCollectionEquality().equals(other.phone, phone)) &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.category, category) ||
@@ -778,6 +813,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
       const DeepCollectionEquality().hash(abilities) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(phone) ^
+      const DeepCollectionEquality().hash(city) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(stages) ^
@@ -794,13 +830,14 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)
+            String? abilities, String? city, int category, int id)
         editResume,
     required TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -819,7 +856,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
         deleteExtraBlocks,
   }) {
     return postResume(
-        body, abilities, name, phone, email, category, stages, grades);
+        body, abilities, name, phone, city, email, category, stages, grades);
   }
 
   @override
@@ -827,13 +864,14 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)?
+            String? abilities, String? city, int category, int id)?
         editResume,
     TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -854,7 +892,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
   }) {
     if (postResume != null) {
       return postResume(
-          body, abilities, name, phone, email, category, stages, grades);
+          body, abilities, name, phone, city, email, category, stages, grades);
     }
     return orElse();
   }
@@ -907,6 +945,7 @@ abstract class _PostResumeUserEvent implements ResumeUserEvent {
       required String abilities,
       required String name,
       required String phone,
+      required String city,
       required String email,
       required int category,
       required List<Map<String, dynamic>> stages,
@@ -916,6 +955,7 @@ abstract class _PostResumeUserEvent implements ResumeUserEvent {
   String get abilities => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
+  String get city => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   int get category => throw _privateConstructorUsedError;
   List<Map<String, dynamic>> get stages => throw _privateConstructorUsedError;
@@ -1010,13 +1050,14 @@ class _$_ActivateOrDeactivateResumeUserEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)
+            String? abilities, String? city, int category, int id)
         editResume,
     required TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -1042,13 +1083,14 @@ class _$_ActivateOrDeactivateResumeUserEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)?
+            String? abilities, String? city, int category, int id)?
         editResume,
     TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -1207,13 +1249,14 @@ class _$_AddFileResumeUserEvent implements _AddFileResumeUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)
+            String? abilities, String? city, int category, int id)
         editResume,
     required TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -1239,13 +1282,14 @@ class _$_AddFileResumeUserEvent implements _AddFileResumeUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)?
+            String? abilities, String? city, int category, int id)?
         editResume,
     TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -1450,13 +1494,14 @@ class _$_ChangeExtraBlocksResumeUserEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)
+            String? abilities, String? city, int category, int id)
         editResume,
     required TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -1482,13 +1527,14 @@ class _$_ChangeExtraBlocksResumeUserEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)?
+            String? abilities, String? city, int category, int id)?
         editResume,
     TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -1668,13 +1714,14 @@ class _$_AddExtraBlocksResumeUserEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)
+            String? abilities, String? city, int category, int id)
         editResume,
     required TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -1700,13 +1747,14 @@ class _$_AddExtraBlocksResumeUserEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)?
+            String? abilities, String? city, int category, int id)?
         editResume,
     TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -1898,13 +1946,14 @@ class _$_DeleteExtraBlocksResumeUserEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)
+            String? abilities, String? city, int category, int id)
         editResume,
     required TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,
@@ -1930,13 +1979,14 @@ class _$_DeleteExtraBlocksResumeUserEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, int category, int id)?
+            String? abilities, String? city, int category, int id)?
         editResume,
     TResult Function(
             String body,
             String abilities,
             String name,
             String phone,
+            String city,
             String email,
             int category,
             List<Map<String, dynamic>> stages,

@@ -15,6 +15,7 @@ import 'package:sap_work/screens/company/widgets/loading.dart';
 import 'package:sap_work/screens/user/profile/widgets/resume_body.dart';
 import 'package:sap_work/screens/widgets/resume_buttons.dart';
 import 'package:sap_work/screens/widgets/shimmer.dart';
+import 'package:share/share.dart';
 
 import 'create_resume.dart';
 
@@ -101,7 +102,9 @@ class ResumeWidget extends StatelessWidget {
                                   id: _state.resume.id));
                         }
                       },
-                      share: () {},
+                      share: () {
+                        Share.share('http://google.com');
+                      },
                       visible: () => context.read<ResumeUserBloc>().add(
                           ResumeUserEvent.activateOrDeactivate(
                               id: _state.resume.id,

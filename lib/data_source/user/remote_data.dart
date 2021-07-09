@@ -145,6 +145,7 @@ class UserRemoteData implements UserRemoteDataBase {
           "body": resume.body,
           "abilities": resume.abilities,
           "category": resume.category,
+          "city": resume.city,
           "phone": resume.phone,
           "email": resume.email,
         }));
@@ -182,7 +183,8 @@ class UserRemoteData implements UserRemoteDataBase {
           json.encode({"stages": resume.stages}));
     }
     if (typeBlock == GRADES) {
-      await _callPostApi(_extraBlocksResume +"grade/add?resume="+ id.toString(),
+      await _callPostApi(
+          _extraBlocksResume + "grade/add?resume=" + id.toString(),
           json.encode({"grades": resume.grades}));
     }
     return await getResumeUser(id);

@@ -11,6 +11,7 @@ import 'package:sap_work/resources/small_widgets.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
 import 'package:sap_work/screens/company/profile/widgets/widget.dart';
 import 'package:sap_work/screens/user/profile/widgets/resume_body_pieces.dart';
+import 'package:sap_work/screens/user/profile/widgets/video.dart';
 
 class ResumeBodyWidget extends StatelessWidget {
   final Resume resume;
@@ -139,33 +140,43 @@ class ResumeBodyWidget extends StatelessWidget {
                               .read<VariableResumeCubit>()
                               .abilities(value)),
                       const SizedBox(height: 20),
+                      SmallWidgets.title(
+                          title: "Город",
+                          changeIcon: _click.isEditCity,
+                          onPressed: () {
+                            context.read<ProfileUserBtnCubit>().editCity();
+                            if (_click.isEditCity) {
+                              context.read<ResumeUserBloc>().add(
+                                  ResumeUserEvent.editResume(
+                                      phone: resume.phone,
+                                      email: resume.email,
+                                      city: _arguments.city,
+                                      category: resume.category_id,
+                                      id: resume.id));
+                            }
+                          }),
+                      const SizedBox(height: 20),
+                      SmallWidgets.bodyDropDown(
+                          onChanged: (value) =>
+                              context.read<VariableResumeCubit>().city(value!),
+                          body: resume.city,
+                          title: "Город",
+                          value: _arguments.city.isNotEmpty
+                              ? _arguments.city
+                              : null,
+                          items: Lists.countryList
+                              .map((item) => DropdownMenuItem<String>(
+                              value: item, child: Text(item)))
+                              .toList(),
+                          changeWidget: _click.isEditCity),
+                      const SizedBox(height: 20),
                       ResumeBodyStagesWidget(
                           resume: resume, arguments: _arguments),
                       const SizedBox(height: 20),
                       ResumeBodyGradesWidget(
                           resume: resume, arguments: _arguments),
                       const SizedBox(height: 20),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text("Добавить видео-визитка",
-                                style: AppTextTheme.smallTextMediumBlack),
-                          ),
-                          IconButton(
-                              onPressed: () {},
-                              icon: Container(
-                                decoration: BoxDecoration(border: Border.all()),
-                                child: SvgPicture.asset(AppIcons.trash),
-                              )),
-                          IconButton(
-                              onPressed: () {},
-                              icon: Container(
-                                decoration: BoxDecoration(border: Border.all()),
-                                child: SvgPicture.asset(AppIcons.plus_black),
-                              )),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
+                      VideoControllerWidget(),
                     ]));
           });
         });

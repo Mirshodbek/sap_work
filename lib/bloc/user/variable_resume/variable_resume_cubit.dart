@@ -15,6 +15,7 @@ class VariableResumeCubit extends Cubit<VariableResumeState> {
           abilities: EMPTY_STRING,
           tools: <String>[],
           phone: EMPTY_STRING,
+          city: EMPTY_STRING,
           companyName: EMPTY_STRING,
           periodCompany: EMPTY_STRING,
           positionCompany: EMPTY_STRING,
@@ -38,6 +39,7 @@ class VariableResumeCubit extends Cubit<VariableResumeState> {
   void categoryId(int id) => emit(state.copyWith(categoryId: id));
 
   void body(String value) => emit(state.copyWith(body: value));
+  void city(String value) => emit(state.copyWith(city: value));
 
   void addingTools(String value) =>
       emit(state.copyWith(tools: <String>[...state.tools, value]));
@@ -149,6 +151,7 @@ abstract class VariableResumeState with _$VariableResumeState {
     required final String email,
     required final String phone,
     required final String body,
+    required final String city,
     required final String abilities,
     required final List<String> tools,
     required final String companyName,

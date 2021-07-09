@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 import 'package:sap_work/data_source/common_urls.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
+import 'package:sap_work/screens/widgets/drop_down.dart';
 
 import 'constants.dart';
 import 'icons.dart';
@@ -131,5 +132,17 @@ class SmallWidgets {
           ? TextField(
               decoration: SmallWidgets.inputDecoration(""),
               onChanged: onChanged)
+          : Text(body, style: AppTextTheme.smallTextMediumBlack);
+
+ static Widget bodyDropDown(
+      {required Function(String? item) onChanged,
+        required String body,
+        required String title,
+        required String? value,
+        required List<DropdownMenuItem<String>> items,
+        required bool changeWidget}) =>
+      changeWidget
+          ? DropDownWidget(
+          value: value, title: title, onChanged: onChanged, items: items)
           : Text(body, style: AppTextTheme.smallTextMediumBlack);
 }

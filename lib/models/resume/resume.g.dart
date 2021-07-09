@@ -19,6 +19,7 @@ Resume _$ResumeFromJson(Map<String, dynamic> json) {
     json['email'] as String,
     json['phone'] as String,
     json['active'] as int,
+    json['city'] as String,
     (json['grades'] as List<dynamic>)
         .map((e) => Grade.fromJson(e as Map<String, dynamic>))
         .toList(),
@@ -36,6 +37,7 @@ Map<String, dynamic> _$ResumeToJson(Resume instance) => <String, dynamic>{
       'name': instance.name,
       'email': instance.email,
       'phone': instance.phone,
+      'city': instance.city,
       'abilities': instance.abilities,
       'updated_at': instance.updated_at,
       'created_at': instance.created_at,

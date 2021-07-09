@@ -43,4 +43,5 @@ class AppIcons {
   static const edit = "assets/svg_icons/edit.svg";
   static const indicator = "assets/svg_icons/indicator.svg";
   static const photo = "assets/svg_icons/photo.svg";
+  static const play = "assets/svg_icons/play.svg";
 }

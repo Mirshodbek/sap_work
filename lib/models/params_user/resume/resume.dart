@@ -11,6 +11,7 @@ class ParamsResume extends Equatable {
   late final dynamic name;
   late final dynamic phone;
   late final dynamic email;
+  late final dynamic city;
   late final dynamic category;
   late final dynamic stages;
   late final dynamic grades;
@@ -21,6 +22,7 @@ class ParamsResume extends Equatable {
       this.name,
       this.phone,
       this.email,
+      this.city,
       this.category,
       this.stages,
       this.grades});
@@ -32,5 +34,5 @@ class ParamsResume extends Equatable {
 
   @override
   List<Object?> get props =>
-      [body, name, abilities, phone, email, category, grades, stages];
+      [body, name, abilities, phone, email, city, category, grades, stages];
 }

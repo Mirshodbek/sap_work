@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,6 +11,7 @@ import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/resources/small_widgets.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
+import 'package:video_player/video_player.dart';
 
 class ResumeBodyStagesWidget extends StatelessWidget {
   final Resume resume;
@@ -39,7 +43,7 @@ class ResumeBodyStagesWidget extends StatelessWidget {
                     decoration: BoxDecoration(border: Border.all()),
                     child: SvgPicture.asset(AppIcons.trash),
                   ))
-            else if(index != arguments.indexStages)
+            else if (index != arguments.indexStages)
               IconButton(
                   onPressed: () =>
                       context.read<VariableResumeCubit>().addingStage(),
@@ -207,7 +211,7 @@ class ResumeBodyGradesWidget extends StatelessWidget {
                     decoration: BoxDecoration(border: Border.all()),
                     child: SvgPicture.asset(AppIcons.trash),
                   ))
-            else if(index != arguments.indexGrades)
+            else if (index != arguments.indexGrades)
               IconButton(
                   onPressed: () =>
                       context.read<VariableResumeCubit>().addingGrade(),
@@ -307,8 +311,9 @@ class ResumeBodyGradesWidget extends StatelessWidget {
           ]),
           const SizedBox(height: 10),
           TextField(
-              onChanged: (value) =>
-                  context.read<VariableResumeCubit>().universityName(index, value),
+              onChanged: (value) => context
+                  .read<VariableResumeCubit>()
+                  .universityName(index, value),
               decoration: SmallWidgets.inputDecoration("Университеть")),
           const SizedBox(height: 10),
           TextField(

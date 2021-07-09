@@ -189,7 +189,7 @@ class VacancyBodyWidget extends StatelessWidget {
                           },
                           changeIcon: _onClick.isEditCity),
                       const SizedBox(height: 10),
-                      _bodyDropDown(
+                      SmallWidgets.bodyDropDown(
                           onChanged: (value) =>
                               context.read<VariableVacancyCubit>().city(value!),
                           body: vacancy.city,
@@ -239,7 +239,7 @@ class VacancyBodyWidget extends StatelessWidget {
                           },
                           changeIcon: _onClick.isEditCategory),
                       const SizedBox(height: 10),
-                      _bodyDropDown(
+                      SmallWidgets.bodyDropDown(
                           onChanged: (value) => context
                               .read<VariableVacancyCubit>()
                               .category(value!),
@@ -281,15 +281,5 @@ class VacancyBodyWidget extends StatelessWidget {
             ])
           : Text(body, style: AppTextTheme.smallTextMediumBlack);
 
-  Widget _bodyDropDown(
-          {required Function(String? item) onChanged,
-          required String body,
-          required String title,
-          required String? value,
-          required List<DropdownMenuItem<String>> items,
-          required bool changeWidget}) =>
-      changeWidget
-          ? DropDownWidget(
-              value: value, title: title, onChanged: onChanged, items: items)
-          : Text(body, style: AppTextTheme.smallTextMediumBlack);
+
 }

@@ -13,9 +13,8 @@ class ProfileUserBtnCubit extends Cubit<ProfileUserBtnState> {
           isEditBody: false,
           isEditCategory: false,
           isEditAbilities: false,
-          isEditGrades: false,
-    isEditContacts: false,
-          isEditStages: false,
+          isEditCity: false,
+          isEditContacts: false,
         ));
 
   void link() => emit(state.copyWith(link: !state.link));
@@ -27,10 +26,16 @@ class ProfileUserBtnCubit extends Cubit<ProfileUserBtnState> {
 
   void extraName() => emit(state.copyWith(isExtraName: !state.isExtraName));
 
-  void editBody()=>emit(state.copyWith(isEditBody: !state.isEditBody));
-  void editContacts()=>emit(state.copyWith(isEditContacts: !state.isEditContacts));
-  void editAbilities()=>emit(state.copyWith(isEditAbilities: !state.isEditAbilities));
+  void editBody() => emit(state.copyWith(isEditBody: !state.isEditBody));
 
+  void editContacts() =>
+      emit(state.copyWith(isEditContacts: !state.isEditContacts));
+
+  void editAbilities() =>
+      emit(state.copyWith(isEditAbilities: !state.isEditAbilities));
+
+  void editCity() =>
+      emit(state.copyWith(isEditCity: !state.isEditCity));
 }
 
 @freezed
@@ -44,7 +49,6 @@ abstract class ProfileUserBtnState with _$ProfileUserBtnState {
     required final bool isEditCategory,
     required final bool isEditAbilities,
     required final bool isEditContacts,
-    required final bool isEditGrades,
-    required final bool isEditStages,
+    required final bool isEditCity,
   }) = OnClickProfileUserBtnState;
 }

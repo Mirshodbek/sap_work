@@ -55,9 +55,9 @@ class ResumesOrResumeWidget extends StatelessWidget {
                                   RESUMES_USER_BLOC_FAILURE_DELETE_RESUMES ||
                               _state.status ==
                                   RESUMES_USER_BLOC_FAILURE_EDIT_RESUMES_NAME) {
-                            // SmallWidgets.scaffoldMessage(
-                            //     context: context,
-                            //     message: "Нет доступ к интернету");
+                            SmallWidgets.scaffoldMessage(
+                                context: context,
+                                message: "Нет доступ к интернету");
                           }
                           if (_state.status ==
                               RESUMES_USER_BLOC_SUCCEED_DELETE_RESUMES) {

@@ -23,7 +23,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   List<Map<String, dynamic>> grades = <Map<String, dynamic>>[];
   List<Map<String, dynamic>> stages = <Map<String, dynamic>>[];
   Resume _resume = Resume(0, 0, "Введите название резюме", 0, empty, empty,
-      empty, empty, "", "", 0, [], []);
+      empty, empty, "", "", 0,"", [], []);
 
   ProfileBloc(this._repository) : super(const ProfileState.initial());
 

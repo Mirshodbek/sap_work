@@ -22,6 +22,7 @@ class _$VariableResumeStateTearOff {
       required String email,
       required String phone,
       required String body,
+      required String city,
       required String abilities,
       required List<String> tools,
       required String companyName,
@@ -41,6 +42,7 @@ class _$VariableResumeStateTearOff {
       email: email,
       phone: phone,
       body: body,
+      city: city,
       abilities: abilities,
       tools: tools,
       companyName: companyName,
@@ -68,6 +70,7 @@ mixin _$VariableResumeState {
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
+  String get city => throw _privateConstructorUsedError;
   String get abilities => throw _privateConstructorUsedError;
   List<String> get tools => throw _privateConstructorUsedError;
   String get companyName => throw _privateConstructorUsedError;
@@ -90,6 +93,7 @@ mixin _$VariableResumeState {
             String email,
             String phone,
             String body,
+            String city,
             String abilities,
             List<String> tools,
             String companyName,
@@ -114,6 +118,7 @@ mixin _$VariableResumeState {
             String email,
             String phone,
             String body,
+            String city,
             String abilities,
             List<String> tools,
             String companyName,
@@ -159,6 +164,7 @@ abstract class $VariableResumeStateCopyWith<$Res> {
       String email,
       String phone,
       String body,
+      String city,
       String abilities,
       List<String> tools,
       String companyName,
@@ -190,6 +196,7 @@ class _$VariableResumeStateCopyWithImpl<$Res>
     Object? email = freezed,
     Object? phone = freezed,
     Object? body = freezed,
+    Object? city = freezed,
     Object? abilities = freezed,
     Object? tools = freezed,
     Object? companyName = freezed,
@@ -224,6 +231,10 @@ class _$VariableResumeStateCopyWithImpl<$Res>
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
               as String,
       abilities: abilities == freezed
           ? _value.abilities
@@ -295,6 +306,7 @@ abstract class $ArgumentsVariableResumeStateCopyWith<$Res>
       String email,
       String phone,
       String body,
+      String city,
       String abilities,
       List<String> tools,
       String companyName,
@@ -330,6 +342,7 @@ class _$ArgumentsVariableResumeStateCopyWithImpl<$Res>
     Object? email = freezed,
     Object? phone = freezed,
     Object? body = freezed,
+    Object? city = freezed,
     Object? abilities = freezed,
     Object? tools = freezed,
     Object? companyName = freezed,
@@ -364,6 +377,10 @@ class _$ArgumentsVariableResumeStateCopyWithImpl<$Res>
       body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
+              as String,
+      city: city == freezed
+          ? _value.city
+          : city // ignore: cast_nullable_to_non_nullable
               as String,
       abilities: abilities == freezed
           ? _value.abilities
@@ -430,6 +447,7 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
       required this.email,
       required this.phone,
       required this.body,
+      required this.city,
       required this.abilities,
       required this.tools,
       required this.companyName,
@@ -454,6 +472,8 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
   final String phone;
   @override
   final String body;
+  @override
+  final String city;
   @override
   final String abilities;
   @override
@@ -483,7 +503,7 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
 
   @override
   String toString() {
-    return 'VariableResumeState.arguments(categoryTitle: $categoryTitle, categoryId: $categoryId, email: $email, phone: $phone, body: $body, abilities: $abilities, tools: $tools, companyName: $companyName, positionCompany: $positionCompany, periodCompany: $periodCompany, descriptionCompany: $descriptionCompany, universityName: $universityName, gradeUniversity: $gradeUniversity, periodUniversity: $periodUniversity, stages: $stages, grades: $grades, indexStages: $indexStages, indexGrades: $indexGrades)';
+    return 'VariableResumeState.arguments(categoryTitle: $categoryTitle, categoryId: $categoryId, email: $email, phone: $phone, body: $body, city: $city, abilities: $abilities, tools: $tools, companyName: $companyName, positionCompany: $positionCompany, periodCompany: $periodCompany, descriptionCompany: $descriptionCompany, universityName: $universityName, gradeUniversity: $gradeUniversity, periodUniversity: $periodUniversity, stages: $stages, grades: $grades, indexStages: $indexStages, indexGrades: $indexGrades)';
   }
 
   @override
@@ -502,6 +522,8 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
                 const DeepCollectionEquality().equals(other.phone, phone)) &&
             (identical(other.body, body) ||
                 const DeepCollectionEquality().equals(other.body, body)) &&
+            (identical(other.city, city) ||
+                const DeepCollectionEquality().equals(other.city, city)) &&
             (identical(other.abilities, abilities) ||
                 const DeepCollectionEquality()
                     .equals(other.abilities, abilities)) &&
@@ -548,6 +570,7 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(phone) ^
       const DeepCollectionEquality().hash(body) ^
+      const DeepCollectionEquality().hash(city) ^
       const DeepCollectionEquality().hash(abilities) ^
       const DeepCollectionEquality().hash(tools) ^
       const DeepCollectionEquality().hash(companyName) ^
@@ -577,6 +600,7 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
             String email,
             String phone,
             String body,
+            String city,
             String abilities,
             List<String> tools,
             String companyName,
@@ -598,6 +622,7 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
         email,
         phone,
         body,
+        city,
         abilities,
         tools,
         companyName,
@@ -622,6 +647,7 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
             String email,
             String phone,
             String body,
+            String city,
             String abilities,
             List<String> tools,
             String companyName,
@@ -645,6 +671,7 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
           email,
           phone,
           body,
+          city,
           abilities,
           tools,
           companyName,
@@ -690,6 +717,7 @@ abstract class ArgumentsVariableResumeState implements VariableResumeState {
       required String email,
       required String phone,
       required String body,
+      required String city,
       required String abilities,
       required List<String> tools,
       required String companyName,
@@ -714,6 +742,8 @@ abstract class ArgumentsVariableResumeState implements VariableResumeState {
   String get phone => throw _privateConstructorUsedError;
   @override
   String get body => throw _privateConstructorUsedError;
+  @override
+  String get city => throw _privateConstructorUsedError;
   @override
   String get abilities => throw _privateConstructorUsedError;
   @override

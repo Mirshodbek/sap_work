@@ -60,6 +60,7 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
       Texts.dirty(event.abilities),
       Texts.dirty(event.name),
       Texts.dirty(event.phone),
+      Texts.dirty(event.city),
       Texts.dirty(event.email),
       Texts.dirty(event.stages.toString()),
       Texts.dirty(event.grades.toString()),
@@ -77,6 +78,7 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
             name: event.name,
             phone: event.phone,
             email: event.email,
+            city: event.city,
             category: event.category,
             stages: event.stages,
             grades: event.grades));
@@ -114,6 +116,7 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
               email: event.email,
               category: event.category,
               body: event.body,
+              city: event.city,
               abilities: event.abilities));
       yield state.maybeMap(
           orElse: () => state,
@@ -271,6 +274,7 @@ abstract class ResumeUserEvent with _$ResumeUserEvent {
       required final String email,
       final String? body,
       final String? abilities,
+      final String? city,
       required final int category,
       required final int id}) = _EditResumeUserEvent;
 
@@ -279,6 +283,7 @@ abstract class ResumeUserEvent with _$ResumeUserEvent {
       required final String abilities,
       required final String name,
       required final String phone,
+      required final String city,
       required final String email,
       required final int category,
       required final List<Map<String, dynamic>> stages,

@@ -25,8 +25,7 @@ class _$ProfileUserBtnStateTearOff {
       required bool isEditCategory,
       required bool isEditAbilities,
       required bool isEditContacts,
-      required bool isEditGrades,
-      required bool isEditStages}) {
+      required bool isEditCity}) {
     return OnClickProfileUserBtnState(
       link: link,
       selectResumes: selectResumes,
@@ -36,8 +35,7 @@ class _$ProfileUserBtnStateTearOff {
       isEditCategory: isEditCategory,
       isEditAbilities: isEditAbilities,
       isEditContacts: isEditContacts,
-      isEditGrades: isEditGrades,
-      isEditStages: isEditStages,
+      isEditCity: isEditCity,
     );
   }
 }
@@ -55,8 +53,7 @@ mixin _$ProfileUserBtnState {
   bool get isEditCategory => throw _privateConstructorUsedError;
   bool get isEditAbilities => throw _privateConstructorUsedError;
   bool get isEditContacts => throw _privateConstructorUsedError;
-  bool get isEditGrades => throw _privateConstructorUsedError;
-  bool get isEditStages => throw _privateConstructorUsedError;
+  bool get isEditCity => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -69,8 +66,7 @@ mixin _$ProfileUserBtnState {
             bool isEditCategory,
             bool isEditAbilities,
             bool isEditContacts,
-            bool isEditGrades,
-            bool isEditStages)
+            bool isEditCity)
         onClick,
   }) =>
       throw _privateConstructorUsedError;
@@ -85,8 +81,7 @@ mixin _$ProfileUserBtnState {
             bool isEditCategory,
             bool isEditAbilities,
             bool isEditContacts,
-            bool isEditGrades,
-            bool isEditStages)?
+            bool isEditCity)?
         onClick,
     required TResult orElse(),
   }) =>
@@ -122,8 +117,7 @@ abstract class $ProfileUserBtnStateCopyWith<$Res> {
       bool isEditCategory,
       bool isEditAbilities,
       bool isEditContacts,
-      bool isEditGrades,
-      bool isEditStages});
+      bool isEditCity});
 }
 
 /// @nodoc
@@ -145,8 +139,7 @@ class _$ProfileUserBtnStateCopyWithImpl<$Res>
     Object? isEditCategory = freezed,
     Object? isEditAbilities = freezed,
     Object? isEditContacts = freezed,
-    Object? isEditGrades = freezed,
-    Object? isEditStages = freezed,
+    Object? isEditCity = freezed,
   }) {
     return _then(_value.copyWith(
       link: link == freezed
@@ -181,13 +174,9 @@ class _$ProfileUserBtnStateCopyWithImpl<$Res>
           ? _value.isEditContacts
           : isEditContacts // ignore: cast_nullable_to_non_nullable
               as bool,
-      isEditGrades: isEditGrades == freezed
-          ? _value.isEditGrades
-          : isEditGrades // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isEditStages: isEditStages == freezed
-          ? _value.isEditStages
-          : isEditStages // ignore: cast_nullable_to_non_nullable
+      isEditCity: isEditCity == freezed
+          ? _value.isEditCity
+          : isEditCity // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -209,8 +198,7 @@ abstract class $OnClickProfileUserBtnStateCopyWith<$Res>
       bool isEditCategory,
       bool isEditAbilities,
       bool isEditContacts,
-      bool isEditGrades,
-      bool isEditStages});
+      bool isEditCity});
 }
 
 /// @nodoc
@@ -235,8 +223,7 @@ class _$OnClickProfileUserBtnStateCopyWithImpl<$Res>
     Object? isEditCategory = freezed,
     Object? isEditAbilities = freezed,
     Object? isEditContacts = freezed,
-    Object? isEditGrades = freezed,
-    Object? isEditStages = freezed,
+    Object? isEditCity = freezed,
   }) {
     return _then(OnClickProfileUserBtnState(
       link: link == freezed
@@ -271,13 +258,9 @@ class _$OnClickProfileUserBtnStateCopyWithImpl<$Res>
           ? _value.isEditContacts
           : isEditContacts // ignore: cast_nullable_to_non_nullable
               as bool,
-      isEditGrades: isEditGrades == freezed
-          ? _value.isEditGrades
-          : isEditGrades // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isEditStages: isEditStages == freezed
-          ? _value.isEditStages
-          : isEditStages // ignore: cast_nullable_to_non_nullable
+      isEditCity: isEditCity == freezed
+          ? _value.isEditCity
+          : isEditCity // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -295,8 +278,7 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
       required this.isEditCategory,
       required this.isEditAbilities,
       required this.isEditContacts,
-      required this.isEditGrades,
-      required this.isEditStages});
+      required this.isEditCity});
 
   @override
   final bool link;
@@ -315,13 +297,11 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
   @override
   final bool isEditContacts;
   @override
-  final bool isEditGrades;
-  @override
-  final bool isEditStages;
+  final bool isEditCity;
 
   @override
   String toString() {
-    return 'ProfileUserBtnState.onClick(link: $link, selectResumes: $selectResumes, isEditNames: $isEditNames, isExtraName: $isExtraName, isEditBody: $isEditBody, isEditCategory: $isEditCategory, isEditAbilities: $isEditAbilities, isEditContacts: $isEditContacts, isEditGrades: $isEditGrades, isEditStages: $isEditStages)';
+    return 'ProfileUserBtnState.onClick(link: $link, selectResumes: $selectResumes, isEditNames: $isEditNames, isExtraName: $isExtraName, isEditBody: $isEditBody, isEditCategory: $isEditCategory, isEditAbilities: $isEditAbilities, isEditContacts: $isEditContacts, isEditCity: $isEditCity)';
   }
 
   @override
@@ -351,12 +331,9 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
             (identical(other.isEditContacts, isEditContacts) ||
                 const DeepCollectionEquality()
                     .equals(other.isEditContacts, isEditContacts)) &&
-            (identical(other.isEditGrades, isEditGrades) ||
+            (identical(other.isEditCity, isEditCity) ||
                 const DeepCollectionEquality()
-                    .equals(other.isEditGrades, isEditGrades)) &&
-            (identical(other.isEditStages, isEditStages) ||
-                const DeepCollectionEquality()
-                    .equals(other.isEditStages, isEditStages)));
+                    .equals(other.isEditCity, isEditCity)));
   }
 
   @override
@@ -370,8 +347,7 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
       const DeepCollectionEquality().hash(isEditCategory) ^
       const DeepCollectionEquality().hash(isEditAbilities) ^
       const DeepCollectionEquality().hash(isEditContacts) ^
-      const DeepCollectionEquality().hash(isEditGrades) ^
-      const DeepCollectionEquality().hash(isEditStages);
+      const DeepCollectionEquality().hash(isEditCity);
 
   @JsonKey(ignore: true)
   @override
@@ -392,21 +368,11 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
             bool isEditCategory,
             bool isEditAbilities,
             bool isEditContacts,
-            bool isEditGrades,
-            bool isEditStages)
+            bool isEditCity)
         onClick,
   }) {
-    return onClick(
-        link,
-        selectResumes,
-        isEditNames,
-        isExtraName,
-        isEditBody,
-        isEditCategory,
-        isEditAbilities,
-        isEditContacts,
-        isEditGrades,
-        isEditStages);
+    return onClick(link, selectResumes, isEditNames, isExtraName, isEditBody,
+        isEditCategory, isEditAbilities, isEditContacts, isEditCity);
   }
 
   @override
@@ -421,23 +387,13 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
             bool isEditCategory,
             bool isEditAbilities,
             bool isEditContacts,
-            bool isEditGrades,
-            bool isEditStages)?
+            bool isEditCity)?
         onClick,
     required TResult orElse(),
   }) {
     if (onClick != null) {
-      return onClick(
-          link,
-          selectResumes,
-          isEditNames,
-          isExtraName,
-          isEditBody,
-          isEditCategory,
-          isEditAbilities,
-          isEditContacts,
-          isEditGrades,
-          isEditStages);
+      return onClick(link, selectResumes, isEditNames, isExtraName, isEditBody,
+          isEditCategory, isEditAbilities, isEditContacts, isEditCity);
     }
     return orElse();
   }
@@ -473,8 +429,7 @@ abstract class OnClickProfileUserBtnState implements ProfileUserBtnState {
       required bool isEditCategory,
       required bool isEditAbilities,
       required bool isEditContacts,
-      required bool isEditGrades,
-      required bool isEditStages}) = _$OnClickProfileUserBtnState;
+      required bool isEditCity}) = _$OnClickProfileUserBtnState;
 
   @override
   bool get link => throw _privateConstructorUsedError;
@@ -493,9 +448,7 @@ abstract class OnClickProfileUserBtnState implements ProfileUserBtnState {
   @override
   bool get isEditContacts => throw _privateConstructorUsedError;
   @override
-  bool get isEditGrades => throw _privateConstructorUsedError;
-  @override
-  bool get isEditStages => throw _privateConstructorUsedError;
+  bool get isEditCity => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   $OnClickProfileUserBtnStateCopyWith<OnClickProfileUserBtnState>

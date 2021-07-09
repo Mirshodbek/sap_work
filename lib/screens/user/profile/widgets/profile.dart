@@ -106,11 +106,13 @@ class _LinksUserWidgetState extends State<LinksUserWidget> {
             empty: (_) => const SizedBox.shrink(),
             loading: (_) => Row(
                   children: [
-                    ShimmerWidget.rectangular(height: 18, width: 30),
-                    const SizedBox(width: 10),
-                    ShimmerWidget.rectangular(height: 18, width: 30),
-                    const SizedBox(width: 10),
-                    ShimmerWidget.rectangular(height: 18, width: 30)
+                    ShimmerWidget.rectangular(height: 25, width: 30),
+                    const SizedBox(width: 20),
+                    ShimmerWidget.rectangular(height: 25, width: 30),
+                    const SizedBox(width: 20),
+                    ShimmerWidget.rectangular(height: 25, width: 30),
+                    const SizedBox(width: 20),
+                    ShimmerWidget.rectangular(height: 25, width: 30)
                   ],
                 ),
             attributes: (_attributes) {
@@ -121,36 +123,42 @@ class _LinksUserWidgetState extends State<LinksUserWidget> {
                         height: 45.0,
                         child: Row(children: [
                           if (!_onClick.link)
-                            Flexible(
-                                child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    itemBuilder: (context, index) {
-                                      final link = _attributes.contacts[index];
-                                      return Row(
-                                        children: [
-                                          IconButton(
-                                              onPressed: () {},
-                                              icon: SvgPicture.asset(
-                                                  AppIcons.clear)),
-                                          TextButton(
-                                              onPressed: () {},
-                                              child: Row(children: [
-                                                Text(link.name,
-                                                    style: AppTextTheme
-                                                        .smallTextMediumBlack),
-                                                SvgPicture.asset(
-                                                    AppIcons.link_arrow),
-                                              ])),
-                                        ],
-                                      );
-                                    },
-                                    itemCount: _attributes.contacts.length)),
+                            _attributes.contacts.isNotEmpty
+                                ? Flexible(
+                                    child: ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index) {
+                                          final link =
+                                              _attributes.contacts[index];
+                                          return Row(
+                                            children: [
+                                              IconButton(
+                                                  padding: EdgeInsets.zero,
+                                                  onPressed: () {},
+                                                  icon: SvgPicture.asset(
+                                                      AppIcons.clear)),
+                                              TextButton(
+                                                  onPressed: () {},
+                                                  child: Row(children: [
+                                                    Text(link.name,
+                                                        style: AppTextTheme
+                                                            .smallTextMediumBlack),
+                                                    SvgPicture.asset(
+                                                        AppIcons.link_arrow),
+                                                  ])),
+                                            ],
+                                          );
+                                        },
+                                        itemCount: _attributes.contacts.length))
+                                : Text("Пока пусто",
+                                    style: AppTextTheme.smallSizeText),
                           if (_onClick.link)
                             Expanded(
                               child: Row(
                                 children: [
                                   Expanded(
                                       child: TextField(
+                                    maxLines: 2,
                                     decoration:
                                         SmallWidgets.inputDecoration("имя"),
                                     onChanged: (value) {
@@ -160,6 +168,7 @@ class _LinksUserWidgetState extends State<LinksUserWidget> {
                                   const SizedBox(width: 10),
                                   Expanded(
                                       child: TextField(
+                                    maxLines: 2,
                                     decoration:
                                         SmallWidgets.inputDecoration("ссылки"),
                                     onChanged: (value) {
@@ -172,7 +181,9 @@ class _LinksUserWidgetState extends State<LinksUserWidget> {
                           IconButton(
                               onPressed: () {
                                 context.read<ProfileUserBtnCubit>().link();
-                                if (_onClick.link) {
+                                if (_onClick.link &&
+                                    name.isNotEmpty &&
+                                    url.isNotEmpty) {
                                   context.read<CoreProfileUserBloc>().add(
                                       CoreProfileUserEvent.addContact(
                                           name: name, url: url));

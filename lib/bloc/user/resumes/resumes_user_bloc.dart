@@ -122,12 +122,12 @@ class ResumesUserBloc extends Bloc<ResumesUserEvent, ResumesUserState> {
     } catch (_) {
       yield state.maybeMap(
           orElse: () => state,
-          loaded: (_state) => _state.copyWith(status: EMPTY_BLOC));
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) => _state.copyWith(
-              status: RESUMES_USER_BLOC_FAILURE_EDIT_RESUMES_NAME,
-              resumes: _state.resumes));
+          loaded: (_state) {
+            _state.copyWith(
+                status: RESUMES_USER_BLOC_FAILURE_EDIT_RESUMES_NAME,
+                resumes: _state.resumes);
+            return _state.copyWith(status: EMPTY_BLOC);
+          });
     }
   }
 
@@ -146,9 +146,12 @@ class ResumesUserBloc extends Bloc<ResumesUserEvent, ResumesUserState> {
     } catch (_) {
       yield state.maybeMap(
           orElse: () => state,
-          loaded: (_state) => _state.copyWith(
-              status: RESUMES_USER_BLOC_FAILURE_DELETE_RESUMES,
-              resumes: _state.resumes));
+          loaded: (_state) {
+            _state.copyWith(
+                status: RESUMES_USER_BLOC_FAILURE_DELETE_RESUMES,
+                resumes: _state.resumes);
+            return _state.copyWith(status: EMPTY_BLOC);
+          });
     }
   }
 

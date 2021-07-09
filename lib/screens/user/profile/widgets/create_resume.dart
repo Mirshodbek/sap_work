@@ -103,6 +103,19 @@ class CreateResumeWidget extends StatelessWidget {
                           .deletingTools(item)))
                   .toList()),
           const SizedBox(height: 20),
+          DropDownWidget(
+              value: _state.city.isNotEmpty
+                  ? _state.city
+                  : null,
+              title: "Город",
+              onChanged: (String? value) => context
+                  .read<VariableResumeCubit>()
+                  .city(value!),
+              items: Lists.countryList
+                  .map((item) => DropdownMenuItem<String>(
+                  value: item, child: Text(item)))
+                  .toList()),
+          const SizedBox(height: 20),
           _Stages(listMap: _state.stages),
           const SizedBox(height: 20),
           _Grades(listMap: _state.grades),
@@ -117,6 +130,7 @@ class CreateResumeWidget extends StatelessWidget {
                           abilities: _state.tools.join(", "),
                           name: nameResume,
                           phone: _state.phone,
+                          city: _state.city,
                           email: _state.email,
                           category: _state.categoryId,
                           stages: _state.stages,
