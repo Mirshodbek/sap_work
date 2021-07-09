@@ -8,8 +8,7 @@ class VacancyListItemWidget extends StatelessWidget {
   final Vacancy vacancy;
   final Widget favoriteButton;
 
-  VacancyListItemWidget(
-      this.extension, this.isResponse, this.vacancy,
+  VacancyListItemWidget(this.extension, this.isResponse, this.vacancy,
       {this.favoriteButton = const SizedBox.shrink()});
 
   @override
@@ -139,21 +138,17 @@ class VacancyListItemWidget extends StatelessWidget {
         children: [
           Text(
             "${vacancy.minsalary}₸-${vacancy.maxsalary}",
-            style: AppTextTheme.smallTextBlack.copyWith(
-              fontSize: 14.0,
-            ),
+            style: AppTextTheme.smallTextBlack.copyWith(fontSize: 14.0),
           ),
-          const SizedBox(
-            width: 20.0,
-          ),
+          const SizedBox(width: 20.0),
           SvgPicture.asset(AppIcons.location),
-          const SizedBox(
-            width: 5.0,
-          ),
-          Text(
-            vacancy.city,
-            style: AppTextTheme.smallTextBlack.copyWith(
-              fontSize: 14.0,
+          const SizedBox(width: 5.0),
+          Expanded(
+            child: Text(
+              vacancy.city,
+              style: AppTextTheme.smallTextBlack.copyWith(
+                fontSize: 14.0,
+              ),
             ),
           ),
         ],

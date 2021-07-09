@@ -42,7 +42,7 @@ class ProfileCompanyBloc
           orElse: () => state,
           loaded: (_state) =>
               _state.copyWith(status: FormzStatus.submissionInProgress));
-      await remoteData.updateAvatar(event.path);
+      await remoteData.updateAvatarCompany(event.path);
       final result = await remoteData.getProfileCompany();
       yield state.maybeMap(
           orElse: () => state,

@@ -49,9 +49,9 @@ class ProfileScreenCompany extends StatelessWidget {
                   children: [
                     ProfileCompanyNameWidget(),
                     const SizedBox(height: 5),
-                    FeedbackCountCompanyWidget(),
+                    FeedbacksVacancyCountWidget(),
                     const SizedBox(height: 5),
-                    LinksWidget(),
+                    LinksCompanyWidget(),
                   ],
                 )),
             VacanciesOrVacancyWidget(),

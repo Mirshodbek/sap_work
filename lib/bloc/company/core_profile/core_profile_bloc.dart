@@ -9,7 +9,7 @@ part 'core_profile_bloc.freezed.dart';
 class CoreProfileBloc extends Bloc<CoreProfileEvent, CoreProfileState> {
   final GetLocalVacancyCompany getLocalVacancy;
   final CompanyRemoteDataBase remoteCompany;
-  final GetCategories getCategories;
+  final GetCategoriesCompany getCategories;
 
   CoreProfileBloc(this.getLocalVacancy, this.remoteCompany, this.getCategories)
       : super(const CoreProfileState.empty());
@@ -25,7 +25,7 @@ class CoreProfileBloc extends Bloc<CoreProfileEvent, CoreProfileState> {
   Stream<CoreProfileState> _initialPagesEvent(
       _InitialCoreProfileEvent event) async* {
     yield const CoreProfileState.loading();
-    final localVacancy = await getLocalVacancy(Params());
+    final localVacancy = await getLocalVacancy(ParamsLocalVacancy());
     final categories = await getCategories(NoParams());
     yield* localVacancy.fold((failure) async* {
       yield* categories.fold((failure) async* {
@@ -57,7 +57,7 @@ class CoreProfileBloc extends Bloc<CoreProfileEvent, CoreProfileState> {
 
   Stream<CoreProfileState> _onSelectEvent(
       _OnSelectCoreProfileEvent event) async* {
-    await getLocalVacancy(Params(
+    await getLocalVacancy(ParamsLocalVacancy(
         writeVacancy: true, vacancy: LocalVacancyData(event.title, event.id)));
     yield state.maybeMap(
         orElse: () => state,
@@ -103,10 +103,10 @@ class CoreProfileBloc extends Bloc<CoreProfileEvent, CoreProfileState> {
           abilities: event.abilities,
           category: event.categoryId,
         ));
-        await getLocalVacancy(Params(
+        await getLocalVacancy(ParamsLocalVacancy(
             writeVacancy: true,
             vacancy: LocalVacancyData(
-                event.vacancyName, json.decode(result.body)["id"])));
+                event.vacancyName, result.id)));
         yield state.maybeMap(
             orElse: () => state,
             attributes: (_state) =>

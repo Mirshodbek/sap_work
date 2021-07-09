@@ -92,7 +92,7 @@ class VacancyWidget extends StatelessWidget {
               if (attributes.localVacancy.name == EMPTY_TITLE_VACANCY)
                 Container(
                   alignment: Alignment.center,
-                  child: Text("Введите название вакансии",
+                  child: Text("Добавьте первое вакансии",
                       style: AppTextTheme.mediumTextBlack),
                 )
               else

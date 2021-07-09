@@ -42,8 +42,8 @@ class ResumeBodyWidget extends StatelessWidget {
         const SizedBox(height: 30),
         Text("Опыт работы", style: AppTextTheme.mediumTextBlack),
         const SizedBox(height: 10),
-        if (resume.resume.stage != null)
-          ...resume.resume.stage!.map((item) {
+        // if (resume.resume.stages != null)
+          ...resume.resume.stages.map((item) {
             return Column(children: [
               Text(item.company_name, style: AppTextTheme.smallTextMediumBlack),
               const SizedBox(height: 5),
@@ -56,8 +56,8 @@ class ResumeBodyWidget extends StatelessWidget {
           }),
         const SizedBox(height: 30),
         Text("Образование", style: AppTextTheme.mediumTextBlack),
-        if (resume.resume.grade != null)
-          ...resume.resume.grade!.map((item) {
+        // if (resume.resume.grades != null)
+          ...resume.resume.grades.map((item) {
             return Column(children: [
               Text(item.university_name,
                   style: AppTextTheme.smallTextMediumBlack),

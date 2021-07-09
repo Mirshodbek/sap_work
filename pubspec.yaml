@@ -40,9 +40,15 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_launcher_icons: ^0.9.0
   json_serializable: ^4.1.3
   build_runner: ^2.0.4
   freezed: ^0.14.2
+
+flutter_icons:
+  image_path: "assets/app_icon/sapwork.png"
+  android: true
+  ios: tru
 
 flutter:
   uses-material-design: true

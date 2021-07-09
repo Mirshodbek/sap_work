@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:sap_work/models/local_vacancy_data/vacancy.dart';
+import 'package:sap_work/models/local_vacancy/vacancy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data_source.dart';
 

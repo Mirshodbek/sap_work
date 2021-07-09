@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:formz/formz.dart';
 import 'package:sap_work/bloc/company/profile/profile_company_bloc.dart';
+import 'package:sap_work/bloc/user/profile/profile_user_bloc.dart';
 import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/resources/lists.dart';
 import 'package:sap_work/resources/small_widgets.dart';
@@ -35,12 +36,12 @@ class ProfileCompanyNameWidget extends StatelessWidget {
   }
 }
 
-class ProfileAvatarWidget extends StatelessWidget {
-  const ProfileAvatarWidget({Key? key}) : super(key: key);
+class ProfileUserAvatarWidget extends StatelessWidget {
+  const ProfileUserAvatarWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProfileCompanyBloc, ProfileCompanyState>(
+    return BlocConsumer<ProfileUserBloc, ProfileUserState>(
         listener: (context, state) {
       state.maybeMap(
           orElse: () => state,
@@ -64,8 +65,8 @@ class ProfileAvatarWidget extends StatelessWidget {
                           _state.profile.profile.avatar,height: 80,width: 80),
                   SmallWidgets.uploadAvatarButton((path) {
                     context
-                        .read<ProfileCompanyBloc>()
-                        .add(ProfileCompanyEvent.uploadAvatar(path: path));
+                        .read<ProfileUserBloc>()
+                        .add(ProfileUserEvent.uploadAvatar(path: path));
                   }),
                 ]));
           },
@@ -75,8 +76,8 @@ class ProfileAvatarWidget extends StatelessWidget {
   }
 }
 
-class LinksWidget extends StatelessWidget {
-  const LinksWidget({Key? key}) : super(key: key);
+class LinksCompanyWidget extends StatelessWidget {
+  const LinksCompanyWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

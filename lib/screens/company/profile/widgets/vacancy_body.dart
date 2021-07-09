@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'widget.dart';
 
 class VacancyBodyWidget extends StatelessWidget {
@@ -24,7 +23,7 @@ class VacancyBodyWidget extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _title(
+                      SmallWidgets.title(
                           title: "Описание вакансии",
                           onPressed: () {
                             context.read<ProfileBtnCubit>().editBody();
@@ -39,9 +38,8 @@ class VacancyBodyWidget extends StatelessWidget {
                           },
                           changeIcon: _onClick.isEditBody),
                       const SizedBox(height: 20),
-                      _bodyText(
+                      SmallWidgets.bodyText(
                           body: vacancy.body,
-                          stateBody: _arguments.body,
                           changeWidget: _onClick.isEditBody,
                           onChanged: (value) =>
                               context.read<VariableVacancyCubit>().body(value)),
@@ -49,7 +47,7 @@ class VacancyBodyWidget extends StatelessWidget {
                       Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _title(
+                            SmallWidgets.title(
                                 title: "Зароботная плата",
                                 onPressed: () {
                                   context
@@ -79,8 +77,7 @@ class VacancyBodyWidget extends StatelessWidget {
                             Text("от ",
                                 style: AppTextTheme.smallTextMediumBlack),
                           Flexible(
-                              child: _bodyText(
-                                  stateBody: _arguments.minsalary,
+                              child: SmallWidgets.bodyText(
                                   body: vacancy.minsalary,
                                   changeWidget: _onClick.isEditMinAndMaxSalary,
                                   onChanged: (value) => context
@@ -96,8 +93,7 @@ class VacancyBodyWidget extends StatelessWidget {
                             Text("до ",
                                 style: AppTextTheme.smallTextMediumBlack),
                           Flexible(
-                              child: _bodyText(
-                                  stateBody: _arguments.maxsalary,
+                              child: SmallWidgets.bodyText(
                                   body: vacancy.maxsalary,
                                   changeWidget: _onClick.isEditMinAndMaxSalary,
                                   onChanged: (value) => context
@@ -108,7 +104,7 @@ class VacancyBodyWidget extends StatelessWidget {
                         ])),
                       ]),
                       const SizedBox(height: 30),
-                      _title(
+                      SmallWidgets.title(
                           title: "Занятость",
                           onPressed: () {
                             context.read<ProfileBtnCubit>().editSchedule();
@@ -132,7 +128,7 @@ class VacancyBodyWidget extends StatelessWidget {
                           list: Lists.scheduleList,
                           changeWidget: _onClick.isEditSchedule),
                       const SizedBox(height: 30),
-                      _title(
+                      SmallWidgets.title(
                           title: "График работы",
                           onPressed: () {
                             context.read<ProfileBtnCubit>().editType();
@@ -155,7 +151,7 @@ class VacancyBodyWidget extends StatelessWidget {
                           list: Lists.typeList,
                           changeWidget: _onClick.isEditType),
                       const SizedBox(height: 30),
-                      _title(
+                      SmallWidgets.title(
                           title: "Опыт",
                           onPressed: () {
                             context.read<ProfileBtnCubit>().editStage();
@@ -178,7 +174,7 @@ class VacancyBodyWidget extends StatelessWidget {
                           list: Lists.stageList,
                           changeWidget: _onClick.isEditStage),
                       const SizedBox(height: 30),
-                      _title(
+                      SmallWidgets.title(
                           title: "Локация",
                           onPressed: () {
                             context.read<ProfileBtnCubit>().editCity();
@@ -207,7 +203,7 @@ class VacancyBodyWidget extends StatelessWidget {
                               .toList(),
                           changeWidget: _onClick.isEditCity),
                       const SizedBox(height: 30),
-                      _title(
+                      SmallWidgets.title(
                           title: "Навыки",
                           onPressed: () {
                             context.read<ProfileBtnCubit>().editAbilities();
@@ -222,15 +218,14 @@ class VacancyBodyWidget extends StatelessWidget {
                           },
                           changeIcon: _onClick.isEditAbilities),
                       const SizedBox(height: 10),
-                      _bodyText(
-                          stateBody: _arguments.abilities,
+                      SmallWidgets.bodyText(
                           body: vacancy.abilities,
                           changeWidget: _onClick.isEditAbilities,
                           onChanged: (value) => context
                               .read<VariableVacancyCubit>()
                               .abilities(value)),
                       const SizedBox(height: 30),
-                      _title(
+                      SmallWidgets.title(
                           title: "Профессиональная сфера",
                           onPressed: () {
                             context.read<ProfileBtnCubit>().editCategory();
@@ -270,34 +265,9 @@ class VacancyBodyWidget extends StatelessWidget {
     });
   }
 
-  Row _title(
-          {required String title,
-          required bool changeIcon,
-          required VoidCallback onPressed}) =>
-      Row(children: [
-        Expanded(child: Text(title, style: AppTextTheme.mediumTextBlack)),
-        IconButton(
-            onPressed: onPressed,
-            icon: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all()),
-                child: SvgPicture.asset(
-                    changeIcon ? AppIcons.save : AppIcons.edit))),
-      ]);
 
-  Widget _bodyText(
-          {required String body,
-          required String stateBody,
-          required bool changeWidget,
-          required Function(String value) onChanged}) =>
-      changeWidget
-          ? TextField(
-              controller: TextEditingController(
-                  text: stateBody.isNotEmpty ? stateBody : body),
-              decoration: SmallWidgets.inputDecoration(""),
-              onSubmitted: onChanged)
-          : Text(body, style: AppTextTheme.smallTextMediumBlack);
+
+
 
   Widget _bodyBuildList(
           {required Function(String item) onTap,

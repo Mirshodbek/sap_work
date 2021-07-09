@@ -106,4 +106,30 @@ class SmallWidgets {
           color: AppColor.red,
         ))
       ]));
+
+  static Row title(
+          {required String title,
+          required bool changeIcon,
+          required VoidCallback onPressed}) =>
+      Row(children: [
+        Expanded(child: Text(title, style: AppTextTheme.mediumTextBlack)),
+        IconButton(
+            onPressed: onPressed,
+            icon: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    border: Border.all()),
+                child: SvgPicture.asset(
+                    changeIcon ? AppIcons.save : AppIcons.edit))),
+      ]);
+
+  static Widget bodyText(
+          {required String body,
+          required bool changeWidget,
+          required Function(String value) onChanged}) =>
+      changeWidget
+          ? TextField(
+              decoration: SmallWidgets.inputDecoration(""),
+              onChanged: onChanged)
+          : Text(body, style: AppTextTheme.smallTextMediumBlack);
 }

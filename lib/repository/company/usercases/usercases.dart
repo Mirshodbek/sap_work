@@ -1,5 +1,6 @@
 import 'package:either_dart/either.dart';
 import 'package:sap_work/models/chat/chat.dart';
+import 'package:sap_work/models/params_company/local_vacancies/vacancies.dart';
 import 'package:sap_work/models/tariff/tariff.dart';
 
 import '../../exceptions_failures.dart';
@@ -29,10 +30,10 @@ class GetVacanciesCompany implements UseCase<List<Vacancy>, NoParams> {
   }
 }
 
-class GetCategories implements UseCase<List<Category>, NoParams> {
+class GetCategoriesCompany implements UseCase<List<Category>, NoParams> {
   final CompanyRepositoryBase repository;
 
-  GetCategories(this.repository);
+  GetCategoriesCompany(this.repository);
 
   @override
   Future<Either<Failure, List<Category>>> call(NoParams params) async {
@@ -41,13 +42,13 @@ class GetCategories implements UseCase<List<Category>, NoParams> {
 }
 
 class GetLocalVacanciesCompany
-    implements UseCase<List<LocalVacancyData>, Params> {
+    implements UseCase<List<LocalVacancyData>, ParamsLocalVacancy> {
   final CompanyLocalDataBase localData;
 
   GetLocalVacanciesCompany(this.localData);
 
   @override
-  Future<Either<Failure, List<LocalVacancyData>>> call(Params params) async {
+  Future<Either<Failure, List<LocalVacancyData>>> call(ParamsLocalVacancy params) async {
     if (params.writeVacancies) {
       await localData.localVacanciesCompany(params.vacancies);
     }
@@ -59,13 +60,13 @@ class GetLocalVacanciesCompany
   }
 }
 
-class GetLocalVacancyCompany implements UseCase<LocalVacancyData, Params> {
+class GetLocalVacancyCompany implements UseCase<LocalVacancyData, ParamsLocalVacancy> {
   final CompanyLocalDataBase localData;
 
   GetLocalVacancyCompany(this.localData);
 
   @override
-  Future<Either<Failure, LocalVacancyData>> call(Params params) async {
+  Future<Either<Failure, LocalVacancyData>> call(ParamsLocalVacancy params) async {
     if (params.writeVacancy) {
       await localData.localVacancyCompany(params.vacancy!);
     }

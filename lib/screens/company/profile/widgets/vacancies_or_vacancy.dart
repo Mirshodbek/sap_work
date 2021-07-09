@@ -17,8 +17,9 @@ class VacanciesOrVacancyWidget extends StatelessWidget {
         builder: (context, state) {
       return state.map(onClick: (_click) {
         return Column(children: [
-          if (!_click.isSelectVacancies) VacancyWidget.create(),
-          if (_click.isSelectVacancies)
+          if (!_click.isSelectVacancies)
+            VacancyWidget.create()
+          else
             Column(children: [
               Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18),

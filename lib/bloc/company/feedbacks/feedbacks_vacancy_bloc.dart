@@ -27,7 +27,7 @@ class FeedbacksVacancyBloc
   Stream<FeedbacksVacancyState> _getFeedbacksEvent(
       _GetFeedbacksVacancyEvent event) async* {
     yield const FeedbacksVacancyState.loading();
-    final localVacancy = await getLocalVacancy(Params());
+    final localVacancy = await getLocalVacancy(ParamsLocalVacancy());
     yield* localVacancy.fold((failure) async* {
       yield const NoFeedbacksVacancyState();
     }, (vacancy) async* {

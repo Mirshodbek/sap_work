@@ -121,7 +121,7 @@ class FeedbacksScreenCompany extends StatelessWidget {
                 },
                 error: (_err) => Container(
                       alignment: Alignment.center,
-                      child: Text("Добавте вакансии",
+                      child: Text("Скоро тут появятся отклики",
                           style: AppTextTheme.mediumTextBlack),
                     ));
           }),

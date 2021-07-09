@@ -75,7 +75,7 @@ class PaymentScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     ProfileCompanyNameWidget(),
-                                    FeedbackCountCompanyWidget(),
+                                    FeedbacksVacancyCountWidget(),
                                   ])),
                           const Divider(
                               height: 40,

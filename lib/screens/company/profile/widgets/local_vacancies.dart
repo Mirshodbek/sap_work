@@ -24,7 +24,7 @@ class _LocalVacanciesWidgetState extends State<LocalVacanciesWidget> {
       return state.map(onClick: (_click) {
         return Column(children: [
           const SizedBox(height: 10),
-          Text("Неопубликование вакансии",
+          Text("Скрытые вакансии",
               style: AppTextTheme.smallTextMediumBlack),
           if (widget.vacanciesState.localVacanciesName.isEmpty)
             Padding(

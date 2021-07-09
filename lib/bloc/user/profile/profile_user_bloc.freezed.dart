@@ -19,6 +19,12 @@ class _$ProfileUserEventTearOff {
   _GetProfileUserEvent getProfileData() {
     return const _GetProfileUserEvent();
   }
+
+  _UploadAvatarProfileUserEvent uploadAvatar({required String path}) {
+    return _UploadAvatarProfileUserEvent(
+      path: path,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,22 +35,26 @@ mixin _$ProfileUserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getProfileData,
+    required TResult Function(String path) uploadAvatar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getProfileData,
+    TResult Function(String path)? uploadAvatar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetProfileUserEvent value) getProfileData,
+    required TResult Function(_UploadAvatarProfileUserEvent value) uploadAvatar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProfileUserEvent value)? getProfileData,
+    TResult Function(_UploadAvatarProfileUserEvent value)? uploadAvatar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,6 +118,7 @@ class _$_GetProfileUserEvent implements _GetProfileUserEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getProfileData,
+    required TResult Function(String path) uploadAvatar,
   }) {
     return getProfileData();
   }
@@ -116,6 +127,7 @@ class _$_GetProfileUserEvent implements _GetProfileUserEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getProfileData,
+    TResult Function(String path)? uploadAvatar,
     required TResult orElse(),
   }) {
     if (getProfileData != null) {
@@ -128,6 +140,7 @@ class _$_GetProfileUserEvent implements _GetProfileUserEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetProfileUserEvent value) getProfileData,
+    required TResult Function(_UploadAvatarProfileUserEvent value) uploadAvatar,
   }) {
     return getProfileData(this);
   }
@@ -136,6 +149,7 @@ class _$_GetProfileUserEvent implements _GetProfileUserEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProfileUserEvent value)? getProfileData,
+    TResult Function(_UploadAvatarProfileUserEvent value)? uploadAvatar,
     required TResult orElse(),
   }) {
     if (getProfileData != null) {
@@ -147,6 +161,127 @@ class _$_GetProfileUserEvent implements _GetProfileUserEvent {
 
 abstract class _GetProfileUserEvent implements ProfileUserEvent {
   const factory _GetProfileUserEvent() = _$_GetProfileUserEvent;
+}
+
+/// @nodoc
+abstract class _$UploadAvatarProfileUserEventCopyWith<$Res> {
+  factory _$UploadAvatarProfileUserEventCopyWith(
+          _UploadAvatarProfileUserEvent value,
+          $Res Function(_UploadAvatarProfileUserEvent) then) =
+      __$UploadAvatarProfileUserEventCopyWithImpl<$Res>;
+  $Res call({String path});
+}
+
+/// @nodoc
+class __$UploadAvatarProfileUserEventCopyWithImpl<$Res>
+    extends _$ProfileUserEventCopyWithImpl<$Res>
+    implements _$UploadAvatarProfileUserEventCopyWith<$Res> {
+  __$UploadAvatarProfileUserEventCopyWithImpl(
+      _UploadAvatarProfileUserEvent _value,
+      $Res Function(_UploadAvatarProfileUserEvent) _then)
+      : super(_value, (v) => _then(v as _UploadAvatarProfileUserEvent));
+
+  @override
+  _UploadAvatarProfileUserEvent get _value =>
+      super._value as _UploadAvatarProfileUserEvent;
+
+  @override
+  $Res call({
+    Object? path = freezed,
+  }) {
+    return _then(_UploadAvatarProfileUserEvent(
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UploadAvatarProfileUserEvent implements _UploadAvatarProfileUserEvent {
+  const _$_UploadAvatarProfileUserEvent({required this.path});
+
+  @override
+  final String path;
+
+  @override
+  String toString() {
+    return 'ProfileUserEvent.uploadAvatar(path: $path)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _UploadAvatarProfileUserEvent &&
+            (identical(other.path, path) ||
+                const DeepCollectionEquality().equals(other.path, path)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(path);
+
+  @JsonKey(ignore: true)
+  @override
+  _$UploadAvatarProfileUserEventCopyWith<_UploadAvatarProfileUserEvent>
+      get copyWith => __$UploadAvatarProfileUserEventCopyWithImpl<
+          _UploadAvatarProfileUserEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getProfileData,
+    required TResult Function(String path) uploadAvatar,
+  }) {
+    return uploadAvatar(path);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getProfileData,
+    TResult Function(String path)? uploadAvatar,
+    required TResult orElse(),
+  }) {
+    if (uploadAvatar != null) {
+      return uploadAvatar(path);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetProfileUserEvent value) getProfileData,
+    required TResult Function(_UploadAvatarProfileUserEvent value) uploadAvatar,
+  }) {
+    return uploadAvatar(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetProfileUserEvent value)? getProfileData,
+    TResult Function(_UploadAvatarProfileUserEvent value)? uploadAvatar,
+    required TResult orElse(),
+  }) {
+    if (uploadAvatar != null) {
+      return uploadAvatar(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadAvatarProfileUserEvent implements ProfileUserEvent {
+  const factory _UploadAvatarProfileUserEvent({required String path}) =
+      _$_UploadAvatarProfileUserEvent;
+
+  String get path => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$UploadAvatarProfileUserEventCopyWith<_UploadAvatarProfileUserEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

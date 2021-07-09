@@ -15,7 +15,7 @@ class RemotedVacanciesWidget extends StatelessWidget {
       builder: (context, state) {
         return state.map(onClick: (_onClick) {
           return Column(children: [
-            Text("Опубликование вакансии",
+            Text("Опубликованные вакансии",
                 style: AppTextTheme.smallTextMediumBlack),
             if (vacanciesState.vacancies.isEmpty)
               Padding(

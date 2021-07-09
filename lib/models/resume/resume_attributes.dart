@@ -14,7 +14,7 @@ class Stage extends Equatable {
   late final String period;
 
   // ignore: non_constant_identifier_names
-  late final String resume_id;
+  late final int resume_id;
 
 // ignore: non_constant_identifier_names
   late final String updated_at;
@@ -53,7 +53,7 @@ class Grade extends Equatable {
   late final String period;
 
   // ignore: non_constant_identifier_names
-  late final String resume_id;
+  late final int resume_id;
 
 // ignore: non_constant_identifier_names
   late final String updated_at;

@@ -15,7 +15,7 @@ Stage _$StageFromJson(Map<String, dynamic> json) {
     json['period'] as String,
     json['updated_at'] as String,
     json['created_at'] as String,
-  )..resume_id = json['resume_id'] as String;
+  )..resume_id = json['resume_id'] as int;
 }
 
 Map<String, dynamic> _$StageToJson(Stage instance) => <String, dynamic>{
@@ -32,7 +32,7 @@ Map<String, dynamic> _$StageToJson(Stage instance) => <String, dynamic>{
 Grade _$GradeFromJson(Map<String, dynamic> json) {
   return Grade(
     json['id'] as int,
-    json['resume_id'] as String,
+    json['resume_id'] as int,
     json['university_name'] as String,
     json['grade'] as String,
     json['period'] as String,

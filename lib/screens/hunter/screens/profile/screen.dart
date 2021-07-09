@@ -66,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           children: [
                             HeadWidget(
                                 _state.profile, _state.feedbacksCount),
-                            ResumeWidget(_state),
+                            // ResumeWidget(_state),
                           ],
                         ),
                       ),

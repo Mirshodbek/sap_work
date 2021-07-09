@@ -13,7 +13,7 @@ abstract class CompanyRemoteDataBase {
 
   Future<List<Vacancy>> getVacanciesCompany();
 
-  Future<http.Response> postVacancyCompany(ParamsVacancy paramsVacancy);
+  Future<Vacancy> postVacancyCompany(ParamsVacancy paramsVacancy);
 
   Future<Vacancy> getVacancyCompany(int id);
 
@@ -23,7 +23,7 @@ abstract class CompanyRemoteDataBase {
 
   Future<Vacancy> activateOrDeactivateVacancy(String id);
 
-  Future<String> updateAvatar(String filename);
+  Future<String> updateAvatarCompany(String filename);
 
   Future<List<FeedbackVacancy>> getFeedbacksVacancy(int id);
 
@@ -41,11 +41,9 @@ abstract class CompanyRemoteDataBase {
 class CompanyRemoteData implements CompanyRemoteDataBase {
   final CompanyCacheDataBase localDataSource;
   static const String _vacancies = '/api/vacancies';
-  static const String _categories = '/api/categories';
   static const String _createVacancy = '/api/vacancy/create';
   static const String _vacancy = '/api/vacancy?vacancy=';
   static const String _changeVacancy = '/api/vacancy/change?id=';
-  static const String _updateAvatar = '/api/updateAvatar';
   static const String _activateOrDeactivate = '/api/vacancy/';
   static const String _feedbacksVacancy = '/api/vacancy/feedbacks?vacancy=';
   static const String _statusSubscribe = '/api/subscribe/status';
@@ -125,10 +123,10 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   }
 
   @override
-  Future<http.Response> postVacancyCompany(ParamsVacancy paramsVacancy) async {
+  Future<Vacancy> postVacancyCompany(ParamsVacancy paramsVacancy) async {
     final result =
         await _callPostApi(_createVacancy, json.encode(paramsVacancy.toJson()));
-    return result;
+    return await getVacancyCompany(json.decode(result.body)["id"]);
   }
 
   @override
@@ -140,7 +138,7 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
 
   @override
   Future<List<Category>> getCategories() async {
-    final result = await _callPostApi(_categories, json.encode({}));
+    final result = await _callPostApi(CATEGORIES, json.encode({}));
     await localDataSource.deleteObject(CACHED_CATEGORIES);
     await localDataSource.cacheObject(result.body, CACHED_CATEGORIES);
     return (json.decode(result.body) as List<dynamic>)
@@ -164,7 +162,7 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
           "name": paramsVacancy.name,
           "body": paramsVacancy.body,
           "city": paramsVacancy.city,
-          "garde": paramsVacancy.grade,
+          "grade": paramsVacancy.grade,
           "stage": paramsVacancy.stage,
           "schedule": paramsVacancy.schedule,
           "category": paramsVacancy.category,
@@ -177,9 +175,9 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   }
 
   @override
-  Future<String> updateAvatar(String filename) async {
+  Future<String> updateAvatarCompany(String filename) async {
     final prefs = await SharedPreferences.getInstance();
-    final uri = Uri.parse(BASE_API + _updateAvatar);
+    final uri = Uri.parse(BASE_API + UPLOAD_AVATAR);
     var request = http.MultipartRequest('POST', uri);
     request.headers.addAll({
       "Accept": "application/json",

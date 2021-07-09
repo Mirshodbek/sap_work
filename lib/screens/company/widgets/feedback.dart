@@ -5,8 +5,8 @@ import 'package:sap_work/screens/widgets/shimmer.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
 import 'profile.dart';
 
-class FeedbackCountCompanyWidget extends StatelessWidget {
-  const FeedbackCountCompanyWidget({Key? key}) : super(key: key);
+class FeedbacksVacancyCountWidget extends StatelessWidget {
+  const FeedbacksVacancyCountWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class FeedbackCountCompanyWidget extends StatelessWidget {
                       style: AppTextTheme.mediumTextBlack),
                   Text("Отклики", style: AppTextTheme.smallTextMediumBlack),
                 ]),
-                ProfileAvatarWidget(),
+                ProfileUserAvatarWidget(),
               ],
             );
           },

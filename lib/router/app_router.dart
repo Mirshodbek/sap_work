@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
+import 'package:sap_work/screens/authorization/screens/pin_screen.dart';
 import 'package:sap_work/screens/company/chat/screen.dart';
 import 'package:sap_work/screens/company/invite/screen.dart';
 import 'package:sap_work/screens/company/payment/screen.dart';
@@ -32,6 +33,11 @@ class AppRouter {
       case SignUpScreen.id:
         return MaterialPageRoute<String>(
           builder: (_) => SignUpScreen.create(),
+        );
+      case PinScreen.id:
+        return MaterialPageRoute<String>(
+          settings: routeSettings,
+          builder: (_) => PinScreen(),
         );
       case NavigationBar.id:
         return MaterialPageRoute<String>(

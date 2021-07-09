@@ -18,7 +18,7 @@ class VacanciesBloc extends Bloc<VacanciesEvent, VacanciesState> {
   List<FavoriteVacancy> _vacancies = [];
   final HunterRepositoryBase _repository;
   List<FavoriteVacancy> _favoriteVacancies = [];
-  Resume _resume = Resume(0, 0, empty, empty, empty, empty, empty, 0, [], []);
+  Resume _resume = Resume(0, 0, empty, 0,empty, empty, empty, empty,"","", 0, [], []);
 
   VacanciesBloc(this._repository) : super(const VacanciesState.initial());
 

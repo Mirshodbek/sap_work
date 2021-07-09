@@ -27,7 +27,7 @@ class VacancyCompanyBloc
   Stream<VacancyCompanyState> _getVacancyEvent(
       _GetVacancyCompanyEvent event) async* {
     yield const VacancyCompanyState.loading();
-    final localVacancy = await getLocalVacancy(Params());
+    final localVacancy = await getLocalVacancy(ParamsLocalVacancy());
     yield* localVacancy.fold((failure) async* {
       yield const VacancyCompanyState.noVacancy();
     }, (vacancy) async* {

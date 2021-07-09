@@ -18,11 +18,12 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   List<String> _localResumes = [];
   List<FeedbackResume> _feedbacks = [];
   final HunterRepositoryBase _repository;
+
   // List<Block> _blocks = Lists.blocksResumeList;
   List<Map<String, dynamic>> grades = <Map<String, dynamic>>[];
   List<Map<String, dynamic>> stages = <Map<String, dynamic>>[];
-  Resume _resume = Resume(
-      0, 0, "Введите название резюме", empty, empty, empty, empty, 0, [], []);
+  Resume _resume = Resume(0, 0, "Введите название резюме", 0, empty, empty,
+      empty, empty, "", "", 0, [], []);
 
   ProfileBloc(this._repository) : super(const ProfileState.initial());
 
@@ -56,7 +57,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           jsonDecode(_prefs.getString("profile_saved")!));
     }
     if (_prefs.getString("resumes_saved") != null) {
-      _resumes = Resume.decode(_prefs.getString("resumes_saved")!);
+      // _resumes = Resume.decode(_prefs.getString("resumes_saved")!);
     }
     if (_prefs.getInt('resume_id') != null) {
       _resumeId = _prefs.getInt('resume_id')!;
@@ -114,7 +115,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           grades: [],
         );
       });
-      await _prefs.setString("resumes_saved", Resume.encode(_resumes));
+      // await _prefs.setString("resumes_saved", Resume.encode(_resumes));
     } catch (_) {
       add(const ProfileEvent.initial());
     }
@@ -155,7 +156,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
               _state.copyWith(buttons: 1, resumes: _event),
         );
       });
-      await _prefs.setString("resumes_saved", Resume.encode(_resumes));
+      // await _prefs.setString("resumes_saved", Resume.encode(_resumes));
     }
   }
 
@@ -184,9 +185,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         );
       } catch (_) {}
     } else {
-      var _localResume = _prefs.getStringList("local_resumes")!
+      var _localResume = _prefs
+          .getStringList("local_resumes")!
           .singleWhere((it) => it == event.title);
-      _resume = Resume(0, 0, _localResume, empty, empty, empty, empty, 2, [], []);
+      // _resume = Resume(0, 0, _localResume, empty, empty, empty, empty, 2, [], []);
       yield const ProfileState.screens(page: 1);
       yield state.maybeMap(
         orElse: () => state,
@@ -290,7 +292,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
               _state.copyWith(buttons: _editButton, resumes: _event),
         );
       });
-      await _prefs.setString("resumes_saved", Resume.encode(_resumes));
+      // await _prefs.setString("resumes_saved", Resume.encode(_resumes));
     }
   }
 
@@ -313,7 +315,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
             profileState: (_state) => _state.copyWith(resume: _resume),
           );
         });
-        await _prefs.setString("resumes_saved", Resume.encode(_resumes));
+        // await _prefs.setString("resumes_saved", Resume.encode(_resumes));
       } else {
         yield const ProfileState.accessResume();
         yield state.maybeMap(orElse: () => state);

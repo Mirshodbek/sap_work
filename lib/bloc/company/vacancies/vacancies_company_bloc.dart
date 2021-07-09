@@ -37,7 +37,7 @@ class VacanciesCompanyBloc
             message: _mapFailureToMessage(failure));
       },
       (data) async* {
-        final localVacancy = await localVacanciesName(Params());
+        final localVacancy = await localVacanciesName(ParamsLocalVacancy());
         yield* localVacancy.fold((failure) async* {
           yield VacanciesCompanyState.loaded(
               vacancies: data,
@@ -57,13 +57,13 @@ class VacanciesCompanyBloc
   Stream<VacanciesCompanyState> _addOrDeleteLocalVacancyEvent(
       _AddOrDeleteLocalVacanciesCompanyEvent event) async* {
     if (event.delete) {
-      final localVacancy = await localVacanciesName(Params(
+      final localVacancy = await localVacanciesName(ParamsLocalVacancy(
           writeVacancies: true,
           vacancies: List.from(nameVacancies)
             ..removeWhere((it) => it.name == event.nameVacancy)));
       yield* _updateLocalNames(localVacancy);
     } else {
-      final localVacancy = await localVacanciesName(Params(
+      final localVacancy = await localVacanciesName(ParamsLocalVacancy(
           writeVacancies: true,
           vacancies: <LocalVacancyData>[
             ...nameVacancies,
@@ -75,7 +75,7 @@ class VacanciesCompanyBloc
 
   Stream<VacanciesCompanyState> _editLocalName(
       _EditLocalNameVacanciesCompanyEvent event) async* {
-    final localVacancy = await localVacanciesName(Params(
+    final localVacancy = await localVacanciesName(ParamsLocalVacancy(
         writeVacancies: true,
         vacancies: List.from(nameVacancies)
           ..replaceWhere((it) => it.id == event.id,
