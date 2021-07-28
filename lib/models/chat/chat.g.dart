@@ -27,3 +27,17 @@ Map<String, dynamic> _$ChatToJson(Chat instance) => <String, dynamic>{
       'created_at': instance.created_at,
       'id': instance.id,
     };
+
+AllChats _$AllChatsFromJson(Map<String, dynamic> json) {
+  return AllChats(
+    json['id'] as int,
+    json['name'] as String,
+    json['lastmsg'] as String,
+  );
+}
+
+Map<String, dynamic> _$AllChatsToJson(AllChats instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'lastmsg': instance.lastmsg,
+    };

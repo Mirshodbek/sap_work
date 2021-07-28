@@ -32,22 +32,26 @@ class Chat extends Equatable {
   List<Object?> get props =>
       [user_id, company_id, from_user, body, updated_at, created_at, id];
 
-  factory Chat.fromJson(Map<String, dynamic> json) =>
-      _$ChatFromJson(json);
+  factory Chat.fromJson(Map<String, dynamic> json) => _$ChatFromJson(json);
 
-   Map<String, dynamic> toJson() =>
-      _$ChatToJson(this);
+  Map<String, dynamic> toJson() => _$ChatToJson(this);
+}
 
-   static Map<String, dynamic> toMap(Chat message) => {};
 
-  static String encode(List<Chat> messages) => json.encode(
-        messages
-            .map<Map<String, dynamic>>((message) => Chat.toMap(message))
-            .toList(),
-      );
+@JsonSerializable()
+class AllChats extends Equatable {
+  late final int id;
+  late final String name;
+  late final String lastmsg;
 
-  static List<Chat> decode(String messages) =>
-      (json.decode(messages) as List<dynamic>)
-          .map<Chat>((item) => Chat.fromJson(item))
-          .toList();
+
+  AllChats(this.id, this.name, this.lastmsg);
+
+
+  factory AllChats.fromJson(Map<String, dynamic> json) => _$AllChatsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AllChatsToJson(this);
+
+  @override
+  List<Object?> get props => [id,name,lastmsg];
 }

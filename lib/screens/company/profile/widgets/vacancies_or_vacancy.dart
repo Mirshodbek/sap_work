@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:formz/formz.dart';
 import 'package:sap_work/screens/company/profile/widgets/local_vacancies.dart';
 import 'package:sap_work/screens/company/profile/widgets/remote_vacancies.dart';
 import 'package:sap_work/screens/company/profile/widgets/vacancy.dart';
-import 'package:sap_work/screens/company/widgets/loading.dart';
+import 'package:sap_work/screens/widgets/loading.dart';
 import 'widget.dart';
 
 class VacanciesOrVacancyWidget extends StatelessWidget {
@@ -13,7 +12,7 @@ class VacanciesOrVacancyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileBtnCubit, ProfileBtnState>(
+    return BlocBuilder<ProfileCompanyBtnCubit, ProfileCompanyBtnState>(
         builder: (context, state) {
       return state.map(onClick: (_click) {
         return Column(children: [
@@ -32,7 +31,7 @@ class VacanciesOrVacancyWidget extends StatelessWidget {
                             style: AppTextTheme.mediumTextBlack)),
                     IconButton(
                         onPressed: () =>
-                            context.read<ProfileBtnCubit>().editNames(),
+                            context.read<ProfileCompanyBtnCubit>().editNames(),
                         icon: SvgPicture.asset(!_click.isEditNames
                             ? AppIcons.edit
                             : AppIcons.clear)),
@@ -43,7 +42,7 @@ class VacanciesOrVacancyWidget extends StatelessWidget {
                 state.maybeMap(
                     orElse: () => state,
                     loaded: (_state) {
-                      if (_state.status == FormzStatus.submissionFailure) {
+                      if (_state.status == VACANCIES_COMPANY_BLOC_CHANGE_VACANCIES_NAME_FAILURE) {
                         SmallWidgets.scaffoldMessage(
                             context: context,
                             message: "Нет доступ к интернету");

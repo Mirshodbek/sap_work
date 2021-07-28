@@ -29,8 +29,7 @@ class UserSignInBloc extends Bloc<UserSignInEvent, UserSignInState> {
     );
   }
 
-  Stream<UserSignInState> _initialState(
-      _InitialUserSignInEvent event) async* {
+  Stream<UserSignInState> _initialState(_InitialUserSignInEvent event) async* {
     yield const UserSignInState.telephoneState(
       phone: Phone.pure(),
       statusA: FormzStatus.pure,
@@ -45,6 +44,7 @@ class UserSignInBloc extends Bloc<UserSignInEvent, UserSignInState> {
         statusA: FormzStatus.pure,
       );
     } else {
+      _phone = event.phone.value;
       yield UserSignInState.telephoneState(
         phone: event.phone,
         statusA: Formz.validate([event.phone]),
@@ -83,6 +83,7 @@ class UserSignInBloc extends Bloc<UserSignInEvent, UserSignInState> {
 
   Stream<UserSignInState> _codeSubmitted(
       _CodeSubmittedUserSignInEvent event) async* {
+    print(event.code.value);
     if (event.code.valid) {
       try {
         yield UserSignInState.codeState(

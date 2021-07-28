@@ -33,23 +33,25 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
 
   Stream<ResumeUserState> _getResumeEvent(_GetVResumeUserEvent event) async* {
     yield const ResumeUserState.loading();
-    final localVacancy = await getLocalResume(ParamsLocalResumes());
-    yield* localVacancy.fold((failure) async* {
-      yield const ResumeUserState.noVacancy(status: FormzStatus.pure);
-    }, (vacancy) async* {
-      if (vacancy.id > 0) {
-        final vacancyCompany = await getResumeUser(vacancy.id);
-        yield* vacancyCompany.fold((failure) async* {
-          yield const ResumeUserState.noVacancy(status: FormzStatus.pure);
+    final localResume = await getLocalResume(ParamsLocalResumes());
+    yield* localResume.fold((failure) async* {
+      yield const ResumeUserState.noResume(status: EMPTY_BLOC);
+    }, (resume) async* {
+      if (resume.id > 0) {
+        final resumeUser = await getResumeUser(resume.id);
+        yield* resumeUser.fold((failure) async* {
+          yield const ResumeUserState.noResume(status: EMPTY_BLOC);
         }, (data) async* {
-          if (vacancy.id == data.id) {
+          if (resume.id == data.id) {
             yield ResumeUserState.loaded(resume: data, status: EMPTY_BLOC);
           } else {
-            yield const ResumeUserState.noInternet();
+            yield ResumeUserState.loaded(resume: data, status: EMPTY_BLOC);
+            yield ResumeUserState.loaded(
+                resume: data, status: RESUME_USER_BLOC_GET_RESUME_FAILURE);
           }
         });
       } else {
-        yield const ResumeUserState.noVacancy(status: FormzStatus.pure);
+        yield const ResumeUserState.noResume(status: EMPTY_BLOC);
       }
     });
   }
@@ -63,17 +65,14 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
       Texts.dirty(event.city),
       Texts.dirty(event.email),
       Texts.dirty(event.stages.toString()),
-      Texts.dirty(event.grades.toString()),
-      Texts.dirty(event.category.toString()),
+      Texts.dirty(event.grades.toString())
     ]);
-    if (isValidated.isValidated) {
+    if (isValidated.isValidated && event.category != 0 && event.sphere != 0) {
       try {
-        yield state.maybeMap(
-            orElse: () => state,
-            loaded: (_state) =>
-                _state.copyWith(status: RESUME_USER_BLOC_POST_RESUME_PROGRESS));
+        yield* _statusNoResume(RESUME_USER_BLOC_POST_RESUME_PROGRESS);
         final result = await remoteData.postResumeUser(ParamsResume(
             body: event.body,
+            sphere: event.sphere,
             abilities: event.abilities,
             name: event.name,
             phone: event.phone,
@@ -82,28 +81,14 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
             category: event.category,
             stages: event.stages,
             grades: event.grades));
-        yield state.maybeMap(
-            orElse: () => state,
-            loaded: (_state) =>
-                _state.copyWith(status: RESUME_USER_BLOC_POST_RESUME_SUCCEED));
         await getLocalResume(ParamsLocalResumes(
             writeResume: true, resume: LocalResumeData(event.name, result.id)));
-        add(const ResumeUserEvent.getResume());
+        yield* _statusNoResume(RESUME_USER_BLOC_POST_RESUME_SUCCEED);
       } catch (_) {
-        yield state.maybeMap(
-            orElse: () => state,
-            loaded: (_state) {
-              _state.copyWith(status: RESUME_USER_BLOC_POST_RESUME_FAILURE);
-              return _state.copyWith(status: EMPTY_BLOC);
-            });
+        yield* _statusNoResume(RESUME_USER_BLOC_POST_RESUME_FAILURE);
       }
     } else {
-      yield state.maybeMap(
-          orElse: () => state,
-          noVacancy: (_state) => _state.copyWith(status: FormzStatus.pure));
-      yield state.maybeMap(
-          orElse: () => state,
-          noVacancy: (_state) => _state.copyWith(status: isValidated));
+      yield* _statusNoResume(RESUME_USER_BLOC_POST_RESUME_IS_NOT_VALIDATE);
     }
   }
 
@@ -112,63 +97,53 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
       final result = await remoteData.changeResumeUser(
           event.id,
           ParamsResume(
+              sphere: event.sphere,
               phone: event.phone,
               email: event.email,
               category: event.category,
               body: event.body,
               city: event.city,
               abilities: event.abilities));
+      yield* _statusLoaded(RESUME_USER_BLOC_CHANGE_RESUME_SUCCEED);
       yield state.maybeMap(
           orElse: () => state,
           loaded: (_state) => _state.copyWith(resume: result));
     } catch (_) {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) {
-            _state.copyWith(status: RESUME_USER_BLOC_CHANGE_RESUME_FAILURE);
-            return _state.copyWith(status: EMPTY_BLOC);
-          });
+      yield* _statusLoaded(RESUME_USER_BLOC_CHANGE_RESUME_FAILURE);
     }
   }
 
   Stream<ResumeUserState> _activateOrDeactivateEvent(
       _ActivateOrDeactivateResumeUserEvent event) async* {
     try {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) => _state.copyWith(
-              status: RESUME_USER_BLOC_ACTIVE_OR_DEACTIVATE_PROGRESS));
+      yield* _statusLoaded(RESUME_USER_BLOC_ACTIVE_OR_DEACTIVATE_PROGRESS);
       if (event.active == 1) {
         final result = await remoteData.activateOrDeactivateResume(
             "deactivate?id=${event.id}", event.id);
+        yield* _statusLoaded(RESUME_USER_BLOC_ACTIVE_OR_DEACTIVATE_SUCCEED);
         yield state.maybeMap(
             orElse: () => state,
-            loaded: (_state) => _state.copyWith(
-                status: RESUME_USER_BLOC_ACTIVE_OR_DEACTIVATE_SUCCEED,
-                resume: result));
+            loaded: (_state) => _state.copyWith(resume: result));
       } else {
         final result = await remoteData.activateOrDeactivateResume(
             "activate?id=${event.id}", event.id);
+        yield* _statusLoaded(RESUME_USER_BLOC_ACTIVE_OR_DEACTIVATE_SUCCEED);
         yield state.maybeMap(
             orElse: () => state,
-            loaded: (_state) =>
-                _state.copyWith(status: EMPTY_BLOC, resume: result));
+            loaded: (_state) => _state.copyWith(resume: result));
       }
     } catch (_) {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) {
-            _state.copyWith(
-                status: RESUME_USER_BLOC_ACTIVE_OR_DEACTIVATE_FAILURE);
-            return _state.copyWith(status: EMPTY_BLOC);
-          });
+      yield* _statusLoaded(RESUME_USER_BLOC_ACTIVE_OR_DEACTIVATE_FAILURE);
     }
   }
 
   Stream<ResumeUserState> _addFileEvent(_AddFileResumeUserEvent event) async* {
     try {
-      final result = await remoteData.addFileToResume(event.id, event.path);
-    } catch (_) {}
+     await remoteData.addFileToResume(event.id, event.path);
+      yield* _statusLoaded(RESUME_USER_BLOC_ADD_FILE_SUCCEED);
+    } catch (_) {
+      yield* _statusLoaded(RESUME_USER_BLOC_ADD_FILE_FAILURE);
+    }
   }
 
   Stream<ResumeUserState> _changeExtraBlocksEvent(
@@ -180,6 +155,7 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
             resumeId: event.resumeId,
             typeBlock: STAGES,
             toMap: event.toMap);
+        yield* _statusLoaded(RESUME_USER_BLOC_CHANGE_EXTRA_BLOCK_SUCCEED);
         yield state.maybeMap(
             orElse: () => state,
             loaded: (_state) => _state.copyWith(resume: result));
@@ -190,18 +166,13 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
             resumeId: event.resumeId,
             typeBlock: GRADES,
             toMap: event.toMap);
+        yield* _statusLoaded(RESUME_USER_BLOC_CHANGE_EXTRA_BLOCK_SUCCEED);
         yield state.maybeMap(
             orElse: () => state,
             loaded: (_state) => _state.copyWith(resume: result));
       }
     } catch (_) {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) {
-            _state.copyWith(
-                status: RESUME_USER_BLOC_CHANGE_EXTRA_BLOCK_FAILURE);
-            return _state.copyWith(status: EMPTY_BLOC);
-          });
+      yield* _statusLoaded(RESUME_USER_BLOC_CHANGE_EXTRA_BLOCK_FAILURE);
     }
   }
 
@@ -211,6 +182,7 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
       if (event.typeBlock == STAGES) {
         final result = await remoteData.addExtraBlocksResume(
             event.id, STAGES, ParamsResume(stages: event.toMaps));
+        yield* _statusLoaded(RESUME_USER_BLOC_ADD_EXTRA_BLOCKS_SUCCEED);
         yield state.maybeMap(
             orElse: () => state,
             loaded: (_state) => _state.copyWith(resume: result));
@@ -218,17 +190,13 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
       if (event.typeBlock == GRADES) {
         final result = await remoteData.addExtraBlocksResume(
             event.id, GRADES, ParamsResume(grades: event.toMaps));
+        yield* _statusLoaded(RESUME_USER_BLOC_ADD_EXTRA_BLOCKS_SUCCEED);
         yield state.maybeMap(
             orElse: () => state,
             loaded: (_state) => _state.copyWith(resume: result));
       }
     } catch (_) {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) {
-            _state.copyWith(status: RESUME_USER_BLOC_ADD_STAGES_FAILURE);
-            return _state.copyWith(status: EMPTY_BLOC);
-          });
+      yield* _statusLoaded(RESUME_USER_BLOC_ADD_EXTRA_BLOCKS_FAILURE);
     }
   }
 
@@ -240,6 +208,7 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
             typeBlock: STAGES,
             stageId: event.stageId,
             resumeId: event.resumeId);
+        yield* _statusLoaded(RESUME_USER_BLOC_DELETE_EXTRA_BLOCK_SUCCEED);
         yield state.maybeMap(
             orElse: () => state,
             loaded: (_state) => _state.copyWith(resume: result));
@@ -249,19 +218,32 @@ class ResumeUserBloc extends Bloc<ResumeUserEvent, ResumeUserState> {
             typeBlock: GRADES,
             gradeId: event.gradeId,
             resumeId: event.resumeId);
+        yield* _statusLoaded(RESUME_USER_BLOC_DELETE_EXTRA_BLOCK_SUCCEED);
         yield state.maybeMap(
             orElse: () => state,
             loaded: (_state) => _state.copyWith(resume: result));
       }
     } catch (_) {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) {
-            _state.copyWith(
-                status: RESUME_USER_BLOC_DELETE_EXTRA_BLOCK_FAILURE);
-            return _state.copyWith(status: EMPTY_BLOC);
-          });
+      yield* _statusLoaded(RESUME_USER_BLOC_DELETE_EXTRA_BLOCK_FAILURE);
     }
+  }
+
+  Stream<ResumeUserState> _statusLoaded(String status) async* {
+    yield state.maybeMap(
+        orElse: () => state,
+        loaded: (_state) => _state.copyWith(status: EMPTY_BLOC));
+    yield state.maybeMap(
+        orElse: () => state,
+        loaded: (_state) => _state.copyWith(status: status));
+  }
+
+  Stream<ResumeUserState> _statusNoResume(String status) async* {
+    yield state.maybeMap(
+        orElse: () => state,
+        noResume: (_state) => _state.copyWith(status: EMPTY_BLOC));
+    yield state.maybeMap(
+        orElse: () => state,
+        noResume: (_state) => _state.copyWith(status: status));
   }
 }
 
@@ -275,6 +257,7 @@ abstract class ResumeUserEvent with _$ResumeUserEvent {
       final String? body,
       final String? abilities,
       final String? city,
+      required final int sphere,
       required final int category,
       required final int id}) = _EditResumeUserEvent;
 
@@ -286,6 +269,7 @@ abstract class ResumeUserEvent with _$ResumeUserEvent {
       required final String city,
       required final String email,
       required final int category,
+      required final int sphere,
       required final List<Map<String, dynamic>> stages,
       required final List<Map<String, dynamic>> grades}) = _PostResumeUserEvent;
 
@@ -328,8 +312,6 @@ abstract class ResumeUserState with _$ResumeUserState {
       {required final Resume resume,
       required final String status}) = LoadedResumeUserState;
 
-  const factory ResumeUserState.noVacancy({required final FormzStatus status}) =
+  const factory ResumeUserState.noResume({required final String status}) =
       NoResumeUserState;
-
-  const factory ResumeUserState.noInternet() = NoInternetUserState;
 }

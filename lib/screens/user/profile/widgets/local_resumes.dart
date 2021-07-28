@@ -8,6 +8,7 @@ import 'package:sap_work/bloc/user/resumes/resumes_user_bloc.dart';
 import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/resources/theme/color_theme.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
+import 'package:sap_work/screens/company/profile/widgets/widget.dart';
 
 class LocalResumesWidget extends StatefulWidget {
   final LoadedResumesUserState resumesState;
@@ -44,12 +45,16 @@ class _LocalResumesWidgetState extends State<LocalResumesWidget> {
                       orElse: () => const SizedBox.shrink(),
                       attributes: (_state) {
                         return ListTile(
+                            horizontalTitleGap: 0,
                             trailing: IconButton(
                               onPressed: () => context
                                   .read<ResumesUserBloc>()
                                   .add(ResumesUserEvent.addOrDeleteLocalResume(
                                       nameResume: item.name, delete: true)),
-                              icon: SvgPicture.asset(AppIcons.trash),
+                              icon: SvgPicture.asset(AppIcons.trash,
+                                  color: _state.resume.id == item.id
+                                      ? AppColor.white
+                                      : AppColor.black),
                             ),
                             selected: _state.vacancyId == item.id,
                             selectedTileColor: AppColor.red,
@@ -82,32 +87,35 @@ class _LocalResumesWidgetState extends State<LocalResumesWidget> {
                             const EdgeInsets.symmetric(vertical: 30.0)));
               }),
             if (!_click.isEditNames)
-              Column(children: [
-                if (_click.isExtraName)
-                  TextField(onChanged: (value) {
-                    nameResume = value;
-                  }),
-                if (nameResume.isEmpty && _click.isExtraName)
-                  Text("Вводите имя вакансии",
-                      style: AppTextTheme.smallSizeText),
-                TextButton.icon(
-                    onPressed: () {
-                      context.read<ProfileUserBtnCubit>().extraName();
-                      if (_click.isExtraName && nameResume.isNotEmpty) {
-                        context.read<ResumesUserBloc>().add(
-                            ResumesUserEvent.addOrDeleteLocalResume(
-                                delete: false, nameResume: nameResume));
-                      }
-                    },
-                    icon: !_click.isExtraName
-                        ? SvgPicture.asset(AppIcons.plus_black)
-                        : const SizedBox.shrink(),
-                    label: Text(
-                        !_click.isExtraName
-                            ? "Добавить вакансии"
-                            : "Сохранить вакансии",
-                        style: AppTextTheme.smallTextMediumBlack)),
-              ]),
+              Padding(
+                padding: const EdgeInsets.all(18),
+                child: Column(children: [
+                  if (_click.isExtraName)
+                    TextField(textAlign: TextAlign.center,
+                      onChanged: (value) {
+                      nameResume = value;
+                    },decoration: SmallWidgets.inputDecoration("Имя"),),
+                  if (nameResume.isEmpty && _click.isExtraName)
+                    Text("Вводите имя резюме", style: AppTextTheme.smallSizeText),
+                  TextButton.icon(
+                      onPressed: () {
+                        context.read<ProfileUserBtnCubit>().extraName();
+                        if (_click.isExtraName && nameResume.isNotEmpty) {
+                          context.read<ResumesUserBloc>().add(
+                              ResumesUserEvent.addOrDeleteLocalResume(
+                                  delete: false, nameResume: nameResume));
+                        }
+                      },
+                      icon: !_click.isExtraName
+                          ? SvgPicture.asset(AppIcons.plus_black)
+                          : const SizedBox.shrink(),
+                      label: Text(
+                          !_click.isExtraName
+                              ? "Добавить резюме"
+                              : "Сохранить резюме",
+                          style: AppTextTheme.smallTextMediumBlack)),
+                ]),
+              ),
           ]);
         });
       },

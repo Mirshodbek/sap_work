@@ -15,7 +15,7 @@ class BottomNavItem extends Equatable {
   static final messages = BottomNavItem._(
       1, AppIcons.messages_section, AppIcons.messages_section_selected);
   static final profile =
-      BottomNavItem._(2, AppImages.profile_section, AppImages.profile_section);
+      BottomNavItem._(2, AppIcons.avatar, AppIcons.avatar_selected);
 
   static List<BottomNavItem> get values => [announces, messages, profile];
 

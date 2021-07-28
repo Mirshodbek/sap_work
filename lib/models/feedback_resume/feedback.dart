@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -22,7 +21,7 @@ class FeedbackResume extends Equatable {
 
   late final String? date;
   late final String? contact;
-  late final String? accepted;
+  late final int? accepted;
 
   // ignore: non_constant_identifier_names
   late final String? contact_type;
@@ -51,20 +50,7 @@ class FeedbackResume extends Equatable {
   factory FeedbackResume.fromJson(Map<String, dynamic> json) =>
       _$FeedbackResumeFromJson(json);
 
-  static Map<String, dynamic> toJson(FeedbackResume feedbackResume) =>
-      _$FeedbackResumeToJson(feedbackResume);
-
-  static String encode(List<FeedbackResume> feedbacksResume) => json.encode(
-        feedbacksResume
-            .map<Map<String, dynamic>>(
-                (feedbackResume) => FeedbackResume.toJson(feedbackResume))
-            .toList(),
-      );
-
-  static List<FeedbackResume> decode(String feedbackResume) =>
-      (json.decode(feedbackResume) as List<dynamic>)
-          .map<FeedbackResume>((item) => FeedbackResume.fromJson(item))
-          .toList();
+  Map<String, dynamic> toJson() => _$FeedbackResumeToJson(this);
 
   @override
   List<Object?> get props => [
@@ -73,7 +59,11 @@ class FeedbackResume extends Equatable {
         resume_id,
         answer,
         expires_at,
+        date,
+        contact,
+        contact_type,
         updated_at,
+        accepted,
         created_at,
         vacancy,
       ];

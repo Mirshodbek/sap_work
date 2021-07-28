@@ -25,6 +25,20 @@ class _$ProfileUserEventTearOff {
       path: path,
     );
   }
+
+  _AddContactProfileUserEvent addContact(
+      {required String name, required String url}) {
+    return _AddContactProfileUserEvent(
+      name: name,
+      url: url,
+    );
+  }
+
+  _DeleteContactProfileUserEvent deleteContact({required int id}) {
+    return _DeleteContactProfileUserEvent(
+      id: id,
+    );
+  }
 }
 
 /// @nodoc
@@ -36,12 +50,16 @@ mixin _$ProfileUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getProfileData,
     required TResult Function(String path) uploadAvatar,
+    required TResult Function(String name, String url) addContact,
+    required TResult Function(int id) deleteContact,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getProfileData,
     TResult Function(String path)? uploadAvatar,
+    TResult Function(String name, String url)? addContact,
+    TResult Function(int id)? deleteContact,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,12 +67,17 @@ mixin _$ProfileUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetProfileUserEvent value) getProfileData,
     required TResult Function(_UploadAvatarProfileUserEvent value) uploadAvatar,
+    required TResult Function(_AddContactProfileUserEvent value) addContact,
+    required TResult Function(_DeleteContactProfileUserEvent value)
+        deleteContact,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProfileUserEvent value)? getProfileData,
     TResult Function(_UploadAvatarProfileUserEvent value)? uploadAvatar,
+    TResult Function(_AddContactProfileUserEvent value)? addContact,
+    TResult Function(_DeleteContactProfileUserEvent value)? deleteContact,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +142,8 @@ class _$_GetProfileUserEvent implements _GetProfileUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getProfileData,
     required TResult Function(String path) uploadAvatar,
+    required TResult Function(String name, String url) addContact,
+    required TResult Function(int id) deleteContact,
   }) {
     return getProfileData();
   }
@@ -128,6 +153,8 @@ class _$_GetProfileUserEvent implements _GetProfileUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getProfileData,
     TResult Function(String path)? uploadAvatar,
+    TResult Function(String name, String url)? addContact,
+    TResult Function(int id)? deleteContact,
     required TResult orElse(),
   }) {
     if (getProfileData != null) {
@@ -141,6 +168,9 @@ class _$_GetProfileUserEvent implements _GetProfileUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetProfileUserEvent value) getProfileData,
     required TResult Function(_UploadAvatarProfileUserEvent value) uploadAvatar,
+    required TResult Function(_AddContactProfileUserEvent value) addContact,
+    required TResult Function(_DeleteContactProfileUserEvent value)
+        deleteContact,
   }) {
     return getProfileData(this);
   }
@@ -150,6 +180,8 @@ class _$_GetProfileUserEvent implements _GetProfileUserEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProfileUserEvent value)? getProfileData,
     TResult Function(_UploadAvatarProfileUserEvent value)? uploadAvatar,
+    TResult Function(_AddContactProfileUserEvent value)? addContact,
+    TResult Function(_DeleteContactProfileUserEvent value)? deleteContact,
     required TResult orElse(),
   }) {
     if (getProfileData != null) {
@@ -234,6 +266,8 @@ class _$_UploadAvatarProfileUserEvent implements _UploadAvatarProfileUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getProfileData,
     required TResult Function(String path) uploadAvatar,
+    required TResult Function(String name, String url) addContact,
+    required TResult Function(int id) deleteContact,
   }) {
     return uploadAvatar(path);
   }
@@ -243,6 +277,8 @@ class _$_UploadAvatarProfileUserEvent implements _UploadAvatarProfileUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getProfileData,
     TResult Function(String path)? uploadAvatar,
+    TResult Function(String name, String url)? addContact,
+    TResult Function(int id)? deleteContact,
     required TResult orElse(),
   }) {
     if (uploadAvatar != null) {
@@ -256,6 +292,9 @@ class _$_UploadAvatarProfileUserEvent implements _UploadAvatarProfileUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetProfileUserEvent value) getProfileData,
     required TResult Function(_UploadAvatarProfileUserEvent value) uploadAvatar,
+    required TResult Function(_AddContactProfileUserEvent value) addContact,
+    required TResult Function(_DeleteContactProfileUserEvent value)
+        deleteContact,
   }) {
     return uploadAvatar(this);
   }
@@ -265,6 +304,8 @@ class _$_UploadAvatarProfileUserEvent implements _UploadAvatarProfileUserEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProfileUserEvent value)? getProfileData,
     TResult Function(_UploadAvatarProfileUserEvent value)? uploadAvatar,
+    TResult Function(_AddContactProfileUserEvent value)? addContact,
+    TResult Function(_DeleteContactProfileUserEvent value)? deleteContact,
     required TResult orElse(),
   }) {
     if (uploadAvatar != null) {
@@ -285,6 +326,279 @@ abstract class _UploadAvatarProfileUserEvent implements ProfileUserEvent {
 }
 
 /// @nodoc
+abstract class _$AddContactProfileUserEventCopyWith<$Res> {
+  factory _$AddContactProfileUserEventCopyWith(
+          _AddContactProfileUserEvent value,
+          $Res Function(_AddContactProfileUserEvent) then) =
+      __$AddContactProfileUserEventCopyWithImpl<$Res>;
+  $Res call({String name, String url});
+}
+
+/// @nodoc
+class __$AddContactProfileUserEventCopyWithImpl<$Res>
+    extends _$ProfileUserEventCopyWithImpl<$Res>
+    implements _$AddContactProfileUserEventCopyWith<$Res> {
+  __$AddContactProfileUserEventCopyWithImpl(_AddContactProfileUserEvent _value,
+      $Res Function(_AddContactProfileUserEvent) _then)
+      : super(_value, (v) => _then(v as _AddContactProfileUserEvent));
+
+  @override
+  _AddContactProfileUserEvent get _value =>
+      super._value as _AddContactProfileUserEvent;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? url = freezed,
+  }) {
+    return _then(_AddContactProfileUserEvent(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddContactProfileUserEvent implements _AddContactProfileUserEvent {
+  const _$_AddContactProfileUserEvent({required this.name, required this.url});
+
+  @override
+  final String name;
+  @override
+  final String url;
+
+  @override
+  String toString() {
+    return 'ProfileUserEvent.addContact(name: $name, url: $url)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AddContactProfileUserEvent &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.url, url) ||
+                const DeepCollectionEquality().equals(other.url, url)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(url);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddContactProfileUserEventCopyWith<_AddContactProfileUserEvent>
+      get copyWith => __$AddContactProfileUserEventCopyWithImpl<
+          _AddContactProfileUserEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getProfileData,
+    required TResult Function(String path) uploadAvatar,
+    required TResult Function(String name, String url) addContact,
+    required TResult Function(int id) deleteContact,
+  }) {
+    return addContact(name, url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getProfileData,
+    TResult Function(String path)? uploadAvatar,
+    TResult Function(String name, String url)? addContact,
+    TResult Function(int id)? deleteContact,
+    required TResult orElse(),
+  }) {
+    if (addContact != null) {
+      return addContact(name, url);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetProfileUserEvent value) getProfileData,
+    required TResult Function(_UploadAvatarProfileUserEvent value) uploadAvatar,
+    required TResult Function(_AddContactProfileUserEvent value) addContact,
+    required TResult Function(_DeleteContactProfileUserEvent value)
+        deleteContact,
+  }) {
+    return addContact(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetProfileUserEvent value)? getProfileData,
+    TResult Function(_UploadAvatarProfileUserEvent value)? uploadAvatar,
+    TResult Function(_AddContactProfileUserEvent value)? addContact,
+    TResult Function(_DeleteContactProfileUserEvent value)? deleteContact,
+    required TResult orElse(),
+  }) {
+    if (addContact != null) {
+      return addContact(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddContactProfileUserEvent implements ProfileUserEvent {
+  const factory _AddContactProfileUserEvent(
+      {required String name,
+      required String url}) = _$_AddContactProfileUserEvent;
+
+  String get name => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$AddContactProfileUserEventCopyWith<_AddContactProfileUserEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$DeleteContactProfileUserEventCopyWith<$Res> {
+  factory _$DeleteContactProfileUserEventCopyWith(
+          _DeleteContactProfileUserEvent value,
+          $Res Function(_DeleteContactProfileUserEvent) then) =
+      __$DeleteContactProfileUserEventCopyWithImpl<$Res>;
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$DeleteContactProfileUserEventCopyWithImpl<$Res>
+    extends _$ProfileUserEventCopyWithImpl<$Res>
+    implements _$DeleteContactProfileUserEventCopyWith<$Res> {
+  __$DeleteContactProfileUserEventCopyWithImpl(
+      _DeleteContactProfileUserEvent _value,
+      $Res Function(_DeleteContactProfileUserEvent) _then)
+      : super(_value, (v) => _then(v as _DeleteContactProfileUserEvent));
+
+  @override
+  _DeleteContactProfileUserEvent get _value =>
+      super._value as _DeleteContactProfileUserEvent;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_DeleteContactProfileUserEvent(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeleteContactProfileUserEvent
+    implements _DeleteContactProfileUserEvent {
+  const _$_DeleteContactProfileUserEvent({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'ProfileUserEvent.deleteContact(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DeleteContactProfileUserEvent &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DeleteContactProfileUserEventCopyWith<_DeleteContactProfileUserEvent>
+      get copyWith => __$DeleteContactProfileUserEventCopyWithImpl<
+          _DeleteContactProfileUserEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getProfileData,
+    required TResult Function(String path) uploadAvatar,
+    required TResult Function(String name, String url) addContact,
+    required TResult Function(int id) deleteContact,
+  }) {
+    return deleteContact(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getProfileData,
+    TResult Function(String path)? uploadAvatar,
+    TResult Function(String name, String url)? addContact,
+    TResult Function(int id)? deleteContact,
+    required TResult orElse(),
+  }) {
+    if (deleteContact != null) {
+      return deleteContact(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetProfileUserEvent value) getProfileData,
+    required TResult Function(_UploadAvatarProfileUserEvent value) uploadAvatar,
+    required TResult Function(_AddContactProfileUserEvent value) addContact,
+    required TResult Function(_DeleteContactProfileUserEvent value)
+        deleteContact,
+  }) {
+    return deleteContact(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetProfileUserEvent value)? getProfileData,
+    TResult Function(_UploadAvatarProfileUserEvent value)? uploadAvatar,
+    TResult Function(_AddContactProfileUserEvent value)? addContact,
+    TResult Function(_DeleteContactProfileUserEvent value)? deleteContact,
+    required TResult orElse(),
+  }) {
+    if (deleteContact != null) {
+      return deleteContact(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteContactProfileUserEvent implements ProfileUserEvent {
+  const factory _DeleteContactProfileUserEvent({required int id}) =
+      _$_DeleteContactProfileUserEvent;
+
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$DeleteContactProfileUserEventCopyWith<_DeleteContactProfileUserEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$ProfileUserStateTearOff {
   const _$ProfileUserStateTearOff();
 
@@ -297,7 +611,7 @@ class _$ProfileUserStateTearOff {
   }
 
   LoadedProfileUserState loaded(
-      {required TypeProfileUser profile, required FormzStatus status}) {
+      {required TypeProfileUser profile, required String status}) {
     return LoadedProfileUserState(
       profile: profile,
       status: status,
@@ -320,8 +634,7 @@ mixin _$ProfileUserState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileUser profile, FormzStatus status)
-        loaded,
+    required TResult Function(TypeProfileUser profile, String status) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -329,7 +642,7 @@ mixin _$ProfileUserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileUser profile, FormzStatus status)? loaded,
+    TResult Function(TypeProfileUser profile, String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -412,8 +725,7 @@ class _$EmptyProfileUserState implements EmptyProfileUserState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileUser profile, FormzStatus status)
-        loaded,
+    required TResult Function(TypeProfileUser profile, String status) loaded,
     required TResult Function(String message) error,
   }) {
     return empty();
@@ -424,7 +736,7 @@ class _$EmptyProfileUserState implements EmptyProfileUserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileUser profile, FormzStatus status)? loaded,
+    TResult Function(TypeProfileUser profile, String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -507,8 +819,7 @@ class _$LoadingProfileUserState implements LoadingProfileUserState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileUser profile, FormzStatus status)
-        loaded,
+    required TResult Function(TypeProfileUser profile, String status) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -519,7 +830,7 @@ class _$LoadingProfileUserState implements LoadingProfileUserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileUser profile, FormzStatus status)? loaded,
+    TResult Function(TypeProfileUser profile, String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -565,7 +876,7 @@ abstract class $LoadedProfileUserStateCopyWith<$Res> {
   factory $LoadedProfileUserStateCopyWith(LoadedProfileUserState value,
           $Res Function(LoadedProfileUserState) then) =
       _$LoadedProfileUserStateCopyWithImpl<$Res>;
-  $Res call({TypeProfileUser profile, FormzStatus status});
+  $Res call({TypeProfileUser profile, String status});
 }
 
 /// @nodoc
@@ -592,7 +903,7 @@ class _$LoadedProfileUserStateCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as FormzStatus,
+              as String,
     ));
   }
 }
@@ -605,7 +916,7 @@ class _$LoadedProfileUserState implements LoadedProfileUserState {
   @override
   final TypeProfileUser profile;
   @override
-  final FormzStatus status;
+  final String status;
 
   @override
   String toString() {
@@ -640,8 +951,7 @@ class _$LoadedProfileUserState implements LoadedProfileUserState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileUser profile, FormzStatus status)
-        loaded,
+    required TResult Function(TypeProfileUser profile, String status) loaded,
     required TResult Function(String message) error,
   }) {
     return loaded(profile, status);
@@ -652,7 +962,7 @@ class _$LoadedProfileUserState implements LoadedProfileUserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileUser profile, FormzStatus status)? loaded,
+    TResult Function(TypeProfileUser profile, String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -692,10 +1002,10 @@ class _$LoadedProfileUserState implements LoadedProfileUserState {
 abstract class LoadedProfileUserState implements ProfileUserState {
   const factory LoadedProfileUserState(
       {required TypeProfileUser profile,
-      required FormzStatus status}) = _$LoadedProfileUserState;
+      required String status}) = _$LoadedProfileUserState;
 
   TypeProfileUser get profile => throw _privateConstructorUsedError;
-  FormzStatus get status => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedProfileUserStateCopyWith<LoadedProfileUserState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -769,8 +1079,7 @@ class _$ErrorProfileUserState implements ErrorProfileUserState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileUser profile, FormzStatus status)
-        loaded,
+    required TResult Function(TypeProfileUser profile, String status) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -781,7 +1090,7 @@ class _$ErrorProfileUserState implements ErrorProfileUserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileUser profile, FormzStatus status)? loaded,
+    TResult Function(TypeProfileUser profile, String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

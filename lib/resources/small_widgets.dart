@@ -1,13 +1,13 @@
+
 import 'package:extended_image/extended_image.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:progress_indicators/progress_indicators.dart';
-import 'package:sap_work/data_source/common_urls.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
 import 'package:sap_work/screens/widgets/drop_down.dart';
 
-import 'constants.dart';
 import 'icons.dart';
 import 'theme/color_theme.dart';
 
@@ -19,15 +19,18 @@ class SmallWidgets {
 
   static Widget suffixText(String title) {
     return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 10),
+        padding: const EdgeInsets.only(left: 20, top: 9),
         child: Text(title, style: AppTextTheme.smallTextMediumBlack));
   }
 
   static InputDecoration inputDecoration(String hintText) {
     return InputDecoration(
         hintText: hintText,
-        border: OutlineInputBorder(
-            borderSide: const BorderSide(),
+        enabledBorder: OutlineInputBorder(
+            borderSide:  BorderSide(color: AppColor.red),
+            borderRadius: BorderRadius.circular(5.0)),
+        focusedBorder: OutlineInputBorder(
+            borderSide:  BorderSide(color: AppColor.red),
             borderRadius: BorderRadius.circular(5.0)));
   }
 
@@ -37,7 +40,7 @@ class SmallWidgets {
           context: context,
           builder: (context) => SimpleDialog(
               title: FittedBox(child: JumpingText(title)),
-              titlePadding: const EdgeInsets.all(12)));
+              titlePadding: const EdgeInsets.symmetric(vertical: 30,horizontal: 12)));
 
   static Iterable<ListTile> buildList(
           {required Function(String item) onTap,
@@ -59,7 +62,7 @@ class SmallWidgets {
       ClipRRect(
           borderRadius: BorderRadius.circular(100),
           child: ExtendedImage.network(
-              url != DEFAULT_PHOTO ? BASE_API + url : url,
+              url,
               height: height,
               width: width,
               fit: BoxFit.cover));
@@ -86,7 +89,7 @@ class SmallWidgets {
               },
               icon: SvgPicture.asset(AppIcons.photo, color: AppColor.red)));
 
-  static Text textRich(String text) => Text.rich(
+  static Text textRichArrow(String text) => Text.rich(
       TextSpan(children: [
         TextSpan(text: text),
         WidgetSpan(child: SvgPicture.asset(AppIcons.right_arrow_ios))
@@ -94,18 +97,21 @@ class SmallWidgets {
       textAlign: TextAlign.center,
       style: AppTextTheme.smallTextMediumBlack);
 
-  static Text textRichSearch() => Text.rich(TextSpan(children: [
+  static Text textRichSearch({required VoidCallback onTap,required String title}) => Text.rich(TextSpan(children: [
         TextSpan(
             text: "Подходящие резюме в городе  ",
             style: AppTextTheme.mediumTextBlack),
         TextSpan(
-            text: "Москва",
-            style: AppTextTheme.mediumTextBlack.copyWith(color: AppColor.red)),
+          text: title.isNotEmpty?title:"Москва",
+          style: AppTextTheme.mediumTextBlack.copyWith(color: AppColor.red),
+          recognizer: TapGestureRecognizer()..onTap = onTap,
+        ),
         WidgetSpan(
-            child: SvgPicture.asset(
-          AppIcons.down_arrow,
-          color: AppColor.red,
-        ))
+          child: SvgPicture.asset(
+            AppIcons.down_arrow,
+            color: AppColor.red,
+          ),
+        ),
       ]));
 
   static Row title(
@@ -134,15 +140,26 @@ class SmallWidgets {
               onChanged: onChanged)
           : Text(body, style: AppTextTheme.smallTextMediumBlack);
 
- static Widget bodyDropDown(
-      {required Function(String? item) onChanged,
-        required String body,
-        required String title,
-        required String? value,
-        required List<DropdownMenuItem<String>> items,
-        required bool changeWidget}) =>
+  static Widget bodyDropDown(
+          {required Function(String? item) onChanged,
+          required String body,
+          required String title,
+          required String? value,
+          required List<DropdownMenuItem<String>> items,
+          required bool changeWidget}) =>
       changeWidget
           ? DropDownWidget(
-          value: value, title: title, onChanged: onChanged, items: items)
+              value: value, title: title, onChanged: onChanged, items: items)
           : Text(body, style: AppTextTheme.smallTextMediumBlack);
+
+  static Text textRichLocation(String city) => Text.rich(
+      TextSpan(children: [
+        WidgetSpan(
+            child: Padding(
+          padding: const EdgeInsets.only(bottom: 5, right: 10),
+          child: SvgPicture.asset(AppIcons.location),
+        )),
+        TextSpan(text: city)
+      ]),
+      style: AppTextTheme.smallSizeText);
 }

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:formz/formz.dart';
-import 'package:sap_work/bloc/user/core_profile/core_profile_user_bloc.dart';
 import 'package:sap_work/bloc/user/profile/profile_user_bloc.dart';
 import 'package:sap_work/bloc/user/profile_button/profile_user_btn_cubit.dart';
+import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/resources/small_widgets.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
+import 'package:sap_work/screens/widgets/loading.dart';
 import 'package:sap_work/screens/widgets/shimmer.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class ProfileUserNameWidget extends StatelessWidget {
   const ProfileUserNameWidget({Key? key}) : super(key: key);
 
@@ -44,7 +44,9 @@ class ProfileUserAvatarWidget extends StatelessWidget {
       state.maybeMap(
           orElse: () => state,
           loaded: (_state) {
-            if (_state.status == FormzStatus.submissionFailure) {
+            if (_state.status == PROFILE_USER_BLOC_UPLOAD_AVATAR_FAILURE ||
+                _state.status == PROFILE_USER_BLOC_ADD_CONTACT_FAILURE ||
+                _state.status == PROFILE_USER_BLOC_DELETE_CONTACT_FAILURE) {
               SmallWidgets.scaffoldMessage(
                   context: context, message: "Нет доступ к интернету");
             }
@@ -57,7 +59,7 @@ class ProfileUserAvatarWidget extends StatelessWidget {
             return SizedBox(
                 height: 88,
                 child: Stack(children: [
-                  _state.status == FormzStatus.submissionInProgress
+                  _state.status == PROFILE_USER_BLOC_UPLOAD_AVATAR_PROGRESS
                       ? SmallWidgets.uploadAvatar()
                       : SmallWidgets.circleAvatar(
                           url: _state.profile.profile.avatar,
@@ -89,56 +91,41 @@ class _LinksUserWidgetState extends State<LinksUserWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CoreProfileUserBloc, CoreProfileUserState>(
-      listener: (context, state) {
-        state.maybeMap(
-            orElse: () => state,
-            attributes: (_state) {
-              if (_state.status.isSubmissionFailure) {
-                SmallWidgets.scaffoldMessage(
-                    context: context,
-                    message: "Проверьте доступ к интернету и адрес ссылки");
-              }
-            });
-      },
+    return BlocBuilder<ProfileUserBloc, ProfileUserState>(
       builder: (context, state) {
         return state.map(
             empty: (_) => const SizedBox.shrink(),
-            loading: (_) => Row(
-                  children: [
-                    ShimmerWidget.rectangular(height: 25, width: 30),
-                    const SizedBox(width: 20),
-                    ShimmerWidget.rectangular(height: 25, width: 30),
-                    const SizedBox(width: 20),
-                    ShimmerWidget.rectangular(height: 25, width: 30),
-                    const SizedBox(width: 20),
-                    ShimmerWidget.rectangular(height: 25, width: 30)
-                  ],
-                ),
-            attributes: (_attributes) {
+            loading: (_) => LoadingLinkWidget(),
+            loaded: (_attributes) {
               return BlocBuilder<ProfileUserBtnCubit, ProfileUserBtnState>(
                 builder: (context, state) {
                   return state.map(onClick: (_onClick) {
                     return SizedBox(
-                        height: 45.0,
+                        height: _onClick.link ? 130 : 45,
                         child: Row(children: [
                           if (!_onClick.link)
-                            _attributes.contacts.isNotEmpty
+                            _attributes.profile.profile.urls!.isNotEmpty
                                 ? Flexible(
                                     child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index) {
-                                          final link =
-                                              _attributes.contacts[index];
+                                          final link = _attributes
+                                              .profile.profile.urls![index];
                                           return Row(
                                             children: [
                                               IconButton(
                                                   padding: EdgeInsets.zero,
-                                                  onPressed: () {},
+                                                  onPressed: () => context
+                                                      .read<ProfileUserBloc>()
+                                                      .add(ProfileUserEvent
+                                                          .deleteContact(
+                                                              id: link.id)),
                                                   icon: SvgPicture.asset(
                                                       AppIcons.clear)),
                                               TextButton(
-                                                  onPressed: () {},
+                                                  onPressed: () async{
+                                                    await launch(link.url);
+                                                  },
                                                   child: Row(children: [
                                                     Text(link.name,
                                                         style: AppTextTheme
@@ -149,32 +136,29 @@ class _LinksUserWidgetState extends State<LinksUserWidget> {
                                             ],
                                           );
                                         },
-                                        itemCount: _attributes.contacts.length))
-                                : Text("Пока пусто",
+                                        itemCount: _attributes
+                                            .profile.profile.urls!.length))
+                                : Text("Добавьте ссылку",
                                     style: AppTextTheme.smallSizeText),
                           if (_onClick.link)
                             Expanded(
-                              child: Row(
+                              child: Column(
                                 children: [
-                                  Expanded(
-                                      child: TextField(
-                                    maxLines: 2,
+                                  TextField(
                                     decoration:
-                                        SmallWidgets.inputDecoration("имя"),
+                                        SmallWidgets.inputDecoration("Имя"),
                                     onChanged: (value) {
                                       name = value;
                                     },
-                                  )),
-                                  const SizedBox(width: 10),
-                                  Expanded(
-                                      child: TextField(
-                                    maxLines: 2,
+                                  ),
+                                  const SizedBox(height: 10),
+                                  TextField(
                                     decoration:
-                                        SmallWidgets.inputDecoration("ссылки"),
+                                        SmallWidgets.inputDecoration("Ссылка"),
                                     onChanged: (value) {
                                       url = value;
                                     },
-                                  )),
+                                  ),
                                 ],
                               ),
                             ),
@@ -184,8 +168,8 @@ class _LinksUserWidgetState extends State<LinksUserWidget> {
                                 if (_onClick.link &&
                                     name.isNotEmpty &&
                                     url.isNotEmpty) {
-                                  context.read<CoreProfileUserBloc>().add(
-                                      CoreProfileUserEvent.addContact(
+                                  context.read<ProfileUserBloc>().add(
+                                      ProfileUserEvent.addContact(
                                           name: name, url: url));
                                 }
                               },

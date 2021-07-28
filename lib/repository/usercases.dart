@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:either_dart/either.dart';
-import 'package:sap_work/models/local_resume/resume.dart';
-import 'package:sap_work/models/local_vacancy/vacancy.dart';
 import 'exceptions_failures.dart';
 
 abstract class UseCase<Type, Params> {

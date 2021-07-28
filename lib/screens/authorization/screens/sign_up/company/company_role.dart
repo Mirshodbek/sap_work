@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:sap_work/screens/widgets/bottom_nav_bar.dart';
 import '../../../authorization.dart';
+import '../../pin_screen.dart';
 
 class CompanyRole extends StatefulWidget {
   CompanyRole({Key? key}) : super(key: key);
 
   static Widget create() {
     return BlocProvider<CompanySignUpBloc>(
-      create: (_) => CompanySignUpBloc(AuthProvider())
-        ..add(CompanySignUpEvent.initial()),
+      create: (_) =>
+          CompanySignUpBloc(AuthProvider())..add(CompanySignUpEvent.initial()),
       child: CompanyRole(),
     );
   }
@@ -49,11 +51,9 @@ class _CompanyRoleState extends State<CompanyRole> {
   Widget build(BuildContext context) {
     return BlocConsumer<CompanySignUpBloc, CompanySignUpState>(
       listener: (context, state) {
-        if (state == CompanySignUpState.successSignUp()) {
-          Navigator.pushReplacementNamed(
-            context,
-            CompanySignInScreen.id,
-          );
+        if (state is SuccessSignUpCompanySignUpState) {
+          Navigator.pushNamed(context, PinScreen.id,
+              arguments: {ROLE: COMPANY_ROLE, PHONE: state.phone});
         }
         state.maybeMap(
           companyState: (_state) {
@@ -72,7 +72,7 @@ class _CompanyRoleState extends State<CompanyRole> {
       builder: (context, state) {
         return state.map(
           initial: (_) => Container(),
-         companyState: (_state) {
+          companyState: (_state) {
             return SizedBox(
               height: MediaQuery.of(context).size.height / 1.5,
               child: PageView(

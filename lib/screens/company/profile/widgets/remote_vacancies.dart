@@ -11,7 +11,7 @@ class RemotedVacanciesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileBtnCubit, ProfileBtnState>(
+    return BlocBuilder<ProfileCompanyBtnCubit, ProfileCompanyBtnState>(
       builder: (context, state) {
         return state.map(onClick: (_onClick) {
           return Column(children: [
@@ -25,7 +25,7 @@ class RemotedVacanciesWidget extends StatelessWidget {
                           .copyWith(color: AppColor.grey))),
             if (!_onClick.isEditNames)
               ...vacanciesState.vacancies.map((item) {
-                return BlocBuilder<CoreProfileBloc, CoreProfileState>(
+                return BlocBuilder<CoreProfileCompanyBloc, CoreProfileCompanyState>(
                   builder: (context, state) {
                     return state.maybeMap(
                         orElse: () => const SizedBox.shrink(),
@@ -75,15 +75,15 @@ class RemotedVacanciesWidget extends StatelessWidget {
 
   Future<void> _onTap(BuildContext context, String name, int id) async {
     return Future.sync(() => context
-        .read<CoreProfileBloc>()
-        .add(CoreProfileEvent.onSelect(title: name, id: id))).whenComplete(() {
+        .read<CoreProfileCompanyBloc>()
+        .add(CoreProfileCompanyEvent.onSelect(title: name, id: id))).whenComplete(() {
       context
           .read<VacancyCompanyBloc>()
           .add(const VacancyCompanyEvent.getVacancy());
       context
           .read<FeedbacksVacancyBloc>()
           .add(const FeedbacksVacancyEvent.getFeedbacks());
-      context.read<ProfileBtnCubit>().selectVacancies();
+      context.read<ProfileCompanyBtnCubit>().selectVacancies();
     });
   }
 }

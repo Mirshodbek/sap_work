@@ -706,7 +706,7 @@ class _$VacanciesCompanyStateTearOff {
 
   LoadedVacanciesCompanyState loaded(
       {required List<Vacancy> vacancies,
-      required FormzStatus status,
+      required String status,
       required List<LocalVacancyData> localVacanciesName}) {
     return LoadedVacanciesCompanyState(
       vacancies: vacancies,
@@ -731,7 +731,7 @@ mixin _$VacanciesCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<Vacancy> vacancies, FormzStatus status,
+    required TResult Function(List<Vacancy> vacancies, String status,
             List<LocalVacancyData> localVacanciesName)
         loaded,
     required TResult Function(String message) error,
@@ -741,7 +741,7 @@ mixin _$VacanciesCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<Vacancy> vacancies, FormzStatus status,
+    TResult Function(List<Vacancy> vacancies, String status,
             List<LocalVacancyData> localVacanciesName)?
         loaded,
     TResult Function(String message)? error,
@@ -827,7 +827,7 @@ class _$EmptyVacanciesCompanyState implements EmptyVacanciesCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<Vacancy> vacancies, FormzStatus status,
+    required TResult Function(List<Vacancy> vacancies, String status,
             List<LocalVacancyData> localVacanciesName)
         loaded,
     required TResult Function(String message) error,
@@ -840,7 +840,7 @@ class _$EmptyVacanciesCompanyState implements EmptyVacanciesCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<Vacancy> vacancies, FormzStatus status,
+    TResult Function(List<Vacancy> vacancies, String status,
             List<LocalVacancyData> localVacanciesName)?
         loaded,
     TResult Function(String message)? error,
@@ -928,7 +928,7 @@ class _$LoadingVacanciesCompanyState implements LoadingVacanciesCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<Vacancy> vacancies, FormzStatus status,
+    required TResult Function(List<Vacancy> vacancies, String status,
             List<LocalVacancyData> localVacanciesName)
         loaded,
     required TResult Function(String message) error,
@@ -941,7 +941,7 @@ class _$LoadingVacanciesCompanyState implements LoadingVacanciesCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<Vacancy> vacancies, FormzStatus status,
+    TResult Function(List<Vacancy> vacancies, String status,
             List<LocalVacancyData> localVacanciesName)?
         loaded,
     TResult Function(String message)? error,
@@ -992,7 +992,7 @@ abstract class $LoadedVacanciesCompanyStateCopyWith<$Res> {
       _$LoadedVacanciesCompanyStateCopyWithImpl<$Res>;
   $Res call(
       {List<Vacancy> vacancies,
-      FormzStatus status,
+      String status,
       List<LocalVacancyData> localVacanciesName});
 }
 
@@ -1022,7 +1022,7 @@ class _$LoadedVacanciesCompanyStateCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as FormzStatus,
+              as String,
       localVacanciesName: localVacanciesName == freezed
           ? _value.localVacanciesName
           : localVacanciesName // ignore: cast_nullable_to_non_nullable
@@ -1042,7 +1042,7 @@ class _$LoadedVacanciesCompanyState implements LoadedVacanciesCompanyState {
   @override
   final List<Vacancy> vacancies;
   @override
-  final FormzStatus status;
+  final String status;
   @override
   final List<LocalVacancyData> localVacanciesName;
 
@@ -1083,7 +1083,7 @@ class _$LoadedVacanciesCompanyState implements LoadedVacanciesCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<Vacancy> vacancies, FormzStatus status,
+    required TResult Function(List<Vacancy> vacancies, String status,
             List<LocalVacancyData> localVacanciesName)
         loaded,
     required TResult Function(String message) error,
@@ -1096,7 +1096,7 @@ class _$LoadedVacanciesCompanyState implements LoadedVacanciesCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<Vacancy> vacancies, FormzStatus status,
+    TResult Function(List<Vacancy> vacancies, String status,
             List<LocalVacancyData> localVacanciesName)?
         loaded,
     TResult Function(String message)? error,
@@ -1138,12 +1138,12 @@ class _$LoadedVacanciesCompanyState implements LoadedVacanciesCompanyState {
 abstract class LoadedVacanciesCompanyState implements VacanciesCompanyState {
   const factory LoadedVacanciesCompanyState(
           {required List<Vacancy> vacancies,
-          required FormzStatus status,
+          required String status,
           required List<LocalVacancyData> localVacanciesName}) =
       _$LoadedVacanciesCompanyState;
 
   List<Vacancy> get vacancies => throw _privateConstructorUsedError;
-  FormzStatus get status => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   List<LocalVacancyData> get localVacanciesName =>
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1221,7 +1221,7 @@ class _$ErrorVacanciesCompanyState implements ErrorVacanciesCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(List<Vacancy> vacancies, FormzStatus status,
+    required TResult Function(List<Vacancy> vacancies, String status,
             List<LocalVacancyData> localVacanciesName)
         loaded,
     required TResult Function(String message) error,
@@ -1234,7 +1234,7 @@ class _$ErrorVacanciesCompanyState implements ErrorVacanciesCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<Vacancy> vacancies, FormzStatus status,
+    TResult Function(List<Vacancy> vacancies, String status,
             List<LocalVacancyData> localVacanciesName)?
         loaded,
     TResult Function(String message)? error,

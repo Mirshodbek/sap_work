@@ -481,8 +481,10 @@ class _$UserSignUpStateTearOff {
     );
   }
 
-  _SuccessSignUpUserSignUpState successSignUp() {
-    return const _SuccessSignUpUserSignUpState();
+  SuccessSignUpUserSignUpState successSignUp({required String phone}) {
+    return SuccessSignUpUserSignUpState(
+      phone: phone,
+    );
   }
 }
 
@@ -497,7 +499,7 @@ mixin _$UserSignUpState {
     required TResult Function(
             Texts name, Phone phone, Texts prof, FormzStatus status)
         userState,
-    required TResult Function() successSignUp,
+    required TResult Function(String phone) successSignUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -505,7 +507,7 @@ mixin _$UserSignUpState {
     TResult Function()? initial,
     TResult Function(Texts name, Phone phone, Texts prof, FormzStatus status)?
         userState,
-    TResult Function()? successSignUp,
+    TResult Function(String phone)? successSignUp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -513,15 +515,14 @@ mixin _$UserSignUpState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialUserSignUpState value) initial,
     required TResult Function(_HunterStateUserSignUpState value) userState,
-    required TResult Function(_SuccessSignUpUserSignUpState value)
-        successSignUp,
+    required TResult Function(SuccessSignUpUserSignUpState value) successSignUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialUserSignUpState value)? initial,
     TResult Function(_HunterStateUserSignUpState value)? userState,
-    TResult Function(_SuccessSignUpUserSignUpState value)? successSignUp,
+    TResult Function(SuccessSignUpUserSignUpState value)? successSignUp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -588,7 +589,7 @@ class _$_InitialUserSignUpState implements _InitialUserSignUpState {
     required TResult Function(
             Texts name, Phone phone, Texts prof, FormzStatus status)
         userState,
-    required TResult Function() successSignUp,
+    required TResult Function(String phone) successSignUp,
   }) {
     return initial();
   }
@@ -599,7 +600,7 @@ class _$_InitialUserSignUpState implements _InitialUserSignUpState {
     TResult Function()? initial,
     TResult Function(Texts name, Phone phone, Texts prof, FormzStatus status)?
         userState,
-    TResult Function()? successSignUp,
+    TResult Function(String phone)? successSignUp,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -613,8 +614,7 @@ class _$_InitialUserSignUpState implements _InitialUserSignUpState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialUserSignUpState value) initial,
     required TResult Function(_HunterStateUserSignUpState value) userState,
-    required TResult Function(_SuccessSignUpUserSignUpState value)
-        successSignUp,
+    required TResult Function(SuccessSignUpUserSignUpState value) successSignUp,
   }) {
     return initial(this);
   }
@@ -624,7 +624,7 @@ class _$_InitialUserSignUpState implements _InitialUserSignUpState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialUserSignUpState value)? initial,
     TResult Function(_HunterStateUserSignUpState value)? userState,
-    TResult Function(_SuccessSignUpUserSignUpState value)? successSignUp,
+    TResult Function(SuccessSignUpUserSignUpState value)? successSignUp,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -745,7 +745,7 @@ class _$_HunterStateUserSignUpState implements _HunterStateUserSignUpState {
     required TResult Function(
             Texts name, Phone phone, Texts prof, FormzStatus status)
         userState,
-    required TResult Function() successSignUp,
+    required TResult Function(String phone) successSignUp,
   }) {
     return userState(name, phone, prof, status);
   }
@@ -756,7 +756,7 @@ class _$_HunterStateUserSignUpState implements _HunterStateUserSignUpState {
     TResult Function()? initial,
     TResult Function(Texts name, Phone phone, Texts prof, FormzStatus status)?
         userState,
-    TResult Function()? successSignUp,
+    TResult Function(String phone)? successSignUp,
     required TResult orElse(),
   }) {
     if (userState != null) {
@@ -770,8 +770,7 @@ class _$_HunterStateUserSignUpState implements _HunterStateUserSignUpState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialUserSignUpState value) initial,
     required TResult Function(_HunterStateUserSignUpState value) userState,
-    required TResult Function(_SuccessSignUpUserSignUpState value)
-        successSignUp,
+    required TResult Function(SuccessSignUpUserSignUpState value) successSignUp,
   }) {
     return userState(this);
   }
@@ -781,7 +780,7 @@ class _$_HunterStateUserSignUpState implements _HunterStateUserSignUpState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialUserSignUpState value)? initial,
     TResult Function(_HunterStateUserSignUpState value)? userState,
-    TResult Function(_SuccessSignUpUserSignUpState value)? successSignUp,
+    TResult Function(SuccessSignUpUserSignUpState value)? successSignUp,
     required TResult orElse(),
   }) {
     if (userState != null) {
@@ -808,44 +807,70 @@ abstract class _HunterStateUserSignUpState implements UserSignUpState {
 }
 
 /// @nodoc
-abstract class _$SuccessSignUpUserSignUpStateCopyWith<$Res> {
-  factory _$SuccessSignUpUserSignUpStateCopyWith(
-          _SuccessSignUpUserSignUpState value,
-          $Res Function(_SuccessSignUpUserSignUpState) then) =
-      __$SuccessSignUpUserSignUpStateCopyWithImpl<$Res>;
+abstract class $SuccessSignUpUserSignUpStateCopyWith<$Res> {
+  factory $SuccessSignUpUserSignUpStateCopyWith(
+          SuccessSignUpUserSignUpState value,
+          $Res Function(SuccessSignUpUserSignUpState) then) =
+      _$SuccessSignUpUserSignUpStateCopyWithImpl<$Res>;
+  $Res call({String phone});
 }
 
 /// @nodoc
-class __$SuccessSignUpUserSignUpStateCopyWithImpl<$Res>
+class _$SuccessSignUpUserSignUpStateCopyWithImpl<$Res>
     extends _$UserSignUpStateCopyWithImpl<$Res>
-    implements _$SuccessSignUpUserSignUpStateCopyWith<$Res> {
-  __$SuccessSignUpUserSignUpStateCopyWithImpl(
-      _SuccessSignUpUserSignUpState _value,
-      $Res Function(_SuccessSignUpUserSignUpState) _then)
-      : super(_value, (v) => _then(v as _SuccessSignUpUserSignUpState));
+    implements $SuccessSignUpUserSignUpStateCopyWith<$Res> {
+  _$SuccessSignUpUserSignUpStateCopyWithImpl(
+      SuccessSignUpUserSignUpState _value,
+      $Res Function(SuccessSignUpUserSignUpState) _then)
+      : super(_value, (v) => _then(v as SuccessSignUpUserSignUpState));
 
   @override
-  _SuccessSignUpUserSignUpState get _value =>
-      super._value as _SuccessSignUpUserSignUpState;
+  SuccessSignUpUserSignUpState get _value =>
+      super._value as SuccessSignUpUserSignUpState;
+
+  @override
+  $Res call({
+    Object? phone = freezed,
+  }) {
+    return _then(SuccessSignUpUserSignUpState(
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_SuccessSignUpUserSignUpState implements _SuccessSignUpUserSignUpState {
-  const _$_SuccessSignUpUserSignUpState();
+class _$SuccessSignUpUserSignUpState implements SuccessSignUpUserSignUpState {
+  const _$SuccessSignUpUserSignUpState({required this.phone});
+
+  @override
+  final String phone;
 
   @override
   String toString() {
-    return 'UserSignUpState.successSignUp()';
+    return 'UserSignUpState.successSignUp(phone: $phone)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _SuccessSignUpUserSignUpState);
+    return identical(this, other) ||
+        (other is SuccessSignUpUserSignUpState &&
+            (identical(other.phone, phone) ||
+                const DeepCollectionEquality().equals(other.phone, phone)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(phone);
+
+  @JsonKey(ignore: true)
+  @override
+  $SuccessSignUpUserSignUpStateCopyWith<SuccessSignUpUserSignUpState>
+      get copyWith => _$SuccessSignUpUserSignUpStateCopyWithImpl<
+          SuccessSignUpUserSignUpState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -854,9 +879,9 @@ class _$_SuccessSignUpUserSignUpState implements _SuccessSignUpUserSignUpState {
     required TResult Function(
             Texts name, Phone phone, Texts prof, FormzStatus status)
         userState,
-    required TResult Function() successSignUp,
+    required TResult Function(String phone) successSignUp,
   }) {
-    return successSignUp();
+    return successSignUp(phone);
   }
 
   @override
@@ -865,11 +890,11 @@ class _$_SuccessSignUpUserSignUpState implements _SuccessSignUpUserSignUpState {
     TResult Function()? initial,
     TResult Function(Texts name, Phone phone, Texts prof, FormzStatus status)?
         userState,
-    TResult Function()? successSignUp,
+    TResult Function(String phone)? successSignUp,
     required TResult orElse(),
   }) {
     if (successSignUp != null) {
-      return successSignUp();
+      return successSignUp(phone);
     }
     return orElse();
   }
@@ -879,8 +904,7 @@ class _$_SuccessSignUpUserSignUpState implements _SuccessSignUpUserSignUpState {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialUserSignUpState value) initial,
     required TResult Function(_HunterStateUserSignUpState value) userState,
-    required TResult Function(_SuccessSignUpUserSignUpState value)
-        successSignUp,
+    required TResult Function(SuccessSignUpUserSignUpState value) successSignUp,
   }) {
     return successSignUp(this);
   }
@@ -890,7 +914,7 @@ class _$_SuccessSignUpUserSignUpState implements _SuccessSignUpUserSignUpState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialUserSignUpState value)? initial,
     TResult Function(_HunterStateUserSignUpState value)? userState,
-    TResult Function(_SuccessSignUpUserSignUpState value)? successSignUp,
+    TResult Function(SuccessSignUpUserSignUpState value)? successSignUp,
     required TResult orElse(),
   }) {
     if (successSignUp != null) {
@@ -900,7 +924,12 @@ class _$_SuccessSignUpUserSignUpState implements _SuccessSignUpUserSignUpState {
   }
 }
 
-abstract class _SuccessSignUpUserSignUpState implements UserSignUpState {
-  const factory _SuccessSignUpUserSignUpState() =
-      _$_SuccessSignUpUserSignUpState;
+abstract class SuccessSignUpUserSignUpState implements UserSignUpState {
+  const factory SuccessSignUpUserSignUpState({required String phone}) =
+      _$SuccessSignUpUserSignUpState;
+
+  String get phone => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SuccessSignUpUserSignUpStateCopyWith<SuccessSignUpUserSignUpState>
+      get copyWith => throw _privateConstructorUsedError;
 }

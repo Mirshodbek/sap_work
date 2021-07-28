@@ -604,8 +604,10 @@ class _$CompanySignUpStateTearOff {
     );
   }
 
-  _SuccessSignUpCompanySignUpState successSignUp() {
-    return const _SuccessSignUpCompanySignUpState();
+  SuccessSignUpCompanySignUpState successSignUp({required String phone}) {
+    return SuccessSignUpCompanySignUpState(
+      phone: phone,
+    );
   }
 }
 
@@ -628,7 +630,7 @@ mixin _$CompanySignUpState {
             FormzStatus statusA,
             FormzStatus statusB)
         companyState,
-    required TResult Function() successSignUp,
+    required TResult Function(String phone) successSignUp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -645,7 +647,7 @@ mixin _$CompanySignUpState {
             FormzStatus statusA,
             FormzStatus statusB)?
         companyState,
-    TResult Function()? successSignUp,
+    TResult Function(String phone)? successSignUp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -654,7 +656,7 @@ mixin _$CompanySignUpState {
     required TResult Function(_InitialCompanySignUpState value) initial,
     required TResult Function(CompanyStateCompanySignUpState value)
         companyState,
-    required TResult Function(_SuccessSignUpCompanySignUpState value)
+    required TResult Function(SuccessSignUpCompanySignUpState value)
         successSignUp,
   }) =>
       throw _privateConstructorUsedError;
@@ -662,7 +664,7 @@ mixin _$CompanySignUpState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialCompanySignUpState value)? initial,
     TResult Function(CompanyStateCompanySignUpState value)? companyState,
-    TResult Function(_SuccessSignUpCompanySignUpState value)? successSignUp,
+    TResult Function(SuccessSignUpCompanySignUpState value)? successSignUp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -738,7 +740,7 @@ class _$_InitialCompanySignUpState implements _InitialCompanySignUpState {
             FormzStatus statusA,
             FormzStatus statusB)
         companyState,
-    required TResult Function() successSignUp,
+    required TResult Function(String phone) successSignUp,
   }) {
     return initial();
   }
@@ -758,7 +760,7 @@ class _$_InitialCompanySignUpState implements _InitialCompanySignUpState {
             FormzStatus statusA,
             FormzStatus statusB)?
         companyState,
-    TResult Function()? successSignUp,
+    TResult Function(String phone)? successSignUp,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -773,7 +775,7 @@ class _$_InitialCompanySignUpState implements _InitialCompanySignUpState {
     required TResult Function(_InitialCompanySignUpState value) initial,
     required TResult Function(CompanyStateCompanySignUpState value)
         companyState,
-    required TResult Function(_SuccessSignUpCompanySignUpState value)
+    required TResult Function(SuccessSignUpCompanySignUpState value)
         successSignUp,
   }) {
     return initial(this);
@@ -784,7 +786,7 @@ class _$_InitialCompanySignUpState implements _InitialCompanySignUpState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialCompanySignUpState value)? initial,
     TResult Function(CompanyStateCompanySignUpState value)? companyState,
-    TResult Function(_SuccessSignUpCompanySignUpState value)? successSignUp,
+    TResult Function(SuccessSignUpCompanySignUpState value)? successSignUp,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -982,7 +984,7 @@ class _$CompanyStateCompanySignUpState
             FormzStatus statusA,
             FormzStatus statusB)
         companyState,
-    required TResult Function() successSignUp,
+    required TResult Function(String phone) successSignUp,
   }) {
     return companyState(
         name, phone, inn, nameCompany, address, bin, bik, statusA, statusB);
@@ -1003,7 +1005,7 @@ class _$CompanyStateCompanySignUpState
             FormzStatus statusA,
             FormzStatus statusB)?
         companyState,
-    TResult Function()? successSignUp,
+    TResult Function(String phone)? successSignUp,
     required TResult orElse(),
   }) {
     if (companyState != null) {
@@ -1019,7 +1021,7 @@ class _$CompanyStateCompanySignUpState
     required TResult Function(_InitialCompanySignUpState value) initial,
     required TResult Function(CompanyStateCompanySignUpState value)
         companyState,
-    required TResult Function(_SuccessSignUpCompanySignUpState value)
+    required TResult Function(SuccessSignUpCompanySignUpState value)
         successSignUp,
   }) {
     return companyState(this);
@@ -1030,7 +1032,7 @@ class _$CompanyStateCompanySignUpState
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialCompanySignUpState value)? initial,
     TResult Function(CompanyStateCompanySignUpState value)? companyState,
-    TResult Function(_SuccessSignUpCompanySignUpState value)? successSignUp,
+    TResult Function(SuccessSignUpCompanySignUpState value)? successSignUp,
     required TResult orElse(),
   }) {
     if (companyState != null) {
@@ -1067,46 +1069,71 @@ abstract class CompanyStateCompanySignUpState implements CompanySignUpState {
 }
 
 /// @nodoc
-abstract class _$SuccessSignUpCompanySignUpStateCopyWith<$Res> {
-  factory _$SuccessSignUpCompanySignUpStateCopyWith(
-          _SuccessSignUpCompanySignUpState value,
-          $Res Function(_SuccessSignUpCompanySignUpState) then) =
-      __$SuccessSignUpCompanySignUpStateCopyWithImpl<$Res>;
+abstract class $SuccessSignUpCompanySignUpStateCopyWith<$Res> {
+  factory $SuccessSignUpCompanySignUpStateCopyWith(
+          SuccessSignUpCompanySignUpState value,
+          $Res Function(SuccessSignUpCompanySignUpState) then) =
+      _$SuccessSignUpCompanySignUpStateCopyWithImpl<$Res>;
+  $Res call({String phone});
 }
 
 /// @nodoc
-class __$SuccessSignUpCompanySignUpStateCopyWithImpl<$Res>
+class _$SuccessSignUpCompanySignUpStateCopyWithImpl<$Res>
     extends _$CompanySignUpStateCopyWithImpl<$Res>
-    implements _$SuccessSignUpCompanySignUpStateCopyWith<$Res> {
-  __$SuccessSignUpCompanySignUpStateCopyWithImpl(
-      _SuccessSignUpCompanySignUpState _value,
-      $Res Function(_SuccessSignUpCompanySignUpState) _then)
-      : super(_value, (v) => _then(v as _SuccessSignUpCompanySignUpState));
+    implements $SuccessSignUpCompanySignUpStateCopyWith<$Res> {
+  _$SuccessSignUpCompanySignUpStateCopyWithImpl(
+      SuccessSignUpCompanySignUpState _value,
+      $Res Function(SuccessSignUpCompanySignUpState) _then)
+      : super(_value, (v) => _then(v as SuccessSignUpCompanySignUpState));
 
   @override
-  _SuccessSignUpCompanySignUpState get _value =>
-      super._value as _SuccessSignUpCompanySignUpState;
+  SuccessSignUpCompanySignUpState get _value =>
+      super._value as SuccessSignUpCompanySignUpState;
+
+  @override
+  $Res call({
+    Object? phone = freezed,
+  }) {
+    return _then(SuccessSignUpCompanySignUpState(
+      phone: phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_SuccessSignUpCompanySignUpState
-    implements _SuccessSignUpCompanySignUpState {
-  const _$_SuccessSignUpCompanySignUpState();
+class _$SuccessSignUpCompanySignUpState
+    implements SuccessSignUpCompanySignUpState {
+  const _$SuccessSignUpCompanySignUpState({required this.phone});
+
+  @override
+  final String phone;
 
   @override
   String toString() {
-    return 'CompanySignUpState.successSignUp()';
+    return 'CompanySignUpState.successSignUp(phone: $phone)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SuccessSignUpCompanySignUpState);
+        (other is SuccessSignUpCompanySignUpState &&
+            (identical(other.phone, phone) ||
+                const DeepCollectionEquality().equals(other.phone, phone)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(phone);
+
+  @JsonKey(ignore: true)
+  @override
+  $SuccessSignUpCompanySignUpStateCopyWith<SuccessSignUpCompanySignUpState>
+      get copyWith => _$SuccessSignUpCompanySignUpStateCopyWithImpl<
+          SuccessSignUpCompanySignUpState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1123,9 +1150,9 @@ class _$_SuccessSignUpCompanySignUpState
             FormzStatus statusA,
             FormzStatus statusB)
         companyState,
-    required TResult Function() successSignUp,
+    required TResult Function(String phone) successSignUp,
   }) {
-    return successSignUp();
+    return successSignUp(phone);
   }
 
   @override
@@ -1143,11 +1170,11 @@ class _$_SuccessSignUpCompanySignUpState
             FormzStatus statusA,
             FormzStatus statusB)?
         companyState,
-    TResult Function()? successSignUp,
+    TResult Function(String phone)? successSignUp,
     required TResult orElse(),
   }) {
     if (successSignUp != null) {
-      return successSignUp();
+      return successSignUp(phone);
     }
     return orElse();
   }
@@ -1158,7 +1185,7 @@ class _$_SuccessSignUpCompanySignUpState
     required TResult Function(_InitialCompanySignUpState value) initial,
     required TResult Function(CompanyStateCompanySignUpState value)
         companyState,
-    required TResult Function(_SuccessSignUpCompanySignUpState value)
+    required TResult Function(SuccessSignUpCompanySignUpState value)
         successSignUp,
   }) {
     return successSignUp(this);
@@ -1169,7 +1196,7 @@ class _$_SuccessSignUpCompanySignUpState
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialCompanySignUpState value)? initial,
     TResult Function(CompanyStateCompanySignUpState value)? companyState,
-    TResult Function(_SuccessSignUpCompanySignUpState value)? successSignUp,
+    TResult Function(SuccessSignUpCompanySignUpState value)? successSignUp,
     required TResult orElse(),
   }) {
     if (successSignUp != null) {
@@ -1179,7 +1206,12 @@ class _$_SuccessSignUpCompanySignUpState
   }
 }
 
-abstract class _SuccessSignUpCompanySignUpState implements CompanySignUpState {
-  const factory _SuccessSignUpCompanySignUpState() =
-      _$_SuccessSignUpCompanySignUpState;
+abstract class SuccessSignUpCompanySignUpState implements CompanySignUpState {
+  const factory SuccessSignUpCompanySignUpState({required String phone}) =
+      _$SuccessSignUpCompanySignUpState;
+
+  String get phone => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SuccessSignUpCompanySignUpStateCopyWith<SuccessSignUpCompanySignUpState>
+      get copyWith => throw _privateConstructorUsedError;
 }

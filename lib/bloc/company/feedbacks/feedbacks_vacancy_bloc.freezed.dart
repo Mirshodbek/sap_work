@@ -404,13 +404,17 @@ class _$FeedbacksVacancyStateTearOff {
     return const NoFeedbacksVacancyState();
   }
 
+  NoVacancyState noVacancy() {
+    return const NoVacancyState();
+  }
+
   LoadedFeedbacksVacancyState loaded(
-      {required List<FeedbackVacancy> feedbacks,
-      required String vacancyName,
-      required FormzStatus status}) {
+      {required List<dynamic> feedbacks,
+      required int vacancyId,
+      required String status}) {
     return LoadedFeedbacksVacancyState(
       feedbacks: feedbacks,
-      vacancyName: vacancyName,
+      vacancyId: vacancyId,
       status: status,
     );
   }
@@ -432,8 +436,9 @@ mixin _$FeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackVacancy> feedbacks,
-            String vacancyName, FormzStatus status)
+    required TResult Function() noVacancy,
+    required TResult Function(
+            List<dynamic> feedbacks, int vacancyId, String status)
         loaded,
     required TResult Function(String message) error,
   }) =>
@@ -443,8 +448,8 @@ mixin _$FeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
-            FormzStatus status)?
+    TResult Function()? noVacancy,
+    TResult Function(List<dynamic> feedbacks, int vacancyId, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -455,6 +460,7 @@ mixin _$FeedbacksVacancyState {
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
     required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
+    required TResult Function(NoVacancyState value) noVacancy,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) =>
@@ -464,6 +470,7 @@ mixin _$FeedbacksVacancyState {
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
     TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
+    TResult Function(NoVacancyState value)? noVacancy,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),
@@ -532,8 +539,9 @@ class _$EmptyFeedbacksVacancyState implements EmptyFeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackVacancy> feedbacks,
-            String vacancyName, FormzStatus status)
+    required TResult Function() noVacancy,
+    required TResult Function(
+            List<dynamic> feedbacks, int vacancyId, String status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -546,8 +554,8 @@ class _$EmptyFeedbacksVacancyState implements EmptyFeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
-            FormzStatus status)?
+    TResult Function()? noVacancy,
+    TResult Function(List<dynamic> feedbacks, int vacancyId, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -564,6 +572,7 @@ class _$EmptyFeedbacksVacancyState implements EmptyFeedbacksVacancyState {
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
     required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
+    required TResult Function(NoVacancyState value) noVacancy,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) {
@@ -576,6 +585,7 @@ class _$EmptyFeedbacksVacancyState implements EmptyFeedbacksVacancyState {
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
     TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
+    TResult Function(NoVacancyState value)? noVacancy,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),
@@ -637,8 +647,9 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackVacancy> feedbacks,
-            String vacancyName, FormzStatus status)
+    required TResult Function() noVacancy,
+    required TResult Function(
+            List<dynamic> feedbacks, int vacancyId, String status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -651,8 +662,8 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
-            FormzStatus status)?
+    TResult Function()? noVacancy,
+    TResult Function(List<dynamic> feedbacks, int vacancyId, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -669,6 +680,7 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
     required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
+    required TResult Function(NoVacancyState value) noVacancy,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) {
@@ -681,6 +693,7 @@ class _$LoadingFeedbacksVacancyState implements LoadingFeedbacksVacancyState {
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
     TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
+    TResult Function(NoVacancyState value)? noVacancy,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),
@@ -739,8 +752,9 @@ class _$NoFeedbacksVacancyState implements NoFeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackVacancy> feedbacks,
-            String vacancyName, FormzStatus status)
+    required TResult Function() noVacancy,
+    required TResult Function(
+            List<dynamic> feedbacks, int vacancyId, String status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -753,8 +767,8 @@ class _$NoFeedbacksVacancyState implements NoFeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
-            FormzStatus status)?
+    TResult Function()? noVacancy,
+    TResult Function(List<dynamic> feedbacks, int vacancyId, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -771,6 +785,7 @@ class _$NoFeedbacksVacancyState implements NoFeedbacksVacancyState {
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
     required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
+    required TResult Function(NoVacancyState value) noVacancy,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) {
@@ -783,6 +798,7 @@ class _$NoFeedbacksVacancyState implements NoFeedbacksVacancyState {
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
     TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
+    TResult Function(NoVacancyState value)? noVacancy,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),
@@ -799,15 +815,117 @@ abstract class NoFeedbacksVacancyState implements FeedbacksVacancyState {
 }
 
 /// @nodoc
+abstract class $NoVacancyStateCopyWith<$Res> {
+  factory $NoVacancyStateCopyWith(
+          NoVacancyState value, $Res Function(NoVacancyState) then) =
+      _$NoVacancyStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoVacancyStateCopyWithImpl<$Res>
+    extends _$FeedbacksVacancyStateCopyWithImpl<$Res>
+    implements $NoVacancyStateCopyWith<$Res> {
+  _$NoVacancyStateCopyWithImpl(
+      NoVacancyState _value, $Res Function(NoVacancyState) _then)
+      : super(_value, (v) => _then(v as NoVacancyState));
+
+  @override
+  NoVacancyState get _value => super._value as NoVacancyState;
+}
+
+/// @nodoc
+
+class _$NoVacancyState implements NoVacancyState {
+  const _$NoVacancyState();
+
+  @override
+  String toString() {
+    return 'FeedbacksVacancyState.noVacancy()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is NoVacancyState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() empty,
+    required TResult Function() loading,
+    required TResult Function() noFeedbacks,
+    required TResult Function() noVacancy,
+    required TResult Function(
+            List<dynamic> feedbacks, int vacancyId, String status)
+        loaded,
+    required TResult Function(String message) error,
+  }) {
+    return noVacancy();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? empty,
+    TResult Function()? loading,
+    TResult Function()? noFeedbacks,
+    TResult Function()? noVacancy,
+    TResult Function(List<dynamic> feedbacks, int vacancyId, String status)?
+        loaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (noVacancy != null) {
+      return noVacancy();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmptyFeedbacksVacancyState value) empty,
+    required TResult Function(LoadingFeedbacksVacancyState value) loading,
+    required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
+    required TResult Function(NoVacancyState value) noVacancy,
+    required TResult Function(LoadedFeedbacksVacancyState value) loaded,
+    required TResult Function(ErrorFeedbacksVacancyState value) error,
+  }) {
+    return noVacancy(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmptyFeedbacksVacancyState value)? empty,
+    TResult Function(LoadingFeedbacksVacancyState value)? loading,
+    TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
+    TResult Function(NoVacancyState value)? noVacancy,
+    TResult Function(LoadedFeedbacksVacancyState value)? loaded,
+    TResult Function(ErrorFeedbacksVacancyState value)? error,
+    required TResult orElse(),
+  }) {
+    if (noVacancy != null) {
+      return noVacancy(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoVacancyState implements FeedbacksVacancyState {
+  const factory NoVacancyState() = _$NoVacancyState;
+}
+
+/// @nodoc
 abstract class $LoadedFeedbacksVacancyStateCopyWith<$Res> {
   factory $LoadedFeedbacksVacancyStateCopyWith(
           LoadedFeedbacksVacancyState value,
           $Res Function(LoadedFeedbacksVacancyState) then) =
       _$LoadedFeedbacksVacancyStateCopyWithImpl<$Res>;
-  $Res call(
-      {List<FeedbackVacancy> feedbacks,
-      String vacancyName,
-      FormzStatus status});
+  $Res call({List<dynamic> feedbacks, int vacancyId, String status});
 }
 
 /// @nodoc
@@ -825,22 +943,22 @@ class _$LoadedFeedbacksVacancyStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? feedbacks = freezed,
-    Object? vacancyName = freezed,
+    Object? vacancyId = freezed,
     Object? status = freezed,
   }) {
     return _then(LoadedFeedbacksVacancyState(
       feedbacks: feedbacks == freezed
           ? _value.feedbacks
           : feedbacks // ignore: cast_nullable_to_non_nullable
-              as List<FeedbackVacancy>,
-      vacancyName: vacancyName == freezed
-          ? _value.vacancyName
-          : vacancyName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<dynamic>,
+      vacancyId: vacancyId == freezed
+          ? _value.vacancyId
+          : vacancyId // ignore: cast_nullable_to_non_nullable
+              as int,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as FormzStatus,
+              as String,
     ));
   }
 }
@@ -849,20 +967,18 @@ class _$LoadedFeedbacksVacancyStateCopyWithImpl<$Res>
 
 class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
   const _$LoadedFeedbacksVacancyState(
-      {required this.feedbacks,
-      required this.vacancyName,
-      required this.status});
+      {required this.feedbacks, required this.vacancyId, required this.status});
 
   @override
-  final List<FeedbackVacancy> feedbacks;
+  final List<dynamic> feedbacks;
   @override
-  final String vacancyName;
+  final int vacancyId;
   @override
-  final FormzStatus status;
+  final String status;
 
   @override
   String toString() {
-    return 'FeedbacksVacancyState.loaded(feedbacks: $feedbacks, vacancyName: $vacancyName, status: $status)';
+    return 'FeedbacksVacancyState.loaded(feedbacks: $feedbacks, vacancyId: $vacancyId, status: $status)';
   }
 
   @override
@@ -872,9 +988,9 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
             (identical(other.feedbacks, feedbacks) ||
                 const DeepCollectionEquality()
                     .equals(other.feedbacks, feedbacks)) &&
-            (identical(other.vacancyName, vacancyName) ||
+            (identical(other.vacancyId, vacancyId) ||
                 const DeepCollectionEquality()
-                    .equals(other.vacancyName, vacancyName)) &&
+                    .equals(other.vacancyId, vacancyId)) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)));
   }
@@ -883,7 +999,7 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(feedbacks) ^
-      const DeepCollectionEquality().hash(vacancyName) ^
+      const DeepCollectionEquality().hash(vacancyId) ^
       const DeepCollectionEquality().hash(status);
 
   @JsonKey(ignore: true)
@@ -898,12 +1014,13 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackVacancy> feedbacks,
-            String vacancyName, FormzStatus status)
+    required TResult Function() noVacancy,
+    required TResult Function(
+            List<dynamic> feedbacks, int vacancyId, String status)
         loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(feedbacks, vacancyName, status);
+    return loaded(feedbacks, vacancyId, status);
   }
 
   @override
@@ -912,14 +1029,14 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
-            FormzStatus status)?
+    TResult Function()? noVacancy,
+    TResult Function(List<dynamic> feedbacks, int vacancyId, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(feedbacks, vacancyName, status);
+      return loaded(feedbacks, vacancyId, status);
     }
     return orElse();
   }
@@ -930,6 +1047,7 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
     required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
+    required TResult Function(NoVacancyState value) noVacancy,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) {
@@ -942,6 +1060,7 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
     TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
+    TResult Function(NoVacancyState value)? noVacancy,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),
@@ -955,13 +1074,13 @@ class _$LoadedFeedbacksVacancyState implements LoadedFeedbacksVacancyState {
 
 abstract class LoadedFeedbacksVacancyState implements FeedbacksVacancyState {
   const factory LoadedFeedbacksVacancyState(
-      {required List<FeedbackVacancy> feedbacks,
-      required String vacancyName,
-      required FormzStatus status}) = _$LoadedFeedbacksVacancyState;
+      {required List<dynamic> feedbacks,
+      required int vacancyId,
+      required String status}) = _$LoadedFeedbacksVacancyState;
 
-  List<FeedbackVacancy> get feedbacks => throw _privateConstructorUsedError;
-  String get vacancyName => throw _privateConstructorUsedError;
-  FormzStatus get status => throw _privateConstructorUsedError;
+  List<dynamic> get feedbacks => throw _privateConstructorUsedError;
+  int get vacancyId => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedFeedbacksVacancyStateCopyWith<LoadedFeedbacksVacancyState>
       get copyWith => throw _privateConstructorUsedError;
@@ -1038,8 +1157,9 @@ class _$ErrorFeedbacksVacancyState implements ErrorFeedbacksVacancyState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackVacancy> feedbacks,
-            String vacancyName, FormzStatus status)
+    required TResult Function() noVacancy,
+    required TResult Function(
+            List<dynamic> feedbacks, int vacancyId, String status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -1052,8 +1172,8 @@ class _$ErrorFeedbacksVacancyState implements ErrorFeedbacksVacancyState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackVacancy> feedbacks, String vacancyName,
-            FormzStatus status)?
+    TResult Function()? noVacancy,
+    TResult Function(List<dynamic> feedbacks, int vacancyId, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -1070,6 +1190,7 @@ class _$ErrorFeedbacksVacancyState implements ErrorFeedbacksVacancyState {
     required TResult Function(EmptyFeedbacksVacancyState value) empty,
     required TResult Function(LoadingFeedbacksVacancyState value) loading,
     required TResult Function(NoFeedbacksVacancyState value) noFeedbacks,
+    required TResult Function(NoVacancyState value) noVacancy,
     required TResult Function(LoadedFeedbacksVacancyState value) loaded,
     required TResult Function(ErrorFeedbacksVacancyState value) error,
   }) {
@@ -1082,6 +1203,7 @@ class _$ErrorFeedbacksVacancyState implements ErrorFeedbacksVacancyState {
     TResult Function(EmptyFeedbacksVacancyState value)? empty,
     TResult Function(LoadingFeedbacksVacancyState value)? loading,
     TResult Function(NoFeedbacksVacancyState value)? noFeedbacks,
+    TResult Function(NoVacancyState value)? noVacancy,
     TResult Function(LoadedFeedbacksVacancyState value)? loaded,
     TResult Function(ErrorFeedbacksVacancyState value)? error,
     required TResult orElse(),

@@ -270,6 +270,10 @@ class _$SplashStateTearOff {
   CompanySplashState company() {
     return const CompanySplashState();
   }
+
+  AdminSplashState admin() {
+    return const AdminSplashState();
+  }
 }
 
 /// @nodoc
@@ -284,6 +288,7 @@ mixin _$SplashState {
     required TResult Function() selectedRole,
     required TResult Function() user,
     required TResult Function() company,
+    required TResult Function() admin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -293,6 +298,7 @@ mixin _$SplashState {
     TResult Function()? selectedRole,
     TResult Function()? user,
     TResult Function()? company,
+    TResult Function()? admin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -303,6 +309,7 @@ mixin _$SplashState {
     required TResult Function(SelectedRoleSplashState value) selectedRole,
     required TResult Function(UserSplashState value) user,
     required TResult Function(CompanySplashState value) company,
+    required TResult Function(AdminSplashState value) admin,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -312,6 +319,7 @@ mixin _$SplashState {
     TResult Function(SelectedRoleSplashState value)? selectedRole,
     TResult Function(UserSplashState value)? user,
     TResult Function(CompanySplashState value)? company,
+    TResult Function(AdminSplashState value)? admin,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -378,6 +386,7 @@ class _$IntialSplashState implements IntialSplashState {
     required TResult Function() selectedRole,
     required TResult Function() user,
     required TResult Function() company,
+    required TResult Function() admin,
   }) {
     return initial();
   }
@@ -390,6 +399,7 @@ class _$IntialSplashState implements IntialSplashState {
     TResult Function()? selectedRole,
     TResult Function()? user,
     TResult Function()? company,
+    TResult Function()? admin,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -406,6 +416,7 @@ class _$IntialSplashState implements IntialSplashState {
     required TResult Function(SelectedRoleSplashState value) selectedRole,
     required TResult Function(UserSplashState value) user,
     required TResult Function(CompanySplashState value) company,
+    required TResult Function(AdminSplashState value) admin,
   }) {
     return initial(this);
   }
@@ -418,6 +429,7 @@ class _$IntialSplashState implements IntialSplashState {
     TResult Function(SelectedRoleSplashState value)? selectedRole,
     TResult Function(UserSplashState value)? user,
     TResult Function(CompanySplashState value)? company,
+    TResult Function(AdminSplashState value)? admin,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -476,6 +488,7 @@ class _$SplashScreenState implements SplashScreenState {
     required TResult Function() selectedRole,
     required TResult Function() user,
     required TResult Function() company,
+    required TResult Function() admin,
   }) {
     return splash();
   }
@@ -488,6 +501,7 @@ class _$SplashScreenState implements SplashScreenState {
     TResult Function()? selectedRole,
     TResult Function()? user,
     TResult Function()? company,
+    TResult Function()? admin,
     required TResult orElse(),
   }) {
     if (splash != null) {
@@ -504,6 +518,7 @@ class _$SplashScreenState implements SplashScreenState {
     required TResult Function(SelectedRoleSplashState value) selectedRole,
     required TResult Function(UserSplashState value) user,
     required TResult Function(CompanySplashState value) company,
+    required TResult Function(AdminSplashState value) admin,
   }) {
     return splash(this);
   }
@@ -516,6 +531,7 @@ class _$SplashScreenState implements SplashScreenState {
     TResult Function(SelectedRoleSplashState value)? selectedRole,
     TResult Function(UserSplashState value)? user,
     TResult Function(CompanySplashState value)? company,
+    TResult Function(AdminSplashState value)? admin,
     required TResult orElse(),
   }) {
     if (splash != null) {
@@ -574,6 +590,7 @@ class _$SelectedRoleSplashState implements SelectedRoleSplashState {
     required TResult Function() selectedRole,
     required TResult Function() user,
     required TResult Function() company,
+    required TResult Function() admin,
   }) {
     return selectedRole();
   }
@@ -586,6 +603,7 @@ class _$SelectedRoleSplashState implements SelectedRoleSplashState {
     TResult Function()? selectedRole,
     TResult Function()? user,
     TResult Function()? company,
+    TResult Function()? admin,
     required TResult orElse(),
   }) {
     if (selectedRole != null) {
@@ -602,6 +620,7 @@ class _$SelectedRoleSplashState implements SelectedRoleSplashState {
     required TResult Function(SelectedRoleSplashState value) selectedRole,
     required TResult Function(UserSplashState value) user,
     required TResult Function(CompanySplashState value) company,
+    required TResult Function(AdminSplashState value) admin,
   }) {
     return selectedRole(this);
   }
@@ -614,6 +633,7 @@ class _$SelectedRoleSplashState implements SelectedRoleSplashState {
     TResult Function(SelectedRoleSplashState value)? selectedRole,
     TResult Function(UserSplashState value)? user,
     TResult Function(CompanySplashState value)? company,
+    TResult Function(AdminSplashState value)? admin,
     required TResult orElse(),
   }) {
     if (selectedRole != null) {
@@ -672,6 +692,7 @@ class _$UserSplashState implements UserSplashState {
     required TResult Function() selectedRole,
     required TResult Function() user,
     required TResult Function() company,
+    required TResult Function() admin,
   }) {
     return user();
   }
@@ -684,6 +705,7 @@ class _$UserSplashState implements UserSplashState {
     TResult Function()? selectedRole,
     TResult Function()? user,
     TResult Function()? company,
+    TResult Function()? admin,
     required TResult orElse(),
   }) {
     if (user != null) {
@@ -700,6 +722,7 @@ class _$UserSplashState implements UserSplashState {
     required TResult Function(SelectedRoleSplashState value) selectedRole,
     required TResult Function(UserSplashState value) user,
     required TResult Function(CompanySplashState value) company,
+    required TResult Function(AdminSplashState value) admin,
   }) {
     return user(this);
   }
@@ -712,6 +735,7 @@ class _$UserSplashState implements UserSplashState {
     TResult Function(SelectedRoleSplashState value)? selectedRole,
     TResult Function(UserSplashState value)? user,
     TResult Function(CompanySplashState value)? company,
+    TResult Function(AdminSplashState value)? admin,
     required TResult orElse(),
   }) {
     if (user != null) {
@@ -770,6 +794,7 @@ class _$CompanySplashState implements CompanySplashState {
     required TResult Function() selectedRole,
     required TResult Function() user,
     required TResult Function() company,
+    required TResult Function() admin,
   }) {
     return company();
   }
@@ -782,6 +807,7 @@ class _$CompanySplashState implements CompanySplashState {
     TResult Function()? selectedRole,
     TResult Function()? user,
     TResult Function()? company,
+    TResult Function()? admin,
     required TResult orElse(),
   }) {
     if (company != null) {
@@ -798,6 +824,7 @@ class _$CompanySplashState implements CompanySplashState {
     required TResult Function(SelectedRoleSplashState value) selectedRole,
     required TResult Function(UserSplashState value) user,
     required TResult Function(CompanySplashState value) company,
+    required TResult Function(AdminSplashState value) admin,
   }) {
     return company(this);
   }
@@ -810,6 +837,7 @@ class _$CompanySplashState implements CompanySplashState {
     TResult Function(SelectedRoleSplashState value)? selectedRole,
     TResult Function(UserSplashState value)? user,
     TResult Function(CompanySplashState value)? company,
+    TResult Function(AdminSplashState value)? admin,
     required TResult orElse(),
   }) {
     if (company != null) {
@@ -821,4 +849,106 @@ class _$CompanySplashState implements CompanySplashState {
 
 abstract class CompanySplashState implements SplashState {
   const factory CompanySplashState() = _$CompanySplashState;
+}
+
+/// @nodoc
+abstract class $AdminSplashStateCopyWith<$Res> {
+  factory $AdminSplashStateCopyWith(
+          AdminSplashState value, $Res Function(AdminSplashState) then) =
+      _$AdminSplashStateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AdminSplashStateCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res>
+    implements $AdminSplashStateCopyWith<$Res> {
+  _$AdminSplashStateCopyWithImpl(
+      AdminSplashState _value, $Res Function(AdminSplashState) _then)
+      : super(_value, (v) => _then(v as AdminSplashState));
+
+  @override
+  AdminSplashState get _value => super._value as AdminSplashState;
+}
+
+/// @nodoc
+
+class _$AdminSplashState implements AdminSplashState {
+  const _$AdminSplashState();
+
+  @override
+  String toString() {
+    return 'SplashState.admin()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is AdminSplashState);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() splash,
+    required TResult Function() selectedRole,
+    required TResult Function() user,
+    required TResult Function() company,
+    required TResult Function() admin,
+  }) {
+    return admin();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? splash,
+    TResult Function()? selectedRole,
+    TResult Function()? user,
+    TResult Function()? company,
+    TResult Function()? admin,
+    required TResult orElse(),
+  }) {
+    if (admin != null) {
+      return admin();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(IntialSplashState value) initial,
+    required TResult Function(SplashScreenState value) splash,
+    required TResult Function(SelectedRoleSplashState value) selectedRole,
+    required TResult Function(UserSplashState value) user,
+    required TResult Function(CompanySplashState value) company,
+    required TResult Function(AdminSplashState value) admin,
+  }) {
+    return admin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(IntialSplashState value)? initial,
+    TResult Function(SplashScreenState value)? splash,
+    TResult Function(SelectedRoleSplashState value)? selectedRole,
+    TResult Function(UserSplashState value)? user,
+    TResult Function(CompanySplashState value)? company,
+    TResult Function(AdminSplashState value)? admin,
+    required TResult orElse(),
+  }) {
+    if (admin != null) {
+      return admin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AdminSplashState implements SplashState {
+  const factory AdminSplashState() = _$AdminSplashState;
 }

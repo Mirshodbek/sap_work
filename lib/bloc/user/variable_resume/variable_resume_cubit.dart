@@ -9,7 +9,9 @@ class VariableResumeCubit extends Cubit<VariableResumeState> {
   VariableResumeCubit()
       : super(VariableResumeState.arguments(
           categoryTitle: EMPTY_STRING,
-          categoryId: 0,
+          categoryId: -1,
+          sphereTitle: EMPTY_STRING,
+          sphereId: -1,
           email: EMPTY_STRING,
           body: EMPTY_STRING,
           abilities: EMPTY_STRING,
@@ -37,8 +39,13 @@ class VariableResumeCubit extends Cubit<VariableResumeState> {
       emit(state.copyWith(categoryTitle: title));
 
   void categoryId(int id) => emit(state.copyWith(categoryId: id));
+  void sphereTitle(String title) =>
+      emit(state.copyWith(sphereTitle: title));
+
+  void sphereId(int id) => emit(state.copyWith(sphereId: id));
 
   void body(String value) => emit(state.copyWith(body: value));
+
   void city(String value) => emit(state.copyWith(city: value));
 
   void addingTools(String value) =>
@@ -140,6 +147,7 @@ class VariableResumeCubit extends Cubit<VariableResumeState> {
   }
 
   void indexStages(int id) => emit(state.copyWith(indexStages: id));
+
   void indexGrades(int id) => emit(state.copyWith(indexGrades: id));
 }
 
@@ -148,6 +156,8 @@ abstract class VariableResumeState with _$VariableResumeState {
   const factory VariableResumeState.arguments({
     required final String categoryTitle,
     required final int categoryId,
+    required final String sphereTitle,
+    required final int sphereId,
     required final String email,
     required final String phone,
     required final String body,

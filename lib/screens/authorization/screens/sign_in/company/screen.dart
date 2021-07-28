@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
+import 'package:sap_work/screens/widgets/bottom_nav_bar.dart';
 
 class CompanySignInScreen extends StatelessWidget {
   static const String id = '/employer_sign_in';
@@ -60,7 +61,7 @@ class CompanySignInScreen extends StatelessWidget {
                 if (state == CompanySignInState.successSignIn()) {
                   Navigator.pushNamedAndRemoveUntil(context, NavigationBar.id,
                       (Route<dynamic> route) => false,
-                      arguments: {"role": "employer"});
+                      arguments: {ROLE: COMPANY_ROLE});
                 }
               },
               builder: (context, state) {

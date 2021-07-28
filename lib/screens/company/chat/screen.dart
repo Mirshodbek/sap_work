@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:sap_work/bloc/chat/chat_bloc.dart';
-import 'package:sap_work/bloc/company/feedbacks_button/feedbacks_btn_cubit.dart';
+import 'package:sap_work/bloc/company/feedbacks_button/feedbacks_company_btn_cubit.dart';
 import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/resources/small_widgets.dart';
-import 'package:sap_work/screens/company/widgets/loading.dart';
-import 'package:sap_work/screens/hunter/hunter.dart';
+import 'package:sap_work/screens/widgets/chat.dart';
+import 'package:sap_work/screens/widgets/loading.dart';
 import 'package:sap_work/screens/widgets/backward.dart';
 import 'package:sap_work/screens/widgets/row.dart';
 
@@ -20,9 +20,9 @@ class ChatScreenCompany extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final arguments = ModalRoute.of(context)!.settings.arguments as Map;
-    return BlocProvider<FeedbacksBtnCubit>.value(
-      value: arguments[FEEDBACKS_BTN_CUBIT],
-      child: BlocBuilder<FeedbacksBtnCubit, FeedbacksBtnState>(
+    return BlocProvider<FeedbacksCompanyBtnCubit>.value(
+      value: arguments[FEEDBACKS_COMPANY_BTN_CUBIT],
+      child: BlocBuilder<FeedbacksCompanyBtnCubit, FeedbacksCompanyBtnState>(
         builder: (context, state) {
           return state.maybeMap(
               orElse: () => const SizedBox.shrink(),
@@ -39,8 +39,8 @@ class ChatScreenCompany extends StatelessWidget {
                     ],
                   ),
                   body: BlocProvider(
-                    create: (context) => ChatBloc(sl(), sl())
-                      ..add(ChatEvent.getChats(id: _state.userId)),
+                    create: (context) => ChatBloc(sl(), sl(),sl(),sl())
+                      ..add(ChatEvent.getChats(id: _state.userId,type: COMPANY)),
                     child: BlocConsumer<ChatBloc, ChatState>(
                       listener: (context, state) {
                         state.maybeMap(
@@ -61,7 +61,7 @@ class ChatScreenCompany extends StatelessWidget {
                               return RefreshIndicator(
                                 onRefresh: () async => context
                                     .read<ChatBloc>()
-                                    .add(ChatEvent.getChats(id: _state.userId)),
+                                    .add(ChatEvent.getChats(id: _state.userId,type: COMPANY)),
                                 child: Column(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -78,6 +78,7 @@ class ChatScreenCompany extends StatelessWidget {
                                               _chat.chats.reversed.toList();
                                           final chat = chats[index];
                                           return ChatListItemWidget(
+                                            type: chat.from_user == 1,
                                             chat: chat,
                                             avatarUser: _state.avatarUser,
                                             avatarCompany: _state.avatarCompany,
@@ -85,10 +86,10 @@ class ChatScreenCompany extends StatelessWidget {
                                         },
                                       ),
                                     )),
-                                    ChatTextField((value) => context
+                                    ChatTextFieldWidget((value) => context
                                         .read<ChatBloc>()
                                         .add(ChatEvent.postChat(
-                                            id: _state.userId, text: value))),
+                                            id: _state.userId, text: value,type: COMPANY))),
                                   ],
                                 ),
                               );

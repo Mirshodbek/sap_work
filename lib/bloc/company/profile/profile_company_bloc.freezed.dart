@@ -25,6 +25,20 @@ class _$ProfileCompanyEventTearOff {
       path: path,
     );
   }
+
+  _AddContactProfileCompanyEvent addContact(
+      {required String name, required String url}) {
+    return _AddContactProfileCompanyEvent(
+      name: name,
+      url: url,
+    );
+  }
+
+  _DeleteContactProfileCompanyEvent deleteContact({required int id}) {
+    return _DeleteContactProfileCompanyEvent(
+      id: id,
+    );
+  }
 }
 
 /// @nodoc
@@ -36,12 +50,16 @@ mixin _$ProfileCompanyEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getProfileData,
     required TResult Function(String path) uploadAvatar,
+    required TResult Function(String name, String url) addContact,
+    required TResult Function(int id) deleteContact,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getProfileData,
     TResult Function(String path)? uploadAvatar,
+    TResult Function(String name, String url)? addContact,
+    TResult Function(int id)? deleteContact,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,12 +68,17 @@ mixin _$ProfileCompanyEvent {
     required TResult Function(_GetProfileCompanyEvent value) getProfileData,
     required TResult Function(_UploadAvatarProfileCompanyEvent value)
         uploadAvatar,
+    required TResult Function(_AddContactProfileCompanyEvent value) addContact,
+    required TResult Function(_DeleteContactProfileCompanyEvent value)
+        deleteContact,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProfileCompanyEvent value)? getProfileData,
     TResult Function(_UploadAvatarProfileCompanyEvent value)? uploadAvatar,
+    TResult Function(_AddContactProfileCompanyEvent value)? addContact,
+    TResult Function(_DeleteContactProfileCompanyEvent value)? deleteContact,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,6 +143,8 @@ class _$_GetProfileCompanyEvent implements _GetProfileCompanyEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getProfileData,
     required TResult Function(String path) uploadAvatar,
+    required TResult Function(String name, String url) addContact,
+    required TResult Function(int id) deleteContact,
   }) {
     return getProfileData();
   }
@@ -129,6 +154,8 @@ class _$_GetProfileCompanyEvent implements _GetProfileCompanyEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getProfileData,
     TResult Function(String path)? uploadAvatar,
+    TResult Function(String name, String url)? addContact,
+    TResult Function(int id)? deleteContact,
     required TResult orElse(),
   }) {
     if (getProfileData != null) {
@@ -143,6 +170,9 @@ class _$_GetProfileCompanyEvent implements _GetProfileCompanyEvent {
     required TResult Function(_GetProfileCompanyEvent value) getProfileData,
     required TResult Function(_UploadAvatarProfileCompanyEvent value)
         uploadAvatar,
+    required TResult Function(_AddContactProfileCompanyEvent value) addContact,
+    required TResult Function(_DeleteContactProfileCompanyEvent value)
+        deleteContact,
   }) {
     return getProfileData(this);
   }
@@ -152,6 +182,8 @@ class _$_GetProfileCompanyEvent implements _GetProfileCompanyEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProfileCompanyEvent value)? getProfileData,
     TResult Function(_UploadAvatarProfileCompanyEvent value)? uploadAvatar,
+    TResult Function(_AddContactProfileCompanyEvent value)? addContact,
+    TResult Function(_DeleteContactProfileCompanyEvent value)? deleteContact,
     required TResult orElse(),
   }) {
     if (getProfileData != null) {
@@ -237,6 +269,8 @@ class _$_UploadAvatarProfileCompanyEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getProfileData,
     required TResult Function(String path) uploadAvatar,
+    required TResult Function(String name, String url) addContact,
+    required TResult Function(int id) deleteContact,
   }) {
     return uploadAvatar(path);
   }
@@ -246,6 +280,8 @@ class _$_UploadAvatarProfileCompanyEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getProfileData,
     TResult Function(String path)? uploadAvatar,
+    TResult Function(String name, String url)? addContact,
+    TResult Function(int id)? deleteContact,
     required TResult orElse(),
   }) {
     if (uploadAvatar != null) {
@@ -260,6 +296,9 @@ class _$_UploadAvatarProfileCompanyEvent
     required TResult Function(_GetProfileCompanyEvent value) getProfileData,
     required TResult Function(_UploadAvatarProfileCompanyEvent value)
         uploadAvatar,
+    required TResult Function(_AddContactProfileCompanyEvent value) addContact,
+    required TResult Function(_DeleteContactProfileCompanyEvent value)
+        deleteContact,
   }) {
     return uploadAvatar(this);
   }
@@ -269,6 +308,8 @@ class _$_UploadAvatarProfileCompanyEvent
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetProfileCompanyEvent value)? getProfileData,
     TResult Function(_UploadAvatarProfileCompanyEvent value)? uploadAvatar,
+    TResult Function(_AddContactProfileCompanyEvent value)? addContact,
+    TResult Function(_DeleteContactProfileCompanyEvent value)? deleteContact,
     required TResult orElse(),
   }) {
     if (uploadAvatar != null) {
@@ -289,6 +330,285 @@ abstract class _UploadAvatarProfileCompanyEvent implements ProfileCompanyEvent {
 }
 
 /// @nodoc
+abstract class _$AddContactProfileCompanyEventCopyWith<$Res> {
+  factory _$AddContactProfileCompanyEventCopyWith(
+          _AddContactProfileCompanyEvent value,
+          $Res Function(_AddContactProfileCompanyEvent) then) =
+      __$AddContactProfileCompanyEventCopyWithImpl<$Res>;
+  $Res call({String name, String url});
+}
+
+/// @nodoc
+class __$AddContactProfileCompanyEventCopyWithImpl<$Res>
+    extends _$ProfileCompanyEventCopyWithImpl<$Res>
+    implements _$AddContactProfileCompanyEventCopyWith<$Res> {
+  __$AddContactProfileCompanyEventCopyWithImpl(
+      _AddContactProfileCompanyEvent _value,
+      $Res Function(_AddContactProfileCompanyEvent) _then)
+      : super(_value, (v) => _then(v as _AddContactProfileCompanyEvent));
+
+  @override
+  _AddContactProfileCompanyEvent get _value =>
+      super._value as _AddContactProfileCompanyEvent;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+    Object? url = freezed,
+  }) {
+    return _then(_AddContactProfileCompanyEvent(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      url: url == freezed
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddContactProfileCompanyEvent
+    implements _AddContactProfileCompanyEvent {
+  const _$_AddContactProfileCompanyEvent(
+      {required this.name, required this.url});
+
+  @override
+  final String name;
+  @override
+  final String url;
+
+  @override
+  String toString() {
+    return 'ProfileCompanyEvent.addContact(name: $name, url: $url)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AddContactProfileCompanyEvent &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.url, url) ||
+                const DeepCollectionEquality().equals(other.url, url)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(url);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddContactProfileCompanyEventCopyWith<_AddContactProfileCompanyEvent>
+      get copyWith => __$AddContactProfileCompanyEventCopyWithImpl<
+          _AddContactProfileCompanyEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getProfileData,
+    required TResult Function(String path) uploadAvatar,
+    required TResult Function(String name, String url) addContact,
+    required TResult Function(int id) deleteContact,
+  }) {
+    return addContact(name, url);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getProfileData,
+    TResult Function(String path)? uploadAvatar,
+    TResult Function(String name, String url)? addContact,
+    TResult Function(int id)? deleteContact,
+    required TResult orElse(),
+  }) {
+    if (addContact != null) {
+      return addContact(name, url);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetProfileCompanyEvent value) getProfileData,
+    required TResult Function(_UploadAvatarProfileCompanyEvent value)
+        uploadAvatar,
+    required TResult Function(_AddContactProfileCompanyEvent value) addContact,
+    required TResult Function(_DeleteContactProfileCompanyEvent value)
+        deleteContact,
+  }) {
+    return addContact(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetProfileCompanyEvent value)? getProfileData,
+    TResult Function(_UploadAvatarProfileCompanyEvent value)? uploadAvatar,
+    TResult Function(_AddContactProfileCompanyEvent value)? addContact,
+    TResult Function(_DeleteContactProfileCompanyEvent value)? deleteContact,
+    required TResult orElse(),
+  }) {
+    if (addContact != null) {
+      return addContact(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddContactProfileCompanyEvent implements ProfileCompanyEvent {
+  const factory _AddContactProfileCompanyEvent(
+      {required String name,
+      required String url}) = _$_AddContactProfileCompanyEvent;
+
+  String get name => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$AddContactProfileCompanyEventCopyWith<_AddContactProfileCompanyEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$DeleteContactProfileCompanyEventCopyWith<$Res> {
+  factory _$DeleteContactProfileCompanyEventCopyWith(
+          _DeleteContactProfileCompanyEvent value,
+          $Res Function(_DeleteContactProfileCompanyEvent) then) =
+      __$DeleteContactProfileCompanyEventCopyWithImpl<$Res>;
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$DeleteContactProfileCompanyEventCopyWithImpl<$Res>
+    extends _$ProfileCompanyEventCopyWithImpl<$Res>
+    implements _$DeleteContactProfileCompanyEventCopyWith<$Res> {
+  __$DeleteContactProfileCompanyEventCopyWithImpl(
+      _DeleteContactProfileCompanyEvent _value,
+      $Res Function(_DeleteContactProfileCompanyEvent) _then)
+      : super(_value, (v) => _then(v as _DeleteContactProfileCompanyEvent));
+
+  @override
+  _DeleteContactProfileCompanyEvent get _value =>
+      super._value as _DeleteContactProfileCompanyEvent;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_DeleteContactProfileCompanyEvent(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeleteContactProfileCompanyEvent
+    implements _DeleteContactProfileCompanyEvent {
+  const _$_DeleteContactProfileCompanyEvent({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'ProfileCompanyEvent.deleteContact(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DeleteContactProfileCompanyEvent &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DeleteContactProfileCompanyEventCopyWith<_DeleteContactProfileCompanyEvent>
+      get copyWith => __$DeleteContactProfileCompanyEventCopyWithImpl<
+          _DeleteContactProfileCompanyEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getProfileData,
+    required TResult Function(String path) uploadAvatar,
+    required TResult Function(String name, String url) addContact,
+    required TResult Function(int id) deleteContact,
+  }) {
+    return deleteContact(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getProfileData,
+    TResult Function(String path)? uploadAvatar,
+    TResult Function(String name, String url)? addContact,
+    TResult Function(int id)? deleteContact,
+    required TResult orElse(),
+  }) {
+    if (deleteContact != null) {
+      return deleteContact(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetProfileCompanyEvent value) getProfileData,
+    required TResult Function(_UploadAvatarProfileCompanyEvent value)
+        uploadAvatar,
+    required TResult Function(_AddContactProfileCompanyEvent value) addContact,
+    required TResult Function(_DeleteContactProfileCompanyEvent value)
+        deleteContact,
+  }) {
+    return deleteContact(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetProfileCompanyEvent value)? getProfileData,
+    TResult Function(_UploadAvatarProfileCompanyEvent value)? uploadAvatar,
+    TResult Function(_AddContactProfileCompanyEvent value)? addContact,
+    TResult Function(_DeleteContactProfileCompanyEvent value)? deleteContact,
+    required TResult orElse(),
+  }) {
+    if (deleteContact != null) {
+      return deleteContact(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteContactProfileCompanyEvent
+    implements ProfileCompanyEvent {
+  const factory _DeleteContactProfileCompanyEvent({required int id}) =
+      _$_DeleteContactProfileCompanyEvent;
+
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$DeleteContactProfileCompanyEventCopyWith<_DeleteContactProfileCompanyEvent>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$ProfileCompanyStateTearOff {
   const _$ProfileCompanyStateTearOff();
 
@@ -301,7 +621,7 @@ class _$ProfileCompanyStateTearOff {
   }
 
   LoadedProfileCompanyState loaded(
-      {required TypeProfileCompany profile, required FormzStatus status}) {
+      {required TypeProfileCompany profile, required String status}) {
     return LoadedProfileCompanyState(
       profile: profile,
       status: status,
@@ -324,8 +644,7 @@ mixin _$ProfileCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileCompany profile, FormzStatus status)
-        loaded,
+    required TResult Function(TypeProfileCompany profile, String status) loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -333,7 +652,7 @@ mixin _$ProfileCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileCompany profile, FormzStatus status)? loaded,
+    TResult Function(TypeProfileCompany profile, String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -417,8 +736,7 @@ class _$EmptyProfileCompanyState implements EmptyProfileCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileCompany profile, FormzStatus status)
-        loaded,
+    required TResult Function(TypeProfileCompany profile, String status) loaded,
     required TResult Function(String message) error,
   }) {
     return empty();
@@ -429,7 +747,7 @@ class _$EmptyProfileCompanyState implements EmptyProfileCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileCompany profile, FormzStatus status)? loaded,
+    TResult Function(TypeProfileCompany profile, String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -513,8 +831,7 @@ class _$LoadingProfileCompanyState implements LoadingProfileCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileCompany profile, FormzStatus status)
-        loaded,
+    required TResult Function(TypeProfileCompany profile, String status) loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -525,7 +842,7 @@ class _$LoadingProfileCompanyState implements LoadingProfileCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileCompany profile, FormzStatus status)? loaded,
+    TResult Function(TypeProfileCompany profile, String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -571,7 +888,7 @@ abstract class $LoadedProfileCompanyStateCopyWith<$Res> {
   factory $LoadedProfileCompanyStateCopyWith(LoadedProfileCompanyState value,
           $Res Function(LoadedProfileCompanyState) then) =
       _$LoadedProfileCompanyStateCopyWithImpl<$Res>;
-  $Res call({TypeProfileCompany profile, FormzStatus status});
+  $Res call({TypeProfileCompany profile, String status});
 }
 
 /// @nodoc
@@ -599,7 +916,7 @@ class _$LoadedProfileCompanyStateCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as FormzStatus,
+              as String,
     ));
   }
 }
@@ -613,7 +930,7 @@ class _$LoadedProfileCompanyState implements LoadedProfileCompanyState {
   @override
   final TypeProfileCompany profile;
   @override
-  final FormzStatus status;
+  final String status;
 
   @override
   String toString() {
@@ -648,8 +965,7 @@ class _$LoadedProfileCompanyState implements LoadedProfileCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileCompany profile, FormzStatus status)
-        loaded,
+    required TResult Function(TypeProfileCompany profile, String status) loaded,
     required TResult Function(String message) error,
   }) {
     return loaded(profile, status);
@@ -660,7 +976,7 @@ class _$LoadedProfileCompanyState implements LoadedProfileCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileCompany profile, FormzStatus status)? loaded,
+    TResult Function(TypeProfileCompany profile, String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -700,10 +1016,10 @@ class _$LoadedProfileCompanyState implements LoadedProfileCompanyState {
 abstract class LoadedProfileCompanyState implements ProfileCompanyState {
   const factory LoadedProfileCompanyState(
       {required TypeProfileCompany profile,
-      required FormzStatus status}) = _$LoadedProfileCompanyState;
+      required String status}) = _$LoadedProfileCompanyState;
 
   TypeProfileCompany get profile => throw _privateConstructorUsedError;
-  FormzStatus get status => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedProfileCompanyStateCopyWith<LoadedProfileCompanyState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -778,8 +1094,7 @@ class _$ErrorProfileCompanyState implements ErrorProfileCompanyState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(TypeProfileCompany profile, FormzStatus status)
-        loaded,
+    required TResult Function(TypeProfileCompany profile, String status) loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -790,7 +1105,7 @@ class _$ErrorProfileCompanyState implements ErrorProfileCompanyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(TypeProfileCompany profile, FormzStatus status)? loaded,
+    TResult Function(TypeProfileCompany profile, String status)? loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {

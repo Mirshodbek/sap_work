@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sap_work/screens/hunter/hunter.dart';
+import 'package:sap_work/resources/theme/color_theme.dart';
+import 'package:sap_work/resources/theme/text_theme.dart';
 
 class RedButtonWidget extends StatelessWidget {
   final String title;

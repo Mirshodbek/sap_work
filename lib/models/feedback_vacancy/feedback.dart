@@ -31,7 +31,7 @@ class FeedbackVacancy extends Equatable {
 
   // ignore: non_constant_identifier_names
   late final String updated_at;
-  late final ProfileUser user;
+  late final ProfileUser? user;
   late final Resume resume;
 
   FeedbackVacancy(
@@ -69,5 +69,71 @@ class FeedbackVacancy extends Equatable {
         resume_id,
         user,
         resume
+      ];
+}
+
+@JsonSerializable()
+class FeedbackVacancyNoSubscribe extends Equatable {
+  late final int id;
+
+  // ignore: non_constant_identifier_names
+  late final int vacancy_id;
+
+  // ignore: non_constant_identifier_names
+  late final int resume_id;
+
+  // ignore: non_constant_identifier_names
+  late final String? expires_at;
+  late final String? answer;
+  late final String? date;
+  late final String? contact;
+  late final String? accepted;
+
+  // ignore: non_constant_identifier_names
+  late final String? contact_type;
+
+  // ignore: non_constant_identifier_names
+  late final String created_at;
+
+  // ignore: non_constant_identifier_names
+  late final String updated_at;
+  late final String user;
+  late final Resume resume;
+
+  FeedbackVacancyNoSubscribe(
+      this.id,
+      this.vacancy_id,
+      this.resume_id,
+      this.expires_at,
+      this.answer,
+      this.date,
+      this.contact,
+      this.accepted,
+      this.contact_type,
+      this.created_at,
+      this.updated_at,
+      this.user,
+      this.resume);
+
+  factory FeedbackVacancyNoSubscribe.fromJson(Map<String, dynamic> json) =>
+      _$FeedbackVacancyNoSubscribeFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FeedbackVacancyNoSubscribeToJson(this);
+
+  @override
+  List<Object?> get props => [
+        this.id,
+        this.vacancy_id,
+        this.resume_id,
+        this.expires_at,
+        this.answer,
+        this.date,
+        this.contact,
+        this.accepted,
+        this.contact_type,
+        this.created_at,
+        this.updated_at,
+        this.user,
+        this.resume
       ];
 }

@@ -13,6 +13,7 @@ ParamsResume _$ParamsResumeFromJson(Map<String, dynamic> json) {
     name: json['name'],
     phone: json['phone'],
     email: json['email'],
+    sphere: json['sphere'],
     city: json['city'],
     category: json['category'],
     stages: json['stages'],
@@ -29,6 +30,7 @@ Map<String, dynamic> _$ParamsResumeToJson(ParamsResume instance) =>
       'email': instance.email,
       'city': instance.city,
       'category': instance.category,
+      'sphere': instance.sphere,
       'stages': instance.stages,
       'grades': instance.grades,
     };

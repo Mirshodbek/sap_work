@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sap_work/models/chat/chat.dart';
+import 'package:sap_work/models/models.dart';
 import 'package:sap_work/models/tariff/tariff.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -12,11 +13,18 @@ abstract class CompanyCacheDataBase {
 
   Future<void> cacheProfileCompany(TypeProfileCompany profile);
 
+  Future<PaginationResume> getRecommendResumesCompany();
+
+  Future<void> cacheRecommendResumesCompany(PaginationResume vacancy);
+
   Future<List<Vacancy>> getVacanciesCompany();
 
-  Future<List<Category>> getCategories();
+  Future<List<Feature>> getCategories();
 
-  Future<List<FeedbackVacancy>> getFeedbacksVacancy();
+  Future<List<Feature>> getSpheres();
+
+  Future<List<dynamic>> getFeedbacksVacancy();
+
   Future<List<Chat>> getChats();
 
   Future<File> cacheObject(String object, String path);
@@ -56,6 +64,22 @@ class CompanyCacheData implements CompanyCacheDataBase {
   }
 
   @override
+  Future<PaginationResume> getRecommendResumesCompany() {
+    final jsonString = sharedPreferences.getString(CACHED_RESUMES_COMPANY);
+    if (jsonString != null) {
+      return Future.value(PaginationResume.fromJson(json.decode(jsonString)));
+    } else {
+      throw CacheException();
+    }
+  }
+
+  @override
+  Future<void> cacheRecommendResumesCompany(PaginationResume vacancy) {
+    return sharedPreferences.setString(
+        CACHED_RESUMES_COMPANY, json.encode(vacancy.toJson()));
+  }
+
+  @override
   Future<List<Vacancy>> getVacanciesCompany() async {
     var cacheDir = await getApplicationDocumentsDirectory();
     final file = File(cacheDir.path + "/" + CACHED_VACANCIES_COMPANY + ".json");
@@ -70,13 +94,13 @@ class CompanyCacheData implements CompanyCacheDataBase {
   }
 
   @override
-  Future<List<Category>> getCategories() async {
+  Future<List<Feature>> getCategories() async {
     var cacheDir = await getApplicationDocumentsDirectory();
     final file = File(cacheDir.path + "/" + CACHED_CATEGORIES + ".json");
     if (file.existsSync()) {
       var jsonData = file.readAsStringSync();
       return Future.value((json.decode(jsonData) as List)
-          .map((item) => Category.fromJson(item))
+          .map((item) => Feature.fromJson(item))
           .toList());
     } else {
       throw CacheException();
@@ -84,21 +108,41 @@ class CompanyCacheData implements CompanyCacheDataBase {
   }
 
   @override
-  Future<List<FeedbackVacancy>> getFeedbacksVacancy() async {
+  Future<List<Feature>> getSpheres() async {
+    var cacheDir = await getApplicationDocumentsDirectory();
+    final file = File(cacheDir.path + "/" + CACHED_SPHERES + ".json");
+    if (file.existsSync()) {
+      var jsonData = file.readAsStringSync();
+      return Future.value((json.decode(jsonData) as List)
+          .map((item) => Feature.fromJson(item))
+          .toList());
+    } else {
+      throw CacheException();
+    }
+  }
+
+  @override
+  Future<List<dynamic>> getFeedbacksVacancy() async {
     var cacheDir = await getApplicationDocumentsDirectory();
     final file = File(cacheDir.path + "/" + CACHED_FEEDBACKS_VACANCY + ".json");
     if (file.existsSync()) {
       var jsonData = file.readAsStringSync();
-      return Future.value((json.decode(jsonData) as List)
-          .map((item) => FeedbackVacancy.fromJson(item))
-          .toList());
+      if ((json.decode(jsonData) as List).any((it) => it['user'] is String)) {
+        return Future.value((json.decode(jsonData) as List)
+            .map((item) => FeedbackVacancyNoSubscribe.fromJson(item))
+            .toList());
+      } else {
+        return Future.value((json.decode(jsonData) as List)
+            .map((item) => FeedbackVacancy.fromJson(item))
+            .toList());
+      }
     } else {
       throw CacheException();
     }
   }
 
   @override
-  Future<List<Chat>> getChats() async{
+  Future<List<Chat>> getChats() async {
     var cacheDir = await getApplicationDocumentsDirectory();
     final file = File(cacheDir.path + "/" + CACHED_CHATS_COMPANY + ".json");
     if (file.existsSync()) {
@@ -161,7 +205,7 @@ class CompanyCacheData implements CompanyCacheDataBase {
 
   @override
   Future<void> cacheStatusCompany(Tariffs tariffs) {
-    print( json.encode(tariffs));
+    print(json.encode(tariffs));
     return sharedPreferences.setString(
         CACHED_STATUS_COMPANY, json.encode(tariffs));
   }

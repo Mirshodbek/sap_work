@@ -1,14 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:sap_work/models/contact/contact.dart';
 
 part 'profile.g.dart';
-
 
 @JsonSerializable()
 class TypeProfileUser extends Equatable {
   late final String type;
   late final ProfileUser profile;
-
 
   TypeProfileUser(this.type, this.profile);
 
@@ -36,10 +35,10 @@ class ProfileUser extends Equatable {
   // ignore: non_constant_identifier_names
   late final String created_at;
   late final int id;
+  late final List<ContactProfile>? urls;
 
-
-  ProfileUser(this.phone, this.name,this.avatar, this.remember_token, this.updated_at,
-      this.created_at, this.id);
+  ProfileUser(this.phone, this.name, this.avatar, this.urls,
+      this.remember_token, this.updated_at, this.created_at, this.id);
 
   factory ProfileUser.fromJson(Map<String, dynamic> json) =>
       _$ProfileUserFromJson(json);
@@ -48,5 +47,5 @@ class ProfileUser extends Equatable {
 
   @override
   List<Object?> get props =>
-      [phone, name, remember_token, updated_at, created_at, id];
+      [phone, name, remember_token, urls,updated_at, created_at, id];
 }

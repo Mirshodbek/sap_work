@@ -24,6 +24,9 @@ ProfileUser _$ProfileUserFromJson(Map<String, dynamic> json) {
     json['phone'] as String,
     json['name'] as String,
     json['avatar'] as String,
+    (json['urls'] as List<dynamic>?)
+        ?.map((e) => ContactProfile.fromJson(e as Map<String, dynamic>))
+        .toList(),
     json['remember_token'] as String?,
     json['updated_at'] as String,
     json['created_at'] as String,
@@ -40,4 +43,5 @@ Map<String, dynamic> _$ProfileUserToJson(ProfileUser instance) =>
       'updated_at': instance.updated_at,
       'created_at': instance.created_at,
       'id': instance.id,
+      'urls': instance.urls,
     };

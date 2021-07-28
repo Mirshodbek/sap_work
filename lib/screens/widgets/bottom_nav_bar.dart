@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sap_work/screens/hunter/hunter.dart';
+import 'package:sap_work/bloc/navigation/navigation_cubit.dart';
+import 'package:sap_work/resources/images.dart';
+import 'package:sap_work/resources/theme/color_theme.dart';
 
 class BottomNavBarWidget extends StatelessWidget {
   final BottomNavItem currentItem;
@@ -43,11 +45,10 @@ class BottomNavBarWidget extends StatelessWidget {
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: Image.asset(
-                AppImages.profile_section,
-                width: 40.0,
-                height: 40.0,
-              ),
+              icon: SvgPicture.asset(BottomNavItem.profile.icon,
+                  color: AppColor.white,width: 30,height: 30),
+              activeIcon: SvgPicture.asset(BottomNavItem.profile.activeIcon,
+                  color: AppColor.white,width: 30,height: 30),
               label: "",
             ),
           ],

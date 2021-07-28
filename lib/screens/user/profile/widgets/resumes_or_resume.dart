@@ -9,7 +9,7 @@ import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/resources/small_widgets.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
-import 'package:sap_work/screens/company/widgets/loading.dart';
+import 'package:sap_work/screens/widgets/loading.dart';
 import 'package:sap_work/screens/user/profile/widgets/remote_resumes.dart';
 import 'package:sap_work/screens/user/profile/widgets/resume.dart';
 
@@ -52,15 +52,15 @@ class ResumesOrResumeWidget extends StatelessWidget {
                         orElse: () => state,
                         loaded: (_state) {
                           if (_state.status ==
-                                  RESUMES_USER_BLOC_FAILURE_DELETE_RESUMES ||
+                                  RESUMES_USER_BLOC_DELETE_RESUMES_FAILURE ||
                               _state.status ==
-                                  RESUMES_USER_BLOC_FAILURE_EDIT_RESUMES_NAME) {
+                                  RESUMES_USER_BLOC_CHANGE_RESUMES_NAME_FAILURE) {
                             SmallWidgets.scaffoldMessage(
                                 context: context,
                                 message: "Нет доступ к интернету");
                           }
                           if (_state.status ==
-                              RESUMES_USER_BLOC_SUCCEED_DELETE_RESUMES) {
+                              RESUMES_USER_BLOC_DELETE_RESUMES_SUCCEED) {
                             context.read<CoreProfileUserBloc>().add(
                                 CoreProfileUserEvent.deleteLocalResume(
                                     id: _state.id));

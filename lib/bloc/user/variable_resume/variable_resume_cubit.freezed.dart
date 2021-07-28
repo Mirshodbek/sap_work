@@ -19,6 +19,8 @@ class _$VariableResumeStateTearOff {
   ArgumentsVariableResumeState arguments(
       {required String categoryTitle,
       required int categoryId,
+      required String sphereTitle,
+      required int sphereId,
       required String email,
       required String phone,
       required String body,
@@ -39,6 +41,8 @@ class _$VariableResumeStateTearOff {
     return ArgumentsVariableResumeState(
       categoryTitle: categoryTitle,
       categoryId: categoryId,
+      sphereTitle: sphereTitle,
+      sphereId: sphereId,
       email: email,
       phone: phone,
       body: body,
@@ -67,6 +71,8 @@ const $VariableResumeState = _$VariableResumeStateTearOff();
 mixin _$VariableResumeState {
   String get categoryTitle => throw _privateConstructorUsedError;
   int get categoryId => throw _privateConstructorUsedError;
+  String get sphereTitle => throw _privateConstructorUsedError;
+  int get sphereId => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
@@ -90,6 +96,8 @@ mixin _$VariableResumeState {
     required TResult Function(
             String categoryTitle,
             int categoryId,
+            String sphereTitle,
+            int sphereId,
             String email,
             String phone,
             String body,
@@ -115,6 +123,8 @@ mixin _$VariableResumeState {
     TResult Function(
             String categoryTitle,
             int categoryId,
+            String sphereTitle,
+            int sphereId,
             String email,
             String phone,
             String body,
@@ -161,6 +171,8 @@ abstract class $VariableResumeStateCopyWith<$Res> {
   $Res call(
       {String categoryTitle,
       int categoryId,
+      String sphereTitle,
+      int sphereId,
       String email,
       String phone,
       String body,
@@ -193,6 +205,8 @@ class _$VariableResumeStateCopyWithImpl<$Res>
   $Res call({
     Object? categoryTitle = freezed,
     Object? categoryId = freezed,
+    Object? sphereTitle = freezed,
+    Object? sphereId = freezed,
     Object? email = freezed,
     Object? phone = freezed,
     Object? body = freezed,
@@ -219,6 +233,14 @@ class _$VariableResumeStateCopyWithImpl<$Res>
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      sphereTitle: sphereTitle == freezed
+          ? _value.sphereTitle
+          : sphereTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      sphereId: sphereId == freezed
+          ? _value.sphereId
+          : sphereId // ignore: cast_nullable_to_non_nullable
               as int,
       email: email == freezed
           ? _value.email
@@ -303,6 +325,8 @@ abstract class $ArgumentsVariableResumeStateCopyWith<$Res>
   $Res call(
       {String categoryTitle,
       int categoryId,
+      String sphereTitle,
+      int sphereId,
       String email,
       String phone,
       String body,
@@ -339,6 +363,8 @@ class _$ArgumentsVariableResumeStateCopyWithImpl<$Res>
   $Res call({
     Object? categoryTitle = freezed,
     Object? categoryId = freezed,
+    Object? sphereTitle = freezed,
+    Object? sphereId = freezed,
     Object? email = freezed,
     Object? phone = freezed,
     Object? body = freezed,
@@ -365,6 +391,14 @@ class _$ArgumentsVariableResumeStateCopyWithImpl<$Res>
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      sphereTitle: sphereTitle == freezed
+          ? _value.sphereTitle
+          : sphereTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      sphereId: sphereId == freezed
+          ? _value.sphereId
+          : sphereId // ignore: cast_nullable_to_non_nullable
               as int,
       email: email == freezed
           ? _value.email
@@ -444,6 +478,8 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
   const _$ArgumentsVariableResumeState(
       {required this.categoryTitle,
       required this.categoryId,
+      required this.sphereTitle,
+      required this.sphereId,
       required this.email,
       required this.phone,
       required this.body,
@@ -466,6 +502,10 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
   final String categoryTitle;
   @override
   final int categoryId;
+  @override
+  final String sphereTitle;
+  @override
+  final int sphereId;
   @override
   final String email;
   @override
@@ -503,7 +543,7 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
 
   @override
   String toString() {
-    return 'VariableResumeState.arguments(categoryTitle: $categoryTitle, categoryId: $categoryId, email: $email, phone: $phone, body: $body, city: $city, abilities: $abilities, tools: $tools, companyName: $companyName, positionCompany: $positionCompany, periodCompany: $periodCompany, descriptionCompany: $descriptionCompany, universityName: $universityName, gradeUniversity: $gradeUniversity, periodUniversity: $periodUniversity, stages: $stages, grades: $grades, indexStages: $indexStages, indexGrades: $indexGrades)';
+    return 'VariableResumeState.arguments(categoryTitle: $categoryTitle, categoryId: $categoryId, sphereTitle: $sphereTitle, sphereId: $sphereId, email: $email, phone: $phone, body: $body, city: $city, abilities: $abilities, tools: $tools, companyName: $companyName, positionCompany: $positionCompany, periodCompany: $periodCompany, descriptionCompany: $descriptionCompany, universityName: $universityName, gradeUniversity: $gradeUniversity, periodUniversity: $periodUniversity, stages: $stages, grades: $grades, indexStages: $indexStages, indexGrades: $indexGrades)';
   }
 
   @override
@@ -516,6 +556,12 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
             (identical(other.categoryId, categoryId) ||
                 const DeepCollectionEquality()
                     .equals(other.categoryId, categoryId)) &&
+            (identical(other.sphereTitle, sphereTitle) ||
+                const DeepCollectionEquality()
+                    .equals(other.sphereTitle, sphereTitle)) &&
+            (identical(other.sphereId, sphereId) ||
+                const DeepCollectionEquality()
+                    .equals(other.sphereId, sphereId)) &&
             (identical(other.email, email) ||
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.phone, phone) ||
@@ -567,6 +613,8 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(categoryTitle) ^
       const DeepCollectionEquality().hash(categoryId) ^
+      const DeepCollectionEquality().hash(sphereTitle) ^
+      const DeepCollectionEquality().hash(sphereId) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(phone) ^
       const DeepCollectionEquality().hash(body) ^
@@ -597,6 +645,8 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
     required TResult Function(
             String categoryTitle,
             int categoryId,
+            String sphereTitle,
+            int sphereId,
             String email,
             String phone,
             String body,
@@ -619,6 +669,8 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
     return arguments(
         categoryTitle,
         categoryId,
+        sphereTitle,
+        sphereId,
         email,
         phone,
         body,
@@ -644,6 +696,8 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
     TResult Function(
             String categoryTitle,
             int categoryId,
+            String sphereTitle,
+            int sphereId,
             String email,
             String phone,
             String body,
@@ -668,6 +722,8 @@ class _$ArgumentsVariableResumeState implements ArgumentsVariableResumeState {
       return arguments(
           categoryTitle,
           categoryId,
+          sphereTitle,
+          sphereId,
           email,
           phone,
           body,
@@ -714,6 +770,8 @@ abstract class ArgumentsVariableResumeState implements VariableResumeState {
   const factory ArgumentsVariableResumeState(
       {required String categoryTitle,
       required int categoryId,
+      required String sphereTitle,
+      required int sphereId,
       required String email,
       required String phone,
       required String body,
@@ -736,6 +794,10 @@ abstract class ArgumentsVariableResumeState implements VariableResumeState {
   String get categoryTitle => throw _privateConstructorUsedError;
   @override
   int get categoryId => throw _privateConstructorUsedError;
+  @override
+  String get sphereTitle => throw _privateConstructorUsedError;
+  @override
+  int get sphereId => throw _privateConstructorUsedError;
   @override
   String get email => throw _privateConstructorUsedError;
   @override

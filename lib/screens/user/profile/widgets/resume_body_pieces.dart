@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,7 +8,6 @@ import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/resources/small_widgets.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
-import 'package:video_player/video_player.dart';
 
 class ResumeBodyStagesWidget extends StatelessWidget {
   final Resume resume;
@@ -24,8 +20,8 @@ class ResumeBodyStagesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      ...List.generate(resume.stages.length, (index) {
-        final stages = resume.stages[index];
+      ...List.generate(resume.stages!.length, (index) {
+        final stages = resume.stages![index];
         return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(children: [
             Expanded(
@@ -192,8 +188,8 @@ class ResumeBodyGradesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      ...List.generate(resume.grades.length, (index) {
-        final grades = resume.grades[index];
+      ...List.generate(resume.grades!.length, (index) {
+        final grades = resume.grades![index];
         return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(children: [
             Expanded(
@@ -265,13 +261,13 @@ class ResumeBodyGradesWidget extends StatelessWidget {
                         .read<VariableResumeCubit>()
                         .universityName(0, value);
                   },
-                  decoration: SmallWidgets.inputDecoration("Университеть")),
+                  decoration: SmallWidgets.inputDecoration("Университет")),
               const SizedBox(height: 10),
               TextField(
                   onChanged: (value) => context
                       .read<VariableResumeCubit>()
                       .gradeUniversity(0, value),
-                  decoration: SmallWidgets.inputDecoration("Дипломь")),
+                  decoration: SmallWidgets.inputDecoration("Диплом")),
               const SizedBox(height: 10),
               TextField(
                   onChanged: (value) => context

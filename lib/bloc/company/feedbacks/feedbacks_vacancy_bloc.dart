@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -29,19 +31,21 @@ class FeedbacksVacancyBloc
     yield const FeedbacksVacancyState.loading();
     final localVacancy = await getLocalVacancy(ParamsLocalVacancy());
     yield* localVacancy.fold((failure) async* {
-      yield const NoFeedbacksVacancyState();
+      yield const FeedbacksVacancyState.noVacancy();
     }, (vacancy) async* {
       final getFeedbacks = await getFeedbacksVacancy(vacancy.id);
       yield* getFeedbacks.fold((failure) async* {
-        yield FeedbacksVacancyState.error(
-            message: _mapFailureToMessage(failure));
+        if (vacancy.id == 0) {
+          yield const FeedbacksVacancyState.noVacancy();
+        } else {
+          yield FeedbacksVacancyState.error(
+              message: _mapFailureToMessage(failure));
+        }
       }, (feedbacks) async* {
         feedbacks.sort((a, b) => DateTime.parse(b.updated_at)
             .compareTo(DateTime.parse(a.updated_at)));
         yield FeedbacksVacancyState.loaded(
-            feedbacks: feedbacks,
-            vacancyName: vacancy.name,
-            status: FormzStatus.pure);
+            vacancyId: vacancy.id, feedbacks: feedbacks, status: EMPTY_BLOC);
       });
     });
   }
@@ -56,10 +60,7 @@ class FeedbacksVacancyBloc
     ]);
     if (isValidated.isValidated) {
       try {
-        yield state.maybeMap(
-            orElse: () => state,
-            loaded: (_state) =>
-                _state.copyWith(status: FormzStatus.submissionInProgress));
+        yield* _status(FEEDBACKS_VACANCY_BLOC_POST_INVITE_PROGRESS);
         final result = await remoteData.postInviteFeedback(ParamsFeedback(
             event.date,
             event.contactType,
@@ -67,24 +68,25 @@ class FeedbacksVacancyBloc
             event.answer,
             event.resume,
             event.vacancy));
+        yield* _status(FEEDBACKS_VACANCY_BLOC_POST_INVITE_SUCCEED);
         yield state.maybeMap(
             orElse: () => state,
-            loaded: (_state) => _state.copyWith(
-                status: FormzStatus.submissionSuccess, feedbacks: result));
+            loaded: (_state) => _state.copyWith(feedbacks: result));
       } catch (_) {
-        yield state.maybeMap(
-            orElse: () => state,
-            loaded: (_state) =>
-                _state.copyWith(status: FormzStatus.submissionFailure));
+        yield* _status(FEEDBACKS_VACANCY_BLOC_POST_INVITE_FAILURE);
       }
     } else {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) => _state.copyWith(status: FormzStatus.pure));
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) => _state.copyWith(status: isValidated));
+      yield* _status(FEEDBACKS_VACANCY_BLOC_POST_INVITE_REQUIRED);
     }
+  }
+
+  Stream<FeedbacksVacancyState> _status(String status) async* {
+    yield state.maybeMap(
+        orElse: () => state,
+        loaded: (_state) => _state.copyWith(status: EMPTY_BLOC));
+    yield state.maybeMap(
+        orElse: () => state,
+        loaded: (_state) => _state.copyWith(status: status));
   }
 
   String _mapFailureToMessage(Failure failure) {
@@ -104,14 +106,13 @@ abstract class FeedbacksVacancyEvent with _$FeedbacksVacancyEvent {
   const factory FeedbacksVacancyEvent.getFeedbacks() =
       _GetFeedbacksVacancyEvent;
 
-  const factory FeedbacksVacancyEvent.postInvite({
-    required final String date,
-    required final String contact,
-    required final String contactType,
-    required final String answer,
-    required final int resume,
-    required final int vacancy,
-  }) = _PostInviteFeedbacksVacancyEvent;
+  const factory FeedbacksVacancyEvent.postInvite(
+      {required final String date,
+      required final String contact,
+      required final String contactType,
+      required final String answer,
+      required final int resume,
+      required final int vacancy}) = _PostInviteFeedbacksVacancyEvent;
 }
 
 @freezed
@@ -122,10 +123,12 @@ abstract class FeedbacksVacancyState with _$FeedbacksVacancyState {
 
   const factory FeedbacksVacancyState.noFeedbacks() = NoFeedbacksVacancyState;
 
+  const factory FeedbacksVacancyState.noVacancy() = NoVacancyState;
+
   const factory FeedbacksVacancyState.loaded(
-      {required final List<FeedbackVacancy> feedbacks,
-      required final String vacancyName,
-      required final FormzStatus status}) = LoadedFeedbacksVacancyState;
+      {required final List<dynamic> feedbacks,
+      required final int vacancyId,
+      required final String status}) = LoadedFeedbacksVacancyState;
 
   const factory FeedbacksVacancyState.error({required final String message}) =
       ErrorFeedbacksVacancyState;

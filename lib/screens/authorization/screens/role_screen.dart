@@ -6,6 +6,7 @@ class RoleScreen extends StatelessWidget {
 
   const RoleScreen({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +34,19 @@ class RoleScreen extends StatelessWidget {
                     title: "Соискатель",
                   ),
                 ),
+                if (IS_ADMIN)
+                  Expanded(
+                      child: TextButton(
+                    style: ButtonStyle(
+                        padding: MaterialStateProperty.all(
+                            const EdgeInsets.symmetric(
+                                vertical: 8)),
+                        side: MaterialStateProperty.all(
+                            BorderSide(color: AppColor.white))),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, AdminSignInScreen.id),
+                    child: Text("Админ", style: AppTextTheme.smallTextWhite),
+                  )),
                 Expanded(
                   child: SelectButton(
                     onPressed: () =>

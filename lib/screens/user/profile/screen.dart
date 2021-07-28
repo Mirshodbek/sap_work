@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sap_work/bloc/navigation/navigation_cubit.dart';
 import 'package:sap_work/bloc/user/profile_button/profile_user_btn_cubit.dart';
 import 'package:sap_work/bloc/user/variable_resume/variable_resume_cubit.dart';
+import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/resources/theme/color_theme.dart';
 import 'package:sap_work/screens/settings/screen.dart';
@@ -33,7 +34,7 @@ class ProfileScreenUser extends StatelessWidget {
           elevation: 0.0,
           backgroundColor: Colors.transparent,
           leading: IconButton(
-              onPressed: () => Navigator.pushNamed(context, SettingsScreen.id),
+              onPressed: () => Navigator.pushNamed(context, SettingsScreen.id,arguments: {ROLE:USER_ROLE}),
               icon: SvgPicture.asset(AppIcons.settings)),
         ),
         bottomNavigationBar:

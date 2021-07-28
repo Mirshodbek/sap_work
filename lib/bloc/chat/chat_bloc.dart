@@ -2,15 +2,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sap_work/bloc/company/company.dart';
+import 'package:sap_work/data_source/user/remote_data.dart';
 import 'package:sap_work/models/chat/chat.dart';
+import 'package:sap_work/repository/user/usercases/usercases.dart';
 
 part 'chat_bloc.freezed.dart';
 
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
   final GetChatsCompany getChatsCompany;
-  final CompanyRemoteDataBase remoteData;
+  final GetChatsUser getChatsUser;
+  final CompanyRemoteDataBase remoteCompanyData;
+  final UserRemoteDataBase remoteUserData;
 
-  ChatBloc(this.getChatsCompany, this.remoteData)
+  ChatBloc(this.getChatsCompany, this.remoteCompanyData, this.getChatsUser,
+      this.remoteUserData)
       : super(const ChatState.empty());
 
   @override
@@ -20,26 +25,47 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
   Stream<ChatState> _getChatsEvent(_GetChatsEvent event) async* {
     yield const ChatState.loading();
-    final chats = await getChatsCompany(event.id);
-    yield* chats.fold((failure) async* {
-      yield ChatState.error(message: _mapFailureToMessage(failure));
-    }, (chats) async* {
-      yield ChatState.loaded(chats: chats, status: FormzStatus.pure);
-    });
+    if (event.type == COMPANY) {
+      final chats = await getChatsCompany(event.id);
+      yield* chats.fold((failure) async* {
+        yield ChatState.error(message: _mapFailureToMessage(failure));
+      }, (chats) async* {
+        yield ChatState.loaded(chats: chats, status: FormzStatus.pure);
+      });
+    } else{
+      final chats = await getChatsUser(event.id);
+      yield* chats.fold((failure) async* {
+        yield ChatState.error(message: _mapFailureToMessage(failure));
+      }, (chats) async* {
+        yield ChatState.loaded(chats: chats, status: FormzStatus.pure);
+      });
+    }
   }
 
   Stream<ChatState> _postChatEvent(_PostChatEvent event) async* {
     if (event.text.isNotEmpty) {
       try {
-        yield state.maybeMap(
-            orElse: () => state,
-            loaded: (_state) =>
-                _state.copyWith(status: FormzStatus.submissionInProgress));
-        final result = await remoteData.postChat(event.id, event.text);
-        yield state.maybeMap(
-            orElse: () => state,
-            loaded: (_state) => _state.copyWith(
-                chats: result, status: FormzStatus.submissionSuccess));
+       if(event.type==COMPANY) {
+          yield state.maybeMap(
+              orElse: () => state,
+              loaded: (_state) =>
+                  _state.copyWith(status: FormzStatus.submissionInProgress));
+          final result = await remoteCompanyData.postChat(event.id, event.text);
+          yield state.maybeMap(
+              orElse: () => state,
+              loaded: (_state) => _state.copyWith(
+                  chats: result, status: FormzStatus.submissionSuccess));
+        } else{
+         yield state.maybeMap(
+             orElse: () => state,
+             loaded: (_state) =>
+                 _state.copyWith(status: FormzStatus.submissionInProgress));
+         final result = await remoteUserData.postChat(event.id, event.text);
+         yield state.maybeMap(
+             orElse: () => state,
+             loaded: (_state) => _state.copyWith(
+                 chats: result, status: FormzStatus.submissionSuccess));
+       }
       } catch (_) {
         yield state.maybeMap(
             orElse: () => state,
@@ -63,10 +89,13 @@ class ChatBloc extends Bloc<ChatEvent, ChatState> {
 
 @freezed
 abstract class ChatEvent with _$ChatEvent {
-  const factory ChatEvent.getChats({required final int id}) = _GetChatsEvent;
+  const factory ChatEvent.getChats(
+      {required final int id, required final String type}) = _GetChatsEvent;
 
   const factory ChatEvent.postChat(
-      {required final int id, required final String text}) = _PostChatEvent;
+      {required final int id,
+      required final String text,
+      required final String type}) = _PostChatEvent;
 }
 
 @freezed

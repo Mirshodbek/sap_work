@@ -44,4 +44,7 @@ class AppIcons {
   static const indicator = "assets/svg_icons/indicator.svg";
   static const photo = "assets/svg_icons/photo.svg";
   static const play = "assets/svg_icons/play.svg";
+  static const more = "assets/svg_icons/more.svg";
+  static const avatar = "assets/svg_icons/avatar.svg";
+  static const avatar_selected = "assets/svg_icons/avatar_selected.svg";
 }

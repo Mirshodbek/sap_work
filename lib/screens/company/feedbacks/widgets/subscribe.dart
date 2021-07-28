@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sap_work/bloc/company/feedbacks_button/feedbacks_btn_cubit.dart';
+import 'package:sap_work/bloc/company/feedbacks_button/feedbacks_company_btn_cubit.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
 
 class NoSubscribeWidget extends StatelessWidget {
@@ -11,7 +11,7 @@ class NoSubscribeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () =>context.read<FeedbacksBtnCubit>().payment(),
+      onTap: () =>context.read<FeedbacksCompanyBtnCubit>().payment(),
       child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
@@ -43,7 +43,7 @@ class SubscribeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () =>context.read<FeedbacksBtnCubit>().payment(),
+      onTap: () =>context.read<FeedbacksCompanyBtnCubit>().payment(),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(

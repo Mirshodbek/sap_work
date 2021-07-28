@@ -19,6 +19,15 @@ class _$FeedbacksResumeEventTearOff {
   _GetFeedbacksResumeEvent getFeedbacks() {
     return const _GetFeedbacksResumeEvent();
   }
+
+  _SendFeedbacksResumeEvent sendFeedbacks(
+      {required int resumeId, required bool accept, required int vacancyId}) {
+    return _SendFeedbacksResumeEvent(
+      resumeId: resumeId,
+      accept: accept,
+      vacancyId: vacancyId,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,22 +38,27 @@ mixin _$FeedbacksResumeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getFeedbacks,
+    required TResult Function(int resumeId, bool accept, int vacancyId)
+        sendFeedbacks,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getFeedbacks,
+    TResult Function(int resumeId, bool accept, int vacancyId)? sendFeedbacks,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetFeedbacksResumeEvent value) getFeedbacks,
+    required TResult Function(_SendFeedbacksResumeEvent value) sendFeedbacks,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetFeedbacksResumeEvent value)? getFeedbacks,
+    TResult Function(_SendFeedbacksResumeEvent value)? sendFeedbacks,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -109,6 +123,8 @@ class _$_GetFeedbacksResumeEvent implements _GetFeedbacksResumeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getFeedbacks,
+    required TResult Function(int resumeId, bool accept, int vacancyId)
+        sendFeedbacks,
   }) {
     return getFeedbacks();
   }
@@ -117,6 +133,7 @@ class _$_GetFeedbacksResumeEvent implements _GetFeedbacksResumeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getFeedbacks,
+    TResult Function(int resumeId, bool accept, int vacancyId)? sendFeedbacks,
     required TResult orElse(),
   }) {
     if (getFeedbacks != null) {
@@ -129,6 +146,7 @@ class _$_GetFeedbacksResumeEvent implements _GetFeedbacksResumeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetFeedbacksResumeEvent value) getFeedbacks,
+    required TResult Function(_SendFeedbacksResumeEvent value) sendFeedbacks,
   }) {
     return getFeedbacks(this);
   }
@@ -137,6 +155,7 @@ class _$_GetFeedbacksResumeEvent implements _GetFeedbacksResumeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetFeedbacksResumeEvent value)? getFeedbacks,
+    TResult Function(_SendFeedbacksResumeEvent value)? sendFeedbacks,
     required TResult orElse(),
   }) {
     if (getFeedbacks != null) {
@@ -151,6 +170,154 @@ abstract class _GetFeedbacksResumeEvent implements FeedbacksResumeEvent {
 }
 
 /// @nodoc
+abstract class _$SendFeedbacksResumeEventCopyWith<$Res> {
+  factory _$SendFeedbacksResumeEventCopyWith(_SendFeedbacksResumeEvent value,
+          $Res Function(_SendFeedbacksResumeEvent) then) =
+      __$SendFeedbacksResumeEventCopyWithImpl<$Res>;
+  $Res call({int resumeId, bool accept, int vacancyId});
+}
+
+/// @nodoc
+class __$SendFeedbacksResumeEventCopyWithImpl<$Res>
+    extends _$FeedbacksResumeEventCopyWithImpl<$Res>
+    implements _$SendFeedbacksResumeEventCopyWith<$Res> {
+  __$SendFeedbacksResumeEventCopyWithImpl(_SendFeedbacksResumeEvent _value,
+      $Res Function(_SendFeedbacksResumeEvent) _then)
+      : super(_value, (v) => _then(v as _SendFeedbacksResumeEvent));
+
+  @override
+  _SendFeedbacksResumeEvent get _value =>
+      super._value as _SendFeedbacksResumeEvent;
+
+  @override
+  $Res call({
+    Object? resumeId = freezed,
+    Object? accept = freezed,
+    Object? vacancyId = freezed,
+  }) {
+    return _then(_SendFeedbacksResumeEvent(
+      resumeId: resumeId == freezed
+          ? _value.resumeId
+          : resumeId // ignore: cast_nullable_to_non_nullable
+              as int,
+      accept: accept == freezed
+          ? _value.accept
+          : accept // ignore: cast_nullable_to_non_nullable
+              as bool,
+      vacancyId: vacancyId == freezed
+          ? _value.vacancyId
+          : vacancyId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SendFeedbacksResumeEvent implements _SendFeedbacksResumeEvent {
+  const _$_SendFeedbacksResumeEvent(
+      {required this.resumeId, required this.accept, required this.vacancyId});
+
+  @override
+  final int resumeId;
+  @override
+  final bool accept;
+  @override
+  final int vacancyId;
+
+  @override
+  String toString() {
+    return 'FeedbacksResumeEvent.sendFeedbacks(resumeId: $resumeId, accept: $accept, vacancyId: $vacancyId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _SendFeedbacksResumeEvent &&
+            (identical(other.resumeId, resumeId) ||
+                const DeepCollectionEquality()
+                    .equals(other.resumeId, resumeId)) &&
+            (identical(other.accept, accept) ||
+                const DeepCollectionEquality().equals(other.accept, accept)) &&
+            (identical(other.vacancyId, vacancyId) ||
+                const DeepCollectionEquality()
+                    .equals(other.vacancyId, vacancyId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(resumeId) ^
+      const DeepCollectionEquality().hash(accept) ^
+      const DeepCollectionEquality().hash(vacancyId);
+
+  @JsonKey(ignore: true)
+  @override
+  _$SendFeedbacksResumeEventCopyWith<_SendFeedbacksResumeEvent> get copyWith =>
+      __$SendFeedbacksResumeEventCopyWithImpl<_SendFeedbacksResumeEvent>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getFeedbacks,
+    required TResult Function(int resumeId, bool accept, int vacancyId)
+        sendFeedbacks,
+  }) {
+    return sendFeedbacks(resumeId, accept, vacancyId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getFeedbacks,
+    TResult Function(int resumeId, bool accept, int vacancyId)? sendFeedbacks,
+    required TResult orElse(),
+  }) {
+    if (sendFeedbacks != null) {
+      return sendFeedbacks(resumeId, accept, vacancyId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetFeedbacksResumeEvent value) getFeedbacks,
+    required TResult Function(_SendFeedbacksResumeEvent value) sendFeedbacks,
+  }) {
+    return sendFeedbacks(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetFeedbacksResumeEvent value)? getFeedbacks,
+    TResult Function(_SendFeedbacksResumeEvent value)? sendFeedbacks,
+    required TResult orElse(),
+  }) {
+    if (sendFeedbacks != null) {
+      return sendFeedbacks(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SendFeedbacksResumeEvent implements FeedbacksResumeEvent {
+  const factory _SendFeedbacksResumeEvent(
+      {required int resumeId,
+      required bool accept,
+      required int vacancyId}) = _$_SendFeedbacksResumeEvent;
+
+  int get resumeId => throw _privateConstructorUsedError;
+  bool get accept => throw _privateConstructorUsedError;
+  int get vacancyId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$SendFeedbacksResumeEventCopyWith<_SendFeedbacksResumeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$FeedbacksResumeStateTearOff {
   const _$FeedbacksResumeStateTearOff();
 
@@ -162,16 +329,22 @@ class _$FeedbacksResumeStateTearOff {
     return const LoadingFeedbacksResumeState();
   }
 
-  NoFeedbacksResumeState noFeedbacks() {
-    return const NoFeedbacksResumeState();
+  NoFeedbacksResumeState noFeedbacks({required String status}) {
+    return NoFeedbacksResumeState(
+      status: status,
+    );
   }
 
   LoadedFeedbacksResumeState loaded(
       {required List<FeedbackResume> feedbacks,
+      required List<Invite> invites,
+      required List<AllChats> allChats,
       required String resumeName,
-      required FormzStatus status}) {
+      required String status}) {
     return LoadedFeedbacksResumeState(
       feedbacks: feedbacks,
+      invites: invites,
+      allChats: allChats,
       resumeName: resumeName,
       status: status,
     );
@@ -193,9 +366,13 @@ mixin _$FeedbacksResumeState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)
+    required TResult Function(String status) noFeedbacks,
+    required TResult Function(
+            List<FeedbackResume> feedbacks,
+            List<Invite> invites,
+            List<AllChats> allChats,
+            String resumeName,
+            String status)
         loaded,
     required TResult Function(String message) error,
   }) =>
@@ -204,9 +381,9 @@ mixin _$FeedbacksResumeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)?
+    TResult Function(String status)? noFeedbacks,
+    TResult Function(List<FeedbackResume> feedbacks, List<Invite> invites,
+            List<AllChats> allChats, String resumeName, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -293,9 +470,13 @@ class _$EmptyFeedbacksResumeState implements EmptyFeedbacksResumeState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)
+    required TResult Function(String status) noFeedbacks,
+    required TResult Function(
+            List<FeedbackResume> feedbacks,
+            List<Invite> invites,
+            List<AllChats> allChats,
+            String resumeName,
+            String status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -307,9 +488,9 @@ class _$EmptyFeedbacksResumeState implements EmptyFeedbacksResumeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)?
+    TResult Function(String status)? noFeedbacks,
+    TResult Function(List<FeedbackResume> feedbacks, List<Invite> invites,
+            List<AllChats> allChats, String resumeName, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -397,9 +578,13 @@ class _$LoadingFeedbacksResumeState implements LoadingFeedbacksResumeState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)
+    required TResult Function(String status) noFeedbacks,
+    required TResult Function(
+            List<FeedbackResume> feedbacks,
+            List<Invite> invites,
+            List<AllChats> allChats,
+            String resumeName,
+            String status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -411,9 +596,9 @@ class _$LoadingFeedbacksResumeState implements LoadingFeedbacksResumeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)?
+    TResult Function(String status)? noFeedbacks,
+    TResult Function(List<FeedbackResume> feedbacks, List<Invite> invites,
+            List<AllChats> allChats, String resumeName, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -462,6 +647,7 @@ abstract class $NoFeedbacksResumeStateCopyWith<$Res> {
   factory $NoFeedbacksResumeStateCopyWith(NoFeedbacksResumeState value,
           $Res Function(NoFeedbacksResumeState) then) =
       _$NoFeedbacksResumeStateCopyWithImpl<$Res>;
+  $Res call({String status});
 }
 
 /// @nodoc
@@ -474,38 +660,67 @@ class _$NoFeedbacksResumeStateCopyWithImpl<$Res>
 
   @override
   NoFeedbacksResumeState get _value => super._value as NoFeedbacksResumeState;
+
+  @override
+  $Res call({
+    Object? status = freezed,
+  }) {
+    return _then(NoFeedbacksResumeState(
+      status: status == freezed
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$NoFeedbacksResumeState implements NoFeedbacksResumeState {
-  const _$NoFeedbacksResumeState();
+  const _$NoFeedbacksResumeState({required this.status});
+
+  @override
+  final String status;
 
   @override
   String toString() {
-    return 'FeedbacksResumeState.noFeedbacks()';
+    return 'FeedbacksResumeState.noFeedbacks(status: $status)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is NoFeedbacksResumeState);
+    return identical(this, other) ||
+        (other is NoFeedbacksResumeState &&
+            (identical(other.status, status) ||
+                const DeepCollectionEquality().equals(other.status, status)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(status);
+
+  @JsonKey(ignore: true)
+  @override
+  $NoFeedbacksResumeStateCopyWith<NoFeedbacksResumeState> get copyWith =>
+      _$NoFeedbacksResumeStateCopyWithImpl<NoFeedbacksResumeState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)
+    required TResult Function(String status) noFeedbacks,
+    required TResult Function(
+            List<FeedbackResume> feedbacks,
+            List<Invite> invites,
+            List<AllChats> allChats,
+            String resumeName,
+            String status)
         loaded,
     required TResult Function(String message) error,
   }) {
-    return noFeedbacks();
+    return noFeedbacks(status);
   }
 
   @override
@@ -513,15 +728,15 @@ class _$NoFeedbacksResumeState implements NoFeedbacksResumeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)?
+    TResult Function(String status)? noFeedbacks,
+    TResult Function(List<FeedbackResume> feedbacks, List<Invite> invites,
+            List<AllChats> allChats, String resumeName, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (noFeedbacks != null) {
-      return noFeedbacks();
+      return noFeedbacks(status);
     }
     return orElse();
   }
@@ -556,7 +771,13 @@ class _$NoFeedbacksResumeState implements NoFeedbacksResumeState {
 }
 
 abstract class NoFeedbacksResumeState implements FeedbacksResumeState {
-  const factory NoFeedbacksResumeState() = _$NoFeedbacksResumeState;
+  const factory NoFeedbacksResumeState({required String status}) =
+      _$NoFeedbacksResumeState;
+
+  String get status => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $NoFeedbacksResumeStateCopyWith<NoFeedbacksResumeState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -565,7 +786,11 @@ abstract class $LoadedFeedbacksResumeStateCopyWith<$Res> {
           $Res Function(LoadedFeedbacksResumeState) then) =
       _$LoadedFeedbacksResumeStateCopyWithImpl<$Res>;
   $Res call(
-      {List<FeedbackResume> feedbacks, String resumeName, FormzStatus status});
+      {List<FeedbackResume> feedbacks,
+      List<Invite> invites,
+      List<AllChats> allChats,
+      String resumeName,
+      String status});
 }
 
 /// @nodoc
@@ -583,6 +808,8 @@ class _$LoadedFeedbacksResumeStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? feedbacks = freezed,
+    Object? invites = freezed,
+    Object? allChats = freezed,
     Object? resumeName = freezed,
     Object? status = freezed,
   }) {
@@ -591,6 +818,14 @@ class _$LoadedFeedbacksResumeStateCopyWithImpl<$Res>
           ? _value.feedbacks
           : feedbacks // ignore: cast_nullable_to_non_nullable
               as List<FeedbackResume>,
+      invites: invites == freezed
+          ? _value.invites
+          : invites // ignore: cast_nullable_to_non_nullable
+              as List<Invite>,
+      allChats: allChats == freezed
+          ? _value.allChats
+          : allChats // ignore: cast_nullable_to_non_nullable
+              as List<AllChats>,
       resumeName: resumeName == freezed
           ? _value.resumeName
           : resumeName // ignore: cast_nullable_to_non_nullable
@@ -598,7 +833,7 @@ class _$LoadedFeedbacksResumeStateCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as FormzStatus,
+              as String,
     ));
   }
 }
@@ -608,19 +843,25 @@ class _$LoadedFeedbacksResumeStateCopyWithImpl<$Res>
 class _$LoadedFeedbacksResumeState implements LoadedFeedbacksResumeState {
   const _$LoadedFeedbacksResumeState(
       {required this.feedbacks,
+      required this.invites,
+      required this.allChats,
       required this.resumeName,
       required this.status});
 
   @override
   final List<FeedbackResume> feedbacks;
   @override
+  final List<Invite> invites;
+  @override
+  final List<AllChats> allChats;
+  @override
   final String resumeName;
   @override
-  final FormzStatus status;
+  final String status;
 
   @override
   String toString() {
-    return 'FeedbacksResumeState.loaded(feedbacks: $feedbacks, resumeName: $resumeName, status: $status)';
+    return 'FeedbacksResumeState.loaded(feedbacks: $feedbacks, invites: $invites, allChats: $allChats, resumeName: $resumeName, status: $status)';
   }
 
   @override
@@ -630,6 +871,12 @@ class _$LoadedFeedbacksResumeState implements LoadedFeedbacksResumeState {
             (identical(other.feedbacks, feedbacks) ||
                 const DeepCollectionEquality()
                     .equals(other.feedbacks, feedbacks)) &&
+            (identical(other.invites, invites) ||
+                const DeepCollectionEquality()
+                    .equals(other.invites, invites)) &&
+            (identical(other.allChats, allChats) ||
+                const DeepCollectionEquality()
+                    .equals(other.allChats, allChats)) &&
             (identical(other.resumeName, resumeName) ||
                 const DeepCollectionEquality()
                     .equals(other.resumeName, resumeName)) &&
@@ -641,6 +888,8 @@ class _$LoadedFeedbacksResumeState implements LoadedFeedbacksResumeState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(feedbacks) ^
+      const DeepCollectionEquality().hash(invites) ^
+      const DeepCollectionEquality().hash(allChats) ^
       const DeepCollectionEquality().hash(resumeName) ^
       const DeepCollectionEquality().hash(status);
 
@@ -656,13 +905,17 @@ class _$LoadedFeedbacksResumeState implements LoadedFeedbacksResumeState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)
+    required TResult Function(String status) noFeedbacks,
+    required TResult Function(
+            List<FeedbackResume> feedbacks,
+            List<Invite> invites,
+            List<AllChats> allChats,
+            String resumeName,
+            String status)
         loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(feedbacks, resumeName, status);
+    return loaded(feedbacks, invites, allChats, resumeName, status);
   }
 
   @override
@@ -670,15 +923,15 @@ class _$LoadedFeedbacksResumeState implements LoadedFeedbacksResumeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)?
+    TResult Function(String status)? noFeedbacks,
+    TResult Function(List<FeedbackResume> feedbacks, List<Invite> invites,
+            List<AllChats> allChats, String resumeName, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(feedbacks, resumeName, status);
+      return loaded(feedbacks, invites, allChats, resumeName, status);
     }
     return orElse();
   }
@@ -715,12 +968,16 @@ class _$LoadedFeedbacksResumeState implements LoadedFeedbacksResumeState {
 abstract class LoadedFeedbacksResumeState implements FeedbacksResumeState {
   const factory LoadedFeedbacksResumeState(
       {required List<FeedbackResume> feedbacks,
+      required List<Invite> invites,
+      required List<AllChats> allChats,
       required String resumeName,
-      required FormzStatus status}) = _$LoadedFeedbacksResumeState;
+      required String status}) = _$LoadedFeedbacksResumeState;
 
   List<FeedbackResume> get feedbacks => throw _privateConstructorUsedError;
+  List<Invite> get invites => throw _privateConstructorUsedError;
+  List<AllChats> get allChats => throw _privateConstructorUsedError;
   String get resumeName => throw _privateConstructorUsedError;
-  FormzStatus get status => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $LoadedFeedbacksResumeStateCopyWith<LoadedFeedbacksResumeState>
       get copyWith => throw _privateConstructorUsedError;
@@ -795,9 +1052,13 @@ class _$ErrorFeedbacksResumeState implements ErrorFeedbacksResumeState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() noFeedbacks,
-    required TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)
+    required TResult Function(String status) noFeedbacks,
+    required TResult Function(
+            List<FeedbackResume> feedbacks,
+            List<Invite> invites,
+            List<AllChats> allChats,
+            String resumeName,
+            String status)
         loaded,
     required TResult Function(String message) error,
   }) {
@@ -809,9 +1070,9 @@ class _$ErrorFeedbacksResumeState implements ErrorFeedbacksResumeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? noFeedbacks,
-    TResult Function(List<FeedbackResume> feedbacks, String resumeName,
-            FormzStatus status)?
+    TResult Function(String status)? noFeedbacks,
+    TResult Function(List<FeedbackResume> feedbacks, List<Invite> invites,
+            List<AllChats> allChats, String resumeName, String status)?
         loaded,
     TResult Function(String message)? error,
     required TResult orElse(),

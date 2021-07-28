@@ -16,19 +16,21 @@ class ParamsVacancy extends Equatable {
   late final dynamic type;
   late final dynamic abilities;
   late final dynamic category;
+  late final dynamic sphere;
 
   ParamsVacancy(
-      { this.name,
-       this.city,
-       this.grade,
-       this.stage,
-       this.schedule,
-       this.body,
-       this.minsalary,
-       this.maxsalary,
-       this.type,
-       this.abilities,
-       this.category});
+      {this.name,
+      this.city,
+      this.grade,
+      this.stage,
+      this.schedule,
+      this.body,
+      this.minsalary,
+      this.maxsalary,
+      this.type,
+      this.abilities,
+      this.category,
+      this.sphere});
 
   @override
   List<Object?> get props => [
@@ -42,7 +44,8 @@ class ParamsVacancy extends Equatable {
         maxsalary,
         type,
         abilities,
-        category
+        category,
+        sphere,
       ];
 
   factory ParamsVacancy.fromJson(Map<String, dynamic> json) =>

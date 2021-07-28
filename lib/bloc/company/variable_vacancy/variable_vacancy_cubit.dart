@@ -7,6 +7,8 @@ part 'variable_vacancy_cubit.freezed.dart';
 class VariableVacancyCubit extends Cubit<VariableVacancyState> {
   VariableVacancyCubit()
       : super(const VariableVacancyState.arguments(
+            sphereTitle: EMPTY_STRING,
+            sphereId: 0,
             categoryTitle: EMPTY_STRING,
             minsalary: EMPTY_STRING,
             maxsalary: EMPTY_STRING,
@@ -24,6 +26,10 @@ class VariableVacancyCubit extends Cubit<VariableVacancyState> {
   void category(String title) => emit(state.copyWith(categoryTitle: title));
 
   void categoryId(int id) => emit(state.copyWith(categoryId: id));
+
+  void sphere(String title) => emit(state.copyWith(sphereTitle: title));
+
+  void sphereId(int id) => emit(state.copyWith(sphereId: id));
 
   void grade(String grade) => emit(state.copyWith(grade: grade));
 
@@ -57,6 +63,7 @@ class VariableVacancyCubit extends Cubit<VariableVacancyState> {
 abstract class VariableVacancyState with _$VariableVacancyState {
   const factory VariableVacancyState.arguments(
       {required final String categoryTitle,
+      required final String sphereTitle,
       required final String city,
       required final String name,
       required final String body,
@@ -68,5 +75,6 @@ abstract class VariableVacancyState with _$VariableVacancyState {
       required final String type,
       required final String abilities,
       required final int categoryId,
+      required final int sphereId,
       required final List<String> tools}) = ArgumentsVacancyState;
 }

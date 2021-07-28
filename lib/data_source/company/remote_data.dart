@@ -1,7 +1,11 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:sap_work/models/chat/chat.dart';
 import 'package:sap_work/models/params_company/feedback/feedback.dart';
+import 'package:sap_work/models/params_user/contacts/contacts.dart';
+import 'package:sap_work/models/params_user/filter/filter.dart';
+import 'package:sap_work/models/resume/resume.dart';
 import 'package:sap_work/models/tariff/tariff.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../common_urls.dart';
@@ -19,19 +23,32 @@ abstract class CompanyRemoteDataBase {
 
   Future<Vacancy> changeVacancyCompany(int id, ParamsVacancy paramsVacancy);
 
-  Future<List<Category>> getCategories();
+  Future<List<Feature>> getCategories();
+
+  Future<List<Feature>> getSpheres();
+
+  Future<TypeProfileCompany> addContactCompany(ParamsContacts contacts);
+
+  Future<TypeProfileCompany> deleteContactCompany(int id);
 
   Future<Vacancy> activateOrDeactivateVacancy(String id);
 
   Future<String> updateAvatarCompany(String filename);
 
-  Future<List<FeedbackVacancy>> getFeedbacksVacancy(int id);
+  Future<List<dynamic>> getFeedbacksVacancy(int id);
 
-  Future<List<FeedbackVacancy>> postInviteFeedback(ParamsFeedback params);
+
+  Future<List<dynamic>> postInviteFeedback(ParamsFeedback params);
 
   Future<List<Chat>> getChats(int id);
 
   Future<List<Chat>> postChat(int id, String text);
+
+  Future<PaginationResume> getRecommendResumesCompany(int page);
+
+  Future<PaginationResume> searchResumesCompany(String body);
+
+  Future<PaginationResume> filterResumesCompany(ParamsFilter params);
 
   Future<Tariffs> getStatusCompany();
 
@@ -49,11 +66,43 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   static const String _statusSubscribe = '/api/subscribe/status';
   static const String _priceSubscribe = '/api/price';
   static const String _addStatusSubscribe = '/api/subscribe/add?days=';
-  static const String _inviteFeedback = '/api/vacancy/answer?';
+  static const String _inviteFeedback = '/api/invite';
+  static const String _recommendedResumes = '/api/recommended/resumes';
+  static const String _searchResumes = '/api/resumes/search';
 
   final http.Client client;
 
   CompanyRemoteData(this.localDataSource, {required this.client});
+
+  @override
+  Future<PaginationResume> getRecommendResumesCompany(int page) async {
+    final result = await _callPostApi(
+        _recommendedResumes + "?page=" + page.toString(), json.encode({}));
+    if (json.decode(result.body)['message'] == "No resumes") {
+      final result = await _callPostApi(_searchResumes, json.encode({}));
+      return PaginationResume.fromJson(json.decode(result.body));
+    }
+    return PaginationResume.fromJson(json.decode(result.body));
+  }
+
+  @override
+  Future<PaginationResume> searchResumesCompany(String body) async {
+    final result =
+        await _callPostApi(_searchResumes, json.encode({"body": body}));
+    return PaginationResume.fromJson(json.decode(result.body));
+  }
+
+  @override
+  Future<PaginationResume> filterResumesCompany(ParamsFilter params) async {
+    final result = await _callPostApi(
+        _searchResumes,
+        json.encode({
+          "abilities": params.abilities,
+          "city": params.city,
+          "category": params.category,
+        }));
+    return PaginationResume.fromJson(json.decode(result.body));
+  }
 
   @override
   Future<Tariffs> getStatusCompany() async {
@@ -69,9 +118,8 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   }
 
   @override
-  Future<List<FeedbackVacancy>> postInviteFeedback(
-      ParamsFeedback params) async {
-    print(json.encode(params.toJson()));
+  Future<List<dynamic>> postInviteFeedback(ParamsFeedback params) async {
+    print(params.toJson());
     final result =
         await _callPostApi(_inviteFeedback, json.encode(params.toJson()));
     print(result.statusCode);
@@ -79,14 +127,20 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   }
 
   @override
-  Future<List<FeedbackVacancy>> getFeedbacksVacancy(int id) async {
+  Future<List<dynamic>> getFeedbacksVacancy(int id) async {
     final result =
         await _callPostApi(_feedbacksVacancy + id.toString(), json.encode({}));
     await localDataSource.deleteObject(CACHED_FEEDBACKS_VACANCY);
     await localDataSource.cacheObject(result.body, CACHED_FEEDBACKS_VACANCY);
-    return (json.decode(result.body) as List)
-        .map((item) => FeedbackVacancy.fromJson(item))
-        .toList();
+    if ((json.decode(result.body) as List).any((it) => it['user'] is String)) {
+      return (json.decode(result.body) as List)
+          .map((item) => FeedbackVacancyNoSubscribe.fromJson(item))
+          .toList();
+    } else {
+      return (json.decode(result.body) as List)
+          .map((item) => FeedbackVacancy.fromJson(item))
+          .toList();
+    }
   }
 
   @override
@@ -110,6 +164,18 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   Future<TypeProfileCompany> getProfileCompany() async {
     final result = await _callPostApi(GET_PROFILE, json.encode({}));
     return TypeProfileCompany.fromJson(json.decode(result.body));
+  }
+
+  @override
+  Future<TypeProfileCompany> deleteContactCompany(int id) async {
+    await _callPostApi(DELETE_URL + id.toString(), json.encode({}));
+    return await getProfileCompany();
+  }
+
+  @override
+  Future<TypeProfileCompany> addContactCompany(ParamsContacts contacts) async {
+    await _callPostApi(ADD_URL, json.encode(contacts.toJson()));
+    return await getProfileCompany();
   }
 
   @override
@@ -137,12 +203,22 @@ class CompanyRemoteData implements CompanyRemoteDataBase {
   }
 
   @override
-  Future<List<Category>> getCategories() async {
+  Future<List<Feature>> getCategories() async {
     final result = await _callPostApi(CATEGORIES, json.encode({}));
     await localDataSource.deleteObject(CACHED_CATEGORIES);
     await localDataSource.cacheObject(result.body, CACHED_CATEGORIES);
     return (json.decode(result.body) as List<dynamic>)
-        .map((item) => Category.fromJson(item))
+        .map((item) => Feature.fromJson(item))
+        .toList();
+  }
+
+  @override
+  Future<List<Feature>> getSpheres() async {
+    final result = await _callPostApi(SPHERES, json.encode({}));
+    await localDataSource.deleteObject(CACHED_SPHERES);
+    await localDataSource.cacheObject(result.body, CACHED_SPHERES);
+    return (json.decode(result.body) as List<dynamic>)
+        .map((item) => Feature.fromJson(item))
         .toList();
   }
 

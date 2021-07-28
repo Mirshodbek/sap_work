@@ -47,7 +47,8 @@ class UserSignUpBloc extends Bloc<UserSignUpEvent, UserSignUpState> {
             userState: (_state) =>
                 _state.copyWith(status: FormzStatus.submissionInProgress));
         await _provider.signUpUser(event.phone.value, event.name.value);
-        yield const UserSignUpState.successSignUp();
+        await _provider.signInPhoneUser(event.phone.value);
+        yield  UserSignUpState.successSignUp(phone: event.phone.value);
       } catch (_) {
         yield state.maybeMap(
             orElse: () => state,
@@ -89,5 +90,5 @@ abstract class UserSignUpState with _$UserSignUpState {
     required final FormzStatus status,
   }) = _HunterStateUserSignUpState;
 
-  const factory UserSignUpState.successSignUp() = _SuccessSignUpUserSignUpState;
+  const factory UserSignUpState.successSignUp({required final String phone}) = SuccessSignUpUserSignUpState;
 }

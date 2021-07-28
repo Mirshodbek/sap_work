@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sap_work/bloc/user/core_profile/core_profile_user_bloc.dart';
+import 'package:sap_work/bloc/user/feedbacks/feedbacks_resume_bloc.dart';
 import 'package:sap_work/bloc/user/profile_button/profile_user_btn_cubit.dart';
 import 'package:sap_work/bloc/user/resume/resume_user_bloc.dart';
 import 'package:sap_work/bloc/user/resumes/resumes_user_bloc.dart';
@@ -37,18 +38,21 @@ class RemotedResumesWidget extends StatelessWidget {
                         orElse: () => const SizedBox.shrink(),
                         attributes: (_attributes) {
                           return ListTile(
+                              horizontalTitleGap: 0,
                               trailing: IconButton(
-                                  onPressed: ()  => context
+                                  onPressed: () => context
                                       .read<ResumesUserBloc>()
                                       .add(ResumesUserEvent.deleteResumes(
-                                      id: item.id)),
-                                  icon: SvgPicture.asset(AppIcons.trash)),
+                                          id: item.id)),
+                                  icon: SvgPicture.asset(AppIcons.trash,
+                                      color: _attributes.resume.id == item.id
+                                          ? AppColor.white
+                                          : AppColor.black)),
                               selected: _attributes.resume.id == item.id,
                               selectedTileColor: AppColor.red,
                               contentPadding:
                                   const EdgeInsets.symmetric(vertical: 15.0),
-                              onTap: () =>
-                                  _onTap(context, item.name, item.id),
+                              onTap: () => _onTap(context, item.name, item.id),
                               title: Text(item.name,
                                   textAlign: TextAlign.center,
                                   style: AppTextTheme.smallTextMediumBlack
@@ -93,6 +97,7 @@ class RemotedResumesWidget extends StatelessWidget {
             .add(CoreProfileUserEvent.onSelect(title: name, id: id)))
         .whenComplete(() {
       context.read<ResumeUserBloc>().add(const ResumeUserEvent.getResume());
+      context.read<FeedbacksResumeBloc>().add(const FeedbacksResumeEvent.getFeedbacks());
       context.read<ProfileUserBtnCubit>().selectResumes();
     });
   }

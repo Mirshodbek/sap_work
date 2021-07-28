@@ -28,14 +28,6 @@ class _$CoreProfileUserEventTearOff {
     );
   }
 
-  _AddContactCoreProfileUserEvent addContact(
-      {required String name, required String url}) {
-    return _AddContactCoreProfileUserEvent(
-      name: name,
-      url: url,
-    );
-  }
-
   _DeleteLocalResumeCoreProfileUserEvent deleteLocalResume({required int id}) {
     return _DeleteLocalResumeCoreProfileUserEvent(
       id: id,
@@ -52,7 +44,6 @@ mixin _$CoreProfileUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getData,
     required TResult Function(String title, int id) onSelect,
-    required TResult Function(String name, String url) addContact,
     required TResult Function(int id) deleteLocalResume,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +51,6 @@ mixin _$CoreProfileUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getData,
     TResult Function(String title, int id)? onSelect,
-    TResult Function(String name, String url)? addContact,
     TResult Function(int id)? deleteLocalResume,
     required TResult orElse(),
   }) =>
@@ -69,7 +59,6 @@ mixin _$CoreProfileUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetDataCoreProfileUserEvent value) getData,
     required TResult Function(_OnSelectCoreProfileUserEvent value) onSelect,
-    required TResult Function(_AddContactCoreProfileUserEvent value) addContact,
     required TResult Function(_DeleteLocalResumeCoreProfileUserEvent value)
         deleteLocalResume,
   }) =>
@@ -78,7 +67,6 @@ mixin _$CoreProfileUserEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetDataCoreProfileUserEvent value)? getData,
     TResult Function(_OnSelectCoreProfileUserEvent value)? onSelect,
-    TResult Function(_AddContactCoreProfileUserEvent value)? addContact,
     TResult Function(_DeleteLocalResumeCoreProfileUserEvent value)?
         deleteLocalResume,
     required TResult orElse(),
@@ -148,7 +136,6 @@ class _$_GetDataCoreProfileUserEvent implements _GetDataCoreProfileUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getData,
     required TResult Function(String title, int id) onSelect,
-    required TResult Function(String name, String url) addContact,
     required TResult Function(int id) deleteLocalResume,
   }) {
     return getData();
@@ -159,7 +146,6 @@ class _$_GetDataCoreProfileUserEvent implements _GetDataCoreProfileUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getData,
     TResult Function(String title, int id)? onSelect,
-    TResult Function(String name, String url)? addContact,
     TResult Function(int id)? deleteLocalResume,
     required TResult orElse(),
   }) {
@@ -174,7 +160,6 @@ class _$_GetDataCoreProfileUserEvent implements _GetDataCoreProfileUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetDataCoreProfileUserEvent value) getData,
     required TResult Function(_OnSelectCoreProfileUserEvent value) onSelect,
-    required TResult Function(_AddContactCoreProfileUserEvent value) addContact,
     required TResult Function(_DeleteLocalResumeCoreProfileUserEvent value)
         deleteLocalResume,
   }) {
@@ -186,7 +171,6 @@ class _$_GetDataCoreProfileUserEvent implements _GetDataCoreProfileUserEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetDataCoreProfileUserEvent value)? getData,
     TResult Function(_OnSelectCoreProfileUserEvent value)? onSelect,
-    TResult Function(_AddContactCoreProfileUserEvent value)? addContact,
     TResult Function(_DeleteLocalResumeCoreProfileUserEvent value)?
         deleteLocalResume,
     required TResult orElse(),
@@ -285,7 +269,6 @@ class _$_OnSelectCoreProfileUserEvent implements _OnSelectCoreProfileUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getData,
     required TResult Function(String title, int id) onSelect,
-    required TResult Function(String name, String url) addContact,
     required TResult Function(int id) deleteLocalResume,
   }) {
     return onSelect(title, id);
@@ -296,7 +279,6 @@ class _$_OnSelectCoreProfileUserEvent implements _OnSelectCoreProfileUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getData,
     TResult Function(String title, int id)? onSelect,
-    TResult Function(String name, String url)? addContact,
     TResult Function(int id)? deleteLocalResume,
     required TResult orElse(),
   }) {
@@ -311,7 +293,6 @@ class _$_OnSelectCoreProfileUserEvent implements _OnSelectCoreProfileUserEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetDataCoreProfileUserEvent value) getData,
     required TResult Function(_OnSelectCoreProfileUserEvent value) onSelect,
-    required TResult Function(_AddContactCoreProfileUserEvent value) addContact,
     required TResult Function(_DeleteLocalResumeCoreProfileUserEvent value)
         deleteLocalResume,
   }) {
@@ -323,7 +304,6 @@ class _$_OnSelectCoreProfileUserEvent implements _OnSelectCoreProfileUserEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetDataCoreProfileUserEvent value)? getData,
     TResult Function(_OnSelectCoreProfileUserEvent value)? onSelect,
-    TResult Function(_AddContactCoreProfileUserEvent value)? addContact,
     TResult Function(_DeleteLocalResumeCoreProfileUserEvent value)?
         deleteLocalResume,
     required TResult orElse(),
@@ -344,152 +324,6 @@ abstract class _OnSelectCoreProfileUserEvent implements CoreProfileUserEvent {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$OnSelectCoreProfileUserEventCopyWith<_OnSelectCoreProfileUserEvent>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$AddContactCoreProfileUserEventCopyWith<$Res> {
-  factory _$AddContactCoreProfileUserEventCopyWith(
-          _AddContactCoreProfileUserEvent value,
-          $Res Function(_AddContactCoreProfileUserEvent) then) =
-      __$AddContactCoreProfileUserEventCopyWithImpl<$Res>;
-  $Res call({String name, String url});
-}
-
-/// @nodoc
-class __$AddContactCoreProfileUserEventCopyWithImpl<$Res>
-    extends _$CoreProfileUserEventCopyWithImpl<$Res>
-    implements _$AddContactCoreProfileUserEventCopyWith<$Res> {
-  __$AddContactCoreProfileUserEventCopyWithImpl(
-      _AddContactCoreProfileUserEvent _value,
-      $Res Function(_AddContactCoreProfileUserEvent) _then)
-      : super(_value, (v) => _then(v as _AddContactCoreProfileUserEvent));
-
-  @override
-  _AddContactCoreProfileUserEvent get _value =>
-      super._value as _AddContactCoreProfileUserEvent;
-
-  @override
-  $Res call({
-    Object? name = freezed,
-    Object? url = freezed,
-  }) {
-    return _then(_AddContactCoreProfileUserEvent(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_AddContactCoreProfileUserEvent
-    implements _AddContactCoreProfileUserEvent {
-  const _$_AddContactCoreProfileUserEvent(
-      {required this.name, required this.url});
-
-  @override
-  final String name;
-  @override
-  final String url;
-
-  @override
-  String toString() {
-    return 'CoreProfileUserEvent.addContact(name: $name, url: $url)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _AddContactCoreProfileUserEvent &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.url, url) ||
-                const DeepCollectionEquality().equals(other.url, url)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(url);
-
-  @JsonKey(ignore: true)
-  @override
-  _$AddContactCoreProfileUserEventCopyWith<_AddContactCoreProfileUserEvent>
-      get copyWith => __$AddContactCoreProfileUserEventCopyWithImpl<
-          _AddContactCoreProfileUserEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getData,
-    required TResult Function(String title, int id) onSelect,
-    required TResult Function(String name, String url) addContact,
-    required TResult Function(int id) deleteLocalResume,
-  }) {
-    return addContact(name, url);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getData,
-    TResult Function(String title, int id)? onSelect,
-    TResult Function(String name, String url)? addContact,
-    TResult Function(int id)? deleteLocalResume,
-    required TResult orElse(),
-  }) {
-    if (addContact != null) {
-      return addContact(name, url);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetDataCoreProfileUserEvent value) getData,
-    required TResult Function(_OnSelectCoreProfileUserEvent value) onSelect,
-    required TResult Function(_AddContactCoreProfileUserEvent value) addContact,
-    required TResult Function(_DeleteLocalResumeCoreProfileUserEvent value)
-        deleteLocalResume,
-  }) {
-    return addContact(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetDataCoreProfileUserEvent value)? getData,
-    TResult Function(_OnSelectCoreProfileUserEvent value)? onSelect,
-    TResult Function(_AddContactCoreProfileUserEvent value)? addContact,
-    TResult Function(_DeleteLocalResumeCoreProfileUserEvent value)?
-        deleteLocalResume,
-    required TResult orElse(),
-  }) {
-    if (addContact != null) {
-      return addContact(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AddContactCoreProfileUserEvent implements CoreProfileUserEvent {
-  const factory _AddContactCoreProfileUserEvent(
-      {required String name,
-      required String url}) = _$_AddContactCoreProfileUserEvent;
-
-  String get name => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$AddContactCoreProfileUserEventCopyWith<_AddContactCoreProfileUserEvent>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -567,7 +401,6 @@ class _$_DeleteLocalResumeCoreProfileUserEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getData,
     required TResult Function(String title, int id) onSelect,
-    required TResult Function(String name, String url) addContact,
     required TResult Function(int id) deleteLocalResume,
   }) {
     return deleteLocalResume(id);
@@ -578,7 +411,6 @@ class _$_DeleteLocalResumeCoreProfileUserEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getData,
     TResult Function(String title, int id)? onSelect,
-    TResult Function(String name, String url)? addContact,
     TResult Function(int id)? deleteLocalResume,
     required TResult orElse(),
   }) {
@@ -593,7 +425,6 @@ class _$_DeleteLocalResumeCoreProfileUserEvent
   TResult map<TResult extends Object?>({
     required TResult Function(_GetDataCoreProfileUserEvent value) getData,
     required TResult Function(_OnSelectCoreProfileUserEvent value) onSelect,
-    required TResult Function(_AddContactCoreProfileUserEvent value) addContact,
     required TResult Function(_DeleteLocalResumeCoreProfileUserEvent value)
         deleteLocalResume,
   }) {
@@ -605,7 +436,6 @@ class _$_DeleteLocalResumeCoreProfileUserEvent
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetDataCoreProfileUserEvent value)? getData,
     TResult Function(_OnSelectCoreProfileUserEvent value)? onSelect,
-    TResult Function(_AddContactCoreProfileUserEvent value)? addContact,
     TResult Function(_DeleteLocalResumeCoreProfileUserEvent value)?
         deleteLocalResume,
     required TResult orElse(),
@@ -642,16 +472,16 @@ class _$CoreProfileUserStateTearOff {
   }
 
   AttributesCoreProfileUserState attributes(
-      {required List<ContactUser> contacts,
-      required LocalResumeData resume,
+      {required LocalResumeData resume,
       required int vacancyId,
-      required List<Category> categories,
-      required FormzStatus status}) {
+      required List<Feature> categories,
+      required List<Feature> spheres,
+      required String status}) {
     return AttributesCoreProfileUserState(
-      contacts: contacts,
       resume: resume,
       vacancyId: vacancyId,
       categories: categories,
+      spheres: spheres,
       status: status,
     );
   }
@@ -672,12 +502,8 @@ mixin _$CoreProfileUserState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<ContactUser> contacts,
-            LocalResumeData resume,
-            int vacancyId,
-            List<Category> categories,
-            FormzStatus status)
+    required TResult Function(LocalResumeData resume, int vacancyId,
+            List<Feature> categories, List<Feature> spheres, String status)
         attributes,
     required TResult Function(String message) error,
   }) =>
@@ -686,8 +512,8 @@ mixin _$CoreProfileUserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<ContactUser> contacts, LocalResumeData resume,
-            int vacancyId, List<Category> categories, FormzStatus status)?
+    TResult Function(LocalResumeData resume, int vacancyId,
+            List<Feature> categories, List<Feature> spheres, String status)?
         attributes,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -772,12 +598,8 @@ class _$EmptyCoreProfileUserState implements EmptyCoreProfileUserState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<ContactUser> contacts,
-            LocalResumeData resume,
-            int vacancyId,
-            List<Category> categories,
-            FormzStatus status)
+    required TResult Function(LocalResumeData resume, int vacancyId,
+            List<Feature> categories, List<Feature> spheres, String status)
         attributes,
     required TResult Function(String message) error,
   }) {
@@ -789,8 +611,8 @@ class _$EmptyCoreProfileUserState implements EmptyCoreProfileUserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<ContactUser> contacts, LocalResumeData resume,
-            int vacancyId, List<Category> categories, FormzStatus status)?
+    TResult Function(LocalResumeData resume, int vacancyId,
+            List<Feature> categories, List<Feature> spheres, String status)?
         attributes,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -876,12 +698,8 @@ class _$LoadingCoreProfileUserState implements LoadingCoreProfileUserState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<ContactUser> contacts,
-            LocalResumeData resume,
-            int vacancyId,
-            List<Category> categories,
-            FormzStatus status)
+    required TResult Function(LocalResumeData resume, int vacancyId,
+            List<Feature> categories, List<Feature> spheres, String status)
         attributes,
     required TResult Function(String message) error,
   }) {
@@ -893,8 +711,8 @@ class _$LoadingCoreProfileUserState implements LoadingCoreProfileUserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<ContactUser> contacts, LocalResumeData resume,
-            int vacancyId, List<Category> categories, FormzStatus status)?
+    TResult Function(LocalResumeData resume, int vacancyId,
+            List<Feature> categories, List<Feature> spheres, String status)?
         attributes,
     TResult Function(String message)? error,
     required TResult orElse(),
@@ -943,11 +761,11 @@ abstract class $AttributesCoreProfileUserStateCopyWith<$Res> {
           $Res Function(AttributesCoreProfileUserState) then) =
       _$AttributesCoreProfileUserStateCopyWithImpl<$Res>;
   $Res call(
-      {List<ContactUser> contacts,
-      LocalResumeData resume,
+      {LocalResumeData resume,
       int vacancyId,
-      List<Category> categories,
-      FormzStatus status});
+      List<Feature> categories,
+      List<Feature> spheres,
+      String status});
 }
 
 /// @nodoc
@@ -965,17 +783,13 @@ class _$AttributesCoreProfileUserStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? contacts = freezed,
     Object? resume = freezed,
     Object? vacancyId = freezed,
     Object? categories = freezed,
+    Object? spheres = freezed,
     Object? status = freezed,
   }) {
     return _then(AttributesCoreProfileUserState(
-      contacts: contacts == freezed
-          ? _value.contacts
-          : contacts // ignore: cast_nullable_to_non_nullable
-              as List<ContactUser>,
       resume: resume == freezed
           ? _value.resume
           : resume // ignore: cast_nullable_to_non_nullable
@@ -987,11 +801,15 @@ class _$AttributesCoreProfileUserStateCopyWithImpl<$Res>
       categories: categories == freezed
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
-              as List<Category>,
+              as List<Feature>,
+      spheres: spheres == freezed
+          ? _value.spheres
+          : spheres // ignore: cast_nullable_to_non_nullable
+              as List<Feature>,
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as FormzStatus,
+              as String,
     ));
   }
 }
@@ -1001,35 +819,32 @@ class _$AttributesCoreProfileUserStateCopyWithImpl<$Res>
 class _$AttributesCoreProfileUserState
     implements AttributesCoreProfileUserState {
   const _$AttributesCoreProfileUserState(
-      {required this.contacts,
-      required this.resume,
+      {required this.resume,
       required this.vacancyId,
       required this.categories,
+      required this.spheres,
       required this.status});
 
-  @override
-  final List<ContactUser> contacts;
   @override
   final LocalResumeData resume;
   @override
   final int vacancyId;
   @override
-  final List<Category> categories;
+  final List<Feature> categories;
   @override
-  final FormzStatus status;
+  final List<Feature> spheres;
+  @override
+  final String status;
 
   @override
   String toString() {
-    return 'CoreProfileUserState.attributes(contacts: $contacts, resume: $resume, vacancyId: $vacancyId, categories: $categories, status: $status)';
+    return 'CoreProfileUserState.attributes(resume: $resume, vacancyId: $vacancyId, categories: $categories, spheres: $spheres, status: $status)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is AttributesCoreProfileUserState &&
-            (identical(other.contacts, contacts) ||
-                const DeepCollectionEquality()
-                    .equals(other.contacts, contacts)) &&
             (identical(other.resume, resume) ||
                 const DeepCollectionEquality().equals(other.resume, resume)) &&
             (identical(other.vacancyId, vacancyId) ||
@@ -1038,6 +853,9 @@ class _$AttributesCoreProfileUserState
             (identical(other.categories, categories) ||
                 const DeepCollectionEquality()
                     .equals(other.categories, categories)) &&
+            (identical(other.spheres, spheres) ||
+                const DeepCollectionEquality()
+                    .equals(other.spheres, spheres)) &&
             (identical(other.status, status) ||
                 const DeepCollectionEquality().equals(other.status, status)));
   }
@@ -1045,10 +863,10 @@ class _$AttributesCoreProfileUserState
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(contacts) ^
       const DeepCollectionEquality().hash(resume) ^
       const DeepCollectionEquality().hash(vacancyId) ^
       const DeepCollectionEquality().hash(categories) ^
+      const DeepCollectionEquality().hash(spheres) ^
       const DeepCollectionEquality().hash(status);
 
   @JsonKey(ignore: true)
@@ -1062,16 +880,12 @@ class _$AttributesCoreProfileUserState
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<ContactUser> contacts,
-            LocalResumeData resume,
-            int vacancyId,
-            List<Category> categories,
-            FormzStatus status)
+    required TResult Function(LocalResumeData resume, int vacancyId,
+            List<Feature> categories, List<Feature> spheres, String status)
         attributes,
     required TResult Function(String message) error,
   }) {
-    return attributes(contacts, resume, vacancyId, categories, status);
+    return attributes(resume, vacancyId, categories, spheres, status);
   }
 
   @override
@@ -1079,14 +893,14 @@ class _$AttributesCoreProfileUserState
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<ContactUser> contacts, LocalResumeData resume,
-            int vacancyId, List<Category> categories, FormzStatus status)?
+    TResult Function(LocalResumeData resume, int vacancyId,
+            List<Feature> categories, List<Feature> spheres, String status)?
         attributes,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (attributes != null) {
-      return attributes(contacts, resume, vacancyId, categories, status);
+      return attributes(resume, vacancyId, categories, spheres, status);
     }
     return orElse();
   }
@@ -1120,17 +934,17 @@ class _$AttributesCoreProfileUserState
 
 abstract class AttributesCoreProfileUserState implements CoreProfileUserState {
   const factory AttributesCoreProfileUserState(
-      {required List<ContactUser> contacts,
-      required LocalResumeData resume,
+      {required LocalResumeData resume,
       required int vacancyId,
-      required List<Category> categories,
-      required FormzStatus status}) = _$AttributesCoreProfileUserState;
+      required List<Feature> categories,
+      required List<Feature> spheres,
+      required String status}) = _$AttributesCoreProfileUserState;
 
-  List<ContactUser> get contacts => throw _privateConstructorUsedError;
   LocalResumeData get resume => throw _privateConstructorUsedError;
   int get vacancyId => throw _privateConstructorUsedError;
-  List<Category> get categories => throw _privateConstructorUsedError;
-  FormzStatus get status => throw _privateConstructorUsedError;
+  List<Feature> get categories => throw _privateConstructorUsedError;
+  List<Feature> get spheres => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AttributesCoreProfileUserStateCopyWith<AttributesCoreProfileUserState>
       get copyWith => throw _privateConstructorUsedError;
@@ -1205,12 +1019,8 @@ class _$ErrorCoreProfileUserState implements ErrorCoreProfileUserState {
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(
-            List<ContactUser> contacts,
-            LocalResumeData resume,
-            int vacancyId,
-            List<Category> categories,
-            FormzStatus status)
+    required TResult Function(LocalResumeData resume, int vacancyId,
+            List<Feature> categories, List<Feature> spheres, String status)
         attributes,
     required TResult Function(String message) error,
   }) {
@@ -1222,8 +1032,8 @@ class _$ErrorCoreProfileUserState implements ErrorCoreProfileUserState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(List<ContactUser> contacts, LocalResumeData resume,
-            int vacancyId, List<Category> categories, FormzStatus status)?
+    TResult Function(LocalResumeData resume, int vacancyId,
+            List<Feature> categories, List<Feature> spheres, String status)?
         attributes,
     TResult Function(String message)? error,
     required TResult orElse(),

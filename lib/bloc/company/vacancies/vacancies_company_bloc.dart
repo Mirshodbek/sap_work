@@ -1,6 +1,5 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../company.dart';
 
@@ -42,13 +41,11 @@ class VacanciesCompanyBloc
           yield VacanciesCompanyState.loaded(
               vacancies: data,
               localVacanciesName: nameVacancies,
-              status: FormzStatus.pure);
+              status: EMPTY_BLOC);
         }, (names) async* {
           nameVacancies = names;
           yield VacanciesCompanyState.loaded(
-              vacancies: data,
-              localVacanciesName: names,
-              status: FormzStatus.pure);
+              vacancies: data, localVacanciesName: names, status: EMPTY_BLOC);
         });
       },
     );
@@ -88,20 +85,14 @@ class VacanciesCompanyBloc
     try {
       final result = await remoteData.changeVacancyCompany(event.id,
           ParamsVacancy(name: event.vacancyName, category: event.category));
+      yield* _status(VACANCIES_COMPANY_BLOC_CHANGE_VACANCIES_NAME_SUCCEED);
       yield state.maybeMap(
           orElse: () => state,
           loaded: (_state) => _state.copyWith(
               vacancies: List.from(_state.vacancies)
                 ..replaceWhere((it) => it.id == event.id, result)));
     } catch (_) {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) => _state.copyWith(status: FormzStatus.invalid));
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) => _state.copyWith(
-              status: FormzStatus.submissionFailure,
-              vacancies: _state.vacancies));
+      yield* _status(VACANCIES_COMPANY_BLOC_CHANGE_VACANCIES_NAME_FAILURE);
     }
   }
 
@@ -118,6 +109,15 @@ class VacanciesCompanyBloc
           orElse: () => state,
           loaded: (_state) => _state.copyWith(localVacanciesName: names));
     });
+  }
+
+  Stream<VacanciesCompanyState> _status(String status) async* {
+    yield state.maybeMap(
+        orElse: () => state,
+        loaded: (_state) => _state.copyWith(status: EMPTY_BLOC));
+    yield state.maybeMap(
+        orElse: () => state,
+        loaded: (_state) => _state.copyWith(status: status));
   }
 
   String _mapFailureToMessage(Failure failure) {
@@ -159,7 +159,7 @@ abstract class VacanciesCompanyState with _$VacanciesCompanyState {
 
   const factory VacanciesCompanyState.loaded(
           {required final List<Vacancy> vacancies,
-          required final FormzStatus status,
+          required final String status,
           required final List<LocalVacancyData> localVacanciesName}) =
       LoadedVacanciesCompanyState;
 

@@ -1,5 +1,6 @@
 import 'package:either_dart/either.dart';
 import 'package:sap_work/models/chat/chat.dart';
+import 'package:sap_work/models/models.dart';
 import 'package:sap_work/models/params_company/local_vacancies/vacancies.dart';
 import 'package:sap_work/models/tariff/tariff.dart';
 
@@ -19,6 +20,7 @@ class GetProfileCompany implements UseCase<TypeProfileCompany, NoParams> {
   }
 }
 
+
 class GetVacanciesCompany implements UseCase<List<Vacancy>, NoParams> {
   final CompanyRepositoryBase repository;
 
@@ -30,13 +32,13 @@ class GetVacanciesCompany implements UseCase<List<Vacancy>, NoParams> {
   }
 }
 
-class GetCategoriesCompany implements UseCase<List<Category>, NoParams> {
+class GetCategoriesCompany implements UseCase<List<Feature>, NoParams> {
   final CompanyRepositoryBase repository;
 
   GetCategoriesCompany(this.repository);
 
   @override
-  Future<Either<Failure, List<Category>>> call(NoParams params) async {
+  Future<Either<Failure, List<Feature>>> call(NoParams params) async {
     return await repository.getCategories();
   }
 }
@@ -89,17 +91,16 @@ class GetVacancyCompany implements UseCase<Vacancy, int> {
   }
 }
 
-class GetFeedbacksVacancy implements UseCase<List<FeedbackVacancy>, int> {
+class GetFeedbacksVacancy implements UseCase<List<dynamic>, int> {
   final CompanyRepositoryBase repository;
 
   GetFeedbacksVacancy(this.repository);
 
   @override
-  Future<Either<Failure, List<FeedbackVacancy>>> call(int id) async {
+  Future<Either<Failure, List<dynamic>>> call(int id) async {
     return await repository.getFeedbacksVacancy(id);
   }
 }
-
 class GetStatusCompany implements UseCase<Tariffs, NoParams> {
   final CompanyRepositoryBase repository;
 
@@ -119,5 +120,28 @@ class GetChatsCompany implements UseCase<List<Chat>, int> {
   @override
   Future<Either<Failure, List<Chat>>> call(int id) async {
     return await repository.getChats(id);
+  }
+}
+
+
+class GetRecommendResumesCompany implements UseCase<PaginationResume, int> {
+  final CompanyRepositoryBase repository;
+
+  GetRecommendResumesCompany(this.repository);
+
+  @override
+  Future<Either<Failure, PaginationResume>> call(int page) async {
+    return await repository.getRecommendResumesCompany(page);
+  }
+}
+
+class GetSpheresCompany implements UseCase<List<Feature>, NoParams> {
+  final CompanyRepositoryBase repository;
+
+  GetSpheresCompany(this.repository);
+
+  @override
+  Future<Either<Failure, List<Feature>>> call(NoParams params) async {
+    return await repository.getSpheres();
   }
 }

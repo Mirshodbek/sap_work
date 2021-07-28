@@ -1,4 +1,4 @@
-export 'category/category.dart';
+export 'feature/feature.dart';
 export 'feedback_vacancy/feedback.dart';
 export 'profile_company/profile.dart';
 export 'resume/resume.dart';

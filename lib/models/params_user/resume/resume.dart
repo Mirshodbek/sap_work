@@ -13,6 +13,7 @@ class ParamsResume extends Equatable {
   late final dynamic email;
   late final dynamic city;
   late final dynamic category;
+  late final dynamic sphere;
   late final dynamic stages;
   late final dynamic grades;
 
@@ -22,6 +23,7 @@ class ParamsResume extends Equatable {
       this.name,
       this.phone,
       this.email,
+      this.sphere,
       this.city,
       this.category,
       this.stages,
@@ -33,6 +35,16 @@ class ParamsResume extends Equatable {
   Map<String, dynamic> toJson() => _$ParamsResumeToJson(this);
 
   @override
-  List<Object?> get props =>
-      [body, name, abilities, phone, email, city, category, grades, stages];
+  List<Object?> get props => [
+        body,
+        name,
+        abilities,
+        phone,
+        sphere,
+        email,
+        city,
+        category,
+        grades,
+        stages
+      ];
 }

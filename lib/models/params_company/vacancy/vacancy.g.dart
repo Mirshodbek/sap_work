@@ -19,6 +19,7 @@ ParamsVacancy _$ParamsVacancyFromJson(Map<String, dynamic> json) {
     type: json['type'],
     abilities: json['abilities'],
     category: json['category'],
+    sphere: json['sphere'],
   );
 }
 
@@ -35,4 +36,5 @@ Map<String, dynamic> _$ParamsVacancyToJson(ParamsVacancy instance) =>
       'type': instance.type,
       'abilities': instance.abilities,
       'category': instance.category,
+      'sphere': instance.sphere,
     };

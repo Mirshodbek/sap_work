@@ -23,6 +23,7 @@ class _$ProfileUserBtnStateTearOff {
       required bool isExtraName,
       required bool isEditBody,
       required bool isEditCategory,
+      required bool isEditSphere,
       required bool isEditAbilities,
       required bool isEditContacts,
       required bool isEditCity}) {
@@ -33,6 +34,7 @@ class _$ProfileUserBtnStateTearOff {
       isExtraName: isExtraName,
       isEditBody: isEditBody,
       isEditCategory: isEditCategory,
+      isEditSphere: isEditSphere,
       isEditAbilities: isEditAbilities,
       isEditContacts: isEditContacts,
       isEditCity: isEditCity,
@@ -51,6 +53,7 @@ mixin _$ProfileUserBtnState {
   bool get isExtraName => throw _privateConstructorUsedError;
   bool get isEditBody => throw _privateConstructorUsedError;
   bool get isEditCategory => throw _privateConstructorUsedError;
+  bool get isEditSphere => throw _privateConstructorUsedError;
   bool get isEditAbilities => throw _privateConstructorUsedError;
   bool get isEditContacts => throw _privateConstructorUsedError;
   bool get isEditCity => throw _privateConstructorUsedError;
@@ -64,6 +67,7 @@ mixin _$ProfileUserBtnState {
             bool isExtraName,
             bool isEditBody,
             bool isEditCategory,
+            bool isEditSphere,
             bool isEditAbilities,
             bool isEditContacts,
             bool isEditCity)
@@ -79,6 +83,7 @@ mixin _$ProfileUserBtnState {
             bool isExtraName,
             bool isEditBody,
             bool isEditCategory,
+            bool isEditSphere,
             bool isEditAbilities,
             bool isEditContacts,
             bool isEditCity)?
@@ -115,6 +120,7 @@ abstract class $ProfileUserBtnStateCopyWith<$Res> {
       bool isExtraName,
       bool isEditBody,
       bool isEditCategory,
+      bool isEditSphere,
       bool isEditAbilities,
       bool isEditContacts,
       bool isEditCity});
@@ -137,6 +143,7 @@ class _$ProfileUserBtnStateCopyWithImpl<$Res>
     Object? isExtraName = freezed,
     Object? isEditBody = freezed,
     Object? isEditCategory = freezed,
+    Object? isEditSphere = freezed,
     Object? isEditAbilities = freezed,
     Object? isEditContacts = freezed,
     Object? isEditCity = freezed,
@@ -165,6 +172,10 @@ class _$ProfileUserBtnStateCopyWithImpl<$Res>
       isEditCategory: isEditCategory == freezed
           ? _value.isEditCategory
           : isEditCategory // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEditSphere: isEditSphere == freezed
+          ? _value.isEditSphere
+          : isEditSphere // ignore: cast_nullable_to_non_nullable
               as bool,
       isEditAbilities: isEditAbilities == freezed
           ? _value.isEditAbilities
@@ -196,6 +207,7 @@ abstract class $OnClickProfileUserBtnStateCopyWith<$Res>
       bool isExtraName,
       bool isEditBody,
       bool isEditCategory,
+      bool isEditSphere,
       bool isEditAbilities,
       bool isEditContacts,
       bool isEditCity});
@@ -221,6 +233,7 @@ class _$OnClickProfileUserBtnStateCopyWithImpl<$Res>
     Object? isExtraName = freezed,
     Object? isEditBody = freezed,
     Object? isEditCategory = freezed,
+    Object? isEditSphere = freezed,
     Object? isEditAbilities = freezed,
     Object? isEditContacts = freezed,
     Object? isEditCity = freezed,
@@ -250,6 +263,10 @@ class _$OnClickProfileUserBtnStateCopyWithImpl<$Res>
           ? _value.isEditCategory
           : isEditCategory // ignore: cast_nullable_to_non_nullable
               as bool,
+      isEditSphere: isEditSphere == freezed
+          ? _value.isEditSphere
+          : isEditSphere // ignore: cast_nullable_to_non_nullable
+              as bool,
       isEditAbilities: isEditAbilities == freezed
           ? _value.isEditAbilities
           : isEditAbilities // ignore: cast_nullable_to_non_nullable
@@ -276,6 +293,7 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
       required this.isExtraName,
       required this.isEditBody,
       required this.isEditCategory,
+      required this.isEditSphere,
       required this.isEditAbilities,
       required this.isEditContacts,
       required this.isEditCity});
@@ -293,6 +311,8 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
   @override
   final bool isEditCategory;
   @override
+  final bool isEditSphere;
+  @override
   final bool isEditAbilities;
   @override
   final bool isEditContacts;
@@ -301,7 +321,7 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
 
   @override
   String toString() {
-    return 'ProfileUserBtnState.onClick(link: $link, selectResumes: $selectResumes, isEditNames: $isEditNames, isExtraName: $isExtraName, isEditBody: $isEditBody, isEditCategory: $isEditCategory, isEditAbilities: $isEditAbilities, isEditContacts: $isEditContacts, isEditCity: $isEditCity)';
+    return 'ProfileUserBtnState.onClick(link: $link, selectResumes: $selectResumes, isEditNames: $isEditNames, isExtraName: $isExtraName, isEditBody: $isEditBody, isEditCategory: $isEditCategory, isEditSphere: $isEditSphere, isEditAbilities: $isEditAbilities, isEditContacts: $isEditContacts, isEditCity: $isEditCity)';
   }
 
   @override
@@ -325,6 +345,9 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
             (identical(other.isEditCategory, isEditCategory) ||
                 const DeepCollectionEquality()
                     .equals(other.isEditCategory, isEditCategory)) &&
+            (identical(other.isEditSphere, isEditSphere) ||
+                const DeepCollectionEquality()
+                    .equals(other.isEditSphere, isEditSphere)) &&
             (identical(other.isEditAbilities, isEditAbilities) ||
                 const DeepCollectionEquality()
                     .equals(other.isEditAbilities, isEditAbilities)) &&
@@ -345,6 +368,7 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
       const DeepCollectionEquality().hash(isExtraName) ^
       const DeepCollectionEquality().hash(isEditBody) ^
       const DeepCollectionEquality().hash(isEditCategory) ^
+      const DeepCollectionEquality().hash(isEditSphere) ^
       const DeepCollectionEquality().hash(isEditAbilities) ^
       const DeepCollectionEquality().hash(isEditContacts) ^
       const DeepCollectionEquality().hash(isEditCity);
@@ -366,13 +390,23 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
             bool isExtraName,
             bool isEditBody,
             bool isEditCategory,
+            bool isEditSphere,
             bool isEditAbilities,
             bool isEditContacts,
             bool isEditCity)
         onClick,
   }) {
-    return onClick(link, selectResumes, isEditNames, isExtraName, isEditBody,
-        isEditCategory, isEditAbilities, isEditContacts, isEditCity);
+    return onClick(
+        link,
+        selectResumes,
+        isEditNames,
+        isExtraName,
+        isEditBody,
+        isEditCategory,
+        isEditSphere,
+        isEditAbilities,
+        isEditContacts,
+        isEditCity);
   }
 
   @override
@@ -385,6 +419,7 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
             bool isExtraName,
             bool isEditBody,
             bool isEditCategory,
+            bool isEditSphere,
             bool isEditAbilities,
             bool isEditContacts,
             bool isEditCity)?
@@ -392,8 +427,17 @@ class _$OnClickProfileUserBtnState implements OnClickProfileUserBtnState {
     required TResult orElse(),
   }) {
     if (onClick != null) {
-      return onClick(link, selectResumes, isEditNames, isExtraName, isEditBody,
-          isEditCategory, isEditAbilities, isEditContacts, isEditCity);
+      return onClick(
+          link,
+          selectResumes,
+          isEditNames,
+          isExtraName,
+          isEditBody,
+          isEditCategory,
+          isEditSphere,
+          isEditAbilities,
+          isEditContacts,
+          isEditCity);
     }
     return orElse();
   }
@@ -427,6 +471,7 @@ abstract class OnClickProfileUserBtnState implements ProfileUserBtnState {
       required bool isExtraName,
       required bool isEditBody,
       required bool isEditCategory,
+      required bool isEditSphere,
       required bool isEditAbilities,
       required bool isEditContacts,
       required bool isEditCity}) = _$OnClickProfileUserBtnState;
@@ -443,6 +488,8 @@ abstract class OnClickProfileUserBtnState implements ProfileUserBtnState {
   bool get isEditBody => throw _privateConstructorUsedError;
   @override
   bool get isEditCategory => throw _privateConstructorUsedError;
+  @override
+  bool get isEditSphere => throw _privateConstructorUsedError;
   @override
   bool get isEditAbilities => throw _privateConstructorUsedError;
   @override

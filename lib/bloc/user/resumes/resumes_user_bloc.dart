@@ -113,46 +113,37 @@ class ResumesUserBloc extends Bloc<ResumesUserEvent, ResumesUserState> {
               category: event.category,
               phone: event.phone,
               email: event.email));
-
+      yield* _status(RESUMES_USER_BLOC_CHANGE_RESUMES_NAME_SUCCEED);
       yield state.maybeMap(
           orElse: () => state,
           loaded: (_state) => _state.copyWith(
               resumes: List.from(_state.resumes)
                 ..replaceWhere((it) => it.id == event.id, result)));
     } catch (_) {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) {
-            _state.copyWith(
-                status: RESUMES_USER_BLOC_FAILURE_EDIT_RESUMES_NAME,
-                resumes: _state.resumes);
-            return _state.copyWith(status: EMPTY_BLOC);
-          });
+      yield* _status(RESUMES_USER_BLOC_CHANGE_RESUMES_NAME_FAILURE);
     }
   }
 
   Stream<ResumesUserState> _deleteResumesEvent(
       _DeleteResumesUserEvent event) async* {
     try {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) => _state.copyWith(status: EMPTY_BLOC));
       final result = await remoteData.deleteResumesUser(event.id);
+      yield* _status(RESUMES_USER_BLOC_DELETE_RESUMES_SUCCEED);
       yield state.maybeMap(
           orElse: () => state,
-          loaded: (_state) => _state.copyWith(
-              resumes: result,
-              status: RESUMES_USER_BLOC_SUCCEED_DELETE_RESUMES));
+          loaded: (_state) => _state.copyWith(resumes: result));
     } catch (_) {
-      yield state.maybeMap(
-          orElse: () => state,
-          loaded: (_state) {
-            _state.copyWith(
-                status: RESUMES_USER_BLOC_FAILURE_DELETE_RESUMES,
-                resumes: _state.resumes);
-            return _state.copyWith(status: EMPTY_BLOC);
-          });
+      yield* _status(RESUMES_USER_BLOC_DELETE_RESUMES_FAILURE);
     }
+  }
+
+  Stream<ResumesUserState> _status(String status) async* {
+    yield state.maybeMap(
+        orElse: () => state,
+        loaded: (_state) => _state.copyWith(status: EMPTY_BLOC));
+    yield state.maybeMap(
+        orElse: () => state,
+        loaded: (_state) => _state.copyWith(status: status));
   }
 
   String _mapFailureToMessage(Failure failure) {

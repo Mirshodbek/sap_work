@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sap_work/bloc/company/feedbacks_button/feedbacks_btn_cubit.dart';
+import 'package:sap_work/bloc/company/feedbacks_button/feedbacks_company_btn_cubit.dart';
+import 'package:sap_work/bloc/company/payment_cubit/payment_cubit.dart';
 import 'package:sap_work/resources/lists.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
 
@@ -18,7 +19,7 @@ class TariffsWidget extends StatelessWidget {
             children: Lists.tariffs.map((item) {
               return InkWell(
                 onTap: () =>
-                    context.read<FeedbacksBtnCubit>().onTap(item.title),
+                    context.read<PaymentCubit>().onTap(item.title),
                 child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(

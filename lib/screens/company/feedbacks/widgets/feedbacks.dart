@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sap_work/bloc/company/company.dart';
-import 'package:sap_work/bloc/company/feedbacks_button/feedbacks_btn_cubit.dart';
+import 'package:sap_work/bloc/company/feedbacks_button/feedbacks_company_btn_cubit.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
 import 'package:sap_work/screens/company/profile/widgets/widget.dart';
 
 class FeedbacksWidget extends StatelessWidget {
-  final List<FeedbackVacancy> feedbacks;
+  final List<dynamic> feedbacks;
   final bool subscribe;
 
   const FeedbacksWidget(
@@ -26,8 +26,8 @@ class FeedbacksWidget extends StatelessWidget {
             child: Column(children: [
               InkWell(
                   onTap: () => context
-                      .read<FeedbacksBtnCubit>()
-                      .resumeInvite(item, false),
+                      .read<FeedbacksCompanyBtnCubit>()
+                      .resume(item.resume),
                   child: Container(
                       padding: const EdgeInsets.all(25),
                       decoration: BoxDecoration(
@@ -40,11 +40,13 @@ class FeedbacksWidget extends StatelessWidget {
                           children: [
                             Row(children: [
                               SmallWidgets.circleAvatar(
-                                  url: item.user.avatar, height: 80, width: 80),
+                                  url: item.user!.avatar,
+                                  height: 40,
+                                  width: 40),
                               const SizedBox(width: 10),
-                              Text(item.user.name,
+                              Text(item.user!.name,
                                   overflow: TextOverflow.ellipsis,
-                                  style: AppTextTheme.smallTextMediumBlack),
+                                  style: AppTextTheme.smallSizeText),
                               Expanded(
                                   child: Text.rich(
                                 TextSpan(children: [
@@ -59,7 +61,7 @@ class FeedbacksWidget extends StatelessWidget {
                                           date: item.date)),
                                 ]),
                                 maxLines: 2,
-                                textAlign: TextAlign.center,
+                                textAlign: TextAlign.right,
                                 style: AppTextTheme.smallSizeText.copyWith(
                                     color: subscribe
                                         ? AppColor.red
@@ -91,17 +93,18 @@ class FeedbacksWidget extends StatelessWidget {
                             borderRadius: BorderRadius.vertical(
                                 bottom: Radius.circular(5))),
                         children: [
-                       if(item.expires_at==null)   TextButton(
-                              onPressed: subscribe
-                                  ? () => context
-                                      .read<FeedbacksBtnCubit>()
-                                      .payment()
-                                  : () => context
-                                      .read<FeedbacksBtnCubit>()
-                                      .resumeInvite(item, true),
-                              child: SmallWidgets.textRich(subscribe
-                                  ? "Оплатить подписку"
-                                  : "Пригласить соискателя")),
+                          if (item.expires_at == null)
+                            TextButton(
+                                onPressed: subscribe
+                                    ? () => context
+                                        .read<FeedbacksCompanyBtnCubit>()
+                                        .payment()
+                                    : () => context
+                                        .read<FeedbacksCompanyBtnCubit>()
+                                        .invite(item.resume),
+                                child: SmallWidgets.textRichArrow(subscribe
+                                    ? "Оплатить подписку"
+                                    : "Пригласить соискателя")),
                           BlocBuilder<ProfileCompanyBloc, ProfileCompanyState>(
                             builder: (context, state) {
                               return state.maybeMap(
@@ -110,17 +113,19 @@ class FeedbacksWidget extends StatelessWidget {
                                     return IconButton(
                                         onPressed: subscribe
                                             ? () => context
-                                                .read<FeedbacksBtnCubit>()
-                                                .resumeInvite(item, false)
+                                                .read<
+                                                    FeedbacksCompanyBtnCubit>()
+                                                .resume(item.resume)
                                             : () => context
-                                                .read<FeedbacksBtnCubit>()
+                                                .read<
+                                                    FeedbacksCompanyBtnCubit>()
                                                 .chat(
                                                     avatarUser:
-                                                        item.user.avatar,
+                                                        item.user!.avatar,
                                                     avatarCompany: _state
                                                         .profile.profile.avatar,
-                                                    name: item.user.name,
-                                                    userId: item.user.id),
+                                                    name: item.user!.name,
+                                                    userId: item.user!.id),
                                         icon: SvgPicture.asset(subscribe
                                             ? AppIcons.people
                                             : AppIcons.chat));
@@ -136,8 +141,7 @@ class FeedbacksWidget extends StatelessWidget {
 
   Widget _autoCancel({required String? time}) {
     if (time != null) {
-      return Text(
-          "Авто отмена приглашения через $time",
+      return Text("Авто отмена приглашения через $time",
           style: AppTextTheme.smallSizeText.copyWith(color: AppColor.grey));
     }
     return const SizedBox.shrink();

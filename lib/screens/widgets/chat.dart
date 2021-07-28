@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sap_work/models/chat/chat.dart';
+import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/resources/small_widgets.dart';
-import '../hunter/hunter.dart';
+import 'package:sap_work/resources/theme/color_theme.dart';
+import 'package:sap_work/resources/theme/text_theme.dart';
 
 class ChatListItemWidget extends StatelessWidget {
   final String avatarUser;
   final String avatarCompany;
+  final bool type;
   final Chat chat;
 
   const ChatListItemWidget(
       {required this.chat,
+        required this.type,
       required this.avatarUser,
       required this.avatarCompany});
 
@@ -18,12 +23,12 @@ class ChatListItemWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 35.0),
       child: ListTile(
-        leading: chat.from_user == 1
+        leading: type
             ? null
             : SmallWidgets.circleAvatar(
                 url: avatarCompany, height: 40, width: 40),
-        trailing: chat.from_user == 1
-            ? SmallWidgets.circleAvatar(url: avatarUser, height: 20, width: 20)
+        trailing: type
+            ? SmallWidgets.circleAvatar(url: avatarUser, height: 40, width: 40)
             : null,
         title: Container(
           padding: const EdgeInsets.all(7.0),
@@ -32,8 +37,8 @@ class ChatListItemWidget extends StatelessWidget {
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(5.0),
               topRight: Radius.circular(5.0),
-              bottomLeft: Radius.circular(chat.from_user == 1 ? 5.0 : 0.0),
-              bottomRight: Radius.circular(chat.from_user == 1 ? 0.0 : 5.0),
+              bottomLeft: Radius.circular(type ? 5.0 : 0.0),
+              bottomRight: Radius.circular(type ? 0.0 : 5.0),
             ),
           ),
           child: Text(
@@ -46,16 +51,16 @@ class ChatListItemWidget extends StatelessWidget {
   }
 }
 
-class ChatTextField extends StatefulWidget {
+class ChatTextFieldWidget extends StatefulWidget {
   final Function(String value) onSubmitted;
 
-  ChatTextField(this.onSubmitted);
+  ChatTextFieldWidget(this.onSubmitted);
 
   @override
-  _ChatTextFieldState createState() => _ChatTextFieldState();
+  _ChatTextFieldWidgetState createState() => _ChatTextFieldWidgetState();
 }
 
-class _ChatTextFieldState extends State<ChatTextField> {
+class _ChatTextFieldWidgetState extends State<ChatTextFieldWidget> {
   final _messageController = TextEditingController();
 
   @override

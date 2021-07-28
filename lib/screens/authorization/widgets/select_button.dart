@@ -23,10 +23,12 @@ class SelectButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed,
-      child: Text(
-        title,
-        style: AppTextTheme.smallTextWhite.copyWith(
-          color: text,
+      child: FittedBox(
+        child: Text(
+          title,
+          style: AppTextTheme.smallTextWhite.copyWith(
+            color: text,
+          ),
         ),
       ),
       style: ButtonStyle(

@@ -1,10 +1,11 @@
 import 'package:either_dart/either.dart';
 import 'package:sap_work/data_source/company/cache_data.dart';
 import 'package:sap_work/data_source/company/remote_data.dart';
-import 'package:sap_work/models/category/category.dart';
+import 'package:sap_work/models/feature/feature.dart';
 import 'package:sap_work/models/chat/chat.dart';
 import 'package:sap_work/models/feedback_vacancy/feedback.dart';
 import 'package:sap_work/models/profile_company/profile.dart';
+import 'package:sap_work/models/resume/resume.dart';
 import 'package:sap_work/models/tariff/tariff.dart';
 import 'package:sap_work/models/vacancy/vacancy.dart';
 
@@ -44,6 +45,7 @@ class CompanyRepository implements CompanyRepositoryBase {
     }
   }
 
+
   @override
   Future<Either<Failure, List<Vacancy>>> getVacanciesCompany() async {
     if (await networkInfo.isConnected) {
@@ -64,7 +66,7 @@ class CompanyRepository implements CompanyRepositoryBase {
   }
 
   @override
-  Future<Either<Failure, List<Category>>> getCategories() async {
+  Future<Either<Failure, List<Feature>>> getCategories() async {
     if (await networkInfo.isConnected) {
       try {
         final remoteData = await remoteDataSource.getCategories();
@@ -104,7 +106,7 @@ class CompanyRepository implements CompanyRepositoryBase {
   }
 
   @override
-  Future<Either<Failure, List<FeedbackVacancy>>> getFeedbacksVacancy(int id) async{
+  Future<Either<Failure, List<dynamic>>> getFeedbacksVacancy(int id) async{
     if (await networkInfo.isConnected) {
       try {
         final remoteData = await remoteDataSource.getFeedbacksVacancy(id);
@@ -160,4 +162,45 @@ class CompanyRepository implements CompanyRepositoryBase {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, PaginationResume>> getRecommendResumesCompany(int page) async{
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteData = await remoteDataSource.getRecommendResumesCompany(page);
+        localDataSource.cacheRecommendResumesCompany(remoteData);
+        return Right(remoteData);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final localData = await localDataSource.getRecommendResumesCompany();
+        return Right(localData);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Feature>>> getSpheres() async{
+    if (await networkInfo.isConnected) {
+      try {
+        final remoteData = await remoteDataSource.getSpheres();
+        return Right(remoteData);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
+    } else {
+      try {
+        final localData = await localDataSource.getSpheres();
+        return Right(localData);
+      } on CacheException {
+        return Left(CacheFailure());
+      }
+    }
+  }
+
+
 }

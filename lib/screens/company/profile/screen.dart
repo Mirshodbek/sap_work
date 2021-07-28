@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sap_work/bloc/company/profile_button/profile_btn_cubit.dart';
+import 'package:sap_work/bloc/company/company.dart';
+import 'package:sap_work/bloc/company/profile_button/profile_company_btn_cubit.dart';
 import 'package:sap_work/bloc/company/vacancy/vacancy_company_bloc.dart';
 import 'package:sap_work/bloc/company/variable_vacancy/variable_vacancy_cubit.dart';
 import 'package:sap_work/bloc/navigation/navigation_cubit.dart';
@@ -19,7 +20,7 @@ class ProfileScreenCompany extends StatelessWidget {
   static Widget create() {
     return MultiBlocProvider(providers: [
       BlocProvider<VariableVacancyCubit>(create: (_) => VariableVacancyCubit()),
-      BlocProvider<ProfileBtnCubit>(create: (_) => ProfileBtnCubit()),
+      BlocProvider<ProfileCompanyBtnCubit>(create: (_) => ProfileCompanyBtnCubit()),
     ], child: ProfileScreenCompany());
   }
 
@@ -32,7 +33,7 @@ class ProfileScreenCompany extends StatelessWidget {
             backgroundColor: Colors.transparent,
             leading: IconButton(
                 onPressed: () =>
-                    Navigator.pushNamed(context, SettingsScreen.id),
+                    Navigator.pushNamed(context, SettingsScreen.id,arguments: {ROLE:COMPANY_ROLE}),
                 icon: SvgPicture.asset(AppIcons.settings))),
         bottomNavigationBar:
             BottomNavBarWidget(context.watch<NavigationCubit>().state),

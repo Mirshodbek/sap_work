@@ -7,12 +7,14 @@ import 'package:sap_work/resources/theme/text_theme.dart';
 class SearchFieldWidget extends StatefulWidget {
   final String hintText;
   final VoidCallback onPressed;
+  final VoidCallback iconPressed;
   final Function(String value) onChanged;
 
   SearchFieldWidget(
       {Key? key,
       required this.onChanged,
       required this.onPressed,
+      required this.iconPressed,
       required this.hintText})
       : super(key: key);
 
@@ -29,6 +31,7 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
       children: [
         Expanded(
           child: TextField(
+            controller: _searchController,
             onChanged: widget.onChanged,
             decoration: InputDecoration(
               prefixIcon: Padding(
@@ -39,7 +42,10 @@ class _SearchFieldWidgetState extends State<SearchFieldWidget> {
               hintText: widget.hintText,
               hintStyle: AppTextTheme.smallTextBlack,
               suffixIcon: IconButton(
-                onPressed: () => _searchController.clear(),
+                onPressed: () {
+                  widget.iconPressed();
+                  _searchController.clear();
+                },
                 icon: SvgPicture.asset(AppIcons.clear),
               ),
               enabledBorder: OutlineInputBorder(

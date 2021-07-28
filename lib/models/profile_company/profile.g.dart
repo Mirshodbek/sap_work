@@ -24,6 +24,9 @@ ProfileCompany _$ProfileCompanyFromJson(Map<String, dynamic> json) {
     json['id'] as int,
     json['name'] as String,
     json['address'] as String,
+    (json['urls'] as List<dynamic>?)
+        ?.map((e) => ContactProfile.fromJson(e as Map<String, dynamic>))
+        .toList(),
     json['avatar'] as String,
     json['bin'] as String,
     json['bik'] as String,
@@ -42,4 +45,5 @@ Map<String, dynamic> _$ProfileCompanyToJson(ProfileCompany instance) =>
       'bik': instance.bik,
       'inn': instance.inn,
       'phone': instance.phone,
+      'urls': instance.urls,
     };

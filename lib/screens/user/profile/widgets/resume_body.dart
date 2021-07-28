@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sap_work/bloc/company/company.dart';
 import 'package:sap_work/bloc/user/profile_button/profile_user_btn_cubit.dart';
 import 'package:sap_work/bloc/user/resume/resume_user_bloc.dart';
@@ -11,14 +10,17 @@ import 'package:sap_work/resources/small_widgets.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
 import 'package:sap_work/screens/company/profile/widgets/widget.dart';
 import 'package:sap_work/screens/user/profile/widgets/resume_body_pieces.dart';
-import 'package:sap_work/screens/user/profile/widgets/video.dart';
 
 class ResumeBodyWidget extends StatelessWidget {
   final Resume resume;
-  final List<Category> categories;
+  final List<Feature> categories;
+  final List<Feature> spheres;
 
   const ResumeBodyWidget(
-      {Key? key, required this.resume, required this.categories})
+      {Key? key,
+      required this.resume,
+      required this.categories,
+      required this.spheres})
       : super(key: key);
 
   @override
@@ -42,6 +44,7 @@ class ResumeBodyWidget extends StatelessWidget {
                             if (_click.isEditBody) {
                               context.read<ResumeUserBloc>().add(
                                   ResumeUserEvent.editResume(
+                                      sphere: resume.sphere_id,
                                       phone: resume.phone,
                                       email: resume.email,
                                       body: _arguments.body,
@@ -64,6 +67,7 @@ class ResumeBodyWidget extends StatelessWidget {
                             if (_click.isEditContacts) {
                               context.read<ResumeUserBloc>().add(
                                   ResumeUserEvent.editResume(
+                                      sphere: resume.sphere_id,
                                       phone: _arguments.phone,
                                       email: _arguments.email,
                                       category: resume.category_id,
@@ -125,6 +129,7 @@ class ResumeBodyWidget extends StatelessWidget {
                             if (_click.isEditAbilities) {
                               context.read<ResumeUserBloc>().add(
                                   ResumeUserEvent.editResume(
+                                      sphere: resume.sphere_id,
                                       phone: resume.phone,
                                       email: resume.email,
                                       abilities: _arguments.abilities,
@@ -148,6 +153,7 @@ class ResumeBodyWidget extends StatelessWidget {
                             if (_click.isEditCity) {
                               context.read<ResumeUserBloc>().add(
                                   ResumeUserEvent.editResume(
+                                      sphere: resume.sphere_id,
                                       phone: resume.phone,
                                       email: resume.email,
                                       city: _arguments.city,
@@ -166,9 +172,86 @@ class ResumeBodyWidget extends StatelessWidget {
                               : null,
                           items: Lists.countryList
                               .map((item) => DropdownMenuItem<String>(
-                              value: item, child: Text(item)))
+                                  value: item, child: Text(item)))
                               .toList(),
                           changeWidget: _click.isEditCity),
+                      SmallWidgets.title(
+                          title: "Профессиональная сфера",
+                          onPressed: () {
+                            context
+                                .read<ProfileUserBtnCubit>()
+                                .editCategories();
+                            if (_click.isEditCategory &&
+                                _arguments.categoryTitle.isNotEmpty) {
+                              context.read<ResumeUserBloc>().add(
+                                  ResumeUserEvent.editResume(
+                                      sphere: resume.sphere_id,
+                                      phone: resume.phone,
+                                      email: resume.email,
+                                      category: _arguments.categoryId,
+                                      id: resume.id));
+                            }
+                          },
+                          changeIcon: _click.isEditCategory),
+                      const SizedBox(height: 10),
+                      SmallWidgets.bodyDropDown(
+                          onChanged: (value) => context
+                              .read<VariableResumeCubit>()
+                              .categoryTitle(value!),
+                          body: categories
+                              .singleWhere((it) => it.id == resume.category_id)
+                              .name,
+                          title: "Профессиональная сфера",
+                          value: _arguments.categoryTitle.isNotEmpty
+                              ? _arguments.categoryTitle
+                              : null,
+                          items: categories
+                              .map((type) => DropdownMenuItem<String>(
+                                  onTap: () => context
+                                      .read<VariableVacancyCubit>()
+                                      .categoryId(type.id),
+                                  value: type.name,
+                                  child: Text(type.name)))
+                              .toList(),
+                          changeWidget: _click.isEditCategory),
+                      const SizedBox(height: 10),
+                      SmallWidgets.title(
+                          title: "Сфера",
+                          onPressed: () {
+                            context.read<ProfileUserBtnCubit>().editSpheres();
+                            if (_click.isEditSphere &&
+                                _arguments.sphereTitle.isNotEmpty) {
+                              context.read<ResumeUserBloc>().add(
+                                  ResumeUserEvent.editResume(
+                                      sphere: _arguments.sphereId,
+                                      phone: resume.phone,
+                                      email: resume.email,
+                                      category: resume.category_id,
+                                      id: resume.id));
+                            }
+                          },
+                          changeIcon: _click.isEditSphere),
+                      const SizedBox(height: 20),
+                      SmallWidgets.bodyDropDown(
+                          onChanged: (value) => context
+                              .read<VariableResumeCubit>()
+                              .sphereTitle(value!),
+                          body: spheres
+                              .singleWhere((it) => it.id == resume.sphere_id)
+                              .name,
+                          title: "Сфера",
+                          value: _arguments.sphereTitle.isNotEmpty
+                              ? _arguments.sphereTitle
+                              : null,
+                          items: spheres
+                              .map((type) => DropdownMenuItem<String>(
+                                  onTap: () => context
+                                      .read<VariableResumeCubit>()
+                                      .sphereId(type.id),
+                                  value: type.name,
+                                  child: Text(type.name)))
+                              .toList(),
+                          changeWidget: _click.isEditSphere),
                       const SizedBox(height: 20),
                       ResumeBodyStagesWidget(
                           resume: resume, arguments: _arguments),
@@ -176,7 +259,6 @@ class ResumeBodyWidget extends StatelessWidget {
                       ResumeBodyGradesWidget(
                           resume: resume, arguments: _arguments),
                       const SizedBox(height: 20),
-                      VideoControllerWidget(),
                     ]));
           });
         });

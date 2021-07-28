@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import 'package:sap_work/screens/widgets/bottom_nav_bar.dart';
 import '../../../authorization.dart';
 
 class UserSignInScreen extends StatelessWidget {
@@ -64,7 +65,7 @@ class UserSignInScreen extends StatelessWidget {
                 if (state == UserSignInState.successSignIn()) {
                   Navigator.pushNamedAndRemoveUntil(context, NavigationBar.id,
                       (Route<dynamic> route) => false,
-                      arguments: {"role": "searcher"});
+                      arguments: {ROLE: USER_ROLE});
                 }
               },
               builder: (context, state) {

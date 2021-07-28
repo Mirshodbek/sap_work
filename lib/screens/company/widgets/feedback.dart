@@ -13,6 +13,7 @@ class FeedbacksVacancyCountWidget extends StatelessWidget {
     return BlocBuilder<FeedbacksVacancyBloc, FeedbacksVacancyState>(
         builder: (context, state) {
       return state.map(
+          error: (_) => const SizedBox.shrink(),
           empty: (_) => const SizedBox.shrink(),
           loading: (_) =>
               const ShimmerWidget.rectangular(height: 40, width: 40),
@@ -34,20 +35,50 @@ class FeedbacksVacancyCountWidget extends StatelessWidget {
                       style: AppTextTheme.mediumTextBlack),
                   Text("Отклики", style: AppTextTheme.smallTextMediumBlack),
                 ]),
-                ProfileUserAvatarWidget(),
+                ProfileCompanyAvatarWidget(),
               ],
             );
           },
-          error: (_) =>
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text("0", style: AppTextTheme.mediumTextBlack),
-                Text("Отклики", style: AppTextTheme.smallTextMediumBlack),
-              ]),
-          noFeedbacks: (_) =>
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text("0", style: AppTextTheme.mediumTextBlack),
-                Text("Отклики", style: AppTextTheme.smallTextMediumBlack),
-              ]));
+          noVacancy: (_error) => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("0", style: AppTextTheme.mediumTextBlack),
+                        Text("Приглашения",
+                            style: AppTextTheme.smallTextMediumBlack),
+                      ]),
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("0", style: AppTextTheme.mediumTextBlack),
+                        Text("Отклики",
+                            style: AppTextTheme.smallTextMediumBlack),
+                      ]),
+                  ProfileCompanyAvatarWidget(),
+                ],
+              ),
+          noFeedbacks: (_) => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("0", style: AppTextTheme.mediumTextBlack),
+                        Text("Приглашения",
+                            style: AppTextTheme.smallTextMediumBlack),
+                      ]),
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("0", style: AppTextTheme.mediumTextBlack),
+                        Text("Отклики",
+                            style: AppTextTheme.smallTextMediumBlack),
+                      ]),
+                  ProfileCompanyAvatarWidget(),
+                ],
+              ));
     });
   }
 }

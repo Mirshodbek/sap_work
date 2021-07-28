@@ -1,23 +1,27 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sap_work/bloc/user/resume/resume_user_bloc.dart';
 import 'package:sap_work/bloc/user/variable_resume/variable_resume_cubit.dart';
-import 'package:sap_work/models/category/category.dart';
+import 'package:sap_work/models/feature/feature.dart';
 import 'package:sap_work/resources/icons.dart';
 import 'package:sap_work/resources/small_widgets.dart';
 import 'package:sap_work/resources/theme/text_theme.dart';
 import 'package:sap_work/resources/validator.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
+import 'package:sap_work/screens/widgets/buttons.dart';
 import 'package:sap_work/screens/widgets/drop_down.dart';
 
 class CreateResumeWidget extends StatelessWidget {
-  final List<Category> categories;
+  final List<Feature> categories;
+  final List<Feature> spheres;
   final String nameResume;
 
   const CreateResumeWidget(
-      {Key? key, required this.categories, required this.nameResume})
+      {Key? key,
+      required this.categories,
+      required this.spheres,
+      required this.nameResume})
       : super(key: key);
 
   @override
@@ -60,6 +64,7 @@ class CreateResumeWidget extends StatelessWidget {
                       .phone(Utils.getTelephone(value)),
                   keyboardType: TextInputType.phone,
                   inputFormatters: [Utils.mask],
+                  style: AppTextTheme.smallTextMediumBlack,
                   decoration: SmallWidgets.inputDecoration("(919) 903-32-21")
                       .copyWith(prefixIcon: SmallWidgets.suffixText("+7")),
                 )),
@@ -78,6 +83,19 @@ class CreateResumeWidget extends StatelessWidget {
                       onTap: () => context
                           .read<VariableResumeCubit>()
                           .categoryId(type.id),
+                      value: type.name,
+                      child: Text(type.name)))
+                  .toList()),
+          const SizedBox(height: 20),
+          DropDownWidget(
+              value: _state.sphereTitle.isNotEmpty ? _state.sphereTitle : null,
+              title: "сфера",
+              onChanged: (String? value) =>
+                  context.read<VariableResumeCubit>().sphereTitle(value!),
+              items: spheres
+                  .map((type) => DropdownMenuItem<String>(
+                      onTap: () =>
+                          context.read<VariableResumeCubit>().sphereId(type.id),
                       value: type.name,
                       child: Text(type.name)))
                   .toList()),
@@ -104,16 +122,13 @@ class CreateResumeWidget extends StatelessWidget {
                   .toList()),
           const SizedBox(height: 20),
           DropDownWidget(
-              value: _state.city.isNotEmpty
-                  ? _state.city
-                  : null,
+              value: _state.city.isNotEmpty ? _state.city : null,
               title: "Город",
-              onChanged: (String? value) => context
-                  .read<VariableResumeCubit>()
-                  .city(value!),
+              onChanged: (String? value) =>
+                  context.read<VariableResumeCubit>().city(value!),
               items: Lists.countryList
-                  .map((item) => DropdownMenuItem<String>(
-                  value: item, child: Text(item)))
+                  .map((item) =>
+                      DropdownMenuItem<String>(value: item, child: Text(item)))
                   .toList()),
           const SizedBox(height: 20),
           _Stages(listMap: _state.stages),
@@ -126,6 +141,7 @@ class CreateResumeWidget extends StatelessWidget {
                   "Опубликовать резюме",
                   () => context.read<ResumeUserBloc>().add(
                       ResumeUserEvent.postResume(
+                          sphere: _state.sphereId,
                           body: _state.body,
                           abilities: _state.tools.join(", "),
                           name: nameResume,
@@ -218,7 +234,6 @@ class _Stages extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(),
                     ),
-
                     child: SvgPicture.asset(
                         index == 0 ? AppIcons.plus_black : AppIcons.trash),
                   )),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sap_work/screens/hunter/hunter.dart';
+import 'package:sap_work/resources/icons.dart';
+import 'package:sap_work/resources/theme/text_theme.dart';
 
 class ResumeButtonsWidget extends StatelessWidget {
   final VoidCallback pdf;

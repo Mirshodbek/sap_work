@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-import 'package:sap_work/bloc/company/core_feedbacks/core_feedbacks_bloc.dart';
+import 'package:sap_work/bloc/company/core_feedbacks/core_feedbacks_company_bloc.dart';
 import 'package:sap_work/bloc/company/feedbacks/feedbacks_vacancy_bloc.dart';
-import 'package:sap_work/bloc/company/feedbacks_button/feedbacks_btn_cubit.dart';
+import 'package:sap_work/bloc/company/payment_cubit/payment_cubit.dart';
 import 'package:sap_work/bloc/company/profile/profile_company_bloc.dart';
+import 'package:sap_work/bloc/company/resumes/resumes_company_bloc.dart';
 import 'package:sap_work/resources/constants.dart';
 import 'package:sap_work/resources/small_widgets.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
@@ -14,6 +15,7 @@ import 'package:sap_work/screens/company/payment/widgets/tariff.dart';
 import 'package:sap_work/screens/company/widgets/feedback.dart';
 import 'package:sap_work/screens/company/widgets/profile.dart';
 import 'package:sap_work/screens/widgets/backward.dart';
+import 'package:sap_work/screens/widgets/buttons.dart';
 
 class PaymentScreen extends StatelessWidget {
   static const String id = 'payment';
@@ -26,16 +28,17 @@ class PaymentScreen extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
+        BlocProvider<PaymentCubit>(create: (_) => PaymentCubit()),
         BlocProvider<ProfileCompanyBloc>.value(
             value: arguments[PROFILE_COMPANY_BLOC]),
-        BlocProvider<CoreFeedbacksBloc>.value(
+        BlocProvider<CoreFeedbacksCompanyBloc>.value(
             value: arguments[CORE_FEEDBACKS_BLOC]),
         BlocProvider<FeedbacksVacancyBloc>.value(
             value: arguments[FEEDBACKS_VACANCY_BLOC]),
-        BlocProvider<FeedbacksBtnCubit>.value(
-            value: arguments[FEEDBACKS_BTN_CUBIT]),
+        BlocProvider<ResumesCompanyBloc>.value(
+            value: arguments[RESUMES_COMPANY_BLOC]),
       ],
-      child: BlocConsumer<CoreFeedbacksBloc, CoreFeedbacksState>(
+      child: BlocConsumer<CoreFeedbacksCompanyBloc, CoreFeedbacksCompanyState>(
         listener: (context, state) {
           state.maybeMap(
               orElse: () => state,
@@ -46,6 +49,11 @@ class PaymentScreen extends StatelessWidget {
                 }
                 if (_state.status.isSubmissionSuccess) {
                   Navigator.of(context).pop();
+                  SmallWidgets.scaffoldMessage(
+                      context: context, message: "Оплата передано");
+                  context
+                      .read<ResumesCompanyBloc>()
+                      .add(const ResumesCompanyEvent.getResumesRecommended());
                 }
                 if (_state.status.isSubmissionFailure) {
                   Navigator.of(context).pop();
@@ -88,12 +96,11 @@ class PaymentScreen extends StatelessWidget {
                                 children: [
                                   Text("Тарифы",
                                       style: AppTextTheme.mediumTextBlack),
-                                  BlocBuilder<FeedbacksBtnCubit,
-                                          FeedbacksBtnState>(
+                                  BlocBuilder<PaymentCubit, PaymentState>(
                                       builder: (context, state) {
                                     return state.maybeMap(
                                         orElse: () => const SizedBox(),
-                                        sum: (_sum) {
+                                        status: (_sum) {
                                           return Column(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.stretch,
@@ -125,8 +132,8 @@ class PaymentScreen extends StatelessWidget {
           BuildContext context, int sum, String title) =>
       RedButtonWidget(
           "Перейти к оплате",
-          () => context
-              .read<CoreFeedbacksBloc>()
-              .add(CoreFeedbacksEvent.payStatus(sum: sum * Utils.days(title))),
+          () => context.read<CoreFeedbacksCompanyBloc>().add(
+              CoreFeedbacksCompanyEvent.payStatus(
+                  sum: sum * Utils.days(title))),
           true);
 }

@@ -11,12 +11,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 part 'company_sign_in_bloc.freezed.dart';
 
-class CompanySignInBloc
-    extends Bloc<CompanySignInEvent, CompanySignInState> {
+class CompanySignInBloc extends Bloc<CompanySignInEvent, CompanySignInState> {
   final AuthProvider _provider;
 
-  CompanySignInBloc(this._provider)
-      : super(const CompanySignInState.initial());
+  CompanySignInBloc(this._provider) : super(const CompanySignInState.initial());
   String _phone = '';
 
   @override
@@ -41,6 +39,7 @@ class CompanySignInBloc
 
   Stream<CompanySignInState> _telephoneChanged(
       TelephoneChangedCompanySignInEvent event) async* {
+    _phone = event.phone.value;
     if (event.phone.invalid) {
       yield const CompanySignInState.telephoneState(
         phone: Phone.pure(),
@@ -159,6 +158,5 @@ abstract class CompanySignInState with _$CompanySignInState {
     required final FormzStatus statusB,
   }) = CodeCompanySignInState;
 
-  const factory CompanySignInState.successSignIn() =
-      SuccessCompanySignInState;
+  const factory CompanySignInState.successSignIn() = SuccessCompanySignInState;
 }

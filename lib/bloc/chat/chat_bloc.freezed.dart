@@ -16,16 +16,19 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ChatEventTearOff {
   const _$ChatEventTearOff();
 
-  _GetChatsEvent getChats({required int id}) {
+  _GetChatsEvent getChats({required int id, required String type}) {
     return _GetChatsEvent(
       id: id,
+      type: type,
     );
   }
 
-  _PostChatEvent postChat({required int id, required String text}) {
+  _PostChatEvent postChat(
+      {required int id, required String text, required String type}) {
     return _PostChatEvent(
       id: id,
       text: text,
+      type: type,
     );
   }
 }
@@ -36,17 +39,18 @@ const $ChatEvent = _$ChatEventTearOff();
 /// @nodoc
 mixin _$ChatEvent {
   int get id => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int id) getChats,
-    required TResult Function(int id, String text) postChat,
+    required TResult Function(int id, String type) getChats,
+    required TResult Function(int id, String text, String type) postChat,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int id)? getChats,
-    TResult Function(int id, String text)? postChat,
+    TResult Function(int id, String type)? getChats,
+    TResult Function(int id, String text, String type)? postChat,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -73,7 +77,7 @@ mixin _$ChatEvent {
 abstract class $ChatEventCopyWith<$Res> {
   factory $ChatEventCopyWith(ChatEvent value, $Res Function(ChatEvent) then) =
       _$ChatEventCopyWithImpl<$Res>;
-  $Res call({int id});
+  $Res call({int id, String type});
 }
 
 /// @nodoc
@@ -87,12 +91,17 @@ class _$ChatEventCopyWithImpl<$Res> implements $ChatEventCopyWith<$Res> {
   @override
   $Res call({
     Object? id = freezed,
+    Object? type = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -104,7 +113,7 @@ abstract class _$GetChatsEventCopyWith<$Res>
           _GetChatsEvent value, $Res Function(_GetChatsEvent) then) =
       __$GetChatsEventCopyWithImpl<$Res>;
   @override
-  $Res call({int id});
+  $Res call({int id, String type});
 }
 
 /// @nodoc
@@ -120,12 +129,17 @@ class __$GetChatsEventCopyWithImpl<$Res> extends _$ChatEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
+    Object? type = freezed,
   }) {
     return _then(_GetChatsEvent(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -133,14 +147,16 @@ class __$GetChatsEventCopyWithImpl<$Res> extends _$ChatEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GetChatsEvent implements _GetChatsEvent {
-  const _$_GetChatsEvent({required this.id});
+  const _$_GetChatsEvent({required this.id, required this.type});
 
   @override
   final int id;
+  @override
+  final String type;
 
   @override
   String toString() {
-    return 'ChatEvent.getChats(id: $id)';
+    return 'ChatEvent.getChats(id: $id, type: $type)';
   }
 
   @override
@@ -148,12 +164,16 @@ class _$_GetChatsEvent implements _GetChatsEvent {
     return identical(this, other) ||
         (other is _GetChatsEvent &&
             (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(type);
 
   @JsonKey(ignore: true)
   @override
@@ -163,21 +183,21 @@ class _$_GetChatsEvent implements _GetChatsEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int id) getChats,
-    required TResult Function(int id, String text) postChat,
+    required TResult Function(int id, String type) getChats,
+    required TResult Function(int id, String text, String type) postChat,
   }) {
-    return getChats(id);
+    return getChats(id, type);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int id)? getChats,
-    TResult Function(int id, String text)? postChat,
+    TResult Function(int id, String type)? getChats,
+    TResult Function(int id, String text, String type)? postChat,
     required TResult orElse(),
   }) {
     if (getChats != null) {
-      return getChats(id);
+      return getChats(id, type);
     }
     return orElse();
   }
@@ -206,10 +226,13 @@ class _$_GetChatsEvent implements _GetChatsEvent {
 }
 
 abstract class _GetChatsEvent implements ChatEvent {
-  const factory _GetChatsEvent({required int id}) = _$_GetChatsEvent;
+  const factory _GetChatsEvent({required int id, required String type}) =
+      _$_GetChatsEvent;
 
   @override
   int get id => throw _privateConstructorUsedError;
+  @override
+  String get type => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$GetChatsEventCopyWith<_GetChatsEvent> get copyWith =>
@@ -223,7 +246,7 @@ abstract class _$PostChatEventCopyWith<$Res>
           _PostChatEvent value, $Res Function(_PostChatEvent) then) =
       __$PostChatEventCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String text});
+  $Res call({int id, String text, String type});
 }
 
 /// @nodoc
@@ -240,6 +263,7 @@ class __$PostChatEventCopyWithImpl<$Res> extends _$ChatEventCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? text = freezed,
+    Object? type = freezed,
   }) {
     return _then(_PostChatEvent(
       id: id == freezed
@@ -250,6 +274,10 @@ class __$PostChatEventCopyWithImpl<$Res> extends _$ChatEventCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -257,16 +285,19 @@ class __$PostChatEventCopyWithImpl<$Res> extends _$ChatEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PostChatEvent implements _PostChatEvent {
-  const _$_PostChatEvent({required this.id, required this.text});
+  const _$_PostChatEvent(
+      {required this.id, required this.text, required this.type});
 
   @override
   final int id;
   @override
   final String text;
+  @override
+  final String type;
 
   @override
   String toString() {
-    return 'ChatEvent.postChat(id: $id, text: $text)';
+    return 'ChatEvent.postChat(id: $id, text: $text, type: $type)';
   }
 
   @override
@@ -276,14 +307,17 @@ class _$_PostChatEvent implements _PostChatEvent {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.text, text) ||
-                const DeepCollectionEquality().equals(other.text, text)));
+                const DeepCollectionEquality().equals(other.text, text)) &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(text);
+      const DeepCollectionEquality().hash(text) ^
+      const DeepCollectionEquality().hash(type);
 
   @JsonKey(ignore: true)
   @override
@@ -293,21 +327,21 @@ class _$_PostChatEvent implements _PostChatEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(int id) getChats,
-    required TResult Function(int id, String text) postChat,
+    required TResult Function(int id, String type) getChats,
+    required TResult Function(int id, String text, String type) postChat,
   }) {
-    return postChat(id, text);
+    return postChat(id, text, type);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(int id)? getChats,
-    TResult Function(int id, String text)? postChat,
+    TResult Function(int id, String type)? getChats,
+    TResult Function(int id, String text, String type)? postChat,
     required TResult orElse(),
   }) {
     if (postChat != null) {
-      return postChat(id, text);
+      return postChat(id, text, type);
     }
     return orElse();
   }
@@ -336,12 +370,16 @@ class _$_PostChatEvent implements _PostChatEvent {
 }
 
 abstract class _PostChatEvent implements ChatEvent {
-  const factory _PostChatEvent({required int id, required String text}) =
-      _$_PostChatEvent;
+  const factory _PostChatEvent(
+      {required int id,
+      required String text,
+      required String type}) = _$_PostChatEvent;
 
   @override
   int get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
+  @override
+  String get type => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PostChatEventCopyWith<_PostChatEvent> get copyWith =>

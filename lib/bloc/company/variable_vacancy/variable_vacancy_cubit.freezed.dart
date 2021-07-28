@@ -18,6 +18,7 @@ class _$VariableVacancyStateTearOff {
 
   ArgumentsVacancyState arguments(
       {required String categoryTitle,
+      required String sphereTitle,
       required String city,
       required String name,
       required String body,
@@ -29,9 +30,11 @@ class _$VariableVacancyStateTearOff {
       required String type,
       required String abilities,
       required int categoryId,
+      required int sphereId,
       required List<String> tools}) {
     return ArgumentsVacancyState(
       categoryTitle: categoryTitle,
+      sphereTitle: sphereTitle,
       city: city,
       name: name,
       body: body,
@@ -43,6 +46,7 @@ class _$VariableVacancyStateTearOff {
       type: type,
       abilities: abilities,
       categoryId: categoryId,
+      sphereId: sphereId,
       tools: tools,
     );
   }
@@ -54,6 +58,7 @@ const $VariableVacancyState = _$VariableVacancyStateTearOff();
 /// @nodoc
 mixin _$VariableVacancyState {
   String get categoryTitle => throw _privateConstructorUsedError;
+  String get sphereTitle => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
@@ -65,12 +70,14 @@ mixin _$VariableVacancyState {
   String get type => throw _privateConstructorUsedError;
   String get abilities => throw _privateConstructorUsedError;
   int get categoryId => throw _privateConstructorUsedError;
+  int get sphereId => throw _privateConstructorUsedError;
   List<String> get tools => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
             String categoryTitle,
+            String sphereTitle,
             String city,
             String name,
             String body,
@@ -82,6 +89,7 @@ mixin _$VariableVacancyState {
             String type,
             String abilities,
             int categoryId,
+            int sphereId,
             List<String> tools)
         arguments,
   }) =>
@@ -90,6 +98,7 @@ mixin _$VariableVacancyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String categoryTitle,
+            String sphereTitle,
             String city,
             String name,
             String body,
@@ -101,6 +110,7 @@ mixin _$VariableVacancyState {
             String type,
             String abilities,
             int categoryId,
+            int sphereId,
             List<String> tools)?
         arguments,
     required TResult orElse(),
@@ -130,6 +140,7 @@ abstract class $VariableVacancyStateCopyWith<$Res> {
       _$VariableVacancyStateCopyWithImpl<$Res>;
   $Res call(
       {String categoryTitle,
+      String sphereTitle,
       String city,
       String name,
       String body,
@@ -141,6 +152,7 @@ abstract class $VariableVacancyStateCopyWith<$Res> {
       String type,
       String abilities,
       int categoryId,
+      int sphereId,
       List<String> tools});
 }
 
@@ -156,6 +168,7 @@ class _$VariableVacancyStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? categoryTitle = freezed,
+    Object? sphereTitle = freezed,
     Object? city = freezed,
     Object? name = freezed,
     Object? body = freezed,
@@ -167,12 +180,17 @@ class _$VariableVacancyStateCopyWithImpl<$Res>
     Object? type = freezed,
     Object? abilities = freezed,
     Object? categoryId = freezed,
+    Object? sphereId = freezed,
     Object? tools = freezed,
   }) {
     return _then(_value.copyWith(
       categoryTitle: categoryTitle == freezed
           ? _value.categoryTitle
           : categoryTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      sphereTitle: sphereTitle == freezed
+          ? _value.sphereTitle
+          : sphereTitle // ignore: cast_nullable_to_non_nullable
               as String,
       city: city == freezed
           ? _value.city
@@ -217,6 +235,10 @@ class _$VariableVacancyStateCopyWithImpl<$Res>
       categoryId: categoryId == freezed
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
+              as int,
+      sphereId: sphereId == freezed
+          ? _value.sphereId
+          : sphereId // ignore: cast_nullable_to_non_nullable
               as int,
       tools: tools == freezed
           ? _value.tools
@@ -235,6 +257,7 @@ abstract class $ArgumentsVacancyStateCopyWith<$Res>
   @override
   $Res call(
       {String categoryTitle,
+      String sphereTitle,
       String city,
       String name,
       String body,
@@ -246,6 +269,7 @@ abstract class $ArgumentsVacancyStateCopyWith<$Res>
       String type,
       String abilities,
       int categoryId,
+      int sphereId,
       List<String> tools});
 }
 
@@ -263,6 +287,7 @@ class _$ArgumentsVacancyStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? categoryTitle = freezed,
+    Object? sphereTitle = freezed,
     Object? city = freezed,
     Object? name = freezed,
     Object? body = freezed,
@@ -274,12 +299,17 @@ class _$ArgumentsVacancyStateCopyWithImpl<$Res>
     Object? type = freezed,
     Object? abilities = freezed,
     Object? categoryId = freezed,
+    Object? sphereId = freezed,
     Object? tools = freezed,
   }) {
     return _then(ArgumentsVacancyState(
       categoryTitle: categoryTitle == freezed
           ? _value.categoryTitle
           : categoryTitle // ignore: cast_nullable_to_non_nullable
+              as String,
+      sphereTitle: sphereTitle == freezed
+          ? _value.sphereTitle
+          : sphereTitle // ignore: cast_nullable_to_non_nullable
               as String,
       city: city == freezed
           ? _value.city
@@ -325,6 +355,10 @@ class _$ArgumentsVacancyStateCopyWithImpl<$Res>
           ? _value.categoryId
           : categoryId // ignore: cast_nullable_to_non_nullable
               as int,
+      sphereId: sphereId == freezed
+          ? _value.sphereId
+          : sphereId // ignore: cast_nullable_to_non_nullable
+              as int,
       tools: tools == freezed
           ? _value.tools
           : tools // ignore: cast_nullable_to_non_nullable
@@ -338,6 +372,7 @@ class _$ArgumentsVacancyStateCopyWithImpl<$Res>
 class _$ArgumentsVacancyState implements ArgumentsVacancyState {
   const _$ArgumentsVacancyState(
       {required this.categoryTitle,
+      required this.sphereTitle,
       required this.city,
       required this.name,
       required this.body,
@@ -349,10 +384,13 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
       required this.type,
       required this.abilities,
       required this.categoryId,
+      required this.sphereId,
       required this.tools});
 
   @override
   final String categoryTitle;
+  @override
+  final String sphereTitle;
   @override
   final String city;
   @override
@@ -376,11 +414,13 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
   @override
   final int categoryId;
   @override
+  final int sphereId;
+  @override
   final List<String> tools;
 
   @override
   String toString() {
-    return 'VariableVacancyState.arguments(categoryTitle: $categoryTitle, city: $city, name: $name, body: $body, grade: $grade, minsalary: $minsalary, maxsalary: $maxsalary, schedule: $schedule, stage: $stage, type: $type, abilities: $abilities, categoryId: $categoryId, tools: $tools)';
+    return 'VariableVacancyState.arguments(categoryTitle: $categoryTitle, sphereTitle: $sphereTitle, city: $city, name: $name, body: $body, grade: $grade, minsalary: $minsalary, maxsalary: $maxsalary, schedule: $schedule, stage: $stage, type: $type, abilities: $abilities, categoryId: $categoryId, sphereId: $sphereId, tools: $tools)';
   }
 
   @override
@@ -390,6 +430,9 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
             (identical(other.categoryTitle, categoryTitle) ||
                 const DeepCollectionEquality()
                     .equals(other.categoryTitle, categoryTitle)) &&
+            (identical(other.sphereTitle, sphereTitle) ||
+                const DeepCollectionEquality()
+                    .equals(other.sphereTitle, sphereTitle)) &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
             (identical(other.name, name) ||
@@ -417,6 +460,9 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
             (identical(other.categoryId, categoryId) ||
                 const DeepCollectionEquality()
                     .equals(other.categoryId, categoryId)) &&
+            (identical(other.sphereId, sphereId) ||
+                const DeepCollectionEquality()
+                    .equals(other.sphereId, sphereId)) &&
             (identical(other.tools, tools) ||
                 const DeepCollectionEquality().equals(other.tools, tools)));
   }
@@ -425,6 +471,7 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(categoryTitle) ^
+      const DeepCollectionEquality().hash(sphereTitle) ^
       const DeepCollectionEquality().hash(city) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(body) ^
@@ -436,6 +483,7 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
       const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(abilities) ^
       const DeepCollectionEquality().hash(categoryId) ^
+      const DeepCollectionEquality().hash(sphereId) ^
       const DeepCollectionEquality().hash(tools);
 
   @JsonKey(ignore: true)
@@ -449,6 +497,7 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
   TResult when<TResult extends Object?>({
     required TResult Function(
             String categoryTitle,
+            String sphereTitle,
             String city,
             String name,
             String body,
@@ -460,11 +509,26 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
             String type,
             String abilities,
             int categoryId,
+            int sphereId,
             List<String> tools)
         arguments,
   }) {
-    return arguments(categoryTitle, city, name, body, grade, minsalary,
-        maxsalary, schedule, stage, type, abilities, categoryId, tools);
+    return arguments(
+        categoryTitle,
+        sphereTitle,
+        city,
+        name,
+        body,
+        grade,
+        minsalary,
+        maxsalary,
+        schedule,
+        stage,
+        type,
+        abilities,
+        categoryId,
+        sphereId,
+        tools);
   }
 
   @override
@@ -472,6 +536,7 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
             String categoryTitle,
+            String sphereTitle,
             String city,
             String name,
             String body,
@@ -483,13 +548,28 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
             String type,
             String abilities,
             int categoryId,
+            int sphereId,
             List<String> tools)?
         arguments,
     required TResult orElse(),
   }) {
     if (arguments != null) {
-      return arguments(categoryTitle, city, name, body, grade, minsalary,
-          maxsalary, schedule, stage, type, abilities, categoryId, tools);
+      return arguments(
+          categoryTitle,
+          sphereTitle,
+          city,
+          name,
+          body,
+          grade,
+          minsalary,
+          maxsalary,
+          schedule,
+          stage,
+          type,
+          abilities,
+          categoryId,
+          sphereId,
+          tools);
     }
     return orElse();
   }
@@ -518,6 +598,7 @@ class _$ArgumentsVacancyState implements ArgumentsVacancyState {
 abstract class ArgumentsVacancyState implements VariableVacancyState {
   const factory ArgumentsVacancyState(
       {required String categoryTitle,
+      required String sphereTitle,
       required String city,
       required String name,
       required String body,
@@ -529,10 +610,13 @@ abstract class ArgumentsVacancyState implements VariableVacancyState {
       required String type,
       required String abilities,
       required int categoryId,
+      required int sphereId,
       required List<String> tools}) = _$ArgumentsVacancyState;
 
   @override
   String get categoryTitle => throw _privateConstructorUsedError;
+  @override
+  String get sphereTitle => throw _privateConstructorUsedError;
   @override
   String get city => throw _privateConstructorUsedError;
   @override
@@ -555,6 +639,8 @@ abstract class ArgumentsVacancyState implements VariableVacancyState {
   String get abilities => throw _privateConstructorUsedError;
   @override
   int get categoryId => throw _privateConstructorUsedError;
+  @override
+  int get sphereId => throw _privateConstructorUsedError;
   @override
   List<String> get tools => throw _privateConstructorUsedError;
   @override

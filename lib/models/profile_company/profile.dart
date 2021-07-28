@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:sap_work/models/contact/contact.dart';
 
 part 'profile.g.dart';
 
@@ -29,9 +30,10 @@ class ProfileCompany extends Equatable {
   late final String bik;
   late final String inn;
   late final String phone;
+  late final List<ContactProfile>? urls;
 
-  ProfileCompany(this.id, this.name, this.address, this.avatar, this.bin,
-      this.bik, this.inn, this.phone);
+  ProfileCompany(this.id, this.name, this.address, this.urls, this.avatar,
+      this.bin, this.bik, this.inn, this.phone);
 
   factory ProfileCompany.fromJson(Map<String, dynamic> json) =>
       _$ProfileCompanyFromJson(json);
@@ -39,5 +41,6 @@ class ProfileCompany extends Equatable {
   Map<String, dynamic> toJson() => _$ProfileCompanyToJson(this);
 
   @override
-  List<Object?> get props => [id, name, address, avatar, bin, bik, inn, phone];
+  List<Object?> get props =>
+      [id, name, address, urls, avatar, bin, bik, inn, phone];
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sap_work/screens/admin/screen.dart';
 import '../authorization.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -24,11 +25,14 @@ class SplashScreen extends StatelessWidget {
         }
         if (state == SplashState.user()) {
           Navigator.pushReplacementNamed(context, NavigationBar.id,
-              arguments: {"role": "searcher"});
+              arguments: {ROLE: USER_ROLE});
         }
         if (state == SplashState.company()) {
           Navigator.pushReplacementNamed(context, NavigationBar.id,
-              arguments: {"role": "employer"});
+              arguments: {ROLE: COMPANY_ROLE});
+        }
+        if (state == SplashState.admin()) {
+          Navigator.pushReplacementNamed(context, AdminScreen.id);
         }
       },
       builder: (context, state) {

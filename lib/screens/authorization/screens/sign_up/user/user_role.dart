@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
 import 'package:sap_work/screens/authorization/authorization.dart';
+import 'package:sap_work/screens/authorization/screens/pin_screen.dart';
+import 'package:sap_work/screens/widgets/bottom_nav_bar.dart';
 
 class UserRole extends StatefulWidget {
   UserRole({Key? key}) : super(key: key);
@@ -34,11 +36,9 @@ class _UserRoleState extends State<UserRole> {
   Widget build(BuildContext context) {
     return BlocConsumer<UserSignUpBloc, UserSignUpState>(
       listener: (context, state) {
-        if (state == UserSignUpState.successSignUp()) {
-          Navigator.pushReplacementNamed(
-            context,
-            UserSignInScreen.id,
-          );
+        if (state is SuccessSignUpUserSignUpState) {
+          Navigator.pushNamed(context, PinScreen.id,
+              arguments: {ROLE: USER_ROLE, PHONE: state.phone});
         }
       },
       builder: (context, state) {
@@ -66,15 +66,17 @@ class _UserRoleState extends State<UserRole> {
                     controller: _phone,
                     keyboardType: TextInputType.phone,
                     style: AppTextTheme.smallTextWhite,
-                    decoration: TextFieldDecoration.decoration("Телефон")
-                        .copyWith( prefixIcon: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 9.0),
-                      child: Text(
-                        "+7 ",
-                        textAlign: TextAlign.center,
-                        style: AppTextTheme.smallTextWhite,
+                    decoration:
+                        TextFieldDecoration.decoration("Телефон").copyWith(
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 9.0),
+                        child: Text(
+                          "+7 ",
+                          textAlign: TextAlign.center,
+                          style: AppTextTheme.smallTextWhite,
+                        ),
                       ),
-                    ),),
+                    ),
                   ),
                   if (_state.phone.invalid)
                     Text(

@@ -8,12 +8,10 @@ import 'package:sap_work/screens/authorization/authorization.dart';
 
 part 'company_sign_up_bloc.freezed.dart';
 
-class CompanySignUpBloc
-    extends Bloc<CompanySignUpEvent, CompanySignUpState> {
+class CompanySignUpBloc extends Bloc<CompanySignUpEvent, CompanySignUpState> {
   final AuthProvider _provider;
 
-  CompanySignUpBloc(this._provider)
-      : super(const CompanySignUpState.initial());
+  CompanySignUpBloc(this._provider) : super(const CompanySignUpState.initial());
   FormzStatus status = FormzStatus.pure;
 
   @override
@@ -76,7 +74,6 @@ class CompanySignUpBloc
           companyState: (_state) =>
               _state.copyWith(statusB: FormzStatus.submissionInProgress),
         );
-        await Future.delayed(Duration(seconds: 2));
         await _provider.signUpCompany(
             event.phone.value,
             event.name.value,
@@ -84,7 +81,8 @@ class CompanySignUpBloc
             event.bik.value,
             event.inn.value,
             event.address.value);
-        yield const CompanySignUpState.successSignUp();
+        await _provider.signInPhoneCompany(event.phone.value);
+        yield  CompanySignUpState.successSignUp(phone: event.phone.value);
       } catch (_) {
         yield state.maybeMap(
           orElse: () => state,
@@ -145,6 +143,6 @@ abstract class CompanySignUpState with _$CompanySignUpState {
     required final FormzStatus statusB,
   }) = CompanyStateCompanySignUpState;
 
-  const factory CompanySignUpState.successSignUp() =
-      _SuccessSignUpCompanySignUpState;
+  const factory CompanySignUpState.successSignUp({required final String phone}) =
+      SuccessSignUpCompanySignUpState;
 }

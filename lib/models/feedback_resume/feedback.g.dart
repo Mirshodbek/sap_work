@@ -15,7 +15,7 @@ FeedbackResume _$FeedbackResumeFromJson(Map<String, dynamic> json) {
     json['expires_at'] as String?,
     json['date'] as String?,
     json['contact'] as String?,
-    json['accepted'] as String?,
+    json['accepted'] as int?,
     json['contact_type'] as String?,
     json['updated_at'] as String,
     json['created_at'] as String,

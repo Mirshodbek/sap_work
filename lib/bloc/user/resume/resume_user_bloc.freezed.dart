@@ -26,6 +26,7 @@ class _$ResumeUserEventTearOff {
       String? body,
       String? abilities,
       String? city,
+      required int sphere,
       required int category,
       required int id}) {
     return _EditResumeUserEvent(
@@ -34,6 +35,7 @@ class _$ResumeUserEventTearOff {
       body: body,
       abilities: abilities,
       city: city,
+      sphere: sphere,
       category: category,
       id: id,
     );
@@ -47,6 +49,7 @@ class _$ResumeUserEventTearOff {
       required String city,
       required String email,
       required int category,
+      required int sphere,
       required List<Map<String, dynamic>> stages,
       required List<Map<String, dynamic>> grades}) {
     return _PostResumeUserEvent(
@@ -57,6 +60,7 @@ class _$ResumeUserEventTearOff {
       city: city,
       email: email,
       category: category,
+      sphere: sphere,
       stages: stages,
       grades: grades,
     );
@@ -126,7 +130,7 @@ mixin _$ResumeUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)
+            String? abilities, String? city, int sphere, int category, int id)
         editResume,
     required TResult Function(
             String body,
@@ -136,6 +140,7 @@ mixin _$ResumeUserEvent {
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
         postResume,
@@ -156,7 +161,7 @@ mixin _$ResumeUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)?
+            String? abilities, String? city, int sphere, int category, int id)?
         editResume,
     TResult Function(
             String body,
@@ -166,6 +171,7 @@ mixin _$ResumeUserEvent {
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
         postResume,
@@ -276,7 +282,7 @@ class _$_GetVResumeUserEvent implements _GetVResumeUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)
+            String? abilities, String? city, int sphere, int category, int id)
         editResume,
     required TResult Function(
             String body,
@@ -286,6 +292,7 @@ class _$_GetVResumeUserEvent implements _GetVResumeUserEvent {
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
         postResume,
@@ -309,7 +316,7 @@ class _$_GetVResumeUserEvent implements _GetVResumeUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)?
+            String? abilities, String? city, int sphere, int category, int id)?
         editResume,
     TResult Function(
             String body,
@@ -319,6 +326,7 @@ class _$_GetVResumeUserEvent implements _GetVResumeUserEvent {
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
         postResume,
@@ -398,6 +406,7 @@ abstract class _$EditResumeUserEventCopyWith<$Res> {
       String? body,
       String? abilities,
       String? city,
+      int sphere,
       int category,
       int id});
 }
@@ -420,6 +429,7 @@ class __$EditResumeUserEventCopyWithImpl<$Res>
     Object? body = freezed,
     Object? abilities = freezed,
     Object? city = freezed,
+    Object? sphere = freezed,
     Object? category = freezed,
     Object? id = freezed,
   }) {
@@ -444,6 +454,10 @@ class __$EditResumeUserEventCopyWithImpl<$Res>
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
+      sphere: sphere == freezed
+          ? _value.sphere
+          : sphere // ignore: cast_nullable_to_non_nullable
+              as int,
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
@@ -465,6 +479,7 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
       this.body,
       this.abilities,
       this.city,
+      required this.sphere,
       required this.category,
       required this.id});
 
@@ -479,13 +494,15 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
   @override
   final String? city;
   @override
+  final int sphere;
+  @override
   final int category;
   @override
   final int id;
 
   @override
   String toString() {
-    return 'ResumeUserEvent.editResume(phone: $phone, email: $email, body: $body, abilities: $abilities, city: $city, category: $category, id: $id)';
+    return 'ResumeUserEvent.editResume(phone: $phone, email: $email, body: $body, abilities: $abilities, city: $city, sphere: $sphere, category: $category, id: $id)';
   }
 
   @override
@@ -503,6 +520,8 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
                     .equals(other.abilities, abilities)) &&
             (identical(other.city, city) ||
                 const DeepCollectionEquality().equals(other.city, city)) &&
+            (identical(other.sphere, sphere) ||
+                const DeepCollectionEquality().equals(other.sphere, sphere)) &&
             (identical(other.category, category) ||
                 const DeepCollectionEquality()
                     .equals(other.category, category)) &&
@@ -518,6 +537,7 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
       const DeepCollectionEquality().hash(body) ^
       const DeepCollectionEquality().hash(abilities) ^
       const DeepCollectionEquality().hash(city) ^
+      const DeepCollectionEquality().hash(sphere) ^
       const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(id);
 
@@ -532,7 +552,7 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)
+            String? abilities, String? city, int sphere, int category, int id)
         editResume,
     required TResult Function(
             String body,
@@ -542,6 +562,7 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
         postResume,
@@ -557,7 +578,8 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
             int resumeId, String typeBlock, int? stageId, int? gradeId)
         deleteExtraBlocks,
   }) {
-    return editResume(phone, email, body, abilities, city, category, id);
+    return editResume(
+        phone, email, body, abilities, city, sphere, category, id);
   }
 
   @override
@@ -565,7 +587,7 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)?
+            String? abilities, String? city, int sphere, int category, int id)?
         editResume,
     TResult Function(
             String body,
@@ -575,6 +597,7 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
         postResume,
@@ -592,7 +615,8 @@ class _$_EditResumeUserEvent implements _EditResumeUserEvent {
     required TResult orElse(),
   }) {
     if (editResume != null) {
-      return editResume(phone, email, body, abilities, city, category, id);
+      return editResume(
+          phone, email, body, abilities, city, sphere, category, id);
     }
     return orElse();
   }
@@ -646,6 +670,7 @@ abstract class _EditResumeUserEvent implements ResumeUserEvent {
       String? body,
       String? abilities,
       String? city,
+      required int sphere,
       required int category,
       required int id}) = _$_EditResumeUserEvent;
 
@@ -654,6 +679,7 @@ abstract class _EditResumeUserEvent implements ResumeUserEvent {
   String? get body => throw _privateConstructorUsedError;
   String? get abilities => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
+  int get sphere => throw _privateConstructorUsedError;
   int get category => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -674,6 +700,7 @@ abstract class _$PostResumeUserEventCopyWith<$Res> {
       String city,
       String email,
       int category,
+      int sphere,
       List<Map<String, dynamic>> stages,
       List<Map<String, dynamic>> grades});
 }
@@ -698,6 +725,7 @@ class __$PostResumeUserEventCopyWithImpl<$Res>
     Object? city = freezed,
     Object? email = freezed,
     Object? category = freezed,
+    Object? sphere = freezed,
     Object? stages = freezed,
     Object? grades = freezed,
   }) {
@@ -730,6 +758,10 @@ class __$PostResumeUserEventCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as int,
+      sphere: sphere == freezed
+          ? _value.sphere
+          : sphere // ignore: cast_nullable_to_non_nullable
+              as int,
       stages: stages == freezed
           ? _value.stages
           : stages // ignore: cast_nullable_to_non_nullable
@@ -753,6 +785,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
       required this.city,
       required this.email,
       required this.category,
+      required this.sphere,
       required this.stages,
       required this.grades});
 
@@ -771,13 +804,15 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
   @override
   final int category;
   @override
+  final int sphere;
+  @override
   final List<Map<String, dynamic>> stages;
   @override
   final List<Map<String, dynamic>> grades;
 
   @override
   String toString() {
-    return 'ResumeUserEvent.postResume(body: $body, abilities: $abilities, name: $name, phone: $phone, city: $city, email: $email, category: $category, stages: $stages, grades: $grades)';
+    return 'ResumeUserEvent.postResume(body: $body, abilities: $abilities, name: $name, phone: $phone, city: $city, email: $email, category: $category, sphere: $sphere, stages: $stages, grades: $grades)';
   }
 
   @override
@@ -800,6 +835,8 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
             (identical(other.category, category) ||
                 const DeepCollectionEquality()
                     .equals(other.category, category)) &&
+            (identical(other.sphere, sphere) ||
+                const DeepCollectionEquality().equals(other.sphere, sphere)) &&
             (identical(other.stages, stages) ||
                 const DeepCollectionEquality().equals(other.stages, stages)) &&
             (identical(other.grades, grades) ||
@@ -816,6 +853,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
       const DeepCollectionEquality().hash(city) ^
       const DeepCollectionEquality().hash(email) ^
       const DeepCollectionEquality().hash(category) ^
+      const DeepCollectionEquality().hash(sphere) ^
       const DeepCollectionEquality().hash(stages) ^
       const DeepCollectionEquality().hash(grades);
 
@@ -830,7 +868,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)
+            String? abilities, String? city, int sphere, int category, int id)
         editResume,
     required TResult Function(
             String body,
@@ -840,6 +878,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
         postResume,
@@ -855,8 +894,8 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
             int resumeId, String typeBlock, int? stageId, int? gradeId)
         deleteExtraBlocks,
   }) {
-    return postResume(
-        body, abilities, name, phone, city, email, category, stages, grades);
+    return postResume(body, abilities, name, phone, city, email, category,
+        sphere, stages, grades);
   }
 
   @override
@@ -864,7 +903,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)?
+            String? abilities, String? city, int sphere, int category, int id)?
         editResume,
     TResult Function(
             String body,
@@ -874,6 +913,7 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
         postResume,
@@ -891,8 +931,8 @@ class _$_PostResumeUserEvent implements _PostResumeUserEvent {
     required TResult orElse(),
   }) {
     if (postResume != null) {
-      return postResume(
-          body, abilities, name, phone, city, email, category, stages, grades);
+      return postResume(body, abilities, name, phone, city, email, category,
+          sphere, stages, grades);
     }
     return orElse();
   }
@@ -948,6 +988,7 @@ abstract class _PostResumeUserEvent implements ResumeUserEvent {
       required String city,
       required String email,
       required int category,
+      required int sphere,
       required List<Map<String, dynamic>> stages,
       required List<Map<String, dynamic>> grades}) = _$_PostResumeUserEvent;
 
@@ -958,6 +999,7 @@ abstract class _PostResumeUserEvent implements ResumeUserEvent {
   String get city => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   int get category => throw _privateConstructorUsedError;
+  int get sphere => throw _privateConstructorUsedError;
   List<Map<String, dynamic>> get stages => throw _privateConstructorUsedError;
   List<Map<String, dynamic>> get grades => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1050,7 +1092,7 @@ class _$_ActivateOrDeactivateResumeUserEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)
+            String? abilities, String? city, int sphere, int category, int id)
         editResume,
     required TResult Function(
             String body,
@@ -1060,6 +1102,7 @@ class _$_ActivateOrDeactivateResumeUserEvent
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
         postResume,
@@ -1083,7 +1126,7 @@ class _$_ActivateOrDeactivateResumeUserEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)?
+            String? abilities, String? city, int sphere, int category, int id)?
         editResume,
     TResult Function(
             String body,
@@ -1093,6 +1136,7 @@ class _$_ActivateOrDeactivateResumeUserEvent
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
         postResume,
@@ -1249,7 +1293,7 @@ class _$_AddFileResumeUserEvent implements _AddFileResumeUserEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)
+            String? abilities, String? city, int sphere, int category, int id)
         editResume,
     required TResult Function(
             String body,
@@ -1259,6 +1303,7 @@ class _$_AddFileResumeUserEvent implements _AddFileResumeUserEvent {
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
         postResume,
@@ -1282,7 +1327,7 @@ class _$_AddFileResumeUserEvent implements _AddFileResumeUserEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)?
+            String? abilities, String? city, int sphere, int category, int id)?
         editResume,
     TResult Function(
             String body,
@@ -1292,6 +1337,7 @@ class _$_AddFileResumeUserEvent implements _AddFileResumeUserEvent {
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
         postResume,
@@ -1494,7 +1540,7 @@ class _$_ChangeExtraBlocksResumeUserEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)
+            String? abilities, String? city, int sphere, int category, int id)
         editResume,
     required TResult Function(
             String body,
@@ -1504,6 +1550,7 @@ class _$_ChangeExtraBlocksResumeUserEvent
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
         postResume,
@@ -1527,7 +1574,7 @@ class _$_ChangeExtraBlocksResumeUserEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)?
+            String? abilities, String? city, int sphere, int category, int id)?
         editResume,
     TResult Function(
             String body,
@@ -1537,6 +1584,7 @@ class _$_ChangeExtraBlocksResumeUserEvent
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
         postResume,
@@ -1714,7 +1762,7 @@ class _$_AddExtraBlocksResumeUserEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)
+            String? abilities, String? city, int sphere, int category, int id)
         editResume,
     required TResult Function(
             String body,
@@ -1724,6 +1772,7 @@ class _$_AddExtraBlocksResumeUserEvent
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
         postResume,
@@ -1747,7 +1796,7 @@ class _$_AddExtraBlocksResumeUserEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)?
+            String? abilities, String? city, int sphere, int category, int id)?
         editResume,
     TResult Function(
             String body,
@@ -1757,6 +1806,7 @@ class _$_AddExtraBlocksResumeUserEvent
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
         postResume,
@@ -1946,7 +1996,7 @@ class _$_DeleteExtraBlocksResumeUserEvent
   TResult when<TResult extends Object?>({
     required TResult Function() getResume,
     required TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)
+            String? abilities, String? city, int sphere, int category, int id)
         editResume,
     required TResult Function(
             String body,
@@ -1956,6 +2006,7 @@ class _$_DeleteExtraBlocksResumeUserEvent
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)
         postResume,
@@ -1979,7 +2030,7 @@ class _$_DeleteExtraBlocksResumeUserEvent
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getResume,
     TResult Function(String phone, String email, String? body,
-            String? abilities, String? city, int category, int id)?
+            String? abilities, String? city, int sphere, int category, int id)?
         editResume,
     TResult Function(
             String body,
@@ -1989,6 +2040,7 @@ class _$_DeleteExtraBlocksResumeUserEvent
             String city,
             String email,
             int category,
+            int sphere,
             List<Map<String, dynamic>> stages,
             List<Map<String, dynamic>> grades)?
         postResume,
@@ -2089,14 +2141,10 @@ class _$ResumeUserStateTearOff {
     );
   }
 
-  NoResumeUserState noVacancy({required FormzStatus status}) {
+  NoResumeUserState noResume({required String status}) {
     return NoResumeUserState(
       status: status,
     );
-  }
-
-  NoInternetUserState noInternet() {
-    return const NoInternetUserState();
   }
 }
 
@@ -2110,8 +2158,7 @@ mixin _$ResumeUserState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(Resume resume, String status) loaded,
-    required TResult Function(FormzStatus status) noVacancy,
-    required TResult Function() noInternet,
+    required TResult Function(String status) noResume,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2119,8 +2166,7 @@ mixin _$ResumeUserState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(Resume resume, String status)? loaded,
-    TResult Function(FormzStatus status)? noVacancy,
-    TResult Function()? noInternet,
+    TResult Function(String status)? noResume,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2129,8 +2175,7 @@ mixin _$ResumeUserState {
     required TResult Function(EmptyResumeUserState value) empty,
     required TResult Function(LoadingResumeUserState value) loading,
     required TResult Function(LoadedResumeUserState value) loaded,
-    required TResult Function(NoResumeUserState value) noVacancy,
-    required TResult Function(NoInternetUserState value) noInternet,
+    required TResult Function(NoResumeUserState value) noResume,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -2138,8 +2183,7 @@ mixin _$ResumeUserState {
     TResult Function(EmptyResumeUserState value)? empty,
     TResult Function(LoadingResumeUserState value)? loading,
     TResult Function(LoadedResumeUserState value)? loaded,
-    TResult Function(NoResumeUserState value)? noVacancy,
-    TResult Function(NoInternetUserState value)? noInternet,
+    TResult Function(NoResumeUserState value)? noResume,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -2205,8 +2249,7 @@ class _$EmptyResumeUserState implements EmptyResumeUserState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(Resume resume, String status) loaded,
-    required TResult Function(FormzStatus status) noVacancy,
-    required TResult Function() noInternet,
+    required TResult Function(String status) noResume,
   }) {
     return empty();
   }
@@ -2217,8 +2260,7 @@ class _$EmptyResumeUserState implements EmptyResumeUserState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(Resume resume, String status)? loaded,
-    TResult Function(FormzStatus status)? noVacancy,
-    TResult Function()? noInternet,
+    TResult Function(String status)? noResume,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -2233,8 +2275,7 @@ class _$EmptyResumeUserState implements EmptyResumeUserState {
     required TResult Function(EmptyResumeUserState value) empty,
     required TResult Function(LoadingResumeUserState value) loading,
     required TResult Function(LoadedResumeUserState value) loaded,
-    required TResult Function(NoResumeUserState value) noVacancy,
-    required TResult Function(NoInternetUserState value) noInternet,
+    required TResult Function(NoResumeUserState value) noResume,
   }) {
     return empty(this);
   }
@@ -2245,8 +2286,7 @@ class _$EmptyResumeUserState implements EmptyResumeUserState {
     TResult Function(EmptyResumeUserState value)? empty,
     TResult Function(LoadingResumeUserState value)? loading,
     TResult Function(LoadedResumeUserState value)? loaded,
-    TResult Function(NoResumeUserState value)? noVacancy,
-    TResult Function(NoInternetUserState value)? noInternet,
+    TResult Function(NoResumeUserState value)? noResume,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -2303,8 +2343,7 @@ class _$LoadingResumeUserState implements LoadingResumeUserState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(Resume resume, String status) loaded,
-    required TResult Function(FormzStatus status) noVacancy,
-    required TResult Function() noInternet,
+    required TResult Function(String status) noResume,
   }) {
     return loading();
   }
@@ -2315,8 +2354,7 @@ class _$LoadingResumeUserState implements LoadingResumeUserState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(Resume resume, String status)? loaded,
-    TResult Function(FormzStatus status)? noVacancy,
-    TResult Function()? noInternet,
+    TResult Function(String status)? noResume,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -2331,8 +2369,7 @@ class _$LoadingResumeUserState implements LoadingResumeUserState {
     required TResult Function(EmptyResumeUserState value) empty,
     required TResult Function(LoadingResumeUserState value) loading,
     required TResult Function(LoadedResumeUserState value) loaded,
-    required TResult Function(NoResumeUserState value) noVacancy,
-    required TResult Function(NoInternetUserState value) noInternet,
+    required TResult Function(NoResumeUserState value) noResume,
   }) {
     return loading(this);
   }
@@ -2343,8 +2380,7 @@ class _$LoadingResumeUserState implements LoadingResumeUserState {
     TResult Function(EmptyResumeUserState value)? empty,
     TResult Function(LoadingResumeUserState value)? loading,
     TResult Function(LoadedResumeUserState value)? loaded,
-    TResult Function(NoResumeUserState value)? noVacancy,
-    TResult Function(NoInternetUserState value)? noInternet,
+    TResult Function(NoResumeUserState value)? noResume,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -2438,8 +2474,7 @@ class _$LoadedResumeUserState implements LoadedResumeUserState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(Resume resume, String status) loaded,
-    required TResult Function(FormzStatus status) noVacancy,
-    required TResult Function() noInternet,
+    required TResult Function(String status) noResume,
   }) {
     return loaded(resume, status);
   }
@@ -2450,8 +2485,7 @@ class _$LoadedResumeUserState implements LoadedResumeUserState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(Resume resume, String status)? loaded,
-    TResult Function(FormzStatus status)? noVacancy,
-    TResult Function()? noInternet,
+    TResult Function(String status)? noResume,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -2466,8 +2500,7 @@ class _$LoadedResumeUserState implements LoadedResumeUserState {
     required TResult Function(EmptyResumeUserState value) empty,
     required TResult Function(LoadingResumeUserState value) loading,
     required TResult Function(LoadedResumeUserState value) loaded,
-    required TResult Function(NoResumeUserState value) noVacancy,
-    required TResult Function(NoInternetUserState value) noInternet,
+    required TResult Function(NoResumeUserState value) noResume,
   }) {
     return loaded(this);
   }
@@ -2478,8 +2511,7 @@ class _$LoadedResumeUserState implements LoadedResumeUserState {
     TResult Function(EmptyResumeUserState value)? empty,
     TResult Function(LoadingResumeUserState value)? loading,
     TResult Function(LoadedResumeUserState value)? loaded,
-    TResult Function(NoResumeUserState value)? noVacancy,
-    TResult Function(NoInternetUserState value)? noInternet,
+    TResult Function(NoResumeUserState value)? noResume,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -2506,7 +2538,7 @@ abstract class $NoResumeUserStateCopyWith<$Res> {
   factory $NoResumeUserStateCopyWith(
           NoResumeUserState value, $Res Function(NoResumeUserState) then) =
       _$NoResumeUserStateCopyWithImpl<$Res>;
-  $Res call({FormzStatus status});
+  $Res call({String status});
 }
 
 /// @nodoc
@@ -2528,7 +2560,7 @@ class _$NoResumeUserStateCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as FormzStatus,
+              as String,
     ));
   }
 }
@@ -2539,11 +2571,11 @@ class _$NoResumeUserState implements NoResumeUserState {
   const _$NoResumeUserState({required this.status});
 
   @override
-  final FormzStatus status;
+  final String status;
 
   @override
   String toString() {
-    return 'ResumeUserState.noVacancy(status: $status)';
+    return 'ResumeUserState.noResume(status: $status)';
   }
 
   @override
@@ -2569,10 +2601,9 @@ class _$NoResumeUserState implements NoResumeUserState {
     required TResult Function() empty,
     required TResult Function() loading,
     required TResult Function(Resume resume, String status) loaded,
-    required TResult Function(FormzStatus status) noVacancy,
-    required TResult Function() noInternet,
+    required TResult Function(String status) noResume,
   }) {
-    return noVacancy(status);
+    return noResume(status);
   }
 
   @override
@@ -2581,12 +2612,11 @@ class _$NoResumeUserState implements NoResumeUserState {
     TResult Function()? empty,
     TResult Function()? loading,
     TResult Function(Resume resume, String status)? loaded,
-    TResult Function(FormzStatus status)? noVacancy,
-    TResult Function()? noInternet,
+    TResult Function(String status)? noResume,
     required TResult orElse(),
   }) {
-    if (noVacancy != null) {
-      return noVacancy(status);
+    if (noResume != null) {
+      return noResume(status);
     }
     return orElse();
   }
@@ -2597,10 +2627,9 @@ class _$NoResumeUserState implements NoResumeUserState {
     required TResult Function(EmptyResumeUserState value) empty,
     required TResult Function(LoadingResumeUserState value) loading,
     required TResult Function(LoadedResumeUserState value) loaded,
-    required TResult Function(NoResumeUserState value) noVacancy,
-    required TResult Function(NoInternetUserState value) noInternet,
+    required TResult Function(NoResumeUserState value) noResume,
   }) {
-    return noVacancy(this);
+    return noResume(this);
   }
 
   @override
@@ -2609,121 +2638,22 @@ class _$NoResumeUserState implements NoResumeUserState {
     TResult Function(EmptyResumeUserState value)? empty,
     TResult Function(LoadingResumeUserState value)? loading,
     TResult Function(LoadedResumeUserState value)? loaded,
-    TResult Function(NoResumeUserState value)? noVacancy,
-    TResult Function(NoInternetUserState value)? noInternet,
+    TResult Function(NoResumeUserState value)? noResume,
     required TResult orElse(),
   }) {
-    if (noVacancy != null) {
-      return noVacancy(this);
+    if (noResume != null) {
+      return noResume(this);
     }
     return orElse();
   }
 }
 
 abstract class NoResumeUserState implements ResumeUserState {
-  const factory NoResumeUserState({required FormzStatus status}) =
+  const factory NoResumeUserState({required String status}) =
       _$NoResumeUserState;
 
-  FormzStatus get status => throw _privateConstructorUsedError;
+  String get status => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $NoResumeUserStateCopyWith<NoResumeUserState> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $NoInternetUserStateCopyWith<$Res> {
-  factory $NoInternetUserStateCopyWith(
-          NoInternetUserState value, $Res Function(NoInternetUserState) then) =
-      _$NoInternetUserStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$NoInternetUserStateCopyWithImpl<$Res>
-    extends _$ResumeUserStateCopyWithImpl<$Res>
-    implements $NoInternetUserStateCopyWith<$Res> {
-  _$NoInternetUserStateCopyWithImpl(
-      NoInternetUserState _value, $Res Function(NoInternetUserState) _then)
-      : super(_value, (v) => _then(v as NoInternetUserState));
-
-  @override
-  NoInternetUserState get _value => super._value as NoInternetUserState;
-}
-
-/// @nodoc
-
-class _$NoInternetUserState implements NoInternetUserState {
-  const _$NoInternetUserState();
-
-  @override
-  String toString() {
-    return 'ResumeUserState.noInternet()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is NoInternetUserState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() empty,
-    required TResult Function() loading,
-    required TResult Function(Resume resume, String status) loaded,
-    required TResult Function(FormzStatus status) noVacancy,
-    required TResult Function() noInternet,
-  }) {
-    return noInternet();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? empty,
-    TResult Function()? loading,
-    TResult Function(Resume resume, String status)? loaded,
-    TResult Function(FormzStatus status)? noVacancy,
-    TResult Function()? noInternet,
-    required TResult orElse(),
-  }) {
-    if (noInternet != null) {
-      return noInternet();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(EmptyResumeUserState value) empty,
-    required TResult Function(LoadingResumeUserState value) loading,
-    required TResult Function(LoadedResumeUserState value) loaded,
-    required TResult Function(NoResumeUserState value) noVacancy,
-    required TResult Function(NoInternetUserState value) noInternet,
-  }) {
-    return noInternet(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(EmptyResumeUserState value)? empty,
-    TResult Function(LoadingResumeUserState value)? loading,
-    TResult Function(LoadedResumeUserState value)? loaded,
-    TResult Function(NoResumeUserState value)? noVacancy,
-    TResult Function(NoInternetUserState value)? noInternet,
-    required TResult orElse(),
-  }) {
-    if (noInternet != null) {
-      return noInternet(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NoInternetUserState implements ResumeUserState {
-  const factory NoInternetUserState() = _$NoInternetUserState;
 }
